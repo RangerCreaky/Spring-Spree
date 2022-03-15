@@ -1,31 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 const Navbar = ()=>{
     return(
         <>
             <NavbarContainer>
                 <NavbarLarge>
-                    <h3><a href="#">SpringSpree'22</a></h3>
-                    <ul class="nav-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                    <h3><Link to="/">SpringSpree'22</Link></h3>
+                    <ul className="nav-links">
+                        <li><Link to="/events">Events</Link></li>
+                        <li><Link to="/gallery">Gallery</Link></li>
+                        <li><Link to="/sponsors">Sponsors</Link></li>
                     </ul>
                 </NavbarLarge>
                 <NavbarSmallNav>
-                    <h3><a href="#">SpringSpree'22</a></h3>
-                    <button id="toggle-navbar" onclick="navbarToggleFun()">
-                        <div class="hamburger" id="hamburger">
-                            <span class="line"></span>
-                            <span class="line"></span>
-                            <span class="line"></span>
+                {/* onClick="navbarToggleFun()" */}
+                    <h3><Link to="/contact">SpringSpree'22</Link></h3>
+                    <button id="toggle-navbar">
+                        <div className="hamburger" id="hamburger">
+                            <span className="line"></span>
+                            <span className="line"></span>
+                            <span className="line"></span>
                         </div>
                     </button>
                 </NavbarSmallNav>
                 {/* <ul class="small-nav-links small-nav" id="mobile-nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact Us</a></li>
-                </ul> */}
+                </ul> */}   
             </NavbarContainer>
         </>
     )
@@ -69,24 +73,34 @@ const NavbarLarge = styled.div`
         font-family: 'signatra';
         font-weight: 400;
         font-size: 3rem;
+        > a{
+            color : white;  
+            text-decoration : none;
+        }
     }
 
     > ul{
         display: flex;
         gap: 2rem;
         list-style: none;
-        align-items: center;    
-    }
-
-    > ul li a{
-        -webkit-transition: all 100ms ease-in 10ms;
-        -o-transition: all 100ms ease-in 10ms;
-        transition: all 100ms ease-in 10ms;
-
-        &:hover{
-            border-bottom: 2px solid #ecf0f1;
+        align-items: center; 
+        
+        > li{
+            > a{
+                -webkit-transition: all 100ms ease-in 10ms;
+                -o-transition: all 100ms ease-in 10ms;
+                transition: all 100ms ease-in 10ms;
+                color : white;  
+                text-decoration : none;
+        
+                &:hover{
+                    border-bottom: 2px solid #ecf0f1;
+                }
+            }
         }
     }
+
+
 
     @media (max-width: 860px){
         display: none;
