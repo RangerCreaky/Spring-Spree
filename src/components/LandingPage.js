@@ -1,36 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import About from './About';
+import Shristi from './Shristi';
+
 const LandingPage = ()=>{
     return (
         <>
-            <LandingPageContainer>
-                <ul id="landing-view-scene">
-                    <li data-depth="0.06" id="logo" className="layer">
-                        <img src="./images/logo.png" alt="logo" />
-                    </li>
-                    <li data-depth="0.2" id="stars" className="layer">
-                        <img src="./images/stars.png" alt="stars" />
-                    </li>
-                    <li data-depth="0.5" id="universe" className="layer">
-                        <img src="./images/bg_2.png" alt="universe" />
-                    </li>
-                    <li data-depth="0.7" id="planet" className="layer">
-                        <img src="./images/planet.png" alt="planet" />
-                    </li>
-                    <li data-depth="0" id="event-title" className="layer">
-                        <div>
-                            <h1 className="titlename">SpringSpree'22</h1>
-                            <p className="themename">Srishti</p>
-                            <p className="event-dates">April 8-10, 2022</p>
-                        </div>     
-                    </li>
-                </ul>
-            </LandingPageContainer>
+            <HomePage>
+                <LandingPageContainer>
+                    <ul id="landing-view-scene">
+                        <li data-depth="0.06" id="logo" className="layer">
+                            <img src="./images/logo.png" alt="logo" />
+                        </li>
+                            <li data-depth="0.2" id="stars" className="layer">
+                                <img src="./images/stars.png" alt="stars" />
+                            </li>
+                            <li data-depth="0.5" id="universe" className="layer">
+                                <img src="./images/bg_2.png" alt="universe" />
+                            </li>
+                            <li data-depth="0.7" id="planet" className="layer">
+                                <img src="./images/planet.png" alt="planet" />
+                            </li>
+                        <li data-depth="0" id="event-title" className="layer">
+                            <div>
+                                <h1 className="titlename">SpringSpree'22</h1>
+                                <p className="themename">Srishti</p>
+                                <p className="event-dates">April 8-10, 2022</p>
+                            </div>     
+                        </li>
+                    </ul>
+                </LandingPageContainer>
+                
+                <Shristi />
+                <About />
+            </HomePage>
         </>
     )
 }
 
 export default LandingPage;
+
+const HomePage = styled.div``;
 
 const LandingPageContainer = styled.div`
     overflow : hidden;
