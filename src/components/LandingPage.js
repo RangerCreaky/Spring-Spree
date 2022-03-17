@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import About from './About';
@@ -7,11 +7,16 @@ import Footer from './Footer';
 
 const LandingPage = ()=>{
 
+    const heroRef = useRef(null);
+    const srishtiRef = useRef(null);
+    const aboutRef = useRef(null);
+    const footerRef = useRef(null);
+
     return (
         <>
             <HomePage>
                 <section>
-                    <LandingPageContainer  id="0">
+                    <LandingPageContainer ref={heroRef}>
                         <ul id="landing-view-scene">
                             <li data-depth="0.06" id="logo" className="layer">
                                 <img src="./images/logo.png" alt="logo" />
@@ -37,14 +42,18 @@ const LandingPage = ()=>{
                 </section>
 
                 <section>
-                    <Shristi/>
+                    <Shristi ref={srishtiRef}/>
                 </section>
 
                 <section>
-                    <About/>
+                    <About ref={aboutRef}/>
                 </section>
 
-                <Footer />
+                <section>
+                    <Footer ref={footerRef}/>
+                </section>
+
+                <button > button </button>
             </HomePage>
         </>
     )
@@ -56,18 +65,8 @@ export default LandingPage;
 const HomePage = styled.article`
     height : 100vh;
 
-    > .scroll{
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        z-index : 200;
-        > .up{
-            color : white;
-        }
-
-        > .down{
-            color : green;
-        }
+    > button {
+        /* position */
     }
 `;
 

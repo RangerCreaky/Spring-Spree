@@ -9,7 +9,6 @@ const Shristi = ()=>{
         <>
             <Container  id="1">
                 <VideoBackground />
-                <InnerContainer>
                     <Text data-aos="fade-left" data-aos-duration="1500">
                         <h1> Srishti </h1>
                         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with th </p>
@@ -17,7 +16,7 @@ const Shristi = ()=>{
                             <StyledLink to="/explore"> Explore <span></span> <span></span> <span></span> <span></span></StyledLink>
                         </div>
                     </Text>
-                </InnerContainer>
+                    <img src="../../images/logo-dark.png" alt="shrishti logo" />
             </Container>
         </>
     )
@@ -32,24 +31,26 @@ const Container = styled.div`
     height : 100vh;
     display : flex;
     align-items : center;
-    overflow : hidden;    
-`;
+    justify-content: space-around;
+    overflow : hidden; 
 
-
-
-const InnerContainer = styled.div`
-    height : 100%;
-    background-image : url('../../images/logo-dark.png');
-    background-repeat : no-repeat;
-    background-position : 80% 60%;
-
+    @media (max-width : 750px){
+        display: flex;
+        flex-direction: column-reverse
+    }
     
-    display : flex;
-    align-items : center;
-    justify-content : left;
-    padding : 0 2rem;
-
+    > img {
+        @media (max-width : 1200px){
+            width : 400px;
+            height : 400px;
+        }
+        @media (max-width : 950px){
+            width : 350px;
+            height : 350px;
+        }
+    }
 `;
+
 
 const Text = styled.div`
     color : white;
@@ -57,10 +58,22 @@ const Text = styled.div`
     font-size : 1.2rem;
     font-family: 'Poppins', sans-serif;
 
+    @media (max-width : 750px){
+        font-size : 17px;
+        width : 100%;
+        padding : 10px;
+        text-align: center;
 
+    }
     > .button{
         display : flex;
         justify-content : flex-end;
+
+        @media (max-width : 750px){
+            justify-content: center;
+            margin-top: 10px;
+        }
+
     }
 
     >h1{
@@ -86,6 +99,8 @@ const StyledLink = styled(Link)`
     z-index: 1;
     transition: 0.5s;
     text-decoration : none;
+
+
 
 
     > span{

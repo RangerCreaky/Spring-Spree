@@ -44,19 +44,6 @@ const AboutInnerContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (min-width: 768px) {
-        width: 750px;
-    }
-    @media (min-width: 992px) {
-        width: 970px;
-    }
-    @media (min-width: 1200px) {
-        width: 1170px;
-    }
-    @media (max-width: 500px) {
-        flex-direction: column;
-    }
 `;
 
 const AboutContent = styled.div`
@@ -67,9 +54,16 @@ const AboutContent = styled.div`
     z-index : 100;
     > h2{
         font-size: 5rem;
+        @media (max-width : 950px){
+            font-size: 3em;
+        }
     }
 
     > p{
         font-size: 1.1rem;
+
+        @media (max-width : 950px){
+            font-size: 15px;
+        }
     }
 `;

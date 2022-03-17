@@ -34,11 +34,32 @@ const ExploreContainer = styled.div`
     justify-content: space-around;
     flex-flow: row wrap;
 
+    @media (max-width : 800px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    > img {
+        @media (max-width : 1200px) {
+            width : 500px;
+            height : 500px;
+        }
+        @media (max-width : 1000px) {
+            width : 400px;
+            height : 400px;
+        }
+        @media (max-width : 900px) {
+            width : 300px;
+            height : 300px;
+        }
+        
+    }
+
 `;
 
 const Text = styled.div`
     color : white;
-    max-width: 650px;
+    width : 650px;
     font-family: 'Poppins' , sans-serif;
     text-align: center;
 
@@ -47,6 +68,10 @@ const Text = styled.div`
     justify-content: space-around;
 
     height: 80%;
+
+    @media (max-width : 1200px) {
+        width : 500px;
+    }
 
     >h2{
         font-size: 56px;
