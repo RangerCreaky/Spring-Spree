@@ -8,6 +8,8 @@ import Sponsors from './Sponsors';
 import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 
+import Faq from './Faq';
+
 const App = ()=>{
     return (
         <> 
@@ -17,6 +19,7 @@ const App = ()=>{
                 <Route path="/events" exact element={<Events />} />
                 <Route path="/sponsors" exact element={<Sponsors />} />
                 <Route path="/gallery" exact element={<Gallery />} />
+                <Route path="/faq" exact element={<Faq />} />
 
             </Routes>
 
