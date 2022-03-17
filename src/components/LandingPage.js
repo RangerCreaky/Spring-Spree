@@ -3,45 +3,73 @@ import styled from 'styled-components';
 
 import About from './About';
 import Shristi from './Shristi';
+import Footer from './Footer';
 
 const LandingPage = ()=>{
+
     return (
         <>
             <HomePage>
-                <LandingPageContainer>
-                    <ul id="landing-view-scene">
-                        <li data-depth="0.06" id="logo" className="layer">
-                            <img src="./images/logo.png" alt="logo" />
-                        </li>
-                            <li data-depth="0.2" id="stars" className="layer">
-                                <img src="./images/stars.png" alt="stars" />
+                <section>
+                    <LandingPageContainer  id="0">
+                        <ul id="landing-view-scene">
+                            <li data-depth="0.06" id="logo" className="layer">
+                                <img src="./images/logo.png" alt="logo" />
                             </li>
-                            <li data-depth="0.5" id="universe" className="layer">
-                                <img src="./images/bg_2.png" alt="universe" />
+                                <li data-depth="0.2" id="stars" className="layer">
+                                    <img src="./images/stars.png" alt="stars" />
+                                </li>
+                                <li data-depth="0.5" id="universe" className="layer">
+                                    <img src="./images/bg_2.png" alt="universe" />
+                                </li>
+                                <li data-depth="0.7" id="planet" className="layer">
+                                    <img src="./images/planet.png" alt="planet" />
+                                </li>
+                            <li data-depth="0" id="event-title" className="layer">
+                                <div>
+                                    <h1 className="titlename">SpringSpree'22</h1>
+                                    <p className="themename">Srishti</p>
+                                    <p className="event-dates">April 8-10, 2022</p>
+                                </div>     
                             </li>
-                            <li data-depth="0.7" id="planet" className="layer">
-                                <img src="./images/planet.png" alt="planet" />
-                            </li>
-                        <li data-depth="0" id="event-title" className="layer">
-                            <div>
-                                <h1 className="titlename">SpringSpree'22</h1>
-                                <p className="themename">Srishti</p>
-                                <p className="event-dates">April 8-10, 2022</p>
-                            </div>     
-                        </li>
-                    </ul>
-                </LandingPageContainer>
-                
-                <Shristi />
-                <About />
+                        </ul>
+                    </LandingPageContainer>
+                </section>
+
+                <section>
+                    <Shristi/>
+                </section>
+
+                <section>
+                    <About/>
+                </section>
+
+                <Footer />
             </HomePage>
         </>
     )
+    // onClick={changeId}
 }
 
 export default LandingPage;
 
-const HomePage = styled.div``;
+const HomePage = styled.article`
+    height : 100vh;
+
+    > .scroll{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index : 200;
+        > .up{
+            color : white;
+        }
+
+        > .down{
+            color : green;
+        }
+    }
+`;
 
 const LandingPageContainer = styled.div`
     overflow : hidden;

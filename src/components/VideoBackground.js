@@ -17,7 +17,7 @@ export default VideoBackground;
 
 const VideoContainer = styled.div`
     position : absolute;
-    z-index : -1;
+    z-index : -100;
 `;
 
 const Video = styled.video`

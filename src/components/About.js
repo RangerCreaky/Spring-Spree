@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const About = ()=>{
     return (
         <>
-            <AboutContainer>
+            <AboutContainer  id="2">
                 <AboutInnerContainer>
                     <AboutContent data-aos="fade-left" data-aos-offset="200" data-aos-duration="1500">
                         <h2> About </h2>
@@ -29,12 +29,13 @@ const About = ()=>{
 
 export default About;
 
-const AboutContainer = styled.section`
+const AboutContainer = styled.div`
     width: 100%;
     background-color: black;
     background-size: cover, cover;
     padding: 100px 0;
-    min-height: 70vh;
+    height: 100vh;
+    color : white;
 `;
 
 const AboutInnerContainer = styled.div`
@@ -62,7 +63,8 @@ const AboutContent = styled.div`
     color: white;
     font-family: 'Poppins';
     max-width: 50ch;
-
+    position : relative;
+    z-index : 100;
     > h2{
         font-size: 5rem;
     }
