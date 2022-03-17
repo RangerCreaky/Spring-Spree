@@ -1,27 +1,18 @@
-import React from 'react';
-import { Routes , Route } from 'react-router';
+import React from "react";
+import Navbar from "./Navbar";
+import Events from "./../components/Events";
+import SolarBg from "./SolarBg";
+import Comets from "./Comets";
 
-import Events from './Events';
-import Gallery from './Gallery';
-import Sponsors from './Sponsors';
-
-import Navbar from './Navbar';
-import LandingPage from './LandingPage';
-
-const App = ()=>{
-    return (
-        <> 
-            <Navbar />  
-            <Routes> 
-                <Route path='/' exact element={<LandingPage />} />
-                <Route path="/events" exact element={<Events />} />
-                <Route path="/sponsors" exact element={<Sponsors />} />
-                <Route path="/gallery" exact element={<Gallery />} />
-
-            </Routes>
-
-        </>
-    )
-}   
+// import Sponsors from './Sponsors';
+const App = () => {
+  return (
+    <SolarBg>
+      <Comets />
+      <Navbar />
+      <Events />
+    </SolarBg>
+  );
+};
 
 export default App;
