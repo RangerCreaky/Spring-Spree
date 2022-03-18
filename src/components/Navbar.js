@@ -13,6 +13,7 @@ const Navbar = ()=>{
                         <li><Link to="/events">Events</Link></li>
                         <li><Link to="/gallery">Gallery</Link></li>
                         <li><Link to="/sponsors">Sponsors</Link></li>
+                        <li><Link to="/faq">FAQs</Link></li>
                     </ul>
                 </NavbarLarge>
                 <NavbarSmallNav>

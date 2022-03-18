@@ -7,6 +7,13 @@ import Sponsors from './Sponsors';
 
 import Navbar from './Navbar';
 import LandingPage from './LandingPage';
+import Explore from './Explore';
+import FAQ from './FAQ';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 const App = ()=>{
     return (
@@ -17,7 +24,8 @@ const App = ()=>{
                 <Route path="/events" exact element={<Events />} />
                 <Route path="/sponsors" exact element={<Sponsors />} />
                 <Route path="/gallery" exact element={<Gallery />} />
-
+                <Route path="/explore" exact element={<Explore />} />
+                <Route path="/faq" exact element={<FAQ />} />
             </Routes>
 
         </>
