@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const FaqContainer = styled.div`
-    margin:0;
+    position: relative;
+    padding:0;
     padding:0;
     width:100%;
     max-width:1280px;
@@ -26,6 +27,7 @@ export const SideBar = styled.div`
     
     > h1{
         margin-bottom:30px;
+        margin-top:50px;
         font-weight:800;
         color:#ffffff;
     }
@@ -61,7 +63,7 @@ export const QueryContainer = styled.div`
     h1{
         font-size:1.5rem;
         margin-bottom:15px;
-        margin-top:30px;
+        padding-top:80px;
         font-weight:800;
         font-family:arial;
         
