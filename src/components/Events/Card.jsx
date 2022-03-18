@@ -32,7 +32,8 @@ export default function Card({
 
 const Container = styled.div`
   margin: auto;
-  max-width: 400px;
+  /* max-width: 400px; */
+  max-width: 85%;
   min-height: 450px;
   border-radius: 10px;
   background: radial-gradient(#ffa865, #ff730e);

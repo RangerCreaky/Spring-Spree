@@ -46,7 +46,15 @@ export const Header = styled.div`
 
 export const Main = styled.div`
   padding: 20px 0;
-  text-align: center;
+
+  .main {
+    text-align: center;
+  }
+
+  .basic {
+    margin: 0 2rem;
+    max-width: 80%;
+  }
 
   img {
     margin: auto;
@@ -90,7 +98,7 @@ export const Main = styled.div`
 
   .content {
     text-align: start;
-    margin: auto;
+    margin: 0 2rem;
     max-width: 80%;
     margin-top: 2rem;
 
@@ -102,7 +110,6 @@ export const Main = styled.div`
 
       ul {
         margin-top: 0.5rem;
-        margin-left: 1rem;
         list-style: decimal;
       }
     }
@@ -112,7 +119,6 @@ export const Main = styled.div`
 
       ul {
         margin-top: 0.5rem;
-        margin-left: 1rem;
         list-style: decimal;
         font-size: 1.2rem;
 
@@ -140,6 +146,12 @@ export const Main = styled.div`
         cursor: pointer;
         transform: scale(1.02);
       }
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .content {
+      margin: 0 1rem;
+      max-width: 100%;
     }
   }
 `;

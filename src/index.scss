@@ -15,6 +15,7 @@ $body-color: #f5f5f5;
 @import "./bootstrap/scss/reboot";
 @import "./bootstrap/scss/type";
 @import "./bootstrap/scss/buttons";
+@import "./bootstrap/scss/forms";
 // @import "./bootstrap/scss/images";
 @import "./bootstrap/scss/containers";
 @import "./bootstrap/scss/grid";
@@ -59,4 +60,9 @@ $body-color: #f5f5f5;
 
 html {
   scroll-behavior: smooth;
+  font-size: 18px;
+
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 }

@@ -10,6 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { Routes, Route } from "react-router-dom";
+import Contacts from "./Contacts";
 
 AOS.init();
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path="/" exact element={<LandingPage />} />
         <Route path="/events" exact element={<Event />} />
+        <Route path="/contacts" exact element={<Contacts />} />
         <Route path="/sponsors" exact element={<Sponsors />} />
         <Route path="/gallery" exact element={<Gallery />} />
         <Route path="/explore" exact element={<Explore />} />

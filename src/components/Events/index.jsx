@@ -121,7 +121,8 @@ const Container = styled.div`
   }
 
   @media screen and (min-width: 992px) {
-    .right {
+    .right,
+    .left {
       height: 100%;
       overflow: auto;
       scroll-behavior: smooth;

@@ -26,26 +26,38 @@ export default function Modal({
             <img src={image} alt="event-poster" />
 
             <div>
-              <h1 className="title">{title}</h1>
-              <h2 className="sub-title">{subTitle}</h2>
+              <div className="main">
+                <h1 className="title">{title}</h1>
+                <h2 className="sub-title">{subTitle}</h2>
 
-              <p className="time">{time}</p>
-              <p className="venue">
-                <FaMapMarkerAlt /> {venue}
-              </p>
+                <p className="time">{time}</p>
+                <p className="venue">
+                  <FaMapMarkerAlt /> {venue}
+                </p>
+              </div>
 
-              <div className="horizontal">
-                <div>
-                  <h2>Price</h2>
-                  <div>₹ 100</div>
-                </div>
-                <div>
-                  <h2>No. of rounds</h2>
-                  <div>5</div>
-                </div>
-                <div>
-                  <h2>Prize money</h2>
-                  <div>₹ 100</div>
+              <hr />
+
+              <div className="basic">
+                <div className="row g-0">
+                  <div className="col-md-6 col-12">
+                    <h3>Price: Rs.100</h3>
+                  </div>
+                  <div className="col-md-6 col-12">
+                    <h3>Prize: Rs.200</h3>
+                  </div>
+                  <div className="col-md-6 col-12">
+                    <h3>Prize: Rs.200</h3>
+                  </div>
+                  <div className="col-md-6 col-12">
+                    <h3>Prize: Rs.200</h3>
+                  </div>
+                  <div className="col-md-6 col-12">
+                    <h3>Prize: Rs.200</h3>
+                  </div>
+                  <div className="col-md-6 col-12">
+                    <h3>Prize: Rs.200</h3>
+                  </div>
                 </div>
               </div>
 
