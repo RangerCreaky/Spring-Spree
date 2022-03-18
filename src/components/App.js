@@ -15,6 +15,8 @@ import 'aos/dist/aos.css';
 
 AOS.init();
 
+import Faq from './Faq';
+
 const App = ()=>{
     return (
         <> 
