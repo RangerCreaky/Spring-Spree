@@ -9,7 +9,6 @@ import useScrollSnap from 'react-use-scroll-snap';
 import { useScrollBy , useScrollTo } from "react-use-window-scroll";
 
 const LandingPage = ()=>{
-    const [num , setNum] = useState(0);
 
     // for snapping the page
     const scrollRef = useRef(null);
@@ -19,15 +18,10 @@ const LandingPage = ()=>{
     const scrollBy = useScrollBy();
     const scrollTo = useScrollTo();
     const handleScroll = ()=>{
-        // console.log(atBottom);
-        if(num === 4){
-            setNum(0);
-            scrollTo({ top: 0, left: 0, behavior: "smooth" })
-        }
-        else{
-            setNum(num+1);
-            scrollBy({ top: window.innerHeight, left: 0, behavior: "smooth" });
-        }
+
+        // scrollTo({ top: 0, left: 0, behavior: "smooth" })
+
+        scrollBy({ top: window.innerHeight, left: 0, behavior: "smooth" });
     }
 
 
