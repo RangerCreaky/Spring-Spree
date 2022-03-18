@@ -1,68 +1,113 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import CardContainer from "./CardContainer";
 import CardTemp from "./CardTemp";
+import Modal from "./Modal";
 
-export default function index() {
+const events = Array(10)
+  .fill(0)
+  .map((_, id) => ({
+    id,
+    image: "https://incident.nitk.ac.in/assets/img/Promenade.jpg",
+    title: "Promenade",
+    subTitle: "Hip Hop Internationals South India Auditions",
+    tagline: "A coordination to cadence",
+    venue: "Silver Jubilee Auditorium",
+    date: "6 March",
+    time: "6th March, 9AM onwards",
+    description:
+      "Sure your squad can be the Kings of dance-offs? Incident presents Promenade in association with Hip Hop International India which is our flagship group-dance event on the 6th of March 2022. Suit up and dance your soles off to achieve hip-hop glory!",
+  }));
+
+const events_data = {
+  "Publicity and Relations": events,
+  "Quality Control and Management ": events,
+  "Web development ": events,
+  "Event coordination and conduction": events,
+  Proshows: events,
+  "Sponsorship ": events,
+  "Treasury and pricing ": events,
+  "Content and blogging": events,
+  Hospitality: events,
+  "Logistics and Security": events,
+  "Design and Deco": events,
+};
+
+export default function Events() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [filter, setFilter] = useState(
+    ["All", "day 1", "day 2", "day 3"].map((e, i) => ({
+      key: e,
+      active: i === 0,
+    }))
+  );
+
+  const changeFilter = (k) => () => {
+    setFilter(
+      filter.map(({ key }) =>
+        key === k ? { key, active: true } : { key, active: false }
+      )
+    );
+  };
+
   return (
-    <Container>
-      <div className="left">
-        <img src="/assets/images/logo.webp" alt="logo" />
-        <h1>Events</h1>
-        <p>
-          Outer Space Background · Nazar The Vis Azhar Follow. Love Run. Pen
-          Editor Menu. Settings. Change View. Use Left Layout Use Top Layout Use
-          Right Layout. Outer Space Background · Nazar The Vis Azhar Follow.
-          Love Run. Pen Editor Menu. Settings. Change View. Use Left Layout Use
-          Top Layout Use Right Layout.
-        </p>
-      </div>
-      <div className="right">
-        <div>
-          <button className="active">All</button>
-          <button>Day 1</button>
-          <button>Day 2</button>
-          <button>Day 3</button>
+    <>
+      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <Container>
+        <div className="left">
+          <img src="/assets/images/logo.webp" alt="logo" />
+          <h1>Events</h1>
+          <ul className="events">
+            {Object.keys(events_data).map((key) => (
+              <li key={key}>
+                <a href={`#${key}`}>{key}</a>
+              </li>
+            ))}
+          </ul>
         </div>
+        <div className="right">
+          <div className="filter">
+            {filter.map(({ key, active }) => (
+              <button
+                onClick={changeFilter(key)}
+                className={active ? "btn active" : "btn"}
+                key={key}
+              >
+                {key}
+              </button>
+            ))}
+          </div>
 
-        <div className="section">
-          <h2>Cultural</h2>
-          <div className="card-holder">
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
+          <div>
+            {Object.keys(events_data).map((key, i) => (
+              <div id={key} key={key} className="section">
+                <h1 className="event-title">{key}</h1>
+                <div className="card-holder">
+                  {events_data[key].map(
+                    ({ id, title, subTitle, image, tagline }) => (
+                      <CardTemp
+                        key={id}
+                        image={image}
+                        title={title}
+                        subTitle={subTitle}
+                        tagline={tagline}
+                        onClick={() => setModalVisible(true)}
+                      />
+                    )
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="section">
-          <h2>Technical</h2>
-          <div className="card-holder">
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-          </div>
-        </div>
-        <div className="section">
-          <h2>Quizes</h2>
-          <div className="card-holder">
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-            <CardTemp />
-          </div>
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 }
 
 const Container = styled.div`
   height: 100vh;
-  /* background-color: black; */
   padding: 90px 20px 0;
   display: flex;
 
@@ -80,20 +125,39 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 0 10px;
+    overflow: auto;
 
-    h1 {
-      margin: 10px 0;
-      font-size: 2rem;
-      text-transform: uppercase;
-    }
-
-    p {
-      text-align: justify;
-      padding: 10px;
+    &::-webkit-scrollbar {
+      display: none;
     }
 
     img {
       width: 200px;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }
+
+    .events {
+      list-style: none;
+      font-size: 1.5rem;
+      text-align: center;
+
+      li {
+        padding: 5px 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      a.active {
+        color: #ec9e3b;
+      }
     }
   }
 
@@ -102,85 +166,51 @@ const Container = styled.div`
     width: 70%;
     height: 100%;
     overflow: auto;
+    scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
       display: none;
     }
 
-    button {
-      cursor: pointer;
-      padding: 10px 20px;
-      border: 1px solid #fcae3e;
-      border-radius: 2px;
-      background: none;
-      outline: none;
-      margin: 0 10px 10px 0;
-      color: white;
-      transition: 300ms;
+    .filter {
+      display: inline-block;
+      background-color: #171717;
+      box-shadow: 0 3px #ffffff13;
+      border-radius: 5rem;
 
-      &:hover {
-        background-color: #ffba56ed;
-      }
+      button {
+        font-size: 1rem;
+        padding: 10px 25px;
+        border-radius: 5rem;
+        margin: 0;
 
-      &.active {
-        background-color: #fcae3e;
+        &.active {
+          background: #ec9e3b;
+        }
+
+        &:hover:not(.active) {
+          background-color: #ec9e3b45;
+        }
       }
     }
 
     .section {
-      margin-top: 10px;
-    }
+      margin-top: 2rem;
 
-    .card-holder {
-      padding: 10px 5px;
-      display: flex;
-      overflow: auto;
-
-      &::-webkit-scrollbar {
-        display: none;
+      .event-title {
+        font-size: 3rem;
+        text-align: center;
+        margin: 1rem 0;
       }
 
-      .card {
-        min-width: 250px;
-        height: 250px;
-        margin-right: 10px;
-        border-radius: 10px;
-        border: 1px solid #515151;
-        overflow: hidden;
-        background: url(/assets/images/card_bg.jpg);
-        background-position: center;
-        background-size: cover;
+      .card-holder {
+        padding: 10px 5px;
+        display: flex;
+        overflow: auto;
 
-        .content {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          height: 100%;
-          transition: 500ms;
-          opacity: 0;
-          padding: 10px 10px;
-          text-align: center;
-
-          p {
-            padding: 10px;
-            font-size: 0.9rem;
-            color: #c6c6c6;
-          }
-
-          button {
-            background-color: #ff5722;
-            border: none;
-          }
-        }
-
-        &:hover {
-          transform: scale(1.01);
-
-          .content {
-            background-color: #00000099;
-            opacity: 1;
-          }
-        }
+        /* &::-webkit-scrollbar {
+          display: none;
+        } */
       }
     }
   }
