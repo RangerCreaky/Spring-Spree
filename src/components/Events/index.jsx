@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Card from "./Card";
-import CardContainer from "./CardContainer";
-import CardTemp from "./CardTemp";
-import Modal from "./Modal";
+
+import DayFilter from "./DayFilter";
+import Section from "./Section";
 
 const events = Array(10)
   .fill(0)
@@ -22,21 +21,14 @@ const events = Array(10)
 
 const events_data = {
   "Publicity and Relations": events,
-  "Quality Control and Management ": events,
-  "Web development ": events,
   "Event coordination and conduction": events,
   Proshows: events,
-  "Sponsorship ": events,
   "Treasury and pricing ": events,
   "Content and blogging": events,
-  Hospitality: events,
-  "Logistics and Security": events,
-  "Design and Deco": events,
 };
 
 export default function Events() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [filter, setFilter] = useState(
+  const [filters, setFilters] = useState(
     ["All", "day 1", "day 2", "day 3"].map((e, i) => ({
       key: e,
       active: i === 0,
@@ -44,8 +36,8 @@ export default function Events() {
   );
 
   const changeFilter = (k) => () => {
-    setFilter(
-      filter.map(({ key }) =>
+    setFilters(
+      filters.map(({ key }) =>
         key === k ? { key, active: true } : { key, active: false }
       )
     );
@@ -53,11 +45,11 @@ export default function Events() {
 
   return (
     <>
-      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
-      <Container>
-        <div className="left">
+      <Container className="row g-0">
+        <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
           <h1>Events</h1>
+          <DayFilter filters={filters} onChange={changeFilter} />
           <ul className="events">
             {Object.keys(events_data).map((key) => (
               <li key={key}>
@@ -66,38 +58,10 @@ export default function Events() {
             ))}
           </ul>
         </div>
-        <div className="right">
-          <div className="filter">
-            {filter.map(({ key, active }) => (
-              <button
-                onClick={changeFilter(key)}
-                className={active ? "btn active" : "btn"}
-                key={key}
-              >
-                {key}
-              </button>
-            ))}
-          </div>
-
+        <div className="right col-12 col-lg-8">
           <div>
-            {Object.keys(events_data).map((key, i) => (
-              <div id={key} key={key} className="section">
-                <h1 className="event-title">{key}</h1>
-                <div className="card-holder">
-                  {events_data[key].map(
-                    ({ id, title, subTitle, image, tagline }) => (
-                      <CardTemp
-                        key={id}
-                        image={image}
-                        title={title}
-                        subTitle={subTitle}
-                        tagline={tagline}
-                        onClick={() => setModalVisible(true)}
-                      />
-                    )
-                  )}
-                </div>
-              </div>
+            {Object.keys(events_data).map((title) => (
+              <Section key={title} title={title} events={events_data[title]} />
             ))}
           </div>
         </div>
@@ -109,23 +73,12 @@ export default function Events() {
 const Container = styled.div`
   height: 100vh;
   padding: 90px 20px 0;
-  display: flex;
-
-  @media screen and (max-width: 900px) {
-    flex-direction: column;
-
-    .right {
-      width: 100%;
-    }
-  }
 
   .left {
-    flex: 0 0 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 10px;
-    overflow: auto;
 
     &::-webkit-scrollbar {
       display: none;
@@ -162,56 +115,16 @@ const Container = styled.div`
   }
 
   .right {
-    flex: 0 0 70%;
-    width: 70%;
-    height: 100%;
-    overflow: auto;
-    scroll-behavior: smooth;
-
     &::-webkit-scrollbar {
       display: none;
     }
+  }
 
-    .filter {
-      display: inline-block;
-      background-color: #171717;
-      box-shadow: 0 3px #ffffff13;
-      border-radius: 5rem;
-
-      button {
-        font-size: 1rem;
-        padding: 10px 25px;
-        border-radius: 5rem;
-        margin: 0;
-
-        &.active {
-          background: #ec9e3b;
-        }
-
-        &:hover:not(.active) {
-          background-color: #ec9e3b45;
-        }
-      }
-    }
-
-    .section {
-      margin-top: 2rem;
-
-      .event-title {
-        font-size: 3rem;
-        text-align: center;
-        margin: 1rem 0;
-      }
-
-      .card-holder {
-        padding: 10px 5px;
-        display: flex;
-        overflow: auto;
-
-        /* &::-webkit-scrollbar {
-          display: none;
-        } */
-      }
+  @media screen and (min-width: 992px) {
+    .right {
+      height: 100%;
+      overflow: auto;
+      scroll-behavior: smooth;
     }
   }
 `;

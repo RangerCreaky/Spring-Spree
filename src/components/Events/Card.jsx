@@ -1,63 +1,97 @@
 import styled from "styled-components";
 
-import Button from "../UI/Button";
-
-export default function Card() {
+export default function Card({
+  image = "https://incident.nitk.ac.in/assets/img/Promenade.jpg",
+  title = "Promenade",
+  subTitle = "Hip Hop Internationals South India Auditions",
+  tagline = "A coordination to cadence",
+  date = "6 March",
+  onClick,
+}) {
   return (
     <Container>
-      <Image src="/assets/images/card_bg.jpg" />
-      <Title>Pro Shows</Title>
-      <Description>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-        doloremque praesentium repudiandae, vero officia amet ex beatae ratione
-        vel. Aut rem similique laboriosam ipsa ab, quam vitae ducimus accusamus
-        delectus.
-      </Description>
-      <Button>View</Button>
+      <div>
+        <img src={image} alt="poster" />
+      </div>
+      <div className="content">
+        <h1 className="title">{title}</h1>
+        <h2 className="sub-title">{subTitle}</h2>
+        <p className="tagline">{tagline}</p>
+      </div>
+      <div className="footer">
+        <div className="date">{date}</div>
+        <div>
+          <button className="btn" onClick={onClick}>
+            Read More
+          </button>
+        </div>
+      </div>
     </Container>
   );
 }
 
 const Container = styled.div`
-  margin: 10px;
-  height: 600px;
-  max-width: 50vw;
-  width: 100%;
-  cursor: pointer;
-  overflow: hidden;
+  margin: auto;
+  max-width: 400px;
+  min-height: 450px;
   border-radius: 10px;
+  background: radial-gradient(#ffa865, #ff730e);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: 300ms;
 
-  background-color: #999;
-  box-shadow: 5px 5px 10px 0px #0000003d;
-  /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url();
-  background-size: cover;
-  background-position: center; */
-  transition: transform 300ms;
+  img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .content {
+    padding: 10px;
+    text-align: center;
+
+    .title {
+      font-weight: 700;
+    }
+
+    .sub-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .tagline {
+      /* margin-top: 0.5rem; */
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  }
+
+  .footer {
+    padding: 10px;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      background-color: #e91e63;
+      border-radius: 5px;
+      border: 2px solid #ff6499;
+
+      &:hover {
+        filter: brightness(1.1);
+      }
+    }
+
+    .date {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
-`;
-
-const Title = styled.h1`
-  margin-top: 3rem;
-  color: white;
-`;
-
-const Description = styled.div`
-  color: white;
-  margin-bottom: 20px;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
 `;
