@@ -8,15 +8,12 @@ import Sponsors from './Sponsors';
 import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 import Explore from './Explore';
-import FAQ from './FAQ';
+import FAQ from './Faq';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init();
-
-import Faq from './Faq';
-
 const App = ()=>{
     return (
         <> 
