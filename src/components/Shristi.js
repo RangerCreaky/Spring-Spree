@@ -7,7 +7,7 @@ import VideoBackground from './VideoBackground';
 const Shristi = ()=>{
     return(
         <>
-            <Container  id="1">
+            <Container id="1">
                 <VideoBackground />
                     <Text data-aos="fade-left" data-aos-duration="1500">
                         <h1> Srishti </h1>

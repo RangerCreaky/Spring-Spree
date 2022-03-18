@@ -1,22 +1,42 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef , useState } from 'react';
 import styled from 'styled-components';
 
 import About from './About';
 import Shristi from './Shristi';
 import Footer from './Footer';
 
-const LandingPage = ()=>{
+import useScrollSnap from 'react-use-scroll-snap';
+import { useScrollBy , useScrollTo } from "react-use-window-scroll";
 
-    const heroRef = useRef(null);
-    const srishtiRef = useRef(null);
-    const aboutRef = useRef(null);
-    const footerRef = useRef(null);
+const LandingPage = ()=>{
+    const [num , setNum] = useState(0);
+
+    // for snapping the page
+    const scrollRef = useRef(null);
+    useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
+
+    // scroll the page
+    const scrollBy = useScrollBy();
+    const scrollTo = useScrollTo();
+    const handleScroll = ()=>{
+        // console.log(atBottom);
+        if(num === 4){
+            setNum(0);
+            scrollTo({ top: 0, left: 0, behavior: "smooth" })
+        }
+        else{
+            setNum(num+1);
+            scrollBy({ top: window.innerHeight, left: 0, behavior: "smooth" });
+        }
+    }
+
+
 
     return (
         <>
-            <HomePage>
-                <section>
-                    <LandingPageContainer ref={heroRef}>
+            <HomePage ref={scrollRef}>
+                <div>
+                    <LandingPageContainer >
                         <ul id="landing-view-scene">
                             <li data-depth="0.06" id="logo" className="layer">
                                 <img src="./images/logo.png" alt="logo" />
@@ -39,21 +59,21 @@ const LandingPage = ()=>{
                             </li>
                         </ul>
                     </LandingPageContainer>
-                </section>
+                </div>
 
-                <section>
-                    <Shristi ref={srishtiRef}/>
-                </section>
+                <div>
+                    <Shristi />
+                </div>
 
-                <section>
-                    <About ref={aboutRef}/>
-                </section>
+                <div>
+                    <About />
+                </div>
 
-                <section>
-                    <Footer ref={footerRef}/>
-                </section>
+                <div>
+                    <Footer/>
+                </div>
 
-                <button > button </button>
+                 <button onClick={handleScroll}> button </button> 
             </HomePage>
         </>
     )
@@ -62,11 +82,14 @@ const LandingPage = ()=>{
 
 export default LandingPage;
 
-const HomePage = styled.article`
+const HomePage = styled.section`
     height : 100vh;
-
+    /* overflow-y: auto; */
     > button {
-        /* position */
+        position : fixed;
+        bottom : 10px;
+        right : 10px;
+        z-index : 100;
     }
 `;
 

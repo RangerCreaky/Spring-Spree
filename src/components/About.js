@@ -39,7 +39,7 @@ const AboutContainer = styled.div`
 `;
 
 const AboutInnerContainer = styled.div`
-    padding: 0 15px;
+    padding: 0 5rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
