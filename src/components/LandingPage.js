@@ -1,36 +1,91 @@
-import React from 'react';
+import React, { useEffect, useRef , useState } from 'react';
 import styled from 'styled-components';
+
+import About from './About';
+import Shristi from './Shristi';
+import Footer from './Footer';
+
+import useScrollSnap from 'react-use-scroll-snap';
+import { useScrollBy , useScrollTo } from "react-use-window-scroll";
+
 const LandingPage = ()=>{
+
+    // for snapping the page
+    const scrollRef = useRef(null);
+    useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
+
+    // scroll the page
+    const scrollBy = useScrollBy();
+    const scrollTo = useScrollTo();
+    const handleScroll = ()=>{
+
+        // scrollTo({ top: 0, left: 0, behavior: "smooth" })
+
+        scrollBy({ top: window.innerHeight, left: 0, behavior: "smooth" });
+    }
+
+
+
     return (
         <>
-            <LandingPageContainer>
-                <ul id="landing-view-scene">
-                    <li data-depth="0.06" id="logo" className="layer">
-                        <img src="./images/logo.png" alt="logo" />
-                    </li>
-                    <li data-depth="0.2" id="stars" className="layer">
-                        <img src="./images/stars.png" alt="stars" />
-                    </li>
-                    <li data-depth="0.5" id="universe" className="layer">
-                        <img src="./images/bg_2.png" alt="universe" />
-                    </li>
-                    <li data-depth="0.7" id="planet" className="layer">
-                        <img src="./images/planet.png" alt="planet" />
-                    </li>
-                    <li data-depth="0" id="event-title" className="layer">
-                        <div>
-                            <h1 className="titlename">SpringSpree'22</h1>
-                            <p className="themename">Srishti</p>
-                            <p className="event-dates">April 8-10, 2022</p>
-                        </div>     
-                    </li>
-                </ul>
-            </LandingPageContainer>
+            <HomePage ref={scrollRef}>
+                <div>
+                    <LandingPageContainer >
+                        <ul id="landing-view-scene">
+                            <li data-depth="0.06" id="logo" className="layer">
+                                <img src="./images/logo.png" alt="logo" />
+                            </li>
+                                <li data-depth="0.2" id="stars" className="layer">
+                                    <img src="./images/stars.png" alt="stars" />
+                                </li>
+                                <li data-depth="0.5" id="universe" className="layer">
+                                    <img src="./images/bg_2.png" alt="universe" />
+                                </li>
+                                <li data-depth="0.7" id="planet" className="layer">
+                                    <img src="./images/planet.png" alt="planet" />
+                                </li>
+                            <li data-depth="0" id="event-title" className="layer">
+                                <div>
+                                    <h1 className="titlename">SpringSpree'22</h1>
+                                    <p className="themename">Srishti</p>
+                                    <p className="event-dates">April 8-10, 2022</p>
+                                </div>     
+                            </li>
+                        </ul>
+                    </LandingPageContainer>
+                </div>
+
+                <div>
+                    <Shristi />
+                </div>
+
+                <div>
+                    <About />
+                </div>
+
+                <div>
+                    <Footer/>
+                </div>
+
+                 <button onClick={handleScroll}> button </button> 
+            </HomePage>
         </>
     )
+    // onClick={changeId}
 }
 
 export default LandingPage;
+
+const HomePage = styled.section`
+    height : 100vh;
+    /* overflow-y: auto; */
+    > button {
+        position : fixed;
+        bottom : 10px;
+        right : 10px;
+        z-index : 100;
+    }
+`;
 
 const LandingPageContainer = styled.div`
     overflow : hidden;

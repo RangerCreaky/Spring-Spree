@@ -5,10 +5,12 @@ const SponsorItem = ()=>{
     return (
         <>
             <SponsorItemContainer>
-                <img src="https://picsum.photos/300" alt="sponsor logo" />
-                <SponsorBody>
-                    <h1> Company </h1>
-                </SponsorBody>
+                <img src="https://picsum.photos/150" alt="" />
+
+                <SponsorItemText>
+                    <h5> Company </h5>
+                    <p> title sponsor </p>
+                </SponsorItemText>
             </SponsorItemContainer>
         </>
     )
@@ -17,13 +19,10 @@ const SponsorItem = ()=>{
 export default SponsorItem;
 
 const SponsorItemContainer = styled.div`
-    border : 4px solid white;
-    border-radius : 15px;
-    > img{
-        border-radius : 15px;
+
+    > img { 
+        border : 2px solid white;
     }
 `;
 
-const SponsorBody = styled.div`
-    
-`;
+const SponsorItemText = styled.div``;
