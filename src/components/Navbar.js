@@ -1,24 +1,39 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <>
       <NavbarContainer>
         <NavbarLarge>
-          <h3><Link to="/">SpringSpree'22</Link></h3>
+          <h3>
+            <Link to="/">SpringSpree'22</Link>
+          </h3>
           <ul className="nav-links">
-            <li><Link to="/events">Events</Link></li>
-            <li><Link to="/gallery">Gallery</Link></li>
-            <li><Link to="/sponsors">Sponsors</Link></li>
-            <li><Link to="/faq">FAQs</Link></li>
+            <li>
+              <Link to="/events">Events</Link>
+            </li>
+            <li>
+              <Link to="/gallery">Gallery</Link>
+            </li>
+            <li>
+              <Link to="/sponsors">Sponsors</Link>
+            </li>
+            <li>
+              <Link to="/faq">FAQs</Link>
+            </li>
+            <li>
+              <Link to="/contacts">Contacts</Link>
+            </li>
           </ul>
         </NavbarLarge>
         <NavbarSmallNav>
           {/* onClick="navbarToggleFun()" */}
-          <h3><Link to="/contact">SpringSpree'22</Link></h3>
+          <h3>
+            <Link to="/contact">SpringSpree'22</Link>
+          </h3>
           <button id="toggle-navbar">
             <div className="hamburger" id="hamburger">
               <span className="line"></span>
