@@ -23,7 +23,7 @@ const events_data = {
   "Publicity and Relations": events,
   "Event coordination and conduction": events,
   Proshows: events,
-  "Treasury and pricing ": events,
+  "Treasury and pricing": events,
   "Content and blogging": events,
 };
 
@@ -89,27 +89,30 @@ const Container = styled.div`
     }
 
     h1 {
-      margin: 10px 0;
       font-size: 2.5rem;
+      font-family: "signatra";
       text-transform: uppercase;
+      background: -webkit-linear-gradient(90deg, #fb3981 0%, #fdbb2d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .events {
       list-style: none;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       text-align: center;
-
-      li {
-        padding: 5px 0;
-      }
 
       a {
         text-decoration: none;
         color: white;
-      }
 
-      a.active {
-        color: #ec9e3b;
+        &:hover {
+          color: #ec9e3b;
+        }
+
+        &.active {
+          color: #ec9e3b;
+        }
       }
     }
   }
@@ -126,6 +129,10 @@ const Container = styled.div`
       height: 100%;
       overflow: auto;
       scroll-behavior: smooth;
+    }
+
+    .left .events {
+      text-align: start;
     }
   }
 `;

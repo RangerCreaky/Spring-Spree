@@ -21,7 +21,7 @@ const Filter = styled.div`
   background-color: #171717;
   box-shadow: 0 3px #ffffff13;
   border-radius: 10px;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 
   button {
     font-size: 1rem;

@@ -22,7 +22,7 @@ export const BackDrop = styled.div`
 `;
 
 export const Body = styled.div`
-  margin: 6rem auto 1rem;
+  margin: 3rem auto 1rem;
   padding: 10px;
   border-radius: 5px;
   /* background: radial-gradient(#202857, #141937) */
