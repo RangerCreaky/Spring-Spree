@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Explore = ()=>{
-    return(
+const Explore = () => {
+    return (
         <ExploreContainer>
             <Text>
                 <h2 className='heading'> Srishti </h2>
                 <p className='top text'>The Universe is everything we can touch, feel, sense, measure or detect. Thinking of our world today,makes wonder about tomorrow,a year,a decade or a century later.</p>
-                <p className='questions'>Will the world remains same? 
-                    Will humans be the same? 
+                <p className='questions'>Will the world remains same?
+                    Will humans be the same?
                     Will situations be the same?
                     Were do these uncertainty originate from, how is it created? </p>
                 <p className='tag'>This is Srishti - the creation of the universe, earth etc </p>
@@ -34,9 +34,8 @@ const ExploreContainer = styled.div`
     justify-content: space-around;
     flex-flow: row wrap;
 
-    @media (max-width : 800px) {
-        display: flex;
-        flex-direction: column-reverse;
+    @media (max-width : 800px){
+        height : 100%;
     }
 
     > img {
@@ -68,6 +67,8 @@ const Text = styled.div`
     justify-content: space-around;
 
     height: 80%;
+
+    margin-top : 70px;
 
     @media (max-width : 1200px) {
         width : 500px;

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const Footer = ()=>{
-    return(
+const Footer = () => {
+    return (
         <>
             <FooterContainer>
                 <MainContent>
@@ -47,10 +47,10 @@ const Footer = ()=>{
                             </div>
                             <div className="social">
                                 <a href="https://www.facebook.com/nitw.springspree"><span
-                                        className="fab fa-facebook-f"></span></a>
+                                    className="fab fa-facebook-f"></span></a>
                                 <a href="https://www.instagram.com/springspree_nitw/"><span className="fab fa-instagram"></span></a>
                                 <a href="https://www.youtube.com/watch?v=RaSRQDaoARY"><span
-                                        className="fab fa-youtube"></span></a>
+                                    className="fab fa-youtube"></span></a>
                             </div>
                         </div>
                     </RightBox>
@@ -65,7 +65,7 @@ const Footer = ()=>{
             </FooterContainer>
         </>
     )
-} 
+}
 
 export default Footer;
 
@@ -77,6 +77,10 @@ const FooterContainer = styled.footer`
     color: #d9d9d9;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 `;
 
 const MainContent = styled.div`
@@ -110,7 +114,7 @@ const MainContent = styled.div`
                 content: '';
                 height: 2px;
                 width: 15%;
-                background: #1B98D7;
+                background: var(--c);
                 top: -10px;
             }
         }
@@ -176,15 +180,16 @@ const RightBox = styled.div`
                 > span{
                     height: 40px;
                     width: 40px;
-                    background: #2685D8;
+                    background: var(--c);
                     line-height: 40px;
                     text-align: center;
                     font-size: 18px;
                     border-radius: 100px;
                     transition: 0.3s;
+                    color : white;
 
                     &:hover{
-                        background: #43abe7;
+                        background-color: var(--light-c);
                     }
                 }
             }

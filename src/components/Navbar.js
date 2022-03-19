@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+
+  const ulRef = useRef(null);
+
+  const toggleNavbar = () => {
+    ulRef.current.classList.toggle('open');
+  }
+
   return (
     <>
       <NavbarContainer>
         <NavbarLarge>
-          <h3><Link to="/">SpringSpree'22</Link></h3>
+          <h3><BrandLink to="/">SpringSpree'22</BrandLink></h3>
           <ul className="nav-links">
-            <li><Link to="/events">Events</Link></li>
-            <li><Link to="/gallery">Gallery</Link></li>
-            <li><Link to="/sponsors">Sponsors</Link></li>
-            <li><Link to="/faq">FAQs</Link></li>
+            <li><StyledLink to="/events" style={{ textDecoration: 'none' }}>Events</StyledLink></li>
+            <li><StyledLink to="/gallery">Gallery</StyledLink></li>
+            <li><StyledLink to="/sponsors">Sponsors</StyledLink></li>
+            <li><StyledLink to="/faq">FAQs</StyledLink></li>
           </ul>
         </NavbarLarge>
         <NavbarSmallNav>
-          {/* onClick="navbarToggleFun()" */}
-          <h3><Link to="/contact">SpringSpree'22</Link></h3>
-          <button id="toggle-navbar">
+          {/*  */}
+          <h3><Link to="/">SpringSpree'22</Link></h3>
+          <button id="toggle-navbar" onClick={toggleNavbar}>
             <div className="hamburger" id="hamburger">
               <span className="line"></span>
               <span className="line"></span>
@@ -27,16 +34,28 @@ const Navbar = () => {
             </div>
           </button>
         </NavbarSmallNav>
-        {/* <ul class="small-nav-links small-nav" id="mobile-nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul> */}
+        <SmallNavLinks ref={ulRef} className="small-nav-links small-nav" id="mobile-nav-links" onClick={toggleNavbar}>
+          <li><StyledLink to="/events" style={{ textDecoration: 'none' }}>Events</StyledLink></li>
+          <li><StyledLink to="/gallery">Gallery</StyledLink></li>
+          <li><StyledLink to="/sponsors">Sponsors</StyledLink></li>
+          <li><StyledLink to="/faq">FAQs</StyledLink></li>
+        </SmallNavLinks>
       </NavbarContainer>
     </>
   );
 };
 
 export default Navbar;
+
+const SmallNavLinks = styled.ul`
+  display : none;
+  > li{
+    list-style: none;
+    margin-top: 5px;
+  }
+
+
+`
 
 const NavbarContainer = styled.div`
   position: fixed;
@@ -45,23 +64,44 @@ const NavbarContainer = styled.div`
   color: white;
   font-family: "Poppins";
   top: 0;
+  background-color: #2b0538;
+  backdrop-filter: blur(5px);
 
-  > .small-nav-links {
+  > .open{
     @media (max-width: 860px) {
-      align-items: center;
-      flex-direction: column;
-      gap: 1rem;
-      list-style: none;
-      background-color: #3f3f3fd7 !important;
-      transform: translateY(calc((-140%) - 100px));
-      padding: 0;
-      transition: all 300ms ease-in-out;
-      z-index: 119;
-      height: 0px;
-      overflow: hidden;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 1rem;
+    transition: all 300ms ease-in-out;
+    z-index: 120;
+  }
   }
 `;
+
+const BrandLink = styled(Link)`
+  color : white;
+  text-decoration: none;
+
+  &:hover{
+    color : orange;
+  }
+`
+
+const StyledLink = styled(Link)`
+  display: block;
+  color: white;
+  text-decoration: none !important;
+  position: relative;
+  border-bottom: none;
+  outline:none;
+
+  &:hover{
+    color : orange;
+  }
+`
 
 const NavbarLarge = styled.div`
   background-color: rgba(0, 0, 0, 0.308);
@@ -86,10 +126,6 @@ const NavbarLarge = styled.div`
     -webkit-transition: all 100ms ease-in 10ms;
     -o-transition: all 100ms ease-in 10ms;
     transition: all 100ms ease-in 10ms;
-
-    &:hover {
-      border-bottom: 2px solid #ecf0f1;
-    }
   }
 
   @media (max-width: 860px) {
@@ -100,6 +136,17 @@ const NavbarLarge = styled.div`
 const NavbarSmallNav = styled.div`
   background-color: rgba(0, 0, 0, 0.308);
   display: none;
+  > h3{
+    > a{
+      color : white;
+      text-decoration: none;
+      font-family: "signatra";
+
+      &:hover{
+        color: orange;
+      }
+    }
+  }
 
   > #toggle-navbar {
     background: none;

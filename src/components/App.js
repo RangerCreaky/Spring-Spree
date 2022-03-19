@@ -6,6 +6,8 @@ import Sponsors from './Sponsors';
 import Event from './Events';
 import Gallery from './Gallery';
 
+import SolarBg from './SolarBg';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

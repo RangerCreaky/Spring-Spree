@@ -4,19 +4,32 @@ import { Link } from 'react-router-dom';
 
 import VideoBackground from './VideoBackground';
 
-const Shristi = ()=>{
-    return(
+const Shristi = () => {
+    return (
         <>
             <Container id="1">
                 <VideoBackground />
-                    <Text data-aos="fade-left" data-aos-duration="1500">
-                        <h1> Srishti </h1>
-                        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with th </p>
-                        <div className='button'>
-                            <StyledLink to="/explore"> Explore <span></span> <span></span> <span></span> <span></span></StyledLink>
-                        </div>
-                    </Text>
-                    <img src="../../images/logo-dark.png" alt="shrishti logo" />
+                <Text data-aos="fade-left" data-aos-duration="1500">
+                    <h1> Srishti </h1>
+                    <div>
+                        <p className='orange cursive'> Everything that was created! <br />
+                            Everything that is existing! </p>
+
+                        <p>
+                            The Universe and beyond! <br />
+                            The Nature And The Creation!
+                        </p>
+
+                        <p className='orange cursive'> Now, It's time to experience the reality, now is the time to make
+                            physical meets a new normal </p>
+
+                        <p > Let's all meet in the real and rejoice the world again </p>
+                    </div>
+                    <div className='button'>
+                        <StyledLink to="/explore"> Explore <span></span> <span></span> <span></span> <span></span></StyledLink>
+                    </div>
+                </Text>
+                <img src="../../images/logo-dark.png" alt="shrishti logo" />
             </Container>
         </>
     )
@@ -40,6 +53,7 @@ const Container = styled.div`
     }
     
     > img {
+        margin-top : 70px;
         @media (max-width : 1200px){
             width : 400px;
             height : 400px;
@@ -47,6 +61,14 @@ const Container = styled.div`
         @media (max-width : 950px){
             width : 350px;
             height : 350px;
+        }
+        @media (max-width : 750px){
+            width : 300px;
+            height : 300px;
+        }
+        @media (max-width : 400px){
+            width : 250px;
+            height : 250px;
         }
     }
 `;
@@ -57,6 +79,7 @@ const Text = styled.div`
     width : 45%;
     font-size : 1.2rem;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
 
     @media (max-width : 750px){
         font-size : 17px;
@@ -65,9 +88,16 @@ const Text = styled.div`
         text-align: center;
 
     }
+    @media (max-width : 400px){
+        font-size : 12px;
+        width : 100%;
+        padding : 10px;
+        text-align: center;
+
+    }
     > .button{
         display : flex;
-        justify-content : flex-end;
+        justify-content : center;
 
         @media (max-width : 750px){
             justify-content: center;
@@ -78,6 +108,18 @@ const Text = styled.div`
 
     >h1{
         color : var(--c);
+    }
+
+    > div {
+        margin-top: 15px;
+       
+        > .orange{
+            color : var(--c);
+        }
+
+        > .cursive{
+            font-family: cursive;
+        }
     }
 `;
 

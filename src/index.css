@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
 
-
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
-*{
-    margin : 0;
-    padding : 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-:root{
-    --c: #eb9423;
+:root {
+  --c: #eb9423;
+  --light-c: #e9aa57;
 }
 
 @font-face {
-    font-family: "signatra";
-    src: url(../public/fonts/Signatra.otf);
+  font-family: "signatra";
+  src: url(../public/fonts/Signatra.otf);
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }

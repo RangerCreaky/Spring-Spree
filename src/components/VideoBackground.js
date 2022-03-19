@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const VideoBackground = ()=>{
-    return(
+import Comets from './Comets';
+
+const VideoBackground = () => {
+    return (
         <>
             <VideoContainer>
                 <Video autoPlay muted loop>
                     <source src='../../assets/spreebg.mp4' type='video/mp4' />
                 </Video>
             </VideoContainer>
+            <Comets />
         </>
     )
 }

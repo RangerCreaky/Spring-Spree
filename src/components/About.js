@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const About = ()=>{
+const About = () => {
     return (
         <>
-            <AboutContainer  id="2">
+            <AboutContainer id="2">
                 <AboutInnerContainer>
                     <AboutContent data-aos="fade-left" data-aos-offset="200" data-aos-duration="1500">
                         <h2> About </h2>
@@ -44,6 +44,10 @@ const AboutInnerContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width : 750px){
+        padding: 20px;
+    }
 `;
 
 const AboutContent = styled.div`
