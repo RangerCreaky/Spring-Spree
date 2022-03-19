@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/auth";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+
   return (
     <>
       <NavbarContainer>
@@ -27,6 +30,22 @@ const Navbar = () => {
             <li>
               <Link to="/contacts">Contacts</Link>
             </li>
+            {user ? (
+              <li>
+                <button onClick={logout} className="btn btn-primary">
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/signup">Sign up</Link>
+                </li>
+              </>
+            )}
           </ul>
         </NavbarLarge>
         <NavbarSmallNav>

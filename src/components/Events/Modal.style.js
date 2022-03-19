@@ -26,7 +26,9 @@ export const Body = styled.div`
   padding: 10px;
   border-radius: 5px;
   /* background: radial-gradient(#202857, #141937) */
-  background: url(/assets/images/modal_bg.webp);
+  background-color: #21d4fd;
+  background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+  /* background: url(/assets/images/modal_bg.webp); */
   background-size: cover;
   background-position: center;
   max-width: 90%;
