@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -21,6 +21,7 @@ const Navbar = () => {
             <li><StyledLink to="/gallery">Gallery</StyledLink></li>
             <li><StyledLink to="/sponsors">Sponsors</StyledLink></li>
             <li><StyledLink to="/faq">FAQs</StyledLink></li>
+            <li><StyledLink to="/contact">Contact Us</StyledLink></li>
           </ul>
         </NavbarLarge>
         <NavbarSmallNav>
@@ -39,6 +40,7 @@ const Navbar = () => {
           <li><StyledLink to="/gallery">Gallery</StyledLink></li>
           <li><StyledLink to="/sponsors">Sponsors</StyledLink></li>
           <li><StyledLink to="/faq">FAQs</StyledLink></li>
+          <li><StyledLink to="/contact">Contact</StyledLink></li>
         </SmallNavLinks>
       </NavbarContainer>
     </>
