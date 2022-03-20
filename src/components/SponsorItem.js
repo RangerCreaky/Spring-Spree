@@ -42,7 +42,7 @@ const SponsorItemContainer = styled.div`
         > img{
             width: 293px;
             height: 159px;
-            transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+            transition: 2s;
 
             &:hover{
                 transform: scale(1.1);

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SponsorItem from './SponsorItem';
+import Footer from './Footer';
 
 // import sponsor images
 
@@ -23,12 +24,16 @@ const Sponsors = () => {
     }
 
     return (
-        <SponsorContainer className='row'>
-            <h2> Previous Sponsors </h2>
+        <>
+            <SponsorContainer className='row'>
+                <h2> Previous Sponsors </h2>
 
-            {renderSponsors()}
+                {renderSponsors()}
 
-        </SponsorContainer>
+            </SponsorContainer>
+
+            <Footer />
+        </>
     )
 }
 
