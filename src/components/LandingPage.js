@@ -6,7 +6,7 @@ import Shristi from "./Shristi";
 import Footer from "./Footer";
 
 import useScrollSnap from "react-use-scroll-snap";
-import { useScrollBy, useScrollTo } from "react-use-window-scroll";
+import { useScrollBy } from "react-use-window-scroll";
 
 const LandingPage = () => {
   // for snapping the page
@@ -15,7 +15,7 @@ const LandingPage = () => {
 
   // scroll the page
   const scrollBy = useScrollBy();
-  const scrollTo = useScrollTo();
+  //const scrollTo = useScrollTo();
   const handleScroll = () => {
     // scrollTo({ top: 0, left: 0, behavior: "smooth" })
 
@@ -132,6 +132,7 @@ const LandingPageContainer = styled.div`
           font-weight: 400;
           padding: 0 50px;
           -webkit-background-clip: text;
+          background-clip: text;
           -webkit-text-fill-color: transparent;
         }
 

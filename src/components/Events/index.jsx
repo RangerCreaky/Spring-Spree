@@ -94,6 +94,7 @@ const Container = styled.div`
       font-family: "signatra";
       text-transform: uppercase;
       background: -webkit-linear-gradient(90deg, #fb3981 0%, #fdbb2d 100%);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
