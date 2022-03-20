@@ -14,10 +14,21 @@
   --c: #eb9423;
   --light-c: #e9aa57;
 }
-
+/* 
 @font-face {
   font-family: "signatra";
   src: url(../public/fonts/Signatra.otf);
+} */
+
+/* @font-face {
+  font-family: "Steinfeld";
+  src: url("../public/fonts/Steinfeld.ttf");
+} */
+
+@font-face {
+  font-family: "Steinfeld";
+  src: local("Steinfeld"), url("./fonts/Steinfeld.ttf") format("truetype");
+  font-weight: bold;
 }
 
 html {

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import About from './About';
 import Shristi from './Shristi';
 import Footer from './Footer';
+import LandingPageContainer from './LandingPageContainer';
 
 import useScrollSnap from 'react-use-scroll-snap';
 import { useScrollBy, useScrollTo } from "react-use-window-scroll";
@@ -38,46 +39,11 @@ const LandingPage = () => {
 
     }
 
-
-
     return (
         <>
             <HomePage ref={scrollRef}>
                 <div>
-                    <Container>
-                        <img src="../../images/logo.png" alt='logo' />
-                        <div data-depth="0" id="event-title" className="layer">
-                            <div>
-                                <h1 className="titlename">SpringSpree'22</h1>
-                                <p className="themename">Srishti</p>
-                                <p className="event-dates">April 8-10, 2022</p>
-                            </div>
-                        </div>
-
-                    </Container>
-                    {/* <LandingPageContainer >
-                         <ul id="landing-view-scene">
-                            <li data-depth="0.06" id="logo" className="layer">
-                                <img src="./images/logo.png" alt="logo" />
-                            </li>
-                            <li data-depth="0.2" id="stars" className="layer">
-                                <img src="./images/stars.png" alt="stars" />
-                            </li>
-                            <li data-depth="0.5" id="universe" className="layer">
-                                <img src="./images/bg_2.png" alt="universe" />
-                            </li>
-                            <li data-depth="0.7" id="planet" className="layer">
-                                <img src="./images/planet.png" alt="planet" />
-                            </li>
-                            <li data-depth="0" id="event-title" className="layer">
-                                <div>
-                                    <h1 className="titlename">SpringSpree'22</h1>
-                                    <p className="themename">Srishti</p>
-                                    <p className="event-dates">April 8-10, 2022</p>
-                                </div>
-                            </li>
-                        </ul> 
-                    </LandingPageContainer> */}
+                    <LandingPageContainer />
                 </div>
 
                 <div>
@@ -111,70 +77,12 @@ const HomePage = styled.section`
         position : fixed;
         bottom : 10px;
         right : 10px;
-        z-index : 100;
+        z-index : 1000;
         cursor: pointer;
     }
 `;
 
-const Container = styled.div`
-    background : url('../../images/new-act-bg.jpeg');
-    height : 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
 
-    > img{
-        position: absolute;
-        z-index: 100;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: min( 50vw, 250px) !important;
-    }
-
-    > #event-title{
-            > div{
-                font-family: "signatra";
-                position: absolute;
-                top: 68%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-                z-index: 50;
-
-                > h1 {
-                    white-space: nowrap;
-                    font-weight: 400;
-                    padding: 0 50px;
-                    background: -webkit-linear-gradient(90deg, #FB3981 0%, #FDBB2D 100%);
-                    -webkit-background-clip: text;
-                    background-clip : text;
-                    -webkit-text-fill-color: transparent;
-                    font-size: clamp(90px, 10vw, 7.5rem);
-                }
-
-                > .themename{
-                    background: -webkit-linear-gradient(90deg, #8412F3 0%, #FB3981 100%);
-                    margin-top: -15px;
-                    font-size: clamp(47px, 6vw, 3rem) ;
-                    white-space: nowrap;
-                    font-weight: 400;
-                    padding: 0 50px;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-
-                > .event-dates {
-                    white-space: nowrap;
-                    font-weight: 500;
-                    padding: 0 50px;
-                    color : white;
-                    font-family: 'Poppins', sans-serif;
-                    font-size: 1.5rem;
-                }
-            }
-        }
-`;
 
 // const LandingPageContainer = styled.div`
 //     overflow : hidden;

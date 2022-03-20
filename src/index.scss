@@ -54,9 +54,15 @@ $primary: #ffae43;
   --c: #eb9423;
 }
 
+// @font-face {
+//   font-family: "signatra";
+//   src: url(../public/fonts/Signatra.otf);
+// }
+
 @font-face {
-  font-family: "signatra";
-  src: url(../public/fonts/Signatra.otf);
+  font-family: "Steinfeld";
+  src: local("Steinfeld"), url("./fonts/Steinfeld.ttf") format("truetype");
+  font-weight: bold;
 }
 
 html {

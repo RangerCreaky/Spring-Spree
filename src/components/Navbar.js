@@ -55,13 +55,11 @@ const SmallNavLinks = styled.ul`
     list-style: none;
     margin-top: 5px;
   }
-
-
-`
+`;
 
 const NavbarContainer = styled.div`
   position: fixed;
-  z-index: 120;
+  z-index: 12000;
   width: 100%;
   color: white;
   font-family: "Poppins";
@@ -86,6 +84,8 @@ const NavbarContainer = styled.div`
 const BrandLink = styled(Link)`
   color : white;
   text-decoration: none;
+  font-family: "Steinfeld";
+
 
   &:hover{
     color : orange;

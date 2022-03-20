@@ -9,7 +9,7 @@ const Footer = () => {
                 <MainContent>
                     <LeftBox>
                         <div className="content">
-                            <img src="../../images/logo.png" alt="spree-logo" className="footer-logo" />
+                            <img src="/images/logo.png" alt="spree-logo" className="footer-logo" />
                         </div>
                     </LeftBox>
 
@@ -86,10 +86,19 @@ const FooterContainer = styled.footer`
 const MainContent = styled.div`
     display: flex;
     padding: 70px 0 30px 0;
+    
+    @media (max-width : 600px){
+        display: flex;
+        flex-direction: column;
+    }
 
     > div{
         flex-basis: 50%;
 	    padding: 20px;
+
+        @media (max-width : 600px){
+            padding: 0 20px;
+        }
 
         > h2{
             font-size: 1.125rem;
@@ -149,8 +158,15 @@ const LeftBox = styled.div`
             width: 50%;
             display: block;
             margin: auto;
+
+            @media (max-width : 600px){
+                width: 200px;
+                height: auto;
+            }
         }
     }
+
+
 `;
 
 const CenterBox = styled.div`

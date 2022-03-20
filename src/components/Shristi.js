@@ -8,7 +8,7 @@ const Shristi = () => {
     return (
         <>
             <Container id="1">
-                <VideoBackground />
+                {/* <VideoBackground /> */}
                 <Text data-aos="fade-left" data-aos-duration="1500">
                     <h1> Srishti </h1>
                     <div>
@@ -46,6 +46,12 @@ const Container = styled.div`
     align-items : center;
     justify-content: space-around;
     overflow : hidden; 
+    /* change this later */
+    z-index: 1000; 
+    background: url("../../images/new-bg.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 
     @media (max-width : 750px){
         display: flex;
@@ -79,7 +85,10 @@ const Text = styled.div`
     width : 45%;
     font-size : 1.2rem;
     font-family: 'Poppins', sans-serif;
+    /* font-family: 'Steinfeld'; */
+    
     text-align: center;
+
 
     @media (max-width : 750px){
         font-size : 17px;

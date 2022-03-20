@@ -30,6 +30,7 @@ const About = () => {
 export default About;
 
 const AboutContainer = styled.div`
+overflow-x: hidden;
     width: 100%;
     background-color: black;
     background-size: cover, cover;
