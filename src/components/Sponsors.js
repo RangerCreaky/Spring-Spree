@@ -3,103 +3,64 @@ import styled from 'styled-components';
 
 import SponsorItem from './SponsorItem';
 
-import VideoBackground from './VideoBackground';
+// import sponsor images
+
+import sponsorsData from './sponsorsData';
 
 const Sponsors = () => {
+
+    const renderSponsors = () => {
+        return (
+            sponsorsData.map((data, index) => {
+                const { name, src } = data;
+                return (
+                    <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
+                        <SponsorItem name={name} src={src} />
+                    </div>
+                )
+            })
+        )
+    }
+
     return (
-        <>
-            <SponsorsContainer>
-                <VideoBackground />
-                <SponsorsInnerContainer>
-                    <SponsorText>
+        <SponsorContainer className='row'>
+            <h2> Previous Sponsors </h2>
 
-                        <h1> Lorem Ipsum </h1>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In iaculis odio at tincidunt eleifend. Duis et eleifend metus. In nec dui cursus, condimentum nisi ut, rutrum purus. Cras a orci ex. Aliquam finibus sollicitudin lectus, sed condimentum tortor tempor quis. Nunc quis consectetur  </p>
+            {renderSponsors()}
 
-                        <h4> Contact US </h4>
-                        <ul>
-                            <li>inkey : 0000000000</li>
-                            <li>pinkey : 1111111111</li>
-                            <li>ponkey : 2222222222</li>
-                        </ul>
-
-                    </SponsorText>
-
-                    <SponsorItems>
-                        <SponsorItem />
-                    </SponsorItems>
-                </SponsorsInnerContainer>
-            </SponsorsContainer>
-        </>
+        </SponsorContainer>
     )
 }
 
 export default Sponsors;
 
-const SponsorsContainer = styled.div`
-    position : relative;
-    width : 100%;
-    height : 100vh;
-    display : flex;
-    align-items : center;
-    overflow : hidden;
+const SponsorContainer = styled.div`
+    /* FIXME : change later*/
+    /* height: 100vh;  */
+    background: url("../../images/new-act-bg.jpeg");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
 
-    background-image: linear-gradient( rgba(255 , 255 , 255 , 0.2) 0%, rgba(51 , 51 , 51 , 0.2) 100%);
-`;
+    --bs-gutter-x : 0 !important;
 
-const SponsorsInnerContainer = styled.div`
-    display : flex;
-    flex-direction : row;
-    height : 100%;
+    padding: 100px 100px;
 
-    @media (max-width : 700px){
-        flex-direction : column;
+    @media (max-width : 1000px){
+        margin: 100px 0;
+    }
+
+    h2{
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    > .c{
+        display: flex;
+        justify-content: center;
     }
 `;
 
-const SponsorText = styled.div`
-    width : 35%;
-    color : white;
-    height : 100%;  
-    padding :  3rem;
-    margin-top : 70px;
 
-    > h1 , h4{
-        text-transform : uppercase;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    > p{
-        margin-top : 3px;
-        font-size : 1.2rem;
-        font-weight : 400;
-        font-family: 'Fredoka', sans-serif;
-    }
-
-    > h4{
-        margin-top : 10px;
-    }
-
-    > ul{
-        list-style : none;
-        margin-top : 2px;
-        > li{
-            margin-top : 1.5px;
-            font-family: 'Fredoka', sans-serif;
-        }
-    }
-
-    @media (max-width : 800px){
-        width : 100%;
-    }
-
-`;
-
-const SponsorItems = styled.div`
-    width : 73%;
-    margin-top : 70px;
-    padding: 2rem;
-
-    @media (max-width : 800px){
-    }
-`; 
