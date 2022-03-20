@@ -2,31 +2,62 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/auth";
 
 const Navbar = () => {
-
   const ulRef = useRef(null);
 
   const toggleNavbar = () => {
-    ulRef.current.classList.toggle('open');
-  }
+    ulRef.current.classList.toggle("open");
+  };
+  const { user, logout } = useAuth();
 
   return (
     <>
       <NavbarContainer>
         <NavbarLarge>
-          <h3><BrandLink to="/">SpringSpree'22</BrandLink></h3>
+          <h3>
+            <BrandLink to="/">SpringSpree'22</BrandLink>
+          </h3>
           <ul className="nav-links">
-            <li><StyledLink to="/events" style={{ textDecoration: 'none' }}>Events</StyledLink></li>
-            <li><StyledLink to="/gallery">Gallery</StyledLink></li>
-            <li><StyledLink to="/sponsors">Sponsors</StyledLink></li>
-            <li><StyledLink to="/faq">FAQs</StyledLink></li>
-            <li><StyledLink to="/contact">Contact Us</StyledLink></li>
+            <li>
+              <StyledLink to="/events">Events</StyledLink>
+            </li>
+            <li>
+              <StyledLink to="/gallery">Gallery</StyledLink>
+            </li>
+            <li>
+              <StyledLink to="/sponsors">Sponsors</StyledLink>
+            </li>
+            <li>
+              <StyledLink to="/faq">FAQs</StyledLink>
+            </li>
+            <li>
+              <StyledLink to="/contacts">Contacts</StyledLink>
+            </li>
+            {user ? (
+              <li>
+                <button onClick={logout} className="btn btn-primary">
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <StyledLink to="/login">Login</StyledLink>
+                </li>
+                <li>
+                  <StyledLink to="/signup">Sign up</StyledLink>
+                </li>
+              </>
+            )}
           </ul>
         </NavbarLarge>
         <NavbarSmallNav>
           {/*  */}
-          <h3><Link to="/">SpringSpree'22</Link></h3>
+          <h3>
+            <Link to="/">SpringSpree'22</Link>
+          </h3>
           <button id="toggle-navbar" onClick={toggleNavbar}>
             <div className="hamburger" id="hamburger">
               <span className="line"></span>
@@ -35,12 +66,29 @@ const Navbar = () => {
             </div>
           </button>
         </NavbarSmallNav>
-        <SmallNavLinks ref={ulRef} className="small-nav-links small-nav" id="mobile-nav-links" onClick={toggleNavbar}>
-          <li><StyledLink to="/events" style={{ textDecoration: 'none' }}>Events</StyledLink></li>
-          <li><StyledLink to="/gallery">Gallery</StyledLink></li>
-          <li><StyledLink to="/sponsors">Sponsors</StyledLink></li>
-          <li><StyledLink to="/faq">FAQs</StyledLink></li>
-          <li><StyledLink to="/contact">Contact</StyledLink></li>
+        <SmallNavLinks
+          ref={ulRef}
+          className="small-nav-links small-nav"
+          id="mobile-nav-links"
+          onClick={toggleNavbar}
+        >
+          <li>
+            <StyledLink to="/events" style={{ textDecoration: "none" }}>
+              Events
+            </StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/gallery">Gallery</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/sponsors">Sponsors</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/faq">FAQs</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/contact">Contact</StyledLink>
+          </li>
         </SmallNavLinks>
       </NavbarContainer>
     </>
@@ -50,8 +98,8 @@ const Navbar = () => {
 export default Navbar;
 
 const SmallNavLinks = styled.ul`
-  display : none;
-  > li{
+  display: none;
+  > li {
     list-style: none;
     margin-top: 5px;
   }
@@ -67,30 +115,29 @@ const NavbarContainer = styled.div`
   background-color: #2b0538;
   backdrop-filter: blur(5px);
 
-  > .open{
+  > .open {
     @media (max-width: 860px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    padding: 10px 1rem;
-    transition: all 300ms ease-in-out;
-    z-index: 120;
-  }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      padding: 10px 1rem;
+      transition: all 300ms ease-in-out;
+      z-index: 120;
+    }
   }
 `;
 
 const BrandLink = styled(Link)`
-  color : white;
+  color: white;
   text-decoration: none;
   font-family: "Steinfeld";
 
-
-  &:hover{
-    color : orange;
+  &:hover {
+    color: orange;
   }
-`
+`;
 
 const StyledLink = styled(Link)`
   display: block;
@@ -98,12 +145,12 @@ const StyledLink = styled(Link)`
   text-decoration: none !important;
   position: relative;
   border-bottom: none;
-  outline:none;
+  outline: none;
 
-  &:hover{
-    color : orange;
+  &:hover {
+    color: orange;
   }
-`
+`;
 
 const NavbarLarge = styled.div`
   background-color: rgba(0, 0, 0, 0.308);
@@ -138,13 +185,13 @@ const NavbarLarge = styled.div`
 const NavbarSmallNav = styled.div`
   background-color: rgba(0, 0, 0, 0.308);
   display: none;
-  > h3{
-    > a{
-      color : white;
+  > h3 {
+    > a {
+      color: white;
       text-decoration: none;
       font-family: "signatra";
 
-      &:hover{
+      &:hover {
         color: orange;
       }
     }

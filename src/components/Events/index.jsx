@@ -19,7 +19,7 @@ const events = Array(10)
       "Sure your squad can be the Kings of dance-offs? Incident presents Promenade in association with Hip Hop International India which is our flagship group-dance event on the 6th of March 2022. Suit up and dance your soles off to achieve hip-hop glory!",
   }));
 
-const events_data = {
+const initial_events_data = {
   "Publicity and Relations": events,
   "Event coordination and conduction": events,
   Proshows: events,
@@ -27,13 +27,14 @@ const events_data = {
   "Content and blogging": events,
 };
 
+const DAYS_DATA = ["All", "day 1", "day 2", "day 3"].map((e, i) => ({
+  key: e,
+  active: i === 0,
+}));
+
 export default function Events() {
-  const [filters, setFilters] = useState(
-    ["All", "day 1", "day 2", "day 3"].map((e, i) => ({
-      key: e,
-      active: i === 0,
-    }))
-  );
+  const [events_data] = useState(initial_events_data);
+  const [filters, setFilters] = useState(DAYS_DATA);
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -90,9 +91,10 @@ const Container = styled.div`
 
     h1 {
       font-size: 2.5rem;
-      font-family: "signatra";
+      font-family: "Steinfeld";
       text-transform: uppercase;
       background: -webkit-linear-gradient(90deg, #fb3981 0%, #fdbb2d 100%);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }

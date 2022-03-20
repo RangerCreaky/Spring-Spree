@@ -1,23 +1,24 @@
 import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
 
-const PUBLIC_RELATIONS = [
-  "Quality Control and Management",
-  "Web development",
-  "Event coordination and conduction",
-  "Proshows",
-  "Sponsorship",
-  "Treasury and pricing",
-  "Content and blogging",
-  "Hospitality",
-  "Logistics and Security",
-  "Design and Deco",
-];
+const PUBLIC_RELATIONS = {
+  "Content and blogging": "content_blogging",
+  "Design and Deco": "design_deco",
+  "Quality Control and Management": "qcm",
+  "Web development": "webdev",
+  "Treasury and pricing": "treasury",
+  "Event coordination and conduction": "ecc",
+  "Logistics and Security": "logistics",
+  Proshows: "proshows",
+  "Publicity and Relations": "publicity",
+  Sponsorship: "sponsorship",
+  Hospitality: "hospitality",
+};
 
 export default function Contacts() {
   return (
     <Container className="container">
-      <h1>Contact Us</h1>
+      <h1 className="title">Contact Us</h1>
       <Formik
         initialValues={{
           fullName: "",
@@ -83,9 +84,9 @@ export default function Contacts() {
               className="form-select"
             >
               <option value="">Choose</option>
-              {PUBLIC_RELATIONS.map((el) => (
-                <option key={el} value={el}>
-                  {el}
+              {Object.keys(PUBLIC_RELATIONS).map((key) => (
+                <option key={key} value={PUBLIC_RELATIONS[key]}>
+                  {key}
                 </option>
               ))}
             </Field>
@@ -119,4 +120,8 @@ export default function Contacts() {
 const Container = styled.div`
   padding: 6rem 1rem 1rem;
   max-width: 800px;
+
+  .title {
+    margin-bottom: 2rem;
+  }
 `;
