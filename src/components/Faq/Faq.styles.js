@@ -5,7 +5,6 @@ export const FaqContainer = styled.div`
     padding:0;
     padding:0;
     width:100%;
-    max-width:1280px;
     font-family:arial;
 
 `
@@ -27,9 +26,10 @@ export const SideBar = styled.div`
     
     > h1{
         margin-bottom:30px;
-        margin-top:50px;
+        margin-top:60px;
         font-weight:800;
         color:#ffffff;
+        font-size:1.5rem;
     }
 
     > a{
@@ -49,6 +49,7 @@ export const SideBar = styled.div`
         width: 100%;
         padding:20px;
         position:relative ;
+        height: 400px;
     }
 
 `
@@ -68,7 +69,6 @@ export const QueryContainer = styled.div`
         font-family:arial;
         
     }
-
     @media screen and (max-width:600px){
         width: 100%;
         padding:20px;
@@ -78,13 +78,13 @@ export const QueryContainer = styled.div`
 `
 
 export const Query = styled.div`
-    max-width:700px;
+    max-width:900px;
     min-width:250px;
     margin-bottom:15px;
     h2{
         font-weight:600;
         margin-bottom:10px;
-        font-size:1.1rem;
+        font-size:1.25rem;
     }
     p{
         margin-left:15px;
