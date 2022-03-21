@@ -12,6 +12,7 @@ export default function Modal({
   onSubmit,
   onClose,
   visible = true,
+  user,
 }) {
   if (!visible) return null;
 
@@ -111,7 +112,7 @@ export default function Modal({
                   </ul>
                 </div>
 
-                <button onClick={onSubmit}>Register</button>
+                <button onClick={() => {onSubmit(user)}}>Register</button>
               </div>
             </div>
           </Main>

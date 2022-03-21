@@ -2,13 +2,15 @@ import { useState } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import Modal from "./Modal";
+import RegisterAndPay from "../../utils/Register";
+import { useAuth } from "../../hooks/auth";
 
 export default function CardContainer({ events = [] }) {
   const [modalVisible, setModalVisible] = useState(false);
-
+  const user = useAuth();
   return (
     <>
-      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} onSubmit={(user)=>{RegisterAndPay(user)}} user={user} />
       <Container>
         {events.map(({ id, title, subTitle, image, tagline }) => (
           <Card
