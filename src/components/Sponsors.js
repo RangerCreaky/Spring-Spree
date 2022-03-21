@@ -42,10 +42,20 @@ export default Sponsors;
 const SponsorContainer = styled.div`
     /* FIXME : change later*/
     /* height: 100vh;  */
-    background: url("../../images/new-new-bg.jpeg");
+    /* background: url("../../images/new-new-bg.jpeg");
     background-position: left top;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+
+    background: rgb(14, 14, 14);
+  background: linear-gradient(
+    0deg,
+    rgba(14, 14, 14, 1) 0%,
+    rgba(11, 0, 16, 1) 15%,
+    rgba(44, 0, 59, 1) 100%
+  );
+  background-size: cover;
+  background-position: center;
     background-attachment: fixed;
     color: white;
 

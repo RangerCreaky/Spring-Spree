@@ -33,7 +33,7 @@ const Navbar = () => {
               <StyledLink to="/faq">FAQs</StyledLink>
             </li>
             <li>
-              <StyledLink to="/contacts">Contacts</StyledLink>
+              <StyledLink to="/contacts">Contact Us</StyledLink>
             </li>
             {user ? (
               <li>
@@ -45,9 +45,6 @@ const Navbar = () => {
               <>
                 <li>
                   <StyledLink to="/login">Login</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/signup">Sign up</StyledLink>
                 </li>
               </>
             )}
@@ -87,8 +84,21 @@ const Navbar = () => {
             <StyledLink to="/faq">FAQs</StyledLink>
           </li>
           <li>
-            <StyledLink to="/contact">Contact</StyledLink>
+            <StyledLink to="/contacts">Contact Us</StyledLink>
           </li>
+          {user ? (
+              <li>
+                <button onClick={logout} className="btn btn-primary">
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <StyledLink to="/login">Login</StyledLink>
+                </li>
+              </>
+            )}
         </SmallNavLinks>
       </NavbarContainer>
     </>
