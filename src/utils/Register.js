@@ -19,7 +19,7 @@ const onPaymentSuccess = async (payment_details, event, user) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({...payment_details, event_id: event._id, id : user._id})
+        body: JSON.stringify({...payment_details, event_id: event._id, name: user.name, email:user.email, mobile:user.mobile, event:event.name, registration_fee:event.registration_fee})
     }).then(o => {
         // if the payment is stored and verified succesfully redirect to the event page
         console.log(o);
