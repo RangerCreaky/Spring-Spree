@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import SideBarGallery from './SideBarGallery.js';
 import MainContent from './MainContent.js';
+import Footer from "../Footer";
 
 
 const LayoutGallery = ()=>{
@@ -13,6 +14,7 @@ const LayoutGallery = ()=>{
         <SideBarGallery />
         <MainContent />
       </GalleryInnerContainer>
+      <Footer />
     </GalleryContainer>
   )
 }

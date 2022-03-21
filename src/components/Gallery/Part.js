@@ -20,6 +20,7 @@ const Part=({arr , name , ide})=>{
 
     return (
             <ModuleWrapper id={ide} className="world"> 
+                <h1> {name} </h1>
                 <StyledCarousel className='hello '>
                     {renderImages()}
                 </StyledCarousel>
@@ -30,11 +31,20 @@ const Part=({arr , name , ide})=>{
 export default Part;
 
 const ModuleWrapper = styled.div`
-    display : flex;
+    /* display : flex;
     align-items: center;
-    justify-content : center;
-    width : 100%;
+    justify-content : center; */
+    margin-left : 128px;
     height: 100vh;
+
+    > h1{
+        margin-top : 100px;
+        margin-bottom : 15px;
+        text-align: center;
+    }
+    @media (max-width : 700px){
+        margin-left : 0;
+    }
 `;
 
 const StyledCarousel = styled(Carousel)`

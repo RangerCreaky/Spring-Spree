@@ -20,6 +20,7 @@ const LandingPage = () => {
   const footerRef = useRef();
   const isVisible = useOnScreen(footerRef);
 
+
   // scroll the page
   const scrollBy = useScrollBy();
   const scrollTo = useScrollTo();
@@ -46,9 +47,10 @@ const LandingPage = () => {
         <div>
           <About />
         </div>
-        <br></br>
-        <div ref={footerRef}>
+        {/* <br></br> */}
+        <div >
           <Footer />
+          <div className="dummy" ref={footerRef}> </div>
         </div>
 
         <img
@@ -76,6 +78,12 @@ const HomePage = styled.section`
     right: 10px;
     z-index: 1000;
     cursor: pointer;
+  }
+
+  > div{
+    > .dummy{
+      height : 2px;
+    }
   }
 `;
 

@@ -134,7 +134,7 @@ const Container = styled.div`
                     -webkit-background-clip: text;
                     background-clip : text;
                     -webkit-text-fill-color: transparent;
-                    font-size: clamp(90px, 10vw, 7.5rem);
+                    font-size: clamp(90px, 10vw, 5rem);
                     line-height: normal !important;
 
                     @media (max-width : 600px){

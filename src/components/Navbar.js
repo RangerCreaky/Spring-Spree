@@ -53,10 +53,10 @@ const Navbar = () => {
             )}
           </ul>
         </NavbarLarge>
-        <NavbarSmallNav>
+        <NavbarSmallNav className="Hello">
           {/*  */}
           <h3>
-            <Link to="/">SpringSpree'22</Link>
+            <Link to="/" className="brand-name">SpringSpree'22</Link>
           </h3>
           <button id="toggle-navbar" onClick={toggleNavbar}>
             <div className="hamburger" id="hamburger">
@@ -133,6 +133,7 @@ const BrandLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-family: "Steinfeld";
+  font-size: 2.3rem;
 
   &:hover {
     color: orange;
@@ -159,7 +160,6 @@ const NavbarLarge = styled.div`
   justify-content: space-between;
 
   > h3 {
-    font-family: "signatra";
     font-weight: 400;
     font-size: 3rem;
   }
@@ -189,7 +189,7 @@ const NavbarSmallNav = styled.div`
     > a {
       color: white;
       text-decoration: none;
-      font-family: "signatra";
+      font-family: "Steinfeld";
 
       &:hover {
         color: orange;
@@ -213,6 +213,11 @@ const NavbarSmallNav = styled.div`
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
     }
+
+      .brand-name{
+        font-family: "Steinfeld";
+      }
+
   }
 
   @media (max-width: 860px) {

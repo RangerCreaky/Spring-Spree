@@ -22,4 +22,30 @@ const SidebarContainer = styled.div`
   top : 100px;
   left : 0;
   z-index : 1000;
+  padding : 1rem;
+  width : 15rem;
+
+  > ul{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    > li{
+
+        list-style: none;
+
+        > a{
+          text-decoration: none;
+          color: white;
+
+          &:hover{
+            color : orange
+          }
+        }
+    }
+  }
+
+  @media (max-width : 700px){
+    display: none;
+  }
 `;
