@@ -11,15 +11,25 @@
     
 // }
 const onPaymentSuccess = async (payment_details, event, user) => {
-    console.log("payment_id: ", payment_details);
-    
+    // console.log("payment_id: ", payment_details);
+    const data = {
+        "razorpay_payment_id" : payment_details.razorpay_payment_id,
+        "event_id" : event._id,
+        "name" :  user.name,
+        "email" : user.email,
+        "mobile" : user.mobile,
+        "event" : event.name,
+        "registration_fee" : event.registration_fee
+    }
+    // console.log(data);
     // store and verify the success feilds in server
-    await fetch("http://localhost:3000/payment/store/", {
+    await fetch("http://localhost:3000/payment/store/details", {
+        // mode: 'no-cors',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({...payment_details, event_id: event._id, name: user.name, email:user.email, mobile:user.mobile, event:event.name, registration_fee:event.registration_fee})
+        body: JSON.stringify(data),
     }).then(o => {
         // if the payment is stored and verified succesfully redirect to the event page
         console.log(o);
