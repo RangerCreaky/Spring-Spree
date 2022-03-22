@@ -24,6 +24,9 @@ const SidebarContainer = styled.div`
   z-index : 1000;
   padding : 1rem;
   width : 15rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-family: cursive;
 
   > ul{
     height: 100%;

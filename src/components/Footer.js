@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+// import SponsorSlick from "./SponsorSlick";
+
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <>
       <FooterContainer>
         <MainContent>
           <LeftBox>
@@ -21,12 +24,12 @@ const Footer = () => {
             <div className="content-with-underline">
               <div>
                 <span className="text">
-                  <a href="/">Home</a>
+                  <Link to="/sponsors">Sponsors</Link>
                 </span>
               </div>
               <div>
                 <span className="text">
-                  <a href="#about">About</a>
+                  <Link to="/contacts">About</Link>
                 </span>
               </div>
               <div>
@@ -113,7 +116,6 @@ const Footer = () => {
           </center>
         </Bottom>
       </FooterContainer>
-    </>
   );
 };
 

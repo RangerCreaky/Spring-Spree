@@ -40,12 +40,6 @@ const Sponsors = () => {
 export default Sponsors;
 
 const SponsorContainer = styled.div`
-    /* FIXME : change later*/
-    /* height: 100vh;  */
-    /* background: url("../../images/new-new-bg.jpeg");
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: cover; */
 
     background: rgb(14, 14, 14);
   background: linear-gradient(
@@ -67,6 +61,10 @@ const SponsorContainer = styled.div`
         margin: 100px 0;
     }
 
+    @media (max-width : 500px){
+        margin: 67px 0;
+        padding: 50px 50px;
+    }
     h2{
         text-align: center;
         margin: 2rem 0;

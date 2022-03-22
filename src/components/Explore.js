@@ -69,6 +69,16 @@ const Text = styled.div`
     height: 80%;
 
     margin-top : 70px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+
+    .questions{
+        color: orange;
+    }
+
+    .bottom{
+        color: orange;
+    }
 
     @media (max-width : 1200px) {
         width : 500px;

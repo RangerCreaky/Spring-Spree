@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/auth";
 
+import { useScrollTo } from "react-use-window-scroll";
+
+
 const Navbar = () => {
   const ulRef = useRef(null);
 
@@ -12,9 +15,15 @@ const Navbar = () => {
   };
   const { user, logout } = useAuth();
 
+  const scrollTo = useScrollTo();
+
+  const handleClick = ()=>{
+    scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
+
   return (
     <>
-      <NavbarContainer>
+      <NavbarContainer onClick={handleClick}>
         <NavbarLarge>
           <h3>
             <BrandLink to="/">SpringSpree'22</BrandLink>
@@ -143,7 +152,7 @@ const BrandLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-family: "Steinfeld";
-  font-size: 2.3rem;
+  font-size: 2rem;
 
   &:hover {
     color: orange;
@@ -172,6 +181,8 @@ const NavbarLarge = styled.div`
   > h3 {
     font-weight: 400;
     font-size: 3rem;
+    display: flex;
+    align-items: center;
   }
 
   > ul {

@@ -31,13 +31,17 @@ const SponsorItemContainer = styled.div`
     padding: 0;
     border-radius: 10px;
     
-
+    @media (max-width : 600px) {
+        /* transform: scale(1.3rem); */
+    }
     > .image-container{
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 1.3rem;
+        overflow: hidden;
+
 
         > img{
             width: 293px;
@@ -46,6 +50,11 @@ const SponsorItemContainer = styled.div`
 
             &:hover{
                 transform: scale(1.1);
+            }
+
+            @media (max-width : 600px) {
+                width : 200px;
+                height: auto;
             }
         }
 

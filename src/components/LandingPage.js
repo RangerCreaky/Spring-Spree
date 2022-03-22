@@ -7,7 +7,6 @@ import Footer from "./Footer";
 import LandingPageContainer from "./LandingPageContainer";
 
 import useScrollSnap from "react-use-scroll-snap";
-import { useScrollBy, useScrollTo } from "react-use-window-scroll";
 
 import useOnScreen from "../customHooks/useOnScreen";
 
@@ -20,16 +19,11 @@ const LandingPage = () => {
   const footerRef = useRef();
   const isVisible = useOnScreen(footerRef);
 
-
-  // scroll the page
-  const scrollBy = useScrollBy();
-  const scrollTo = useScrollTo();
-
   const handleScroll = () => {
     if (isVisible) {
-      scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      setTimeout(function () { window.scrollTo(0, 0); }, 100);
     } else {
-      scrollBy({ top: window.innerHeight, left: 0, behavior: "smooth" });
+      setTimeout(function () { window.scrollBy(0, window.innerHeight); }, 100);
     }
   };
 

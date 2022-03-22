@@ -13,7 +13,8 @@ import allure5 from './images/allure/allure5.jpeg';
 import allure6 from './images/allure/allure6.jpeg';
 
 import pro1 from './images/proshows/pro1.jpeg';
-import pro2 from './images/proshows/pro2.jpeg';
+import pro2 from './images/proshows/pro5.jpeg';
+// import pro2 from './images/proshows/pro2.jpeg';
 import pro3 from './images/proshows/pro3.jpeg';
 import pro4 from './images/proshows/pro4.jpeg';
 import pro5 from './images/proshows/pro5.jpeg';
@@ -24,7 +25,8 @@ import social2 from './images/social/2.jpeg';
 import social3 from './images/social/3.jpeg';
 import social4 from './images/social/4.jpeg';
 import social5 from './images/social/5.jpeg';
-import social6 from './images/social/6.jpeg';
+// import social6 from './images/social/6.jpeg';
+import social6 from './images/social/2.jpeg';
 import social7 from './images/social/7.jpeg';
 
 import event1 from './images/events/1.jpeg';

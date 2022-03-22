@@ -11,7 +11,6 @@ const Part=({arr , name , ide})=>{
                 return(
                     <div key={index}>
                         <img className="image" src={img} alt={name}/>
-                        <p className="legend"> {name} </p>
                     </div>
                 )
             })
@@ -35,15 +34,20 @@ const ModuleWrapper = styled.div`
     align-items: center;
     justify-content : center; */
     margin-left : 128px;
-    height: 100vh;
 
     > h1{
         margin-top : 100px;
         margin-bottom : 15px;
         text-align: center;
+        text-transform: uppercase;
+        font-family: cursive;
     }
     @media (max-width : 700px){
         margin-left : 0;
+    }
+
+    @media (max-width : 500px){
+        transform: scale(1.2);
     }
 `;
 
@@ -61,6 +65,11 @@ const StyledCarousel = styled(Carousel)`
             display : none;
         }
 
+        .slide {
+            img {
+                height: 100%;
+            }
+        }
 
     }
 `
