@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
 import Footer from "../Footer";
+import Loader from "../Loader";
+import { useApi } from "../../hooks/api";
+import commanApi from "../../api/comman";
+import { useNavigate } from "react-router-dom";
 
-const PUBLIC_RELATIONS = {
+const DEPARTMENTS = {
   "Content and blogging": "content_blogging",
   "Design and Deco": "design_deco",
   "Quality Control and Management": "qcm",
@@ -16,30 +20,44 @@ const PUBLIC_RELATIONS = {
   Hospitality: "hospitality",
 };
 
+const initialValues = {
+  name: "",
+  email: "",
+  mobile: "",
+  dept: "",
+  message: "",
+};
+
 export default function Contacts() {
+  const { loading, request } = useApi(commanApi.contacts);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (values, { resetForm }) => {
+    const res = await request(values);
+    if (res.ok) {
+      resetForm();
+      window.alert(
+        "Your response is submitted! Thank you for contacting us :)"
+      );
+      navigate("/", { replace: true });
+    } else {
+      window.alert("Something went wrong!");
+    }
+  };
+
   return (
     <>
+      <Loader loading={loading} />
       <Container className="container">
         <h1 className="title">Contact Us</h1>
-        <Formik
-          initialValues={{
-            fullName: "",
-            email: "",
-            phone: "",
-            publicRelation: "",
-            message: "",
-          }}
-          onSubmit={async (values) => {
-            console.log(values);
-          }}
-        >
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form className="row g-3">
             <div className="col-12">
               <label htmlFor="full-name" className="form-label">
                 Full Name
               </label>
               <Field
-                name="fullName"
+                name="name"
                 required
                 placeholder="Akash"
                 type="text"
@@ -65,7 +83,7 @@ export default function Contacts() {
                 Phone/Mobile
               </label>
               <Field
-                name="phone"
+                name="mobile"
                 required
                 placeholder="+918855885588"
                 type="tel"
@@ -75,19 +93,19 @@ export default function Contacts() {
             </div>
 
             <div className="col-md-12">
-              <label htmlFor="public-relation" className="form-label">
-                Public relation
+              <label htmlFor="department" className="form-label">
+                Department
               </label>
               <Field
                 as="select"
-                name="publicRelation"
+                name="dept"
                 required
-                id="public-relation"
+                id="department"
                 className="form-select"
               >
                 <option value="">Choose</option>
-                {Object.keys(PUBLIC_RELATIONS).map((key) => (
-                  <option key={key} value={PUBLIC_RELATIONS[key]}>
+                {Object.keys(DEPARTMENTS).map((key) => (
+                  <option key={key} value={DEPARTMENTS[key]}>
                     {key}
                   </option>
                 ))}

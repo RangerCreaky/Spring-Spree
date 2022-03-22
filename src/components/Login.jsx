@@ -8,7 +8,7 @@ import Loader from "./Loader";
 import { useApi } from "../hooks/api";
 import { useAuth } from "../hooks/auth";
 import { Link } from "react-router-dom";
-import Footer from "./Footer"
+import Footer from "./Footer";
 
 const initialValues = {
   email: "",
@@ -77,7 +77,12 @@ export default function Login() {
             </div>
 
             <div className="center">
-              <p>Need an account? <Link to="signup" replace>Sign Up</Link></p>
+              <p>
+                Need an account?{" "}
+                <Link to="/signup" replace>
+                  Sign Up
+                </Link>
+              </p>
             </div>
           </Form>
         </Formik>
