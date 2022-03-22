@@ -4,20 +4,8 @@ import styled from 'styled-components';
 const LandingPageContainer = () => {
     return (
         <Container>
-            <img src="../../images/logo.png" alt='logo' />
-            <ul>
-                <li data-depth="0.06" id="background" className="layer">
-                    <img src="/images/background.png" alt="logo" />
-                </li>
-                <li data-depth="0.06" id="left" className="layer left-right">
-                    <img src="/images/left-cropped.png" alt="logo" />
-                </li>
-                <li data-depth="0.06" id="right" className="layer left-right">
-                    <img src="/images/right-cropped.png" alt="logo" />
-                </li>
-            </ul>
-
-
+            <img src="../../images/logo.png" alt='logo' className='logo'/>
+            <img src="../../images/background.png" alt="background" className='bg'/>
             <div data-depth="0" id="event-title" className="layer">
                 <div>
                     <h1 className="titlename">SpringSpree'22</h1>
@@ -25,88 +13,84 @@ const LandingPageContainer = () => {
                     <p className="event-dates">April 8-10, 2022</p>
                 </div>
             </div>
-            {/* <LandingPageContainer >
-                         <ul id="landing-view-scene">
-                            
-                            <li data-depth="0.2" id="stars" className="layer">
-                                <img src="./images/stars.png" alt="stars" />
-                            </li>
-                            <li data-depth="0.5" id="universe" className="layer">
-                                <img src="./images/bg_2.png" alt="universe" />
-                            </li>
-                            <li data-depth="0.7" id="planet" className="layer">
-                                <img src="./images/planet.png" alt="planet" />
-                            </li>
-                            <li data-depth="0" id="event-title" className="layer">
-                                <div>
-                                    <h1 className="titlename">SpringSpree'22</h1>
-                                    <p className="themename">Srishti</p>
-                                    <p className="event-dates">April 8-10, 2022</p>
-                                </div>
-                            </li>
-                        </ul> 
-                    </LandingPageContainer> */}
         </Container>
     )
 }
 
+
 export default LandingPageContainer;
+
+// > ul{
+//     width: 100%;
+//     > #background{
+//         > img{
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             width: 100%;
+//             height : 100%;
+//         }
+//     }
+
+//     > #left{
+//         > img{
+//             position: absolute;
+//             top: 0; 
+//             left: 0;
+
+//             /* width: 100%;
+//             height: auto; */
+
+//             @media (max-width : 600px){
+//                 left: -150px;
+//             }
+//         }
+//     }
+
+//     > #right{
+//         > img{
+//             position: absolute;
+//             top: 0;
+//             right: 0;
+//             /* width: 100%;
+//             height: auto; */
+
+//             @media (max-width : 600px){
+//                 right: -150px;
+//             }
+
+//         }
+//     }
+
+//     > .left-right{
+
+//     }
+// } 
 
 const Container = styled.div`
     /* height: 100vh; */
-    min-height: 800px;
+    min-height: 100vh;
     position : relative;
     overflow: hidden;
 
-    /* background: url("../../images/background.png"); */
-    > ul{
-        width: 100%;
-        > #background{
-            > img{
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height : 100%;
-            }
-        }
-
-        > #left{
-            > img{
-                position: absolute;
-                top: 0; 
-                left: 0;
-
-                /* width: 100%;
-                height: auto; */
-
-                @media (max-width : 600px){
-                    left: -150px;
-                }
-            }
-        }
-
-        > #right{
-            > img{
-                position: absolute;
-                top: 0;
-                right: 0;
-                /* width: 100%;
-                height: auto; */
-
-                @media (max-width : 600px){
-                    right: -150px;
-                }
-
-            }
-        }
-
-        > .left-right{
-
-        }
+    background: url("../../images/Desktop.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   
+    @media (max-width : 800px) {
+        background: url("../../images/Tab.png");
+        background-size: cover;
+        background-position: center;
     }
 
-    > img{
+    @media (max-width : 480px) {
+        background: url("../../images/Mobile.png") ; 
+        background-size: cover;
+        background-position: center;
+    }
+
+    > .logo{
         position: absolute;
         z-index: 100;
         top: 35%;
@@ -115,6 +99,13 @@ const Container = styled.div`
         width: min( 50vw, 250px) !important;
     }
 
+    > .bg{
+        position: absolute;
+        z-index: -1;
+        top : 0;
+        left: 0;
+        height: 100%;
+    }
     > #event-title{
             > div{
                 
@@ -134,7 +125,7 @@ const Container = styled.div`
                     -webkit-background-clip: text;
                     background-clip : text;
                     -webkit-text-fill-color: transparent;
-                    font-size: clamp(90px, 10vw, 7.5rem);
+                    font-size: clamp(90px, 10vw, 5rem);
                     line-height: normal !important;
 
                     @media (max-width : 600px){

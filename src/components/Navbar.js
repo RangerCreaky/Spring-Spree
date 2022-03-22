@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/auth";
 
+import { useScrollTo } from "react-use-window-scroll";
+
+
 const Navbar = () => {
   const ulRef = useRef(null);
 
@@ -12,9 +15,15 @@ const Navbar = () => {
   };
   const { user, logout } = useAuth();
 
+  const scrollTo = useScrollTo();
+
+  const handleClick = ()=>{
+    scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
+
   return (
     <>
-      <NavbarContainer>
+      <NavbarContainer onClick={handleClick}>
         <NavbarLarge>
           <h3>
             <BrandLink to="/">SpringSpree'22</BrandLink>
@@ -33,7 +42,7 @@ const Navbar = () => {
               <StyledLink to="/faq">FAQs</StyledLink>
             </li>
             <li>
-              <StyledLink to="/contacts">Contacts</StyledLink>
+              <StyledLink to="/contacts">Contact Us</StyledLink>
             </li>
             {user ? (
               <li>
@@ -46,17 +55,14 @@ const Navbar = () => {
                 <li>
                   <StyledLink to="/login">Login</StyledLink>
                 </li>
-                <li>
-                  <StyledLink to="/signup">Sign up</StyledLink>
-                </li>
               </>
             )}
           </ul>
         </NavbarLarge>
-        <NavbarSmallNav>
+        <NavbarSmallNav className="Hello">
           {/*  */}
           <h3>
-            <Link to="/">SpringSpree'22</Link>
+            <Link to="/" className="brand-name">SpringSpree'22</Link>
           </h3>
           <button id="toggle-navbar" onClick={toggleNavbar}>
             <div className="hamburger" id="hamburger">
@@ -87,8 +93,21 @@ const Navbar = () => {
             <StyledLink to="/faq">FAQs</StyledLink>
           </li>
           <li>
-            <StyledLink to="/contact">Contact</StyledLink>
+            <StyledLink to="/contacts">Contact Us</StyledLink>
           </li>
+          {user ? (
+              <li>
+                <button onClick={logout} className="btn btn-primary">
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <StyledLink to="/login">Login</StyledLink>
+                </li>
+              </>
+            )}
         </SmallNavLinks>
       </NavbarContainer>
     </>
@@ -133,6 +152,7 @@ const BrandLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-family: "Steinfeld";
+  font-size: 2rem;
 
   &:hover {
     color: orange;
@@ -159,9 +179,10 @@ const NavbarLarge = styled.div`
   justify-content: space-between;
 
   > h3 {
-    font-family: "signatra";
     font-weight: 400;
     font-size: 3rem;
+    display: flex;
+    align-items: center;
   }
 
   > ul {
@@ -189,7 +210,7 @@ const NavbarSmallNav = styled.div`
     > a {
       color: white;
       text-decoration: none;
-      font-family: "signatra";
+      font-family: "Steinfeld";
 
       &:hover {
         color: orange;
@@ -213,6 +234,11 @@ const NavbarSmallNav = styled.div`
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
     }
+
+      .brand-name{
+        font-family: "Steinfeld";
+      }
+
   }
 
   @media (max-width: 860px) {

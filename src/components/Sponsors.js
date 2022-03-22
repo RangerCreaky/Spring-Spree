@@ -2,104 +2,78 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SponsorItem from './SponsorItem';
+import Footer from './Footer';
 
-import VideoBackground from './VideoBackground';
+// import sponsor images
+
+import sponsorsData from './sponsorsData';
 
 const Sponsors = () => {
+
+    const renderSponsors = () => {
+        return (
+            sponsorsData.map((data, index) => {
+                const { name, src } = data;
+                return (
+                    <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
+                        <SponsorItem name={name} src={src} />
+                    </div>
+                )
+            })
+        )
+    }
+
     return (
         <>
-            <SponsorsContainer>
-                <VideoBackground />
-                <SponsorsInnerContainer>
-                    <SponsorText>
+            <SponsorContainer className='row'>
+                <h2> Previous Sponsors </h2>
 
-                        <h1> Lorem Ipsum </h1>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In iaculis odio at tincidunt eleifend. Duis et eleifend metus. In nec dui cursus, condimentum nisi ut, rutrum purus. Cras a orci ex. Aliquam finibus sollicitudin lectus, sed condimentum tortor tempor quis. Nunc quis consectetur  </p>
+                {renderSponsors()}
 
-                        <h4> Contact US </h4>
-                        <ul>
-                            <li>inkey : 0000000000</li>
-                            <li>pinkey : 1111111111</li>
-                            <li>ponkey : 2222222222</li>
-                        </ul>
+            </SponsorContainer>
 
-                    </SponsorText>
-
-                    <SponsorItems>
-                        <SponsorItem />
-                    </SponsorItems>
-                </SponsorsInnerContainer>
-            </SponsorsContainer>
+            <Footer />
         </>
     )
 }
 
 export default Sponsors;
 
-const SponsorsContainer = styled.div`
-    position : relative;
-    width : 100%;
-    height : 100vh;
-    display : flex;
-    align-items : center;
-    overflow : hidden;
+const SponsorContainer = styled.div`
 
-    background-image: linear-gradient( rgba(255 , 255 , 255 , 0.2) 0%, rgba(51 , 51 , 51 , 0.2) 100%);
-`;
+    background: rgb(14, 14, 14);
+  background: linear-gradient(
+    0deg,
+    rgba(14, 14, 14, 1) 0%,
+    rgba(11, 0, 16, 1) 15%,
+    rgba(44, 0, 59, 1) 100%
+  );
+  background-size: cover;
+  background-position: center;
+    background-attachment: fixed;
+    color: white;
 
-const SponsorsInnerContainer = styled.div`
-    display : flex;
-    flex-direction : row;
-    height : 100%;
+    --bs-gutter-x : 0 !important;
 
-    @media (max-width : 700px){
-        flex-direction : column;
+    padding: 100px 100px;
+
+    @media (max-width : 1000px){
+        margin: 100px 0;
+    }
+
+    @media (max-width : 500px){
+        margin: 67px 0;
+        padding: 50px 50px;
+    }
+    h2{
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    > .c{
+        display: flex;
+        justify-content: center;
     }
 `;
 
-const SponsorText = styled.div`
-    width : 35%;
-    color : white;
-    height : 100%;  
-    padding :  3rem;
-    margin-top : 70px;
 
-    > h1 , h4{
-        text-transform : uppercase;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    > p{
-        margin-top : 3px;
-        font-size : 1.2rem;
-        font-weight : 400;
-        font-family: 'Fredoka', sans-serif;
-    }
-
-    > h4{
-        margin-top : 10px;
-    }
-
-    > ul{
-        list-style : none;
-        margin-top : 2px;
-        > li{
-            margin-top : 1.5px;
-            font-family: 'Fredoka', sans-serif;
-        }
-    }
-
-    @media (max-width : 800px){
-        width : 100%;
-    }
-
-`;
-
-const SponsorItems = styled.div`
-    width : 73%;
-    margin-top : 70px;
-    padding: 2rem;
-
-    @media (max-width : 800px){
-    }
-`; 

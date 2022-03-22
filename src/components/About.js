@@ -43,9 +43,9 @@ const AboutInnerContainer = styled.div`
     padding: 0 5rem;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
+    text-align: center;
     @media (max-width : 750px){
         padding: 20px;
     }
