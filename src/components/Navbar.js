@@ -78,11 +78,11 @@ const Navbar = () => {
           id="mobile-nav-links"
           onClick={toggleNavbar}
         >
-          <li>
+          {/* <li>
             <StyledLink to="/events" style={{ textDecoration: "none" }}>
               Events
             </StyledLink>
-          </li>
+          </li> */}
           <li>
             <StyledLink to="/gallery">Gallery</StyledLink>
           </li>
