@@ -11,7 +11,7 @@ import allure3 from './images/allure/allure3.jpg';
 import allure4 from './images/allure/allure4.jpg';
 import allure5 from './images/allure/allure5.jpg';
 import allure6 from './images/allure/allure6.jpg';
-import allure7 from './images/allure/allure7.jpg';
+// import allure7 from './images/allure/allure7.jpg';
 
 import pro1 from './images/proshows/pro1.JPG';
 import pro2 from './images/proshows/pro2.JPG';
