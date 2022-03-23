@@ -10,8 +10,8 @@ import Footer from "../Footer";
 const LayoutGallery = ()=>{
   return(
     <GalleryContainer>
+      <SideBarGallery />
       <GalleryInnerContainer>
-        <SideBarGallery />
         <MainContent />
       </GalleryInnerContainer>
       <Footer />
