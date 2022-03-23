@@ -5,11 +5,13 @@ const SideBarGallery  =()=>{
   return(
     <SidebarContainer>
       <ul>
-        <li> <a href='#0'> Inaguration </a> </li>
+        <li> <a href='#0'> Pro shows </a> </li>
         <li> <a href='#1'> Allure </a> </li>
-        <li> <a href='#2'> Pro shows </a> </li>
-        <li> <a href='#3'> Social </a> </li>
-        <li>  <a href='#4'> Events </a> </li>
+        <li> <a href='#2'> Spotlights </a> </li>
+        <li> <a href='#3'> Inauguration </a> </li>  
+        <li> <a href='#4'> Social Activities </a> </li>
+        <li>  <a href='#5'> Events </a> </li>
+        <li>  <a href='#6'> Adventures </a> </li>
       </ul>
     </SidebarContainer>
   )
@@ -34,7 +36,7 @@ const SidebarContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     > li{
-
+        margin: 15px 0;
         list-style: none;
 
         > a{

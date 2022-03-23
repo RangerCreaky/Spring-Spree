@@ -4,13 +4,17 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 const Part=({arr , name , ide})=>{ 
+    let c = 'all';
+    if(name === "Allure") c = "";
 
     const renderImages = ()=>{
         return (
             arr.map((img , index)=>{
+ 
                 return(
                     <div key={index}>
-                        <img className="image" src={img} alt={name}/>
+                        <img className={`image ${c} index${index}`}
+                         src={img} alt={name}/>
                     </div>
                 )
             })
@@ -20,7 +24,7 @@ const Part=({arr , name , ide})=>{
     return (
             <ModuleWrapper id={ide} className="world"> 
                 <h1> {name} </h1>
-                <StyledCarousel className='hello '>
+                <StyledCarousel className={`hello ${name}`}>
                     {renderImages()}
                 </StyledCarousel>
             </ModuleWrapper>
@@ -28,29 +32,6 @@ const Part=({arr , name , ide})=>{
 };
 
 export default Part;
-
-const ModuleWrapper = styled.div`
-    /* display : flex;
-    align-items: center;
-    justify-content : center; */
-    margin-left : 128px;
-
-    > h1{
-        margin-top : 100px;
-        margin-bottom : 15px;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: cursive;
-    }
-    @media (max-width : 700px){
-        margin-left : 0;
-    }
-
-    @media (max-width : 500px){
-        transform: scale(1.2);
-    }
-`;
-
 const StyledCarousel = styled(Carousel)`
     .image{
         height : 500px;
@@ -64,13 +45,58 @@ const StyledCarousel = styled(Carousel)`
         .thumbs-wrapper{
             display : none;
         }
+    }
+`
+const ModuleWrapper = styled.div`
+    /* display : flex;
+    align-items: center;
+    justify-content : center; */
+    margin-left : 128px;
 
-        .slide {
-            img {
+    > h1{
+        margin-top : 100px;
+        margin-bottom : 15px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: cursive;
+    }
+
+    .Allure{
+        div{
+            img{
+                width: 40% !important;
+                height: auto;
+            }
+
+            .index0{
+                width : 80% !important;
                 height: 100%;
             }
         }
-
     }
-`
+
+    .carousel {
+        .slide { 
+            img { 
+                width : 80%;
+                height: auto;
+            }
+        }
+    }
+
+    .all{
+        width: 80%;
+        height: auto;
+    }
+
+    @media (max-width : 700px){
+        margin-left : 0;
+    }
+
+    @media (max-width : 500px){
+        transform: scale(1.2);
+    }
+`;
+
+
 
