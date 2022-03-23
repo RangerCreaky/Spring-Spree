@@ -3,7 +3,7 @@ import Explore from "./components/Explore";
 import FAQ from "./components/Faq";
 import Sponsors from "./components/Sponsors";
 import Event from "./components/Events";
-import Gallery from "./components/Gallery";
+import Gallery from "./components/Gallery/LayoutGallery";
 import { Routes, Route } from "react-router-dom";
 import Contacts from "./components/Contacts";
 import Login from "./components/Login";

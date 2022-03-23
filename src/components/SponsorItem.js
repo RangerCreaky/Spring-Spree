@@ -1,16 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SponsorItem = ()=>{
+const SponsorItem = ({ name, src }) => {
     return (
         <>
-            <SponsorItemContainer>
-                <img src="https://picsum.photos/150" alt="" />
+            <SponsorItemContainer className='sponsor-card' data-aos="fade-up" data-aos-offset="200" data-aos-duration="1500">
+                <div className='image-container'>
+                    <img src={src} alt="" />
 
-                <SponsorItemText>
-                    <h5> Company </h5>
-                    <p> title sponsor </p>
-                </SponsorItemText>
+                </div>
+                <div className='text-container'>
+                    <hr></hr>
+                    <div className='container-fluid'>
+                        <h4> <strong> {name} </strong> </h4>
+                        {/* <p> <strong> title Sponsor </strong> </p>    */}
+                    </div>
+                </div>
             </SponsorItemContainer>
         </>
     )
@@ -19,10 +24,55 @@ const SponsorItem = ()=>{
 export default SponsorItem;
 
 const SponsorItemContainer = styled.div`
+    background-color: white;
+    width: 21rem;
+    color: black;
+    margin: 1rem;
+    padding: 0;
+    border-radius: 10px;
+    
+    @media (max-width : 600px) {
+        /* transform: scale(1.3rem); */
+    }
+    > .image-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.3rem;
+        overflow: hidden;
 
-    > img { 
-        border : 2px solid white;
+
+        > img{
+            width: 293px;
+            height: 159px;
+            transition: 2s;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+
+            @media (max-width : 600px) {
+                width : 200px;
+                height: auto;
+            }
+        }
+
+    }
+
+    > .text-container{
+        > hr{
+            margin: 0;
+        }
+
+        > .container-fluid{
+            text-align: center;
+            padding: 10px 0;
+
+            p{
+                margin-bottom: 0;
+            }
+        }
     }
 `;
 
-const SponsorItemText = styled.div``;

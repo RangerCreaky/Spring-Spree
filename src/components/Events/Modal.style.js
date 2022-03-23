@@ -9,7 +9,7 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 100000;
 `;
 
 export const BackDrop = styled.div`
