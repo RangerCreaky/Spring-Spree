@@ -1,109 +1,42 @@
-// function loadScript() {
-//     const script = document.createElement("script");
-//     script.src = "https://checkout.razorpay.com/v1/checkout.js";
-//     document.body.appendChild(script);
-//     script.onload = () => {
-//         return true;
-//     };
-//     script.onerror = () => {
-//         return false;
-//     };
+const onPaymentSuccess = async (payment_details, event, user) => {
+  // console.log("payment_id: ", payment_details);
+  const data = {
+    razorpay_payment_id: payment_details.razorpay_payment_id,
+    razorpay_order_id: payment_details.razorpay_order_id,
+    razorpay_signature: payment_details.razorpay_signature,
+    event_id: event._id,
+    id: user._id || "62386af222d9e9c1b01d2457",
+    name: user.name,
+    email: user.email,
+    mobile: user.mobile,
+    event: event.name,
+    registration_fee: event.registration_fee,
+  };
+  // console.log(data);
+  // store and verify the success feilds in server
+  let success = await fetch("http://localhost:3000/payment/store/details", {
+    // mode: 'no-cors',
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then(async (o) => {
+      // if the payment is stored and verified succesfully redirect to the event page
+      return o;
 
-// }
-import { Navigation } from "../components/Events/Modal";
-const onPaymentSuccess = async (response, event, user) => {
-    
-    const data = {
-        "razorpay_payment_id" : response.razorpay_payment_id,
-        "razorpay_order_id" : response.razorpay_order_id,
-        "razorpay_signature" : response.razorpay_signature,
-        "id" : user._id || "62386af222d9e9c1b01d2457",
-        "event_id" : event._id,
-        "name" :  user.name || "Sarang Nagpal",
-        "email" : user.email || "sarangnagpal38@gmail.com",
-        "mobile" : user.mobile || "9999900011",
-        "event" : event.name,
-        "registration_fee" : event.registration_fee
-    }
-    // console.log(data);
-    // store and verify the success feilds in server
-    await fetch("http://localhost:3000/payment/store/details", {
-        // mode: 'no-cors',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-    }).then(res => {
-        // if the payment is stored and verified succesfully redirect to the event page
-        if(res.body.status === "success"){
-            // react router redirect
-            Navigation("/events");
-        }
-    }).catch(e => {
-        console.error(e);
     })
-}
-// const createOrder = async (event) => {
-//     // give a post request at /payment/:event_id    
-
-//     let myOrder = await fetch(`http://localhost:3000/payment/${event._id}`, {
-//         method: 'POST',
-//     }).then(async (o) => {
-//         let a = await o.text().then((ord, err) => {
-//             if(err) console.error(err); 
-//             console.log(ord);
-//             return ord;
-//         });
-//         return a;
-
-//     }).catch(e => {
-//         console.error(e);
-//         return null;
-//     })
-//     return myOrder;
-// }
-// const createCheckout = async (order, event, user) => {
-//     let neworder = JSON.parse(order);
-//     const options = {
-//         "key": "rzp_test_fH6e426IsoGX0S", // poor practice, this key is public. store it in .env file
-//         "amount": neworder.amount,
-//         "currency": "INR",
-//         "name": "NIT Warangal",
-//         "description": "Test Transaction",
-//         "image": event.poster,
-//         "order_id": neworder.id,
-//         "handler": (response) => {
-//             onPaymentSuccess({...response}, event, user)
-//         },
-//         "prefill": {
-//             "name": user.name || "Sarang Nagpal", //inserrt name of the user
-//             "email": user.email || "sarangnagpal38@example.com",    //insert email of the user
-//             "contact": user.mobile || "9999990001"//insert contact number of the user
-//         },
-//         "notes": {
-//             "address": "NIT Warangal"
-//         },
-//         "theme": {
-//             "color": "#3399cc"
-//         }
-//     };
-//     // eslint-disable-next-line
-//     let rzp1 = await new Razorpay(options);
-
-//     await rzp1.on('payment.failed', function (response){
-//         // Redirect to repayment page
-//         alert(response.error.code);
-//         alert(response.error.description);
-//         alert(response.error.source);
-//         alert(response.error.step);
-//         alert(response.error.reason);
-//         alert(response.error.metadata.order_id);
-//         alert(response.error.metadata.payment_id);
-//     });
-// };
+    .catch((e) => {
+      console.error(e);
+    });
+    let txt = await success.json();
+    if(txt.status === "success"){
+      alert("Payment Successful");
+      window.location.href = `/events/`;
+    }
+};
 const createOrder = async (event) => {
-  // give a post request at /payment/:event_id
 
   let myOrder = await fetch(`http://localhost:3000/payment/${event._id}`, {
     method: "POST",
@@ -131,14 +64,14 @@ const createCheckout = async (order, event, user) => {
     name: "NIT Warangal",
     description: "Test Transaction",
     image: event.poster,
-    order_id: order.id,
+    order_id: neworder.id,
     handler: (response) => {
       onPaymentSuccess(response, event, user);
     },
     prefill: {
-      name: user.name, //inserrt name of the user
-      email: user.email, //insert email of the user
-      contact: user.mobile, //insert contact number of the user
+      name: user.name || "Sarang Nagpal", //inserrt name of the user
+      email: user.email || "sarangnagpal38@gmail.com", //insert email of the user
+      contact: user.mobile || "9999900011", //insert contact number of the user
     },
     notes: {
       address: "NIT Warangal",
