@@ -4,7 +4,7 @@ import FAQ from "./components/Faq";
 import Sponsors from "./components/Sponsors";
 // import Event from "./components/Events";
 import Gallery from "./components/Gallery/LayoutGallery";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Contacts from "./components/Contacts";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -31,6 +31,7 @@ const AppRoutes = () => {
       <Route path="/faq" exact element={<FAQ />} />
       <Route path="/login" exact element={<Login />} />
       <Route path="/signup" exact element={<Signup />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };
