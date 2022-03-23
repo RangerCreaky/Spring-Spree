@@ -3,7 +3,6 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { Header, BackDrop, Body, Container, Footer, Main } from "./Modal.style";
 import Image from "../Image";
 import dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
 
 export default function Modal({ data, onSubmit, onClose, visible = false }) {
   const {
@@ -26,7 +25,6 @@ export default function Modal({ data, onSubmit, onClose, visible = false }) {
     end_date,
   } = data;
   console.log(dayjs(start_date));
-  const navigate = useNavigate();
   if (!visible) return null;
   
   return (
