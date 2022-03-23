@@ -5,7 +5,6 @@ const LandingPageContainer = () => {
     return (
         <Container>
             <img src="../../images/logo.png" alt='logo' className='logo'/>
-            <img src="../../images/background.png" alt="background" className='bg'/>
             <div data-depth="0" id="event-title" className="layer">
                 <div>
                     <h1 className="titlename">SpringSpree'22</h1>
@@ -20,53 +19,6 @@ const LandingPageContainer = () => {
 
 export default LandingPageContainer;
 
-// > ul{
-//     width: 100%;
-//     > #background{
-//         > img{
-//             position: absolute;
-//             top: 0;
-//             left: 0;
-//             width: 100%;
-//             height : 100%;
-//         }
-//     }
-
-//     > #left{
-//         > img{
-//             position: absolute;
-//             top: 0; 
-//             left: 0;
-
-//             /* width: 100%;
-//             height: auto; */
-
-//             @media (max-width : 600px){
-//                 left: -150px;
-//             }
-//         }
-//     }
-
-//     > #right{
-//         > img{
-//             position: absolute;
-//             top: 0;
-//             right: 0;
-//             /* width: 100%;
-//             height: auto; */
-
-//             @media (max-width : 600px){
-//                 right: -150px;
-//             }
-
-//         }
-//     }
-
-//     > .left-right{
-
-//     }
-// } 
-
 const Container = styled.div`
     /* height: 100vh; */
     min-height: 100vh;
@@ -77,18 +29,6 @@ const Container = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-   
-    @media (max-width : 800px) {
-        background: url("../../images/Tab.png");
-        background-size: cover;
-        background-position: center;
-    }
-
-    @media (max-width : 480px) {
-        background: url("../../images/Mobile.png") ; 
-        background-size: cover;
-        background-position: center;
-    }
 
     > .logo{
         position: absolute;
