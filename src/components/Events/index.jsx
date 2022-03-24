@@ -7,6 +7,9 @@ import Loader from "../Loader";
 import DayFilter from "./DayFilter";
 import Section from "./Section";
 import _ from "lodash";
+import RegisterAndPay from "../../utils/Register";
+import { useAuth } from "../../hooks/auth";
+
 
 const days_data = [
   ["All", null],
@@ -22,6 +25,7 @@ const days_data = [
 export default function Events() {
   const { request, loading, data } = useApi(eventApi.getAllEvents);
   const [filters, setFilters] = useState(days_data);
+  const user = useAuth();
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -29,6 +33,15 @@ export default function Events() {
         key === k ? { key, active: true } : { key, active: false }
       )
     );
+  };
+  const onClick = () => {
+    const event = {
+      _id : "623c349874264a5c12781c51",
+      name : "Spring Spree 22 Entry",
+      registration_fee : 2000,
+      poster : "https://backend.springspree22.in/static/ss22.jpeg"
+    }
+    RegisterAndPay({user,event});
   };
 
   useEffect(() => {
@@ -40,6 +53,20 @@ export default function Events() {
   const parsedEvents = _.groupBy(data, (el) => el.category ?? "Other");
   const categories = Object.keys(parsedEvents);
 
+  var PayEntryFee;
+
+  if(user.isAllowed === 0){
+    console.log(user);
+    PayEntryFee = <div>
+      <button className="btn" onClick={onClick}>
+        Pay Entry Fee
+      </button>
+    </div>
+  }
+  else{
+    PayEntryFee = <div></div>
+  }
+
   // console.log("origin", data);
   // console.log("parsed", parsedEvents);
 
@@ -47,6 +74,9 @@ export default function Events() {
     <>
       <Loader loading={loading} />
       <Container className="row g-0">
+
+        { PayEntryFee }
+        
         <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
           <h1>Events</h1>
