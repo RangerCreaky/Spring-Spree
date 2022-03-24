@@ -41,7 +41,6 @@ const LandingPage = () => {
         <div>
           <About />
         </div>
-        {/* <br></br> */}
         <div >
           <Footer />
           <div className="dummy" ref={footerRef}> </div>
@@ -55,7 +54,6 @@ const LandingPage = () => {
       </HomePage>
     </>
   );
-  // onClick={changeId}
 };
 
 export default LandingPage;
@@ -63,7 +61,6 @@ export default LandingPage;
 const HomePage = styled.section`
   height: 100vh;
 
-  /* overflow-y: auto; */
   > img {
     width: 50px;
     height: 50px;
@@ -81,72 +78,4 @@ const HomePage = styled.section`
   }
 `;
 
-// const LandingPageContainer = styled.div`
-//     overflow : hidden;
-//     > ul{
-//         list-style: none;
-//         display: block;
-//     }
-//     > #landing-view-scene{
-//         @media (max-width: 1200px) {
-//             background-size: cover;
-//             background-position: top;
-//         }
-//         overflow: hidden;
-//         height: 100vh;
-//         width: 100%;
-//         position: relative;
-//         background-image: url('./images/bg_2.png');
-//         background-position: center;
-//         background-repeat: no-repeat;
-//         background-size: 100% 100%;
 
-//         > .layer{
-//             position: absolute;
-//             width:100%;
-//             height: 100%;
-
-//             > img{
-//                 position: absolute;
-//                 width: 120%;
-//                 left: 50%;
-//                 transform: translateX(-50%);
-//             }
-//         }
-
-//         > #logo {
-//             z-index: 50;
-
-//         }
-
-//         #stars{
-//             z-index: 40;
-//             img{
-//                 bottom: 0;
-//                 width: 90%;
-//                 @media (max-width: 1200px) {
-//                     bottom: 110px;
-//                 }
-//             }
-//         }
-
-//         #planet{
-//             z-index: 20;
-//             img{
-//                 bottom: -90px;
-
-//                 @media (max-width: 1200px) {
-//                     width: 105%;
-//                     bottom: 130px;
-//                 }
-//             }
-//         }
-
-//         #scrolltrigger {
-//             position: absolute;
-//             left: 50%;
-//             transform: translateX(-50%);
-//             bottom: 15px;
-//         }
-//     }
-// `;

@@ -55,8 +55,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      National Institute of Technology Campus ,<br />
-                      fathimanagar, Telangana 506004
+                      National Institute of Technology Campus, Telangana 506004
                     </a>
                   </span>
                 </div>

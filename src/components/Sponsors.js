@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SponsorItem from './SponsorItem';
-import Footer from './Footer';
+import FooterContainer from './FooterContainer';
 
 // import sponsor images
 
@@ -32,7 +32,7 @@ const Sponsors = () => {
 
             </SponsorContainer>
 
-            <Footer />
+            <FooterContainer />
         </>
     )
 }

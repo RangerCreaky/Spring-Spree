@@ -7,7 +7,7 @@ const LandingPageContainer = () => {
             <img src="../../images/logo.png" alt='logo' className='logo'/>
             <div data-depth="0" id="event-title" className="layer">
                 <div>
-                    <h1 className="titlename">SpringSpree'22</h1>
+                    <h1 className="titlename">SpringSpree'<span className='year'>22</span></h1>
                     <p className="themename">Srishti</p>
                     <p className="event-dates">April 8-10, 2022</p>
                 </div>
@@ -48,7 +48,6 @@ const Container = styled.div`
     }
     > #event-title{
             > div{
-                
                 position: absolute;
                 top: 68%;
                 left: 50%;
@@ -84,6 +83,7 @@ const Container = styled.div`
                     padding: 0 50px;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
+                    font-family: cursive;
                 }
 
                 > .event-dates {
