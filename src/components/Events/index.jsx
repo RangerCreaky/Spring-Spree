@@ -25,7 +25,7 @@ const days_data = [
 export default function Events() {
   const { request, loading, data } = useApi(eventApi.getAllEvents);
   const [filters, setFilters] = useState(days_data);
-  const user = useAuth();
+  const {user} = useAuth();
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -34,14 +34,14 @@ export default function Events() {
       )
     );
   };
-  const onClick = () => {
+  const onClick = async () => {
     const event = {
       _id : "623c349874264a5c12781c51",
       name : "Spring Spree 22 Entry",
       registration_fee : 2000,
       poster : "https://backend.springspree22.in/static/ss22.jpeg"
     }
-    RegisterAndPay({user,event});
+    await RegisterAndPay({user,event});
   };
 
   useEffect(() => {
@@ -55,10 +55,13 @@ export default function Events() {
 
   var PayEntryFee;
 
-  if(user.isAllowed === 0){
-    console.log(user);
-    PayEntryFee = <div>
-      <button className="btn" onClick={onClick}>
+  if(user && user.isAllowed === 0){
+    // console.log(user);
+    PayEntryFee = <div className="container">
+      <button className="btn" onClick={async () => {
+        await onClick();
+        PayEntryFee = <div></div>
+      }}>
         Pay Entry Fee
       </button>
     </div>

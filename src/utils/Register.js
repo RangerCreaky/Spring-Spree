@@ -1,3 +1,5 @@
+// import { useAuth } from "../hooks/auth";
+
 const onPaymentSuccess = async (payment_details, event, user) => {
   // console.log("payment_id: ", payment_details);
   const data = {
@@ -31,10 +33,20 @@ const onPaymentSuccess = async (payment_details, event, user) => {
       console.error(e);
     });
     let txt = await success.json();
-    if(txt.status === "success"){
-      alert("Payment Successful");
-      window.location.href = `/events/`;
+    if(event._id === "623c349874264a5c12781c51"){
+        if(txt.status === "success"){
+            alert("Payment Successful, Login again to register events");
+            user["isAllowed"] = 1;
+            window.location.href = `/login/`;
+          }
     }
+    else{
+        if(txt.status === "success"){
+            alert("Payment Successful");
+            window.location.href = `/events/`;
+        }
+    }
+    
 };
 const createOrder = async (event) => {
 
