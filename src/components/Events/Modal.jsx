@@ -24,11 +24,9 @@ export default function Modal({ data, onSubmit, onClose, visible = false }) {
     start_date,
     end_date,
   } = data;
-
   console.log(dayjs(start_date));
-
   if (!visible) return null;
-
+  
   return (
     <Container>
       <BackDrop>

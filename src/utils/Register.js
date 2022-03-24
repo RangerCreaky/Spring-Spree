@@ -1,20 +1,11 @@
-// function loadScript() {
-//     const script = document.createElement("script");
-//     script.src = "https://checkout.razorpay.com/v1/checkout.js";
-//     document.body.appendChild(script);
-//     script.onload = () => {
-//         return true;
-//     };
-//     script.onerror = () => {
-//         return false;
-//     };
-
-// }
 const onPaymentSuccess = async (payment_details, event, user) => {
   // console.log("payment_id: ", payment_details);
   const data = {
     razorpay_payment_id: payment_details.razorpay_payment_id,
+    razorpay_order_id: payment_details.razorpay_order_id,
+    razorpay_signature: payment_details.razorpay_signature,
     event_id: event._id,
+    id: user._id || "62386af222d9e9c1b01d2457",
     name: user.name,
     email: user.email,
     mobile: user.mobile,
@@ -23,7 +14,7 @@ const onPaymentSuccess = async (payment_details, event, user) => {
   };
   // console.log(data);
   // store and verify the success feilds in server
-  await fetch("http://localhost:3000/payment/store/details", {
+  let success = await fetch("http://localhost:3000/payment/store/details", {
     // mode: 'no-cors',
     method: "POST",
     headers: {
@@ -31,16 +22,21 @@ const onPaymentSuccess = async (payment_details, event, user) => {
     },
     body: JSON.stringify(data),
   })
-    .then((o) => {
+    .then(async (o) => {
       // if the payment is stored and verified succesfully redirect to the event page
-      console.log(o);
+      return o;
+
     })
     .catch((e) => {
       console.error(e);
     });
+    let txt = await success.json();
+    if(txt.status === "success"){
+      alert("Payment Successful");
+      window.location.href = `/events/`;
+    }
 };
 const createOrder = async (event) => {
-  // give a post request at /payment/:event_id
 
   let myOrder = await fetch(`http://localhost:3000/payment/${event._id}`, {
     method: "POST",
@@ -68,14 +64,14 @@ const createCheckout = async (order, event, user) => {
     name: "NIT Warangal",
     description: "Test Transaction",
     image: event.poster,
-    order_id: order.id,
+    order_id: neworder.id,
     handler: (response) => {
       onPaymentSuccess(response, event, user);
     },
     prefill: {
-      name: user.name, //inserrt name of the user
-      email: user.email, //insert email of the user
-      contact: user.mobile, //insert contact number of the user
+      name: user.name || "Sarang Nagpal", //inserrt name of the user
+      email: user.email || "sarangnagpal38@gmail.com", //insert email of the user
+      contact: user.mobile || "9999900011", //insert contact number of the user
     },
     notes: {
       address: "NIT Warangal",
