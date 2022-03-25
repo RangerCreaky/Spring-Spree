@@ -1,27 +1,31 @@
-import Airtel from "../sponsors/airtel.png";
-import AndhraBank from "../sponsors/andhra-bank.png";
-import Birla from "../sponsors/birla.png";
-import Coke from "../sponsors/coke.png";
-import EA from "../sponsors/EA.png";
-import HCL from "../sponsors/HCL-Logo.png";
-import Hero from "../sponsors/hero.png";
-import Himalaya from "../sponsors/himalaya.png";
-import Hyundai from "../sponsors/hyundai.png";
-import Kingfisher from "../sponsors/kingfisher.png";
-import Nestle from "../sponsors/nestle.png";
-import OLA from "../sponsors/OLA.png";
-import Pepsi from "../sponsors/pepsi.png";
-import Puma from "../sponsors/pum.png";
-import RedBull from "../sponsors/reduBull.png";
-import SBI from "../sponsors/SBI.png";
-import Toyota from "../sponsors/toyota.png";
-import TVS from "../sponsors/TVS.png";
-import VizagSteel from "../sponsors/vinzag-steel.png";
-import Vodafone from "../sponsors/Vodafone.png";
-import Wipro from "../sponsors/wipro.png";
-import Zebronics from "../sponsors/zebronics.png";
+// PrevSponsors
+import Airtel from "../sponsors/prev/airtel.png";
+import AndhraBank from "../sponsors/prev/andhra-bank.png";
+import Birla from "../sponsors/prev/birla.png";
+import Coke from "../sponsors/prev/coke.png";
+import EA from "../sponsors/prev/EA.png";
+import HCL from "../sponsors/prev/HCL-Logo.png";
+import Hero from "../sponsors/prev/hero.png";
+import Himalaya from "../sponsors/prev/himalaya.png";
+import Hyundai from "../sponsors/prev/hyundai.png";
+import Kingfisher from "../sponsors/prev/kingfisher.png";
+import Nestle from "../sponsors/prev/nestle.png";
+import OLA from "../sponsors/prev/OLA.png";
+import Pepsi from "../sponsors/prev/pepsi.png";
+import Puma from "../sponsors/prev/pum.png";
+import RedBull from "../sponsors/prev/reduBull.png";
+import SBI from "../sponsors/prev/SBI.png";
+import Toyota from "../sponsors/prev/toyota.png";
+import TVS from "../sponsors/prev/TVS.png";
+import VizagSteel from "../sponsors/prev/vinzag-steel.png";
+import Vodafone from "../sponsors/prev/Vodafone.png";
+import Wipro from "../sponsors/prev/wipro.png";
+import Zebronics from "../sponsors/prev/zebronics.png";
 
-const sponsorsData = [
+// curr Sponsors
+import NITWAA from "../sponsors/curr/nitwaa.jpeg"
+
+const PrevSponsorsData = [
     {
         name: "Airtel",
         src: Airtel
@@ -112,4 +116,12 @@ const sponsorsData = [
     }
 ];
 
-export default sponsorsData;
+
+const currSponsorsData = [
+    {
+        name : "NITW Allumni Association",
+        src: NITWAA
+    }
+]
+
+export {PrevSponsorsData , currSponsorsData};

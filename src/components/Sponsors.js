@@ -6,16 +6,20 @@ import FooterContainer from './FooterContainer';
 
 // import sponsor images
 
-import sponsorsData from './sponsorsData';
+import {PrevSponsorsData , currSponsorsData} from './sponsorsData';
 
 const Sponsors = () => {
 
-    const renderSponsors = () => {
+    const renderSponsors = (sponsorsData , num) => {
+
+        // value is used just to center the sponsor card
+        // remove this then current sponsors have more values.
         return (
             sponsorsData.map((data, index) => {
                 const { name, src } = data;
                 return (
-                    <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
+                    // <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
+                    <div className={`col-lg-${num} col-md-6 col-sm-6 c`} key={index}>
                         <SponsorItem name={name} src={src} />
                     </div>
                 )
@@ -26,9 +30,13 @@ const Sponsors = () => {
     return (
         <>
             <SponsorContainer className='row'>
+                <h2 className='current sponsors'> Sponsors </h2>
+
+                {renderSponsors(currSponsorsData , 12)}
+
                 <h2> Previous Sponsors </h2>
 
-                {renderSponsors()}
+                {renderSponsors(PrevSponsorsData , 4)}
 
             </SponsorContainer>
 
@@ -55,6 +63,7 @@ const SponsorContainer = styled.div`
 
     --bs-gutter-x : 0 !important;
 
+
     padding: 100px 100px;
 
     @media (max-width : 1000px){
@@ -65,6 +74,11 @@ const SponsorContainer = styled.div`
         margin: 67px 0;
         padding: 50px 50px;
     }
+
+    .current{
+        text-transform: uppercase;
+    }
+
     h2{
         text-align: center;
         margin: 2rem 0;
