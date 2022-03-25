@@ -14,12 +14,13 @@ import allure6 from './images/allure/allure6.jpg';
 // import allure7 from './images/allure/allure7.jpg';
 
 import pro1 from './images/proshows/pro1.JPG';
-import pro2 from './images/proshows/pro2.JPG';
+import pro2 from './images/proshows/pro2.jpg';
 // import pro2 from './images/proshows/pro2.jpeg';
-import pro3 from './images/proshows/pro3.JPG';
-import pro4 from './images/proshows/pro4.JPG';
-import pro5 from './images/proshows/pro5.JPG';
-import pro6 from './images/proshows/pro7.JPG';
+import pro3 from './images/proshows/pro3.jpg';
+import pro4 from './images/proshows/pro4.jpg';
+import pro5 from './images/proshows/pro5.jpg';
+import pro6 from './images/proshows/pro6.jpg';
+import pro7 from './images/proshows/pro7.jpg';
 
 import social1 from './images/social/social1.jpg';
 import social2 from './images/social/social2.jpg';
@@ -52,7 +53,7 @@ import adventure6 from './images/adventures/adventures6.jpg';
 
 let inag = [inag1, inag2, inag3, inag4, inag5, inag6];
 let allure = [allure1, allure2, allure3, allure4, allure5, allure6];
-let pro = [pro1, pro2, pro3, pro4, pro5, pro6];
+let pro = [pro1, pro2, pro3, pro4, pro5, pro6, pro7];
 let social = [social1, social2, social3, social4, social5, social6,social7];
 let events = [event1, event2, event3, event4, event5, event6];
 let spotlights = [spotlight1, spotlight2, spotlight3, spotlight4, spotlight5, spotlight6];
