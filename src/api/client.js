@@ -2,7 +2,7 @@ import apisauce from "apisauce";
 // import storage from "auth/storage";
 
 const BASE_URL =
-  process.env.REACT_APP_BASE_URL || "https://backend.springspree22.in";
+  process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
 const client = apisauce.create({
   baseURL: BASE_URL,

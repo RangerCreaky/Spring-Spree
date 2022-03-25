@@ -2,13 +2,16 @@ import styled from "styled-components";
 import Image from "../Image";
 
 export default function Card({
-  image = "https://incident.nitk.ac.in/assets/img/Promenade.jpg",
+  image = "",
   title = "Promenade",
   subTitle = "Hip Hop Internationals South India Auditions",
   // tagline = "A coordination to cadence",
   date = "6 March",
   onClick,
 }) {
+  if(image === ""){
+    image = "https://backend.springspree22.in/static/ss22.jpeg";
+  }
   return (
     <Container>
       <div>

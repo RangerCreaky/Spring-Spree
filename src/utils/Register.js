@@ -1,3 +1,5 @@
+// import { useAuth } from "../hooks/auth";
+
 const onPaymentSuccess = async (payment_details, event, user) => {
   // console.log("payment_id: ", payment_details);
   const data = {
@@ -5,7 +7,7 @@ const onPaymentSuccess = async (payment_details, event, user) => {
     razorpay_order_id: payment_details.razorpay_order_id,
     razorpay_signature: payment_details.razorpay_signature,
     event_id: event._id,
-    id: user._id || "62386af222d9e9c1b01d2457",
+    id: user._id || "623c44b04c002888aa67d15f",
     name: user.name,
     email: user.email,
     mobile: user.mobile,
@@ -31,10 +33,20 @@ const onPaymentSuccess = async (payment_details, event, user) => {
       console.error(e);
     });
     let txt = await success.json();
-    if(txt.status === "success"){
-      alert("Payment Successful");
-      window.location.href = `/events/`;
+    if(event._id === "623c349874264a5c12781c51"){
+        if(txt.status === "success"){
+            alert("Payment Successful, Login again to register events");
+            user["isAllowed"] = 1;
+            window.location.href = `/login/`;
+          }
     }
+    else{
+        if(txt.status === "success"){
+            alert("Payment Successful");
+            window.location.href = `/events/`;
+        }
+    }
+    
 };
 const createOrder = async (event) => {
 
@@ -44,7 +56,7 @@ const createOrder = async (event) => {
     .then(async (o) => {
       let a = await o.text().then((ord, err) => {
         if (err) console.error(err);
-        console.log(ord);
+        // console.log(ord);
         return ord;
       });
       return a;
@@ -69,9 +81,9 @@ const createCheckout = async (order, event, user) => {
       onPaymentSuccess(response, event, user);
     },
     prefill: {
-      name: user.name || "Sarang Nagpal", //inserrt name of the user
-      email: user.email || "sarangnagpal38@gmail.com", //insert email of the user
-      contact: user.mobile || "9999900011", //insert contact number of the user
+      name: user.name || "Harsh Sonkusare", //inserrt name of the user
+      email: user.email || "harshsonkusare01@gmail.com", //insert email of the user
+      contact: user.mobile || "8087732133", //insert contact number of the user
     },
     notes: {
       address: "NIT Warangal",
