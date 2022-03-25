@@ -44,6 +44,23 @@ export default function Events() {
     await RegisterAndPay({user,event});
   };
 
+  const onSubmit = async () => {
+    await fetch("http://localhost:3000/sendMail", {
+      // mode: 'no-cors',
+      method: "GET",
+      headers: {
+        
+      }
+    })
+    .then((o) => {
+      console.log(o);
+      alert(o.message);
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+  };
+
   useEffect(() => {
     request();
 
@@ -57,7 +74,7 @@ export default function Events() {
 
   if(user && user.isAllowed === 0){
     // console.log(user);
-    PayEntryFee = <div className="container">
+    PayEntryFee = <div>
       <button className="btn" onClick={async () => {
         await onClick();
         PayEntryFee = <div></div>
@@ -70,6 +87,22 @@ export default function Events() {
     PayEntryFee = <div></div>
   }
 
+  var verifyEmail;
+
+  if(user && user.isVerified !== 0){
+    verifyEmail = <div>
+      <button className="btn" onClick={() => {
+        onSubmit();
+        PayEntryFee = <div></div>
+      }}>
+        Verify Email
+      </button>
+    </div>
+  }
+  else{
+    verifyEmail = <div></div>
+  }
+
   // console.log("origin", data);
   // console.log("parsed", parsedEvents);
 
@@ -79,6 +112,7 @@ export default function Events() {
       <Container className="row g-0">
 
         { PayEntryFee }
+        { verifyEmail }
         
         <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
