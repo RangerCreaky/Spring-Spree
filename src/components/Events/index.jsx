@@ -10,7 +10,6 @@ import _ from "lodash";
 import RegisterAndPay from "../../utils/Register";
 import { useAuth } from "../../hooks/auth";
 
-
 const days_data = [
   ["All", null],
   ["Day 1", "8"],
@@ -45,11 +44,14 @@ export default function Events() {
   };
 
   const onSubmit = async () => {
+    // const token = await storage.getData("token");
+    const token = "njbjj";
+    console.log(token);
     await fetch("http://localhost:3000/sendMail", {
       // mode: 'no-cors',
       method: "GET",
       headers: {
-        
+        "Authorization" : `Bearer ${token}`
       }
     })
     .then((o) => {
@@ -57,6 +59,7 @@ export default function Events() {
       alert(o.message);
     })
     .catch((e) => {
+      // console.log(e);
       console.error(e);
     });
   };
