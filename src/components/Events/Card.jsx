@@ -1,22 +1,26 @@
 import styled from "styled-components";
+import Image from "../Image";
 
 export default function Card({
-  image = "https://incident.nitk.ac.in/assets/img/Promenade.jpg",
+  image = "",
   title = "Promenade",
   subTitle = "Hip Hop Internationals South India Auditions",
-  tagline = "A coordination to cadence",
+  // tagline = "A coordination to cadence",
   date = "6 March",
   onClick,
 }) {
+  if(image === ""){
+    image = "https://backend.springspree22.in/static/ss22.jpeg";
+  }
   return (
     <Container>
       <div>
-        <img src={image} alt="poster" />
+        <Image src={image} alt="poster" />
       </div>
       <div className="content">
         <h1 className="title">{title}</h1>
         <h2 className="sub-title">{subTitle}</h2>
-        <p className="tagline">{tagline}</p>
+        {/* <p className="tagline">{tagline}</p> */}
       </div>
       <div className="footer">
         <div className="date">{date}</div>
@@ -94,5 +98,9 @@ const Container = styled.div`
 
   &:hover {
     transform: scale(1.01);
+  }
+
+  @media screen and (min-width: 700px) {
+    min-width: 330px;
   }
 `;

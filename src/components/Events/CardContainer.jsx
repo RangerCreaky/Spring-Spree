@@ -1,25 +1,43 @@
+import React from "react";
+
 import { useState } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import Modal from "./Modal";
+import registerAndPay from "../../utils/Register";
+import { useAuth } from "../../hooks/auth";
 
 export default function CardContainer({ events = [] }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const user = useAuth();
+
+  const handleSubmit = (event) => () => {
+    registerAndPay({ user, event });
+  };
 
   return (
     <>
-      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
       <Container>
-        {events.map(({ id, title, subTitle, image, tagline }) => (
-          <Card
-            key={id}
-            image={image}
-            title={title}
-            subTitle={subTitle}
-            tagline={tagline}
-            onClick={() => setModalVisible(true)}
-          />
-        ))}
+        {events.map((event) => {
+          const { _id, name, summary, poster } = event;
+          return (
+            <React.Fragment key={_id}>
+              <Card
+                image={poster}
+                title={name}
+                subTitle={summary}
+                // tagline={tagline}
+                onClick={() => setModalVisible(true)}
+              />
+              <Modal
+                visible={modalVisible}
+                onClose={() => setModalVisible(false)}
+                onSubmit={handleSubmit(event)}
+                data={event}
+              />
+            </React.Fragment>
+          );
+        })}
       </Container>
     </>
   );

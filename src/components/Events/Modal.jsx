@@ -1,20 +1,32 @@
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Header, BackDrop, Body, Container, Footer, Main } from "./Modal.style";
+import Image from "../Image";
+import dayjs from "dayjs";
 
-export default function Modal({
-  image = "https://incident.nitk.ac.in/assets/img/Promenade.jpg",
-  title = "Promenade",
-  subTitle = "Hip Hop Internationals South India Auditions",
-  time = "6th March, 9AM onwards",
-  venue = "Silver Jubilee Auditorium",
-  description = "Sure your squad can be the Kings of dance-offs? Incident presents Promenade in association with Hip Hop International India which is our flagship group-dance event on the 6th of March 2022. Suit up and dance your soles off to achieve hip-hop glory!",
-  onSubmit,
-  onClose,
-  visible = true,
-}) {
+export default function Modal({ data, onSubmit, onClose, visible = false }) {
+  const {
+    poster,
+    name,
+    summary,
+    time,
+    venue,
+    description,
+    event_manager,
+    registration_fee,
+    rounds,
+    prize_money,
+    no_of_prizes,
+    social_media,
+    structure,
+    rules,
+    judging_criteria,
+    start_date,
+    end_date,
+  } = data;
+  console.log(dayjs(start_date));
   if (!visible) return null;
-
+  
   return (
     <Container>
       <BackDrop>
@@ -23,12 +35,12 @@ export default function Modal({
             <AiOutlineCloseCircle onClick={onClose} className="close" />
           </Header>
           <Main>
-            <img src={image} alt="event-poster" />
+            <Image src={poster} alt="event-poster" />
 
             <div>
               <div className="main">
-                <h1 className="title">{title}</h1>
-                <h2 className="sub-title">{subTitle}</h2>
+                <h1 className="title">{name}</h1>
+                <h2 className="sub-title">{summary}</h2>
 
                 <p className="time">{time}</p>
                 <p className="venue">

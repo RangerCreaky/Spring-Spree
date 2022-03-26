@@ -1,40 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import eventApi from "../../api/events";
+import { useApi } from "../../hooks/api";
+import Loader from "../Loader";
 
 import DayFilter from "./DayFilter";
 import Section from "./Section";
+import _ from "lodash";
+import RegisterAndPay from "../../utils/Register";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
-const events = Array(10)
-  .fill(0)
-  .map((_, id) => ({
-    id,
-    image: "https://incident.nitk.ac.in/assets/img/Promenade.jpg",
-    title: "Promenade",
-    subTitle: "Hip Hop Internationals South India Auditions",
-    tagline: "A coordination to cadence",
-    venue: "Silver Jubilee Auditorium",
-    date: "6 March",
-    time: "6th March, 9AM onwards",
-    description:
-      "Sure your squad can be the Kings of dance-offs? Incident presents Promenade in association with Hip Hop International India which is our flagship group-dance event on the 6th of March 2022. Suit up and dance your soles off to achieve hip-hop glory!",
-  }));
-
-const initial_events_data = {
-  "Publicity and Relations": events,
-  "Event coordination and conduction": events,
-  Proshows: events,
-  "Treasury and pricing": events,
-  "Content and blogging": events,
-};
-
-const DAYS_DATA = ["All", "day 1", "day 2", "day 3"].map((e, i) => ({
-  key: e,
+const days_data = [
+  ["All", null],
+  ["Day 1", "8"],
+  ["Day 2", "9"],
+  ["Day 3", "10"],
+].map((el, i) => ({
+  key: el[0],
+  date: el[1],
   active: i === 0,
 }));
 
 export default function Events() {
-  const [events_data] = useState(initial_events_data);
-  const [filters, setFilters] = useState(DAYS_DATA);
+  const { request, loading, data } = useApi(eventApi.getAllEvents);
+  const [filters, setFilters] = useState(days_data);
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -43,26 +35,100 @@ export default function Events() {
       )
     );
   };
+  const onClick = async () => {
+    const event = {
+      _id: "623c349874264a5c12781c51",
+      name: "Spring Spree 22 Entry",
+      registration_fee: 2000,
+      poster: "https://backend.springspree22.in/static/ss22.jpeg",
+    };
+    await RegisterAndPay({ user, event });
+  };
+
+  const onSubmit = async () => {
+    navigate("/verifyMail");
+  };
+
+  useEffect(() => {
+    request();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const parsedEvents = _.groupBy(data, (el) => el.category ?? "Other");
+  const categories = Object.keys(parsedEvents);
+
+  var PayEntryFee;
+
+  if (user?.isAllowed === 0) {
+    // console.log(user);
+    PayEntryFee = (
+      <div>
+        <button
+          className="btn"
+          onClick={async () => {
+            await onClick();
+            PayEntryFee = <div></div>;
+          }}
+        >
+          Pay Entry Fee
+        </button>
+      </div>
+    );
+  } else {
+    PayEntryFee = <div></div>;
+  }
+
+  var verifyEmail;
+
+  if (user?.isVerified !== 0) {
+    verifyEmail = (
+      <div>
+        <button
+          className="btn"
+          onClick={() => {
+            onSubmit();
+            PayEntryFee = <div></div>;
+          }}
+        >
+          Verify Email
+        </button>
+      </div>
+    );
+  } else {
+    verifyEmail = <div></div>;
+  }
+
+  // console.log("origin", data);
+  // console.log("parsed", parsedEvents);
 
   return (
     <>
+      <Loader loading={loading} />
       <Container className="row g-0">
+        {PayEntryFee}
+        {verifyEmail}
+
         <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
           <h1>Events</h1>
           <DayFilter filters={filters} onChange={changeFilter} />
           <ul className="events">
-            {Object.keys(events_data).map((key) => (
-              <li key={key}>
-                <a href={`#${key}`}>{key}</a>
+            {categories.map((category) => (
+              <li key={category}>
+                <a href={`#${category}`}>{category}</a>
               </li>
             ))}
           </ul>
         </div>
         <div className="right col-12 col-lg-8">
           <div>
-            {Object.keys(events_data).map((title) => (
-              <Section key={title} title={title} events={events_data[title]} />
+            {categories.map((category) => (
+              <Section
+                key={category}
+                title={category}
+                events={parsedEvents[category]}
+              />
             ))}
           </div>
         </div>
@@ -138,3 +204,37 @@ const Container = styled.div`
     }
   }
 `;
+
+// const dummyEvent = [
+//   {
+//     _id: "62358c754dc1c6a40b8c01b9",
+//     name: "quiz",
+//     venue: "audi",
+//     summary: "new event",
+//     event_manager: "quiz club",
+//     registration_fee: 10,
+//     rounds: 2,
+//     prize_money: 2000,
+//     no_of_prizes: 2,
+//     social_media: "insta:nnn",
+//     description: "hello",
+//     structure: "12",
+//     rules: "no rules",
+//     judging_criteria: "cjksdbjk",
+//     poster: "localhost:3000/static/download.jpg.jpg",
+//     start_date: "2022-03-18T00:00:00.000Z",
+//     end_date: "2022-03-20T00:00:00.000Z",
+//     registered_users: [
+//       {
+//         _id: "62357d607895e039d663b56b",
+//         name: "harsh",
+//         email: "harsh@gmail.com",
+//         mobile: "2999395",
+//       },
+//     ],
+//     createdAt: "2022-03-19T07:55:33.863Z",
+//     updatedAt: "2022-03-19T08:02:24.956Z",
+//     category: "test",
+//     __v: 1,
+//   },
+// ];
