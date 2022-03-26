@@ -8,7 +8,7 @@ import LandingPageContainer from "./LandingPageContainer";
 
 import useScrollSnap from "react-use-scroll-snap";
 
-import useOnScreen from "../customHooks/useOnScreen";
+import useOnScreen from "../hooks/screen";
 
 const LandingPage = () => {
   // for snapping the page
@@ -21,9 +21,13 @@ const LandingPage = () => {
 
   const handleScroll = () => {
     if (isVisible) {
-      setTimeout(function () { window.scrollTo(0, 0); }, 100);
+      setTimeout(function () {
+        window.scrollTo(0, 0);
+      }, 100);
     } else {
-      setTimeout(function () { window.scrollBy(0, window.innerHeight); }, 100);
+      setTimeout(function () {
+        window.scrollBy(0, window.innerHeight);
+      }, 100);
     }
   };
 
@@ -41,9 +45,11 @@ const LandingPage = () => {
         <div>
           <About />
         </div>
-        <div >
+        <div>
           <Footer />
-          <div className="dummy" ref={footerRef}> </div>
+          <div className="dummy" ref={footerRef}>
+            {" "}
+          </div>
         </div>
 
         <img
@@ -71,11 +77,9 @@ const HomePage = styled.section`
     cursor: pointer;
   }
 
-  > div{
-    > .dummy{
-      height : 2px;
+  > div {
+    > .dummy {
+      height: 2px;
     }
   }
 `;
-
-

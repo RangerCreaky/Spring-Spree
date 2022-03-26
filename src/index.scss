@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "bootstrap/scss/functions";
@@ -15,23 +19,22 @@ $primary: #ffae43;
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
 @import "bootstrap/scss/root";
 
 // 4. Include any optional Bootstrap CSS as needed
-@import "bootstrap/scss/utilities";
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/forms";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
-@import "bootstrap/scss/alert";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/toasts";
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
+// Utilities
+@import "bootstrap/scss/utilities/api";
 
-@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 * {
   margin: 0;
   padding: 0;

@@ -2,7 +2,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Header, BackDrop, Body, Container, Footer, Main } from "./Modal.style";
 import Image from "../Image";
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 
 export default function Modal({ data, onSubmit, onClose, visible = false }) {
   const {
@@ -12,21 +12,21 @@ export default function Modal({ data, onSubmit, onClose, visible = false }) {
     time,
     venue,
     description,
-    event_manager,
-    registration_fee,
-    rounds,
-    prize_money,
-    no_of_prizes,
-    social_media,
-    structure,
-    rules,
-    judging_criteria,
-    start_date,
-    end_date,
+    // event_manager,
+    // registration_fee,
+    // rounds,
+    // prize_money,
+    // no_of_prizes,
+    // social_media,
+    // structure,
+    // rules,
+    // judging_criteria,
+    // start_date,
+    // end_date,
   } = data;
-  console.log(dayjs(start_date));
+  // console.log(dayjs(start_date));
   if (!visible) return null;
-  
+
   return (
     <Container>
       <BackDrop>

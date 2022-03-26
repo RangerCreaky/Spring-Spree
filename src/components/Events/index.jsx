@@ -7,9 +7,16 @@ import Loader from "../Loader";
 import DayFilter from "./DayFilter";
 import Section from "./Section";
 import _ from "lodash";
-import RegisterAndPay from "../../utils/Register";
 import { useAuth } from "../../hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ToastHolder from "../Toast/ToastHolder";
+import Toast from "../Toast";
+import { usePaymentGateway } from "../../hooks/payment";
+import paymentApi from "../../api/payment";
+import authApi from "../../api/auth";
+
+const entry_event_id = "623c349874264a5c12781c51";
+const entry_event_name = "Spring Spring 22 Entry";
 
 const days_data = [
   ["All", null],
@@ -23,10 +30,13 @@ const days_data = [
 }));
 
 export default function Events() {
-  const { request, loading, data } = useApi(eventApi.getAllEvents);
+  const allEvents = useApi(eventApi.getAllEvents);
   const [filters, setFilters] = useState(days_data);
-  const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
+  const paymentGateway = usePaymentGateway();
+  const createOrder = useApi(paymentApi.createOrder);
+  const paymentConfirm = useApi(paymentApi.paymentConfirm);
+  const userProfile = useApi(authApi.userProfile);
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -36,79 +46,97 @@ export default function Events() {
     );
   };
   const onClick = async () => {
-    const event = {
-      _id: "623c349874264a5c12781c51",
-      name: "Spring Spree 22 Entry",
-      registration_fee: 2000,
-      poster: "https://backend.springspree22.in/static/ss22.jpeg",
-    };
-    await RegisterAndPay({ user, event });
-  };
+    const order = await createOrder.request(entry_event_id);
+    if (!order.ok) {
+      alert("Something went wrong. Please try again later");
+      return;
+    }
+    const razorpay_request = await paymentGateway.makePayment({
+      payment_name: entry_event_name,
+      description: "Entry fees for Spring Spree 2022",
+      image: "https://backend.springspree22.in/static/ss22.jpeg",
+      amount: order.data.amount,
+      order_id: order.data.id,
+      name: user.name,
+      email: user.email,
+      contact: user.mobile,
+    });
 
-  const onSubmit = async () => {
-    navigate("/verifyMail");
+    if (!razorpay_request.done) {
+      alert(razorpay_request.message);
+      return;
+    }
+
+    const payment = await paymentConfirm.request({
+      ...razorpay_request.data,
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      mobile: user.mobile,
+      event_id: entry_event_id,
+      event: entry_event_name,
+      registration_fee: order.amount,
+    });
+
+    if (!payment.ok) {
+      alert(
+        "Payment verification failed. If money is deducted from your account please contact us."
+      );
+      return;
+    }
+
+    // update user profile with latest data
+    userProfile.request().then((res) => res.ok && updateUser(res.data));
+
+    alert("Payment Successfull");
   };
 
   useEffect(() => {
-    request();
+    allEvents.request();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const parsedEvents = _.groupBy(data, (el) => el.category ?? "Other");
+  const parsedEvents = _.groupBy(
+    allEvents.data,
+    (el) => el.category ?? "Other"
+  );
   const categories = Object.keys(parsedEvents);
-
-  var PayEntryFee;
-
-  if (user?.isAllowed === 0) {
-    // console.log(user);
-    PayEntryFee = (
-      <div>
-        <button
-          className="btn"
-          onClick={async () => {
-            await onClick();
-            PayEntryFee = <div></div>;
-          }}
-        >
-          Pay Entry Fee
-        </button>
-      </div>
-    );
-  } else {
-    PayEntryFee = <div></div>;
-  }
-
-  var verifyEmail;
-
-  if (user?.isVerified !== 0) {
-    verifyEmail = (
-      <div>
-        <button
-          className="btn"
-          onClick={() => {
-            onSubmit();
-            PayEntryFee = <div></div>;
-          }}
-        >
-          Verify Email
-        </button>
-      </div>
-    );
-  } else {
-    verifyEmail = <div></div>;
-  }
-
-  // console.log("origin", data);
-  // console.log("parsed", parsedEvents);
+  const loading =
+    allEvents.loading ||
+    createOrder.loading ||
+    paymentConfirm.loading ||
+    paymentGateway.loading;
 
   return (
     <>
       <Loader loading={loading} />
+      {user && (
+        <ToastHolder>
+          <Toast
+            show={user.isAllowed !== 1}
+            content={
+              <div>
+                Please pay your registration fees.
+                <br />
+                <button className="btn btn-primary" onClick={onClick}>
+                  Pay
+                </button>
+              </div>
+            }
+          />
+          <Toast
+            show={user.isVerified !== 0}
+            content={
+              <div>
+                Please verify your email.{" "}
+                <Link to="/verifyMail">click here to verify.</Link>
+              </div>
+            }
+          />
+        </ToastHolder>
+      )}
       <Container className="row g-0">
-        {PayEntryFee}
-        {verifyEmail}
-
         <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
           <h1>Events</h1>
@@ -204,37 +232,3 @@ const Container = styled.div`
     }
   }
 `;
-
-// const dummyEvent = [
-//   {
-//     _id: "62358c754dc1c6a40b8c01b9",
-//     name: "quiz",
-//     venue: "audi",
-//     summary: "new event",
-//     event_manager: "quiz club",
-//     registration_fee: 10,
-//     rounds: 2,
-//     prize_money: 2000,
-//     no_of_prizes: 2,
-//     social_media: "insta:nnn",
-//     description: "hello",
-//     structure: "12",
-//     rules: "no rules",
-//     judging_criteria: "cjksdbjk",
-//     poster: "localhost:3000/static/download.jpg.jpg",
-//     start_date: "2022-03-18T00:00:00.000Z",
-//     end_date: "2022-03-20T00:00:00.000Z",
-//     registered_users: [
-//       {
-//         _id: "62357d607895e039d663b56b",
-//         name: "harsh",
-//         email: "harsh@gmail.com",
-//         mobile: "2999395",
-//       },
-//     ],
-//     createdAt: "2022-03-19T07:55:33.863Z",
-//     updatedAt: "2022-03-19T08:02:24.956Z",
-//     category: "test",
-//     __v: 1,
-//   },
-// ];
