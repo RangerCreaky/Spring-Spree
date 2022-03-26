@@ -9,6 +9,7 @@ import Section from "./Section";
 import _ from "lodash";
 import RegisterAndPay from "../../utils/Register";
 import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 const days_data = [
   ["All", null],
@@ -24,7 +25,8 @@ const days_data = [
 export default function Events() {
   const { request, loading, data } = useApi(eventApi.getAllEvents);
   const [filters, setFilters] = useState(days_data);
-  const {user} = useAuth();
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -35,33 +37,16 @@ export default function Events() {
   };
   const onClick = async () => {
     const event = {
-      _id : "623c349874264a5c12781c51",
-      name : "Spring Spree 22 Entry",
-      registration_fee : 2000,
-      poster : "https://backend.springspree22.in/static/ss22.jpeg"
-    }
-    await RegisterAndPay({user,event});
+      _id: "623c349874264a5c12781c51",
+      name: "Spring Spree 22 Entry",
+      registration_fee: 2000,
+      poster: "https://backend.springspree22.in/static/ss22.jpeg",
+    };
+    await RegisterAndPay({ user, event });
   };
 
   const onSubmit = async () => {
-    // const token = await storage.getData("token");
-    const token = "njbjj";
-    console.log(token);
-    await fetch("http://localhost:3000/sendMail", {
-      // mode: 'no-cors',
-      method: "GET",
-      headers: {
-        "Authorization" : `Bearer ${token}`
-      }
-    })
-    .then((o) => {
-      console.log(o);
-      alert(o.message);
-    })
-    .catch((e) => {
-      // console.log(e);
-      console.error(e);
-    });
+    navigate("/verifyMail");
   };
 
   useEffect(() => {
@@ -75,35 +60,43 @@ export default function Events() {
 
   var PayEntryFee;
 
-  if(user && user.isAllowed === 0){
+  if (user?.isAllowed === 0) {
     // console.log(user);
-    PayEntryFee = <div>
-      <button className="btn" onClick={async () => {
-        await onClick();
-        PayEntryFee = <div></div>
-      }}>
-        Pay Entry Fee
-      </button>
-    </div>
-  }
-  else{
-    PayEntryFee = <div></div>
+    PayEntryFee = (
+      <div>
+        <button
+          className="btn"
+          onClick={async () => {
+            await onClick();
+            PayEntryFee = <div></div>;
+          }}
+        >
+          Pay Entry Fee
+        </button>
+      </div>
+    );
+  } else {
+    PayEntryFee = <div></div>;
   }
 
   var verifyEmail;
 
-  if(user && user.isVerified !== 0){
-    verifyEmail = <div>
-      <button className="btn" onClick={() => {
-        onSubmit();
-        PayEntryFee = <div></div>
-      }}>
-        Verify Email
-      </button>
-    </div>
-  }
-  else{
-    verifyEmail = <div></div>
+  if (user?.isVerified !== 0) {
+    verifyEmail = (
+      <div>
+        <button
+          className="btn"
+          onClick={() => {
+            onSubmit();
+            PayEntryFee = <div></div>;
+          }}
+        >
+          Verify Email
+        </button>
+      </div>
+    );
+  } else {
+    verifyEmail = <div></div>;
   }
 
   // console.log("origin", data);
@@ -113,10 +106,9 @@ export default function Events() {
     <>
       <Loader loading={loading} />
       <Container className="row g-0">
+        {PayEntryFee}
+        {verifyEmail}
 
-        { PayEntryFee }
-        { verifyEmail }
-        
         <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
           <h1>Events</h1>

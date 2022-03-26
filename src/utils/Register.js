@@ -16,7 +16,7 @@ const onPaymentSuccess = async (payment_details, event, user) => {
   };
   // console.log(data);
   // store and verify the success feilds in server
-  let success = await fetch("http://localhost:3000/payment/store/details", {
+  let success = await fetch("http://localhost:8000/payment/store/details", {
     // mode: 'no-cors',
     method: "POST",
     headers: {
@@ -27,30 +27,26 @@ const onPaymentSuccess = async (payment_details, event, user) => {
     .then(async (o) => {
       // if the payment is stored and verified succesfully redirect to the event page
       return o;
-
     })
     .catch((e) => {
       console.error(e);
     });
-    let txt = await success.json();
-    if(event._id === "623c349874264a5c12781c51"){
-        if(txt.status === "success"){
-            alert("Payment Successful, Login again to register events");
-            user["isAllowed"] = 1;
-            window.location.href = `/login/`;
-          }
+  let txt = await success.json();
+  if (event._id === "623c349874264a5c12781c51") {
+    if (txt.status === "success") {
+      alert("Payment Successful, Login again to register events");
+      user["isAllowed"] = 1;
+      window.location.href = `/login/`;
     }
-    else{
-        if(txt.status === "success"){
-            alert("Payment Successful");
-            window.location.href = `/events/`;
-        }
+  } else {
+    if (txt.status === "success") {
+      alert("Payment Successful");
+      window.location.href = `/events/`;
     }
-    
+  }
 };
 const createOrder = async (event) => {
-
-  let myOrder = await fetch(`http://localhost:3000/payment/${event._id}`, {
+  let myOrder = await fetch(`http://localhost:8000/payment/${event._id}`, {
     method: "POST",
   })
     .then(async (o) => {

@@ -10,6 +10,9 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { useEffect } from "react";
 import { useAuth } from "./hooks/auth";
+import VerifyEmail from "./components/VerifyEmail";
+import PasswordResetRequest from "./components/PasswordResetRequest";
+import PasswordReset from "./components/PasswordReset";
 
 const AppRoutes = () => {
   const { restore } = useAuth();
@@ -31,6 +34,13 @@ const AppRoutes = () => {
       <Route path="/faq" exact element={<FAQ />} />
       <Route path="/login" exact element={<Login />} />
       <Route path="/signup" exact element={<Signup />} />
+      <Route path="/verifyMail" exact element={<VerifyEmail />} />
+      <Route
+        path="/passwordResetRequest"
+        exact
+        element={<PasswordResetRequest />}
+      />
+      <Route path="/resetPassword/:id" exact element={<PasswordReset />} />
     </Routes>
   );
 };
