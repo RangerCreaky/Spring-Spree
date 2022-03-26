@@ -6,7 +6,6 @@ import { useAuth } from "../hooks/auth";
 
 import { useScrollTo } from "react-use-window-scroll";
 
-
 const Navbar = () => {
   const ulRef = useRef(null);
 
@@ -17,9 +16,9 @@ const Navbar = () => {
 
   const scrollTo = useScrollTo();
 
-  const handleClick = ()=>{
+  const handleClick = () => {
     scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }
+  };
 
   return (
     <>
@@ -29,9 +28,9 @@ const Navbar = () => {
             <BrandLink to="/">SpringSpree'22</BrandLink>
           </h3>
           <ul className="nav-links">
-            {/* <li>
+            <li>
               <StyledLink to="/events">Events</StyledLink>
-            </li> */}
+            </li>
             <li>
               <StyledLink to="/gallery">Gallery</StyledLink>
             </li>
@@ -62,7 +61,9 @@ const Navbar = () => {
         <NavbarSmallNav className="Hello">
           {/*  */}
           <h3>
-            <Link to="/" className="brand-name">SpringSpree'22</Link>
+            <Link to="/" className="brand-name">
+              SpringSpree'22
+            </Link>
           </h3>
           <button id="toggle-navbar" onClick={toggleNavbar}>
             <div className="hamburger" id="hamburger">
@@ -78,11 +79,11 @@ const Navbar = () => {
           id="mobile-nav-links"
           onClick={toggleNavbar}
         >
-          {/* <li>
+          <li>
             <StyledLink to="/events" style={{ textDecoration: "none" }}>
               Events
             </StyledLink>
-          </li> */}
+          </li>
           <li>
             <StyledLink to="/gallery">Gallery</StyledLink>
           </li>
@@ -96,18 +97,18 @@ const Navbar = () => {
             <StyledLink to="/contacts">Contact Us</StyledLink>
           </li>
           {user ? (
+            <li>
+              <button onClick={logout} className="btn btn-primary">
+                Logout
+              </button>
+            </li>
+          ) : (
+            <>
               <li>
-                <button onClick={logout} className="btn btn-primary">
-                  Logout
-                </button>
+                <StyledLink to="/login">Login</StyledLink>
               </li>
-            ) : (
-              <>
-                <li>
-                  <StyledLink to="/login">Login</StyledLink>
-                </li>
-              </>
-            )}
+            </>
+          )}
         </SmallNavLinks>
       </NavbarContainer>
     </>
@@ -235,10 +236,9 @@ const NavbarSmallNav = styled.div`
       transition: all 0.3s ease-in-out;
     }
 
-      .brand-name{
-        font-family: "Steinfeld";
-      }
-
+    .brand-name {
+      font-family: "Steinfeld";
+    }
   }
 
   @media (max-width: 860px) {
