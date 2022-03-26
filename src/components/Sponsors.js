@@ -16,11 +16,11 @@ const Sponsors = () => {
         // remove this then current sponsors have more values.
         return (
             sponsorsData.map((data, index) => {
-                const { name, src } = data;
+                const { name, src , title} = data;
                 return (
                     // <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
                     <div className={`col-lg-${num} col-md-6 col-sm-6 c`} key={index}>
-                        <SponsorItem name={name} src={src} />
+                        <SponsorItem name={name} src={src} title={title}/>
                     </div>
                 )
             })
@@ -63,6 +63,9 @@ const SponsorContainer = styled.div`
 
     --bs-gutter-x : 0 !important;
 
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+    /* font-size: larger; */
 
     padding: 100px 100px;
 
@@ -82,6 +85,7 @@ const SponsorContainer = styled.div`
     h2{
         text-align: center;
         margin: 2rem 0;
+        font-weight: 900;
     }
 
     > .c{

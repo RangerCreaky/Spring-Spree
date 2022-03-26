@@ -14,13 +14,13 @@ import allure6 from './images/allure/allure6.jpg';
 // import allure7 from './images/allure/allure7.jpg';
 
 import pro1 from './images/proshows/pro1.JPG';
-import pro2 from './images/proshows/pro2.jpg';
+import pro2 from './images/proshows/pro2.JPG';
 // import pro2 from './images/proshows/pro2.jpeg';
-import pro3 from './images/proshows/pro3.jpg';
-import pro4 from './images/proshows/pro4.jpg';
-import pro5 from './images/proshows/pro5.jpg';
+import pro3 from './images/proshows/pro3.JPG';
+import pro4 from './images/proshows/pro4.JPG';
+import pro5 from './images/proshows/pro5.JPG';
 import pro6 from './images/proshows/pro6.jpg';
-import pro7 from './images/proshows/pro7.jpg';
+import pro7 from './images/proshows/pro7.JPG';
 
 import social1 from './images/social/social1.jpg';
 import social2 from './images/social/social2.jpg';

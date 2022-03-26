@@ -127,7 +127,9 @@ const FooterContainer = styled.footer`
   position: relative;
   color: #d9d9d9;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bolder;
+  font-size: larger;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

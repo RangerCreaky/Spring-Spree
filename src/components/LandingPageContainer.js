@@ -91,7 +91,9 @@ const Container = styled.div`
                     font-weight: 500;
                     padding: 0 50px;
                     color : white;
-                    font-family: 'Poppins', sans-serif;
+                    font-family: 'Source Sans Pro', sans-serif;
+                    font-weight: 800;
+                    font-size: larger;
                     font-size: 1.5rem;
                 }
             }

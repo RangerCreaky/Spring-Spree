@@ -53,7 +53,9 @@ const AboutInnerContainer = styled.div`
 
 const AboutContent = styled.div`
     color: white;
-    font-family: 'Poppins';
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+    font-size: larger;
     max-width: 50ch;
     position : relative;
     z-index : 100;

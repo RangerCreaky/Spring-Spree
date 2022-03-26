@@ -119,8 +119,9 @@ const PrevSponsorsData = [
 
 const currSponsorsData = [
     {
-        name : "NITW Allumni Association",
-        src: NITWAA
+        name : "NITW Alumni Association",
+        src: NITWAA,
+        title : "Alumni partner"
     }
 ]
 

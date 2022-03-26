@@ -92,7 +92,9 @@ const Text = styled.div`
   color: white;
   width: 45%;
   font-size: 1.2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 800;
+  font-size: larger;
   /* font-family: 'Steinfeld'; */
 
   text-align: center;

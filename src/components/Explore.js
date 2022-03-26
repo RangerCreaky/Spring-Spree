@@ -59,7 +59,6 @@ const ExploreContainer = styled.div`
 const Text = styled.div`
     color : white;
     width : 650px;
-    font-family: 'Poppins' , sans-serif;
     text-align: center;
 
     display: flex;
@@ -69,8 +68,10 @@ const Text = styled.div`
     height: 80%;
 
     margin-top : 70px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 800;
+    font-size: larger;
+
 
     .questions{
         color: orange;

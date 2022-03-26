@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SponsorItem = ({ name, src }) => {
+const SponsorItem = ({ name, src , title }) => {
     return (
         <>
             <SponsorItemContainer className='sponsor-card' data-aos="fade-up" data-aos-offset="200" data-aos-duration="1500">
@@ -13,7 +13,7 @@ const SponsorItem = ({ name, src }) => {
                     <hr></hr>
                     <div className='container-fluid'>
                         <h4> <strong> {name} </strong> </h4>
-                        {/* <p> <strong> title Sponsor </strong> </p>    */}
+                        <p> <strong> {title ? title : ""} </strong> </p>   
                     </div>
                 </div>
             </SponsorItemContainer>
@@ -30,6 +30,9 @@ const SponsorItemContainer = styled.div`
     margin: 1rem;
     padding: 0;
     border-radius: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* font-weight: 800; */
+    /* font-size: larger; */
     
     @media (max-width : 600px) {
         /* transform: scale(1.3rem); */
