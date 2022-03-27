@@ -23,8 +23,8 @@ import springspree22_67 from "../sponsors/prev/springspree22_67.png";
 import springspree22_68 from "../sponsors/prev/springspree22_68.png";
 
 // curr Sponsors
-import springspree22_69 from "../sponsors/curr/springspree22_69.jpeg"
-import springspree22_70 from "../sponsors/curr/springspree22_70.jpg"
+import springspree22_78 from "../sponsors/curr/springspree22_78.jpeg"
+import springspree22_79 from "../sponsors/curr/springspree22_79.jpg"
 
 const PrevSponsorsData = [
     {
@@ -143,14 +143,14 @@ const PrevSponsorsData = [
 const currSponsorsData = [
     {
         name : "NITW Alumni Association",
-        src: springspree22_69,
-        imgName : "springspree22_69",
+        src: springspree22_78,
+        imgName : "springspree22_78",
         title : "Alumni partner"
     },
     {
         name : "Sri Raksha Constructions",
-        src: springspree22_70,
-        imgName : "springspree22_70",
+        src: springspree22_79,
+        imgName : "springspree22_79",
     }
 ]
 

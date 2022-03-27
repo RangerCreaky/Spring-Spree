@@ -17,7 +17,7 @@ spotlights : springspree22_41 - springspree22_46
 previous sponsors : springspree22_47 - springspree22_68
 
 ## Current Sponsors
-current sponsors : springgspree22_69 - ongoing
+current sponsors : springgspree22_78 - ongoing
 
 ## Static images
 background : springspree22_69
