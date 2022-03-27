@@ -10,7 +10,6 @@ const Shristi = () => {
       <Container id="1">
         {/* <VideoBackground /> */}
         <Text data-aos="fade-left" data-aos-duration="1500">
-          <h1> Srishti </h1>
           <div>
             <p className="orange cursive">
               {" "}

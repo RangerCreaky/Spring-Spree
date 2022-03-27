@@ -12,8 +12,8 @@ const Footer = () => {
           <LeftBox>
             <div className="content">
               <img
-                src="/images/springspree22_74.png"
-                alt="springspree22_74"
+                src="/images/springspree22_80.jpg"
+                alt="springspree22_78"
                 className="footer-logo"
               />
             </div>
