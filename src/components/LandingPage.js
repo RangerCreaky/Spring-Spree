@@ -54,8 +54,8 @@ const LandingPage = () => {
 
         <img
           onClick={handleScroll}
-          src={`../../images/${isVisible ? "upper" : "down"}-arrow.svg`}
-          alt=""
+          src={`../../images/${isVisible ? "springspree22_73.svg" : "springspree22_72.svg"}`}
+          alt={`${isVisible ? "springspree22_73" : "springspree22_734"}`}
         />
       </HomePage>
     </>

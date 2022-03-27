@@ -14,7 +14,7 @@ const Explore = () => {
                 <p className='tag'>This is Srishti - the creation of the universe, earth etc </p>
                 <p className='bottom text'>For a long time, there were only cold screens and fever dreams. The months whizzed by in a haze of loneliness and uncertainty. Stuck in an eternity of indefinite days. People learnt new things over the past 2 years, got habituated to new habits and there was a shift in our culture over time. Now, two years later we come back to the same place. From where we left, is where we begin again. We present Srishti,the creative essence of the universe.</p>
             </Text>
-            <img src='../../images/logo-dark.png' alt='' />
+            <img src='../../images/springspree22_75.png' alt='' />
         </ExploreContainer>
     );
 }
@@ -23,7 +23,7 @@ export default Explore;
 
 const ExploreContainer = styled.div`
     height : 100vh;
-    background-image : url("../../images/dark-bg.jpg");
+    background-image : url("../../images/springspree22_70.jpg");
     background-repeat : no-repeat;
     background-position : center;
     background-size: cover;

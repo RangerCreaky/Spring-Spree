@@ -38,7 +38,7 @@ const Shristi = () => {
             </StyledLink>
           </div>
         </Text>
-        <img src="../../images/logo-dark.png" alt="shrishti logo" />
+        <img src="../../images/springspree22_75.png" alt="springspree22_75" />
       </Container>
     </>
   );
@@ -57,7 +57,7 @@ const Container = styled.div`
   overflow: hidden;
   /* change this later */
   z-index: 1000;
-  background: url("../../images/new-bg.jpeg");
+  background: url("../../images/springspree22_77.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
