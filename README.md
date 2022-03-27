@@ -19,6 +19,20 @@ previous sponsors : springspree22_47 - springspree22_68
 ## Current Sponsors
 current sponsors : springgspree22_69 - ongoing
 
+## Static images
+background : springspree22_69
+explore dark bg : springspree22_70
+landing page desktop : springspree22_71
+downarrow svg button : springspree22_72
+upper arrow svg : springspree22_73
+logo : springspree22_74
+dark logo : springspree22_75
+white logo : springspree22_76
+
+gradient background : springspree22_77
+
+
+
 
 
 

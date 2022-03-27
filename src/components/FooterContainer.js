@@ -5,7 +5,7 @@ const FooterContainer = ()=>{
     return(
         <Container>
             <div className='image'>
-                <img src='../../images/logo.png' alt='' />
+                <img src='../../images/springspree22_74.png' alt='' />
             </div>
             <div className='content'>
                <h1 className='orange'> Contact US </h1> 

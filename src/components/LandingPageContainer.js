@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const LandingPageContainer = () => {
     return (
         <Container>
-            <img src="../../images/logo.png" alt='logo' className='logo'/>
+            <img src="../../images/springspree22_74.png" alt='springspree22_74' className='logo'/>
             <div data-depth="0" id="event-title" className="layer">
                 <div>
                     <h1 className="titlename">SpringSpree'<span className='year'>22</span></h1>
@@ -25,7 +25,7 @@ const Container = styled.div`
     position : relative;
     overflow: hidden;
 
-    background: url("../../images/Desktop.png");
+    background: url("../../images/springspree22_71.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
