@@ -15,8 +15,8 @@ export function useAuth() {
   };
 
   const login = async ({ token, user }) => {
-    storage.set("token", token);
-    storage.set("user", user);
+    await storage.set("token", token);
+    await storage.set("user", user);
     setUser(user);
   };
 

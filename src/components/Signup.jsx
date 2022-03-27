@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import { useAuth } from "../hooks/auth";
 
 const signupSchema = Yup.object().shape({
   name: Yup.string().required().max(255),
@@ -33,13 +34,19 @@ const initialValues = {
 
 export default function Signup() {
   const { request, loading } = useApi(authApi.signup);
+  const resendMail = useApi(authApi.resendVerifyMail);
   const navigate = useNavigate();
   const { state } = useLocation();
+  const auth = useAuth();
 
   const handleSubmit = async (value) => {
     const res = await request(value);
     if (res.ok) {
-      navigate("/login", { replace: true, state });
+      await auth.login(res.data);
+      resendMail.request();
+      if (res.data.user.isVerified !== 0)
+        navigate("/verifyMail", { replace: true, state });
+      else navigate(state?.from || "/", { replace: true });
     } else {
       window.alert("Use with this email or phone already exists.");
     }

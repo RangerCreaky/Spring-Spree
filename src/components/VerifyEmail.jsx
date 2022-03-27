@@ -77,7 +77,7 @@ export default function VerifyEmail() {
                 <p>
                   Not recived an OTP yet?{" "}
                   <button type="button" className="btn" onClick={handleResend}>
-                    Resent OTP
+                    Resend OTP
                   </button>
                 </p>
               </div>
