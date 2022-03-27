@@ -1,118 +1,141 @@
 // PrevSponsors
-import Airtel from "../sponsors/prev/airtel.png";
-import AndhraBank from "../sponsors/prev/andhra-bank.png";
-import Birla from "../sponsors/prev/birla.png";
-import Coke from "../sponsors/prev/coke.png";
-import EA from "../sponsors/prev/EA.png";
-import HCL from "../sponsors/prev/HCL-Logo.png";
-import Hero from "../sponsors/prev/hero.png";
-import Himalaya from "../sponsors/prev/himalaya.png";
-import Hyundai from "../sponsors/prev/hyundai.png";
-import Kingfisher from "../sponsors/prev/kingfisher.png";
-import Nestle from "../sponsors/prev/nestle.png";
-import OLA from "../sponsors/prev/OLA.png";
-import Pepsi from "../sponsors/prev/pepsi.png";
-import Puma from "../sponsors/prev/pum.png";
-import RedBull from "../sponsors/prev/reduBull.png";
-import SBI from "../sponsors/prev/SBI.png";
-import Toyota from "../sponsors/prev/toyota.png";
-import TVS from "../sponsors/prev/TVS.png";
-import VizagSteel from "../sponsors/prev/vinzag-steel.png";
-import Vodafone from "../sponsors/prev/Vodafone.png";
-import Wipro from "../sponsors/prev/wipro.png";
-import Zebronics from "../sponsors/prev/zebronics.png";
+import springspree22_47 from "../sponsors/prev/springspree22_47.png";
+import springspree22_48 from "../sponsors/prev/springspree22_48.png";
+import springspree22_49 from "../sponsors/prev/springspree22_49.png";
+import springspree22_50 from "../sponsors/prev/springspree22_50.png";
+import springspree22_51 from "../sponsors/prev/springspree22_51.png";
+import springspree22_52 from "../sponsors/prev/springspree22_52.png";
+import springspree22_53 from "../sponsors/prev/springspree22_53.png";
+import springspree22_54 from "../sponsors/prev/springspree22_54.png";
+import springspree22_55 from "../sponsors/prev/springspree22_55.png";
+import springspree22_56 from "../sponsors/prev/springspree22_56.png";
+import springspree22_57 from "../sponsors/prev/springspree22_57.png";
+import springspree22_58 from "../sponsors/prev/springspree22_58.png";
+import springspree22_59 from "../sponsors/prev/springspree22_59.png";
+import springspree22_60 from "../sponsors/prev/springspree22_60.png";
+import springspree22_61 from "../sponsors/prev/springspree22_61.png";
+import springspree22_62 from "../sponsors/prev/springspree22_62.png";
+import springspree22_63 from "../sponsors/prev/springspree22_63.png";
+import springspree22_64 from "../sponsors/prev/springspree22_64.png";
+import springspree22_65 from "../sponsors/prev/springspree22_65.png";
+import springspree22_66 from "../sponsors/prev/springspree22_66.png";
+import springspree22_67 from "../sponsors/prev/springspree22_67.png";
+import springspree22_68 from "../sponsors/prev/springspree22_68.png";
 
 // curr Sponsors
-import NITWAA from "../sponsors/curr/nitwaa.jpeg"
+import springspree22_69 from "../sponsors/curr/springspree22_69.jpeg"
+import springspree22_70 from "../sponsors/curr/springspree22_70.jpg"
 
 const PrevSponsorsData = [
     {
         name: "Airtel",
-        src: Airtel
+        src: springspree22_47,
+        imgName : "springspree22_47"
     },
     {
         name: "AndhraBank",
-        src: AndhraBank
+        src: springspree22_48,
+        imgName : "springspree22_48"
     },
     {
         name: "Birla",
-        src: Birla
+        src: springspree22_49,
+        imgName : "springspree22_49"
     },
     {
         name: "Coke",
-        src: Coke
+        src: springspree22_50,
+        imgName : "springspree22_50"
     },
     {
         name: "EA",
-        src: EA
+        src: springspree22_51,
+        imgName : "springspree22_51"
     },
     {
         name: "HCL",
-        src: HCL
+        src: springspree22_52,
+        imgName : "springspree22_52"
     },
     {
         name: "Hero",
-        src: Hero
+        src: springspree22_53,
+        imgName : "springspree22_53"
     },
     {
         name: "Himalaya",
-        src: Himalaya
-    },
-    {
-        name: "Kingfisher",
-        src: Kingfisher
+        src: springspree22_54,
+        imgName : "springspree22_54"
     },
     {
         name: "Hyundai",
-        src: Hyundai
+        src: springspree22_55,
+        imgName : "springspree22_55"
+    },
+    {
+        name: "Kingfisher",
+        src: springspree22_56,
+        imgName : "springspree22_56"
     },
     {
         name: "Nestle",
-        src: Nestle
+        src: springspree22_57,
+        imgName : "springspree22_57"
     },
     {
         name: "OLA",
-        src: OLA
+        src: springspree22_58,
+        imgName : "springspree22_58"
     },
     {
         name: "Pepsi",
-        src: Pepsi
+        src: springspree22_59,
+        imgName : "springspree22_59"
     },
     {
         name: "Puma",
-        src: Puma
+        src: springspree22_60,
+        imgName : "springspree22_60"
     },
     {
         name: "RedBull",
-        src: RedBull
+        src: springspree22_61,
+        imgName : "springspree22_61"
     },
     {
         name: "SBI",
-        src: SBI
+        src: springspree22_62,
+        imgName : "springspree22_62"
     },
     {
         name: "Toyota",
-        src: Toyota
+        src: springspree22_63,
+        imgName : "springspree22_63"
     },
     {
         name: "TVS",
-        src: TVS
+        src: springspree22_64,
+        imgName : "springspree22_64"
     },
     {
         name: "VizagSteel",
-        src: VizagSteel
+        src: springspree22_65,
+        imgName : "springspree22_65"
     },
     {
         name: "Vodafone",
-        src: Vodafone
+        src: springspree22_66,
+        imgName : "springspree22_66"
     },
     {
         name: "Wipro",
-        src: Wipro
+        src: springspree22_67,
+        imgName : "springspree22_67"
     },
     {
         name: "Zebronics",
-        src: Zebronics
+        src: springspree22_68,
+        imgName : "springspree22_68"
     }
 ];
 
@@ -120,8 +143,14 @@ const PrevSponsorsData = [
 const currSponsorsData = [
     {
         name : "NITW Alumni Association",
-        src: NITWAA,
+        src: springspree22_69,
+        imgName : "springspree22_69",
         title : "Alumni partner"
+    },
+    {
+        name : "Sri Raksha Constructions",
+        src: springspree22_70,
+        imgName : "springspree22_70",
     }
 ]
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SponsorItem = ({ name, src , title }) => {
+const SponsorItem = ({ name, src , alt , title }) => {
     return (
         <>
             <SponsorItemContainer className='sponsor-card' data-aos="fade-up" data-aos-offset="200" data-aos-duration="1500">
                 <div className='image-container'>
-                    <img src={src} alt="" />
+                    <img src={src} alt={alt} />
 
                 </div>
                 <div className='text-container'>

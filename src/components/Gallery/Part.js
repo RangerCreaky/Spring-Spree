@@ -10,11 +10,11 @@ const Part=({arr , name , ide})=>{
     const renderImages = ()=>{
         return (
             arr.map((img , index)=>{
- 
+                const {image , name} = img;
                 return(
                     <div key={index}>
                         <img className={`image ${c} index${index}`}
-                         src={img} alt={name}/>
+                         src={image} alt={name}/>
                     </div>
                 )
             })

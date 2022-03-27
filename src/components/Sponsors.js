@@ -16,11 +16,11 @@ const Sponsors = () => {
         // remove this then current sponsors have more values.
         return (
             sponsorsData.map((data, index) => {
-                const { name, src , title} = data;
+                const { name, src, imgName , title} = data;
                 return (
                     // <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
                     <div className={`col-lg-${num} col-md-6 col-sm-6 c`} key={index}>
-                        <SponsorItem name={name} src={src} title={title}/>
+                        <SponsorItem alt={imgName} name={name} src={src} title={title}/>
                     </div>
                 )
             })
@@ -32,7 +32,7 @@ const Sponsors = () => {
             <SponsorContainer className='row'>
                 <h2 className='current sponsors'> Sponsors </h2>
 
-                {renderSponsors(currSponsorsData , 12)}
+                {renderSponsors(currSponsorsData , 6)}
 
                 <h2> Previous Sponsors </h2>
 

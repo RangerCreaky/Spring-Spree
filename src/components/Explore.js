@@ -5,7 +5,7 @@ const Explore = () => {
     return (
         <ExploreContainer>
             <Text>
-                <h2 className='heading'> Srishti </h2>
+                {/* <h2 className='heading'> Srishti </h2> */}
                 <p className='top text'>The Universe is everything we can touch, feel, sense, measure or detect. Thinking of our world today,makes wonder about tomorrow,a year,a decade or a century later.</p>
                 <p className='questions'>Will the world remains same?
                     Will humans be the same?

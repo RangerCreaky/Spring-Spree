@@ -241,6 +241,7 @@ const RightBox = styled.div`
 
       > a {
         padding: 0 2px;
+        /* margin-left: 10px; */
 
         > span {
           height: 40px;
