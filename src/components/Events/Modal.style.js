@@ -10,11 +10,13 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 100000;
+  height: 100%;
+  width: 100vw;
 `;
 
 export const BackDrop = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: auto;
   background-color: #00000012;
   backdrop-filter: blur(5px);
@@ -54,15 +56,6 @@ export const Header = styled.div`
 export const Main = styled.div`
   padding: 20px 0;
 
-  .main {
-    text-align: center;
-  }
-
-  .basic {
-    margin: 0 2rem;
-    max-width: 80%;
-  }
-
   img {
     margin: auto;
     display: block;
@@ -80,19 +73,17 @@ export const Main = styled.div`
   .title {
     margin-top: 1.5rem;
     font-size: 3.5rem;
+    text-align: center;
   }
 
   .sub-title {
     font-size: 1.8rem;
+    text-align: center;
   }
 
-  .time {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-  }
-
-  .venue {
-    font-size: 1.2rem;
+  .time-venue {
+    padding: 0 1rem;
+    text-align: center;
   }
 
   .horizontal {
@@ -109,6 +100,10 @@ export const Main = styled.div`
     max-width: 80%;
     margin-top: 2rem;
 
+    .basic {
+      margin: 1rem 0;
+    }
+
     .description {
     }
 
@@ -117,7 +112,7 @@ export const Main = styled.div`
 
       ul {
         margin-top: 0.5rem;
-        list-style: decimal;
+        list-style: disc;
       }
     }
 

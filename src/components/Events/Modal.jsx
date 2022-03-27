@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Header, BackDrop, Body, Container, Footer, Main } from "./Modal.style";
@@ -6,6 +8,7 @@ import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
+import dayjs from "dayjs";
 // import dayjs from "dayjs";
 
 export default function Modal({ event, onClose, visible = false }) {
@@ -13,25 +16,24 @@ export default function Modal({ event, onClose, visible = false }) {
     poster,
     name,
     summary,
-    time,
     venue,
     description,
-    // event_manager,
-    // registration_fee,
-    // rounds,
-    // prize_money,
-    // no_of_prizes,
-    // social_media,
-    // structure,
-    // rules,
-    // judging_criteria,
-    // start_date,
-    // end_date,
+    event_manager,
+    registration_fee,
+    rounds,
+    prize_money,
+    no_of_prizes,
+    social_media,
+    structure,
+    rules,
+    judging_criteria,
+    start_date,
+    end_date,
+    registered_users = [],
   } = event;
   const { user } = useAuth();
   const navigate = useNavigate();
   const eventPayment = useEventPayment();
-  // console.log(dayjs(start_date));
 
   const handleRegister = async () => {
     if (!user) {
@@ -44,6 +46,8 @@ export default function Modal({ event, onClose, visible = false }) {
     }
   };
 
+  const registered = !!registered_users.find((u) => u._id === user?._id);
+
   if (!visible) return null;
   return (
     <Container>
@@ -55,93 +59,123 @@ export default function Modal({ event, onClose, visible = false }) {
           </Header>
           <Main>
             <Image src={poster} alt="event-poster" />
-
             <div>
               <div className="main">
                 <h1 className="title">{name}</h1>
                 <h2 className="sub-title">{summary}</h2>
 
-                <p className="time">{time}</p>
-                <p className="venue">
-                  <FaMapMarkerAlt /> {venue}
-                </p>
-              </div>
-
-              <hr />
-
-              <div className="basic">
-                <div className="row g-0">
-                  <div className="col-md-6 col-12">
-                    <h3>Price: Rs.100</h3>
+                <div className="d-md-flex justify-content-between align-items-center time-venue">
+                  <div className="time">
+                    <div>
+                      Start:{" "}
+                      {start_date &&
+                        dayjs(start_date).format("ddd, MMM D, YYYY h:mm A")}
+                    </div>
+                    <div>
+                      End:{" "}
+                      {end_date &&
+                        dayjs(end_date).format("ddd, MMM D, YYYY h:mm A")}
+                    </div>
                   </div>
-                  <div className="col-md-6 col-12">
-                    <h3>Prize: Rs.200</h3>
+                  <div className="venue">
+                    <FaMapMarkerAlt /> {venue}
                   </div>
-                  <div className="col-md-6 col-12">
-                    <h3>Prize: Rs.200</h3>
-                  </div>
-                  <div className="col-md-6 col-12">
-                    <h3>Prize: Rs.200</h3>
-                  </div>
-                  <div className="col-md-6 col-12">
-                    <h3>Prize: Rs.200</h3>
-                  </div>
-                  <div className="col-md-6 col-12">
-                    <h3>Prize: Rs.200</h3>
-                  </div>
+                  <div className="venue">Fees: ₹{registration_fee}</div>
                 </div>
               </div>
-
+              <hr />
               <div className="content">
+                <div className="basic row g-0">
+                  <div className="col-sm-6">
+                    <div className="row g-0">
+                      <div className="col-3">
+                        <strong>Rounds:</strong>
+                      </div>
+                      <div className="col-9">{rounds}</div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="row g-0">
+                      <div className="col-3">
+                        <strong>Prize money:</strong>
+                      </div>
+                      <div className="col-9">₹{prize_money}</div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="row g-0">
+                      <div className="col-3">
+                        <strong>No. of prize(s):</strong>
+                      </div>
+                      <div className="col-9">{no_of_prizes}</div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="row g-0">
+                      <div className="col-3">
+                        <strong>Judging Criteria:</strong>
+                      </div>
+                      <div className="col-9">{judging_criteria}</div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="row g-0">
+                      <div className="col-3">
+                        <strong>Structure:</strong>
+                      </div>
+                      <div className="col-9">{structure}</div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="row g-0">
+                      <div className="col-3">
+                        <strong>Social Media:</strong>
+                      </div>
+                      <div className="col-9">{social_media}</div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="description">
                   <h2>Description</h2>
-                  <p>{description}</p>
+                  <p>{description || "No data"}</p>
                 </div>
 
-                <div className="rules">
-                  <h2>Rule Book</h2>
-                  <ul>
-                    <li>
-                      During the event, the vocalist may be accompanied by (at
-                      maximum) one instrumentalist which means at maximum one
-                      instrumentis allowed per performance. You need to perform
-                      two songs.
-                    </li>
-                    <li>
-                      Performers will have 10 minson stage(including setup and
-                      soundcheck).
-                    </li>
-                    <li>
-                      You must bring your own instrumentsand cables. (technical
-                      support will be provided in case of any emergency).
-                    </li>
-                    <li>NO backing tracks allowed.</li>
-                    <li>
-                      Pedalling, looping, drumming is strictly prohibited.
-                    </li>
-                  </ul>
-                </div>
+                {rules && (
+                  <div className="rules">
+                    <h2>Rule Book</h2>
+                    <ul>
+                      {rules.split("\n").map((rule) => (
+                        <li key={rule}>{rule}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="event-managers">
                   <h2>Event Managers</h2>
                   <ul>
-                    <li>
-                      <div>Naman</div>
-                      <div>
-                        Contact No.:
-                        <a href="tel:+918349352254">+918349352254</a>
-                      </div>
-                    </li>
-                    <li>
-                      <div>Naveet</div>
-                      <div>
-                        Contact No.:
-                        <a href="tel:+918243352254">+918349352254</a>
-                      </div>
-                    </li>
+                    {event_manager
+                      ? event_manager.split("\n").map((manager) => {
+                          const [name, mobile] = manager.split(",");
+                          return (
+                            <Fragment key={manager}>
+                              <div>{name}</div>
+                              <div>
+                                Contact No.:
+                                <a href={`tel:${mobile}`}>{mobile}</a>
+                              </div>
+                            </Fragment>
+                          );
+                        })
+                      : "No data"}
                   </ul>
                 </div>
-                <button onClick={handleRegister}>Register</button>
+                {registered ? (
+                  <button disabled>Already registered</button>
+                ) : (
+                  <button onClick={handleRegister}>Register</button>
+                )}
               </div>
             </div>
           </Main>
