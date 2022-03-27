@@ -1,36 +1,46 @@
+import dayjs from "dayjs";
+import { useState } from "react";
 import styled from "styled-components";
 import Image from "../Image";
+import Modal from "./Modal";
 
-export default function Card({
-  image = "",
-  title = "Promenade",
-  subTitle = "Hip Hop Internationals South India Auditions",
-  // tagline = "A coordination to cadence",
-  date = "6 March",
-  onClick,
-}) {
-  if(image === ""){
-    image = "https://backend.springspree22.in/static/ss22.jpeg";
-  }
+export default function Card({ event }) {
+  const [visible, setVisible] = useState(false);
+
+  const {
+    name,
+    summary,
+    start_date,
+    poster = "https://backend.springspree22.in/static/ss22.jpeg",
+  } = event;
   return (
-    <Container>
-      <div>
-        <Image src={image} alt="poster" />
-      </div>
-      <div className="content">
-        <h1 className="title">{title}</h1>
-        <h2 className="sub-title">{subTitle}</h2>
-        {/* <p className="tagline">{tagline}</p> */}
-      </div>
-      <div className="footer">
-        <div className="date">{date}</div>
+    <div>
+      <Modal
+        visible={visible}
+        event={event}
+        onClose={() => setVisible(false)}
+      />
+      <Container>
         <div>
-          <button className="btn" onClick={onClick}>
-            Read More
-          </button>
+          <Image src={poster} alt="poster" />
         </div>
-      </div>
-    </Container>
+        <div className="content">
+          <h1 className="title">{name}</h1>
+          <h2 className="sub-title">{summary}</h2>
+          {/* <p className="tagline">{tagline}</p> */}
+        </div>
+        <div className="footer">
+          <div className="date">
+            {start_date && dayjs(start_date).format("ddd, MMM D, YYYY h:mm A")}
+          </div>
+          <div>
+            <button className="btn" onClick={() => setVisible(true)}>
+              Read More
+            </button>
+          </div>
+        </div>
+      </Container>
+    </div>
   );
 }
 
@@ -91,7 +101,7 @@ const Container = styled.div`
     }
 
     .date {
-      font-size: 1.2rem;
+      font-size: 0.8rem;
       font-weight: 600;
     }
   }

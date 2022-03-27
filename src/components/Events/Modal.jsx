@@ -2,9 +2,13 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Header, BackDrop, Body, Container, Footer, Main } from "./Modal.style";
 import Image from "../Image";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { useEventPayment } from "../../hooks/payment";
+import Loader from "../Loader";
 // import dayjs from "dayjs";
 
-export default function Modal({ data, onSubmit, onClose, visible = false }) {
+export default function Modal({ event, onClose, visible = false }) {
   const {
     poster,
     name,
@@ -23,12 +27,27 @@ export default function Modal({ data, onSubmit, onClose, visible = false }) {
     // judging_criteria,
     // start_date,
     // end_date,
-  } = data;
+  } = event;
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const eventPayment = useEventPayment();
   // console.log(dayjs(start_date));
-  if (!visible) return null;
 
+  const handleRegister = async () => {
+    if (!user) {
+      return navigate("/login", { replace: true, state: { from: "/events" } });
+    }
+
+    const payment = await eventPayment.makePayment({ event });
+    if (payment) {
+      alert("Payment successfull!");
+    }
+  };
+
+  if (!visible) return null;
   return (
     <Container>
+      <Loader loading={eventPayment.loading} />
       <BackDrop>
         <Body>
           <Header>
@@ -122,8 +141,7 @@ export default function Modal({ data, onSubmit, onClose, visible = false }) {
                     </li>
                   </ul>
                 </div>
-
-                <button onClick={onSubmit}>Register</button>
+                <button onClick={handleRegister}>Register</button>
               </div>
             </div>
           </Main>

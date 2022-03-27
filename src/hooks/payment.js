@@ -1,4 +1,7 @@
 import { useState } from "react";
+import paymentApi from "../api/payment";
+import { useApi } from "./api";
+import { useAuth } from "./auth";
 
 const razorpay_key = "rzp_test_fH6e426IsoGX0S";
 
@@ -89,5 +92,59 @@ export function usePaymentGateway() {
     });
   };
 
+  return { makePayment, loading };
+}
+
+export function useEventPayment() {
+  const gateway = usePaymentGateway();
+  const createOrder = useApi(paymentApi.createOrder);
+  const paymentConfirm = useApi(paymentApi.paymentConfirm);
+  const { user } = useAuth();
+
+  const makePayment = async ({ event }) => {
+    const order = await createOrder.request(event._id);
+    if (!order.ok) {
+      alert("Something went wrong. Please try again later");
+      return;
+    }
+    const razorpay_request = await gateway.makePayment({
+      payment_name: event.name,
+      description: event.description,
+      image: event.poster,
+      amount: order.data.amount,
+      order_id: order.data.id,
+      name: user.name,
+      email: user.email,
+      contact: user.mobile,
+    });
+
+    if (!razorpay_request.done) {
+      alert(razorpay_request.message);
+      return;
+    }
+
+    const payment = await paymentConfirm.request({
+      ...razorpay_request.data,
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      mobile: user.mobile,
+      event_id: event._id,
+      event: event.name,
+      registration_fee: order.amount,
+    });
+
+    if (!payment.ok) {
+      alert(
+        "Payment verification failed. If money is deducted from your account please contact us."
+      );
+      return;
+    }
+
+    return payment.data;
+  };
+
+  const loading =
+    gateway.loading || createOrder.loading || paymentConfirm.loading;
   return { makePayment, loading };
 }
