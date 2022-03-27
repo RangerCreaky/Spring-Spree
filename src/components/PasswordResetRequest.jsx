@@ -6,32 +6,29 @@ import authApi from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import { useApi } from "../hooks/api";
-import { useAuth } from "../hooks/auth";
-import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
 const initialValues = {
   email: "",
-  password: "",
 };
 
-const loginSchema = Yup.object().shape({
-  email: Yup.string().email().required().max(255),
-  password: Yup.string().required().max(32),
+const schema = Yup.object().shape({
+  email: Yup.string().email().required().label("Email"),
 });
 
-export default function Login() {
-  const { request, loading } = useApi(authApi.login);
-  const auth = useAuth();
+export default function PasswordResetRequest() {
+  const { request, loading } = useApi(authApi.passwordResetRequest);
   const navigate = useNavigate();
 
-  const handleSubmit = async (value) => {
+  const handleVerify = async (value) => {
     const res = await request(value);
     if (res.ok) {
-      auth.login(res.data);
+      alert(
+        "An email with password reset link sent to your email. Click on link to reset your password"
+      );
       navigate("/", { replace: true });
     } else {
-      window.alert("Invalid email or password!");
+      window.alert("No user found with given email");
     }
   };
 
@@ -39,11 +36,11 @@ export default function Login() {
     <>
       <Container className="container">
         <Loader loading={loading} />
-        <h1 className="title">Login</h1>
+        <h1 className="title">Password Reset</h1>
         <Formik
           initialValues={initialValues}
-          validationSchema={loginSchema}
-          onSubmit={handleSubmit}
+          validationSchema={schema}
+          onSubmit={handleVerify}
         >
           <Form className="row g-3">
             <div className="col-md-12">
@@ -52,43 +49,16 @@ export default function Login() {
               </label>
               <Field
                 name="email"
-                placeholder="akash@gmail.com"
+                placeholder="Registered email"
                 type="email"
                 className="form-control"
                 id="email"
-              />
-            </div>
-            <div className="col-md-12">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <Field
-                name="password"
-                placeholder="********"
-                type="password"
-                className="form-control"
-                id="password"
               />
             </div>
             <div className="col-12">
               <button type="submit" className="btn btn-primary">
                 Submit
               </button>
-            </div>
-
-            <div className="center">
-              <p>
-                Need an account?{" "}
-                <Link to="/signup" replace>
-                  Sign Up
-                </Link>
-              </p>
-              <p>
-                Forget your password?{" "}
-                <Link to="/passwordResetRequest" replace>
-                  password reset
-                </Link>
-              </p>
             </div>
           </Form>
         </Formik>

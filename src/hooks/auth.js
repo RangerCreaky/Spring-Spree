@@ -5,6 +5,11 @@ import storage from "../storage";
 export function useAuth() {
   const { user, setUser } = useContext(AuthContext);
 
+  const updateUser = (user) => {
+    storage.set("user", user);
+    setUser(user);
+  };
+
   const login = async ({ token, user }) => {
     storage.set("token", token);
     storage.set("user", user);
@@ -22,5 +27,5 @@ export function useAuth() {
     setUser(user);
   };
 
-  return { user, login, logout, restore };
+  return { user, updateUser, login, logout, restore };
 }

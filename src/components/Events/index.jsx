@@ -1,40 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import eventApi from "../../api/events";
+import { useApi } from "../../hooks/api";
+import Loader from "../Loader";
 
 import DayFilter from "./DayFilter";
 import Section from "./Section";
+import _ from "lodash";
+import { useAuth } from "../../hooks/auth";
+import { Link } from "react-router-dom";
+import ToastHolder from "../Toast/ToastHolder";
+import Toast from "../Toast";
+import { usePaymentGateway } from "../../hooks/payment";
+import paymentApi from "../../api/payment";
+import authApi from "../../api/auth";
 
-const events = Array(10)
-  .fill(0)
-  .map((_, id) => ({
-    id,
-    image: "https://incident.nitk.ac.in/assets/img/Promenade.jpg",
-    title: "Promenade",
-    subTitle: "Hip Hop Internationals South India Auditions",
-    tagline: "A coordination to cadence",
-    venue: "Silver Jubilee Auditorium",
-    date: "6 March",
-    time: "6th March, 9AM onwards",
-    description:
-      "Sure your squad can be the Kings of dance-offs? Incident presents Promenade in association with Hip Hop International India which is our flagship group-dance event on the 6th of March 2022. Suit up and dance your soles off to achieve hip-hop glory!",
-  }));
+const entry_event_id = "623c349874264a5c12781c51";
+const entry_event_name = "Spring Spring 22 Entry";
 
-const initial_events_data = {
-  "Publicity and Relations": events,
-  "Event coordination and conduction": events,
-  Proshows: events,
-  "Treasury and pricing": events,
-  "Content and blogging": events,
-};
-
-const DAYS_DATA = ["All", "day 1", "day 2", "day 3"].map((e, i) => ({
-  key: e,
+const days_data = [
+  ["All", null],
+  ["Day 1", "8"],
+  ["Day 2", "9"],
+  ["Day 3", "10"],
+].map((el, i) => ({
+  key: el[0],
+  date: el[1],
   active: i === 0,
 }));
 
 export default function Events() {
-  const [events_data] = useState(initial_events_data);
-  const [filters, setFilters] = useState(DAYS_DATA);
+  const allEvents = useApi(eventApi.getAllEvents);
+  const [filters, setFilters] = useState(days_data);
+  const { user, updateUser } = useAuth();
+  const paymentGateway = usePaymentGateway();
+  const createOrder = useApi(paymentApi.createOrder);
+  const paymentConfirm = useApi(paymentApi.paymentConfirm);
+  const userProfile = useApi(authApi.userProfile);
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -43,26 +45,118 @@ export default function Events() {
       )
     );
   };
+  const onClick = async () => {
+    const order = await createOrder.request(entry_event_id);
+    if (!order.ok) {
+      alert("Something went wrong. Please try again later");
+      return;
+    }
+    const razorpay_request = await paymentGateway.makePayment({
+      payment_name: entry_event_name,
+      description: "Entry fees for Spring Spree 2022",
+      image: "https://backend.springspree22.in/static/ss22.jpeg",
+      amount: order.data.amount,
+      order_id: order.data.id,
+      name: user.name,
+      email: user.email,
+      contact: user.mobile,
+    });
+
+    if (!razorpay_request.done) {
+      alert(razorpay_request.message);
+      return;
+    }
+
+    const payment = await paymentConfirm.request({
+      ...razorpay_request.data,
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      mobile: user.mobile,
+      event_id: entry_event_id,
+      event: entry_event_name,
+      registration_fee: order.amount,
+    });
+
+    if (!payment.ok) {
+      alert(
+        "Payment verification failed. If money is deducted from your account please contact us."
+      );
+      return;
+    }
+
+    // update user profile with latest data
+    userProfile.request().then((res) => res.ok && updateUser(res.data));
+
+    alert("Payment Successfull");
+  };
+
+  useEffect(() => {
+    allEvents.request();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const parsedEvents = _.groupBy(
+    allEvents.data,
+    (el) => el.category ?? "Other"
+  );
+  const categories = Object.keys(parsedEvents);
+  const loading =
+    allEvents.loading ||
+    createOrder.loading ||
+    paymentConfirm.loading ||
+    paymentGateway.loading;
 
   return (
     <>
+      <Loader loading={loading} />
+      {user && (
+        <ToastHolder>
+          <Toast
+            show={user.isAllowed !== 1}
+            content={
+              <div>
+                Please pay your registration fees.
+                <br />
+                <button className="btn btn-primary" onClick={onClick}>
+                  Pay
+                </button>
+              </div>
+            }
+          />
+          <Toast
+            show={user.isVerified !== 0}
+            content={
+              <div>
+                Please verify your email.{" "}
+                <Link to="/verifyMail">click here to verify.</Link>
+              </div>
+            }
+          />
+        </ToastHolder>
+      )}
       <Container className="row g-0">
         <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
           <h1>Events</h1>
           <DayFilter filters={filters} onChange={changeFilter} />
           <ul className="events">
-            {Object.keys(events_data).map((key) => (
-              <li key={key}>
-                <a href={`#${key}`}>{key}</a>
+            {categories.map((category) => (
+              <li key={category}>
+                <a href={`#${category}`}>{category}</a>
               </li>
             ))}
           </ul>
         </div>
         <div className="right col-12 col-lg-8">
           <div>
-            {Object.keys(events_data).map((title) => (
-              <Section key={title} title={title} events={events_data[title]} />
+            {categories.map((category) => (
+              <Section
+                key={category}
+                title={category}
+                events={parsedEvents[category]}
+              />
             ))}
           </div>
         </div>

@@ -1,3 +1,7 @@
 import client from "./client";
 
-export const getAllEvents = () => client.get("/event/all");
+const getAllEvents = () => client.get("/event/all");
+
+const eventApi = { getAllEvents };
+
+export default eventApi;
