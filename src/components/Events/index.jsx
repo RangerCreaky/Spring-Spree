@@ -8,15 +8,17 @@ import DayFilter from "./DayFilter";
 import Section from "./Section";
 import _ from "lodash";
 import { useAuth } from "../../hooks/auth";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import ToastHolder from "../Toast/ToastHolder";
 import Toast from "../Toast";
-import { usePaymentGateway } from "../../hooks/payment";
-import paymentApi from "../../api/payment";
-import authApi from "../../api/auth";
+import { useEventPayment } from "../../hooks/payment";
 
-const entry_event_id = "623c349874264a5c12781c51";
-const entry_event_name = "Spring Spring 22 Entry";
+const entry_event = {
+  _id: "623c349874264a5c12781c51",
+  name: "Spring Spring 22 Entry",
+  description: "Entry fees for Spring Spree 2022",
+  poster: "https://backend.springspree22.in/static/ss22.jpeg",
+};
 
 const days_data = [
   ["All", null],
@@ -33,10 +35,7 @@ export default function Events() {
   const allEvents = useApi(eventApi.getAllEvents);
   const [filters, setFilters] = useState(days_data);
   const { user, updateUser } = useAuth();
-  const paymentGateway = usePaymentGateway();
-  const createOrder = useApi(paymentApi.createOrder);
-  const paymentConfirm = useApi(paymentApi.paymentConfirm);
-  const userProfile = useApi(authApi.userProfile);
+  const eventPayment = useEventPayment();
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -46,49 +45,11 @@ export default function Events() {
     );
   };
   const onClick = async () => {
-    const order = await createOrder.request(entry_event_id);
-    if (!order.ok) {
-      alert("Something went wrong. Please try again later");
-      return;
+    const payment = await eventPayment.makePayment({ event: entry_event });
+    if (payment) {
+      updateUser();
+      alert("Payment successfull!");
     }
-    const razorpay_request = await paymentGateway.makePayment({
-      payment_name: entry_event_name,
-      description: "Entry fees for Spring Spree 2022",
-      image: "https://backend.springspree22.in/static/ss22.jpeg",
-      amount: order.data.amount,
-      order_id: order.data.id,
-      name: user.name,
-      email: user.email,
-      contact: user.mobile,
-    });
-
-    if (!razorpay_request.done) {
-      alert(razorpay_request.message);
-      return;
-    }
-
-    const payment = await paymentConfirm.request({
-      ...razorpay_request.data,
-      id: user._id,
-      name: user.name,
-      email: user.email,
-      mobile: user.mobile,
-      event_id: entry_event_id,
-      event: entry_event_name,
-      registration_fee: order.amount,
-    });
-
-    if (!payment.ok) {
-      alert(
-        "Payment verification failed. If money is deducted from your account please contact us."
-      );
-      return;
-    }
-
-    // update user profile with latest data
-    userProfile.request().then((res) => res.ok && updateUser(res.data));
-
-    alert("Payment Successfull");
   };
 
   useEffect(() => {
@@ -102,11 +63,10 @@ export default function Events() {
     (el) => el.category ?? "Other"
   );
   const categories = Object.keys(parsedEvents);
-  const loading =
-    allEvents.loading ||
-    createOrder.loading ||
-    paymentConfirm.loading ||
-    paymentGateway.loading;
+  const loading = allEvents.loading || eventPayment.loading;
+
+  if (user && user.isVerified !== 0)
+    return <Navigate to="/verifyMail" state={{ from: "/events" }} />;
 
   return (
     <>
@@ -122,15 +82,6 @@ export default function Events() {
                 <button className="btn btn-primary" onClick={onClick}>
                   Pay
                 </button>
-              </div>
-            }
-          />
-          <Toast
-            show={user.isVerified !== 0}
-            content={
-              <div>
-                Please verify your email.{" "}
-                <Link to="/verifyMail">click here to verify.</Link>
               </div>
             }
           />
@@ -232,3 +183,36 @@ const Container = styled.div`
     }
   }
 `;
+
+// sample
+// const demo = {
+//   _id: "623dc8c0031962fa39429061",
+//   name: "dj night",
+//   venue: "ts",
+//   summary: "",
+//   event_manager: "harsh",
+//   registration_fee: 120,
+//   rounds: null,
+//   prize_money: "",
+//   no_of_prizes: null,
+//   social_media: "",
+//   description: "dance",
+//   structure: "",
+//   rules: "",
+//   judging_criteria: "",
+//   category: "General",
+//   poster: "https://backend.springspree22.in/static/ss22.jpeg",
+//   start_date: null,
+//   end_date: null,
+//   registered_users: [
+//     {
+//       _id: "623c44b04c002888aa67d15f",
+//       name: "Harsh Sonkusare",
+//       email: "harshsonkusare01@gmail.com",
+//       mobile: "8087732133",
+//     },
+//   ],
+//   createdAt: "2022-03-25T13:50:56.032Z",
+//   updatedAt: "2022-03-26T18:30:31.228Z",
+//   __v: 1,
+// };

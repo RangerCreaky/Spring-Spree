@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import Field from "./form/Field";
 import * as Yup from "yup";
 import authApi from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import { useApi } from "../hooks/api";
 import { useAuth } from "../hooks/auth";
@@ -24,12 +24,15 @@ export default function Login() {
   const { request, loading } = useApi(authApi.login);
   const auth = useAuth();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const handleSubmit = async (value) => {
     const res = await request(value);
     if (res.ok) {
       auth.login(res.data);
-      navigate("/", { replace: true });
+      if (res.data.user.isVerified !== 0)
+        navigate("/verifyMail", { replace: true, state });
+      else navigate(state?.from || "/", { replace: true });
     } else {
       window.alert("Invalid email or password!");
     }
@@ -79,7 +82,7 @@ export default function Login() {
             <div className="center">
               <p>
                 Need an account?{" "}
-                <Link to="/signup" replace>
+                <Link to="/signup" state={state} replace>
                   Sign Up
                 </Link>
               </p>
