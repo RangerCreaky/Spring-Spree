@@ -3,10 +3,11 @@ import { Formik, Form } from "formik";
 import Field from "./form/Field";
 import * as Yup from "yup";
 import authApi from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import { useApi } from "../hooks/api";
 import Footer from "./Footer";
+import { useAuth } from "../hooks/auth";
 
 const initialValues = {
   verificationCode: "",
@@ -19,12 +20,16 @@ const schema = Yup.object().shape({
 export default function VerifyEmail() {
   const verifyEmail = useApi(authApi.verifyMail);
   const resendMail = useApi(authApi.resendVerifyMail);
+  const { state } = useLocation();
   const navigate = useNavigate();
+  const { updateUser } = useAuth();
 
   const handleVerify = async (value) => {
     const res = await verifyEmail.request(value);
     if (res.ok) {
-      navigate("/", { replace: true });
+      updateUser();
+      if (state?.from) navigate(state.from, { replace: true });
+      else navigate("/", { replace: true });
     } else {
       window.alert("Invalid OTP");
     }

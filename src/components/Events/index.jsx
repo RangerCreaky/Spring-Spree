@@ -8,12 +8,11 @@ import DayFilter from "./DayFilter";
 import Section from "./Section";
 import _ from "lodash";
 import { useAuth } from "../../hooks/auth";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import ToastHolder from "../Toast/ToastHolder";
 import Toast from "../Toast";
 import { usePaymentGateway } from "../../hooks/payment";
 import paymentApi from "../../api/payment";
-import authApi from "../../api/auth";
 
 const entry_event_id = "623c349874264a5c12781c51";
 const entry_event_name = "Spring Spring 22 Entry";
@@ -36,7 +35,6 @@ export default function Events() {
   const paymentGateway = usePaymentGateway();
   const createOrder = useApi(paymentApi.createOrder);
   const paymentConfirm = useApi(paymentApi.paymentConfirm);
-  const userProfile = useApi(authApi.userProfile);
 
   const changeFilter = (k) => () => {
     setFilters(
@@ -86,7 +84,7 @@ export default function Events() {
     }
 
     // update user profile with latest data
-    userProfile.request().then((res) => res.ok && updateUser(res.data));
+    updateUser();
 
     alert("Payment Successfull");
   };
@@ -108,6 +106,9 @@ export default function Events() {
     paymentConfirm.loading ||
     paymentGateway.loading;
 
+  if (user && user.isVerified !== 0)
+    return <Navigate to="/verifyMail" state={{ from: "events" }} />;
+
   return (
     <>
       <Loader loading={loading} />
@@ -122,15 +123,6 @@ export default function Events() {
                 <button className="btn btn-primary" onClick={onClick}>
                   Pay
                 </button>
-              </div>
-            }
-          />
-          <Toast
-            show={user.isVerified !== 0}
-            content={
-              <div>
-                Please verify your email.{" "}
-                <Link to="/verifyMail">click here to verify.</Link>
               </div>
             }
           />

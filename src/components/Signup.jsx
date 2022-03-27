@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import authApi from "../api/auth";
 import { useApi } from "../hooks/api";
 import Loader from "./Loader";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
@@ -34,11 +34,12 @@ const initialValues = {
 export default function Signup() {
   const { request, loading } = useApi(authApi.signup);
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const handleSubmit = async (value) => {
     const res = await request(value);
     if (res.ok) {
-      navigate("/login", { replace: true });
+      navigate("/login", { replace: true, state });
     } else {
       window.alert("Use with this email or phone already exists.");
     }
@@ -150,12 +151,17 @@ export default function Signup() {
             </div>
 
             <div className="center">
-              <p>Already have an account? <Link to="/login" replace>Login</Link></p>
+              <p>
+                Already have an account?{" "}
+                <Link to="/login" state={state} replace>
+                  Login
+                </Link>
+              </p>
             </div>
           </Form>
         </Formik>
       </Container>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -15,7 +15,7 @@ client.addAsyncRequestTransform(async (request) => {
 });
 
 client.addAsyncResponseTransform(async (response) => {
-  if (response.status === 401) {
+  if (response.status === 401 && (await storage.get("token"))) {
     await storage.clear();
     window.location.reload();
   }

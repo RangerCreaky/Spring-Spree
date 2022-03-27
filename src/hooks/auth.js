@@ -1,13 +1,17 @@
 import { useContext } from "react";
+import authApi from "../api/auth";
 import AuthContext from "../context/auth";
 import storage from "../storage";
 
 export function useAuth() {
   const { user, setUser } = useContext(AuthContext);
 
-  const updateUser = (user) => {
-    storage.set("user", user);
-    setUser(user);
+  const updateUser = async () => {
+    const { ok, data } = await authApi.userProfile();
+    if (ok) {
+      storage.set("user", data);
+      setUser(data);
+    }
   };
 
   const login = async ({ token, user }) => {
