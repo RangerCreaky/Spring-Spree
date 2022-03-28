@@ -14,6 +14,8 @@ import VerifyEmail from "./components/VerifyEmail";
 import PasswordResetRequest from "./components/PasswordResetRequest";
 import PasswordReset from "./components/PasswordReset";
 
+import Profile from "./components/Profile";
+
 const AppRoutes = () => {
   const { restore } = useAuth();
 
@@ -32,6 +34,7 @@ const AppRoutes = () => {
       <Route path="/gallery" exact element={<Gallery />} />
       <Route path="/explore" exact element={<Explore />} />
       <Route path="/faq" exact element={<FAQ />} />
+      <Route path="/profile" exact element={<Profile />} />
       <Route path="/login" exact element={<Login />} />
       <Route path="/signup" exact element={<Signup />} />
       <Route path="/verifyMail" exact element={<VerifyEmail />} />

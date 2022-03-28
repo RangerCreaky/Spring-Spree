@@ -19,7 +19,7 @@ const Sponsors = () => {
                 const { name, src, imgName , title} = data;
                 return (
                     // <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
-                    <div className={`col-lg-${num} col-md-6 col-sm-6 c`} key={index}>
+                    <div className={`col-lg-4 col-md-6 col-sm-6 c`} key={index}>
                         <SponsorItem alt={imgName} name={name} src={src} title={title}/>
                     </div>
                 )
