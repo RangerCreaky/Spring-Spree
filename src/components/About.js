@@ -7,7 +7,7 @@ const About = () => {
         <>
             <AboutContainer id="2">
                 <AboutInnerContainer>
-                    <AboutContent data-aos="fade-left" data-aos-offset="200" data-aos-duration="1500">
+                    <AboutContent data-aos="fade-right" data-aos-offset="200" data-aos-duration="1500">
                         <h2> About </h2>
                         <p>SpringSpree, conceived in 1978 and now coming to it's 35th edition,
                             is NIT Warangal's cultural fest. It is one of the biggest fests in
@@ -21,6 +21,7 @@ const About = () => {
                             never before.
                         </p>
                     </AboutContent>
+                    <img src="../../images/springspree22_82.png" alt="springspree22_82"/>
                 </AboutInnerContainer>
             </AboutContainer>
         </>
@@ -43,11 +44,24 @@ const AboutInnerContainer = styled.div`
     padding: 0 5rem;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     @media (max-width : 750px){
         padding: 20px;
+    }
+
+    @media (max-width : 500px){
+        flex-direction: column;
+    }
+    img{
+        width: 40%;
+        height: auto;
+        @media (max-width : 500px) {
+            margin-top: 1rem;
+            width: 70%;
+        }
     }
 `;
 
