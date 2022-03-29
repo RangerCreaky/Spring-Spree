@@ -30,6 +30,12 @@ dark logo : springspree22_75
 white logo : springspree22_76
 
 gradient background : springspree22_77
+test bgs : springspree22_78
+test bgs : springspree22_79
+test bgs : springspree22_80
+test bgs : springspree22_81
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-223579388-1"></script>
 
 
 

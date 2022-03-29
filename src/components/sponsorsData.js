@@ -25,6 +25,7 @@ import springspree22_68 from "../sponsors/prev/springspree22_68.png";
 // curr Sponsors
 import springspree22_78 from "../sponsors/curr/springspree22_78.jpeg"
 import springspree22_79 from "../sponsors/curr/springspree22_79.jpg"
+import springspree22_80 from "../sponsors/curr/springspree22_80.jpg"
 
 const PrevSponsorsData = [
     {
@@ -146,6 +147,11 @@ const currSponsorsData = [
         src: springspree22_78,
         imgName : "springspree22_78",
         title : "Alumni partner"
+    },
+    {
+        name : "NITW Alumni Association \n Warangal Chapter",
+        src: springspree22_80,
+        imgName : "springspree22_80",
     },
     {
         name : "Sri Raksha Constructions",

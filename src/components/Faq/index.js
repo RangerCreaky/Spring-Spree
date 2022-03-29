@@ -27,7 +27,6 @@ const Faq = () => {
                 <p>The major spotlight events include:
                     <ul>
                         <li>Idol (A Singing Competition)</li>
-                        <li>Choreo Night (A Dance Competition)</li>
                         <li>Director's Cut (A Short Film Contest)</li>
                         <li>Allure (A Fashion Show)</li>
                         <li>Q-Factor (A Quiz Competition)</li>
