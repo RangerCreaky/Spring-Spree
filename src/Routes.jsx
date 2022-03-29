@@ -13,6 +13,7 @@ import { useAuth } from "./hooks/auth";
 import VerifyEmail from "./components/VerifyEmail";
 import PasswordResetRequest from "./components/PasswordResetRequest";
 import PasswordReset from "./components/PasswordReset";
+import Register from "./components/Register"
 
 import Profile from "./components/Profile";
 
@@ -38,6 +39,7 @@ const AppRoutes = () => {
       <Route path="/login" exact element={<Login />} />
       <Route path="/signup" exact element={<Signup />} />
       <Route path="/verifyMail" exact element={<VerifyEmail />} />
+      <Route path="/register" exact element={<Register />} />
       <Route
         path="/passwordResetRequest"
         exact
