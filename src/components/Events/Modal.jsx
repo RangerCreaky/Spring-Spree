@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaMapMarkerAlt, FaFacebook, FaInstagram } from "react-icons/fa";
 import { Header, BackDrop, Body, Container, Footer, Main } from "./Modal.style";
 import Image from "../Image";
 import { useAuth } from "../../hooks/auth";
@@ -9,7 +9,22 @@ import { useNavigate } from "react-router-dom";
 import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
 import dayjs from "dayjs";
+import { useApi } from "../../hooks/api";
+import eventApi from "../../api/events";
 // import dayjs from "dayjs";
+
+const SocialIcon = ({ type, ...args }) => {
+  switch (type) {
+    case "facebook":
+      return <FaFacebook {...args} />;
+
+    case "instagram":
+      return <FaInstagram {...args} />;
+
+    default:
+      return null;
+  }
+};
 
 export default function Modal({ event, onClose, visible = false }) {
   const {
@@ -24,7 +39,6 @@ export default function Modal({ event, onClose, visible = false }) {
     prize_money,
     no_of_prizes,
     social_media,
-    structure,
     rules,
     judging_criteria,
     start_date,
@@ -34,10 +48,21 @@ export default function Modal({ event, onClose, visible = false }) {
   const { user } = useAuth();
   const navigate = useNavigate();
   const eventPayment = useEventPayment();
+  const registerFree = useApi(eventApi.registerFree);
 
   const handleRegister = async () => {
     if (!user) {
       return navigate("/login", { replace: true, state: { from: "/events" } });
+    }
+
+    if (registration_fee === 0) {
+      const res = await registerFree.request(event._id);
+      if (res.ok) {
+        window.alert("You have registered successfully for this event");
+      } else {
+        window.alert("Something went wrong!");
+      }
+      return;
     }
 
     const payment = await eventPayment.makePayment({ event });
@@ -47,11 +72,12 @@ export default function Modal({ event, onClose, visible = false }) {
   };
 
   const registered = !!registered_users.find((u) => u._id === user?._id);
+  const loading = eventPayment.loading || registerFree.loading;
 
   if (!visible) return null;
   return (
     <Container>
-      <Loader loading={eventPayment.loading} />
+      <Loader loading={loading} />
       <BackDrop>
         <Body>
           <Header>
@@ -80,60 +106,49 @@ export default function Modal({ event, onClose, visible = false }) {
                   <div className="venue">
                     <FaMapMarkerAlt /> {venue}
                   </div>
-                  <div className="venue">Fees: ₹{registration_fee}</div>
+                  <div className="venue">
+                    Registration Fees:{" "}
+                    {registration_fee !== 0 ? `₹${registration_fee}` : "Free"}
+                  </div>
                 </div>
               </div>
+              {social_media && (
+                <div className="social">
+                  {social_media.split("\n").map((social) => {
+                    const [type, link] = social.split(",");
+                    return (
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        key={social}
+                        href={link}
+                      >
+                        <SocialIcon type={type} />
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
               <hr />
               <div className="content">
-                <div className="basic row g-0">
-                  <div className="col-sm-6">
-                    <div className="row g-0">
-                      <div className="col-3">
-                        <strong>Rounds:</strong>
-                      </div>
-                      <div className="col-9">{rounds}</div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="row g-0">
-                      <div className="col-3">
-                        <strong>Prize money:</strong>
-                      </div>
-                      <div className="col-9">₹{prize_money}</div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="row g-0">
-                      <div className="col-3">
-                        <strong>No. of prize(s):</strong>
-                      </div>
-                      <div className="col-9">{no_of_prizes}</div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="row g-0">
-                      <div className="col-3">
-                        <strong>Judging Criteria:</strong>
-                      </div>
-                      <div className="col-9">{judging_criteria}</div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="row g-0">
-                      <div className="col-3">
-                        <strong>Structure:</strong>
-                      </div>
-                      <div className="col-9">{structure}</div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="row g-0">
-                      <div className="col-3">
-                        <strong>Social Media:</strong>
-                      </div>
-                      <div className="col-9">{social_media}</div>
-                    </div>
-                  </div>
+                <div>
+                  <h2>
+                    Rounds: <span>{rounds}</span>
+                  </h2>
+                </div>
+                <div>
+                  <h2>
+                    Prize Money: <span>{prize_money}</span>
+                  </h2>
+                </div>
+                <div>
+                  <h2>
+                    No. of prize(s): <span>{no_of_prizes}</span>
+                  </h2>
+                </div>
+                <div>
+                  <h2>Judgin Criteria</h2>
+                  <p>{judging_criteria || "No data"}</p>
                 </div>
 
                 <div className="description">
