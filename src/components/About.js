@@ -31,7 +31,7 @@ const About = () => {
 export default About;
 
 const AboutContainer = styled.div`
-overflow-x: hidden;
+    overflow: hidden;
     width: 100%;
     background-color: black;
     background-size: cover, cover;
@@ -48,6 +48,7 @@ const AboutInnerContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    overflow-y: hidden;
     @media (max-width : 750px){
         padding: 20px;
     }
@@ -56,7 +57,7 @@ const AboutInnerContainer = styled.div`
         flex-direction: column;
     }
     img{
-        width: 40%;
+        width: 35%;
         height: auto;
         @media (max-width : 500px) {
             margin-top: 1rem;

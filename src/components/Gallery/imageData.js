@@ -37,9 +37,9 @@ import springspree22_25 from './images/inaguration/springspree22_25.jpeg';
 import springspree22_26 from './images/proshows/springspree22_26.JPG';
 import springspree22_27 from './images/proshows/springspree22_27.jpg';
 import springspree22_28 from './images/proshows/springspree22_28.JPG';
-import springspree22_29 from './images/proshows/springspree22_29.jpg';
+import springspree22_29 from './images/proshows/springspree22_29.JPG';
 import springspree22_30 from './images/proshows/springspree22_30.JPG';
-import springspree22_31 from './images/proshows/springspree22_31.jpg';
+import springspree22_31 from './images/proshows/springspree22_31.JPG';
 import springspree22_32 from './images/proshows/springspree22_32.JPG';
 
 // social
