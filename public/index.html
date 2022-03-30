@@ -5,13 +5,11 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <meta name="description" content="SpringSpree22 cultural fest of NITW" />
     <meta
-      name="description"
-      content="SpringSpree22 cultural fest of NITW"
+      name="keywords"
+      content="spring, spree, springspree, springspree22, cultural fest of NITW, spring spree, south indian cultural fest , NIT warangal , NITW"
     />
-    <meta 
-      name="keywords" 
-      content="spring, spree, springspree, springspree22, cultural fest of NITW, spring spree, south indian cultural fest , NIT warangal , NITW"/>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -41,15 +39,6 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title>SpringSpree'22</title>
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-223579388-1">
     </script>
     <script>
@@ -62,16 +51,105 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="root">
+      <style>
+        .loader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: rgba(0, 0, 0, 0.8);
+          z-index: 1000;
+        }
+        .loader .wrapper {
+          position: relative;
+          width: 200px;
+          height: 200px;
+          margin: 0;
+          padding: 0;
+        }
+        .loader .img-box {
+          position: absolute;
+          padding: 0;
+          margin: 0;
+        }
+        .loader .box-1 {
+          top: 25px;
+          left: 25px;
+          width: 150px;
+          height: 150px;
+          animation: rotate 1.5s infinite linear;
+        }
+        .loader .box-2 {
+          top: 45px;
+          left: 45px;
+          width: 110px;
+          height: 110px;
+          animation: rotate 1.5s infinite linear reverse;
+        }
+        .loader .box-3 {
+          top: 25px;
+          left: 25px;
+          width: 150px;
+          height: 150px;
+        }
+        .loader .box-4 {
+          width: 130px;
+          height: 130px;
+          top: 35px;
+          left: 35px;
+        }
+        .loader img {
+          width: 100%;
+          height: 100%;
+        }
+        @keyframes rotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+      <div class="loader">
+        <div class="wrapper">
+          <div class="img-box box-1">
+            <img
+              id="img-1"
+              src="/assets/images/loader/Spreelogo3.png"
+              alt="outer-2"
+            />
+          </div>
+          <div class="img-box box-4">
+            <img
+              id="img-4"
+              src="/assets/images/loader/Spreelogo4.png"
+              alt="outer-2"
+            />
+          </div>
+          <div class="img-box box-2">
+            <img
+              id="img-2"
+              src="/assets/images/loader/Spreelogo2.png"
+              alt="outer-1"
+            />
+          </div>
+          <div class="img-box box-3">
+            <img
+              id="img-3"
+              src="/assets/images/loader/Spreelogo.png"
+              alt="inner"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

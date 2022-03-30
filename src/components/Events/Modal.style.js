@@ -55,6 +55,7 @@ export const Header = styled.div`
 
 export const Main = styled.div`
   padding: 20px 0;
+  white-space: break-spaces;
 
   img {
     margin: auto;
@@ -92,6 +93,13 @@ export const Main = styled.div`
     display: flex;
     justify-content: space-between;
     font-size: 1.2rem;
+  }
+
+  .social {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 3rem;
   }
 
   .content {
