@@ -2,19 +2,10 @@ import React , { useState } from 'react';
 import styled from 'styled-components';
 
 const Checkbox = ()=>{
-  const [checked , setChecked] = useState(false);
-
-  console.log(checked);
-
-  const toggleChecked = ()=>{
-    const updateCheck = checked ? false : true;
-    setChecked(updateCheck);
-  }
-
     return(
         <Container className='chekcbox'>
             <label className="label">
-                <input  className="label__checkbox" type="checkbox" onClick={toggleChecked}/>
+                <input  className="label__checkbox" type="checkbox" />
                 <span className="label__text">
                 <span className="label__check">
                     <i className="fa fa-check icon"></i>

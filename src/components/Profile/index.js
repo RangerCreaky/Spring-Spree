@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import Offer from './Offer';
 import offerData from './offerData';
 
+import Field from './Field';
+import profileData from './profileData';
+import { render } from 'react-dom';
+
 const Profile = ()=>{
 
     const renderOffers = ()=>{
@@ -14,6 +18,15 @@ const Profile = ()=>{
                 <Offer key={index} name={name} tag={tag} price={price} />
             )   
         }); 
+    }
+
+    const renderFields = ()=>{
+        return profileData.map((data , index) =>{
+            const {field , value} = data;
+            return(
+                <Field key={index} field={field} value={value} />
+            );
+        });
     }
 
 
@@ -34,43 +47,9 @@ const Profile = ()=>{
                                 <div className="col-sm-8 rounded-right card-right">
                                     <h3 className="heading mt-3 text-center">Profile</h3>
                                     <hr className="hr" />
+                                    
                                     <div className="row field-wrapper">
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Name:</p>
-                                            <h6 className="value text-muted"> John Doe </h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">email:</p>
-                                            <h6 className="value text-muted">john.doe@gmail.com</h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Gender:</p>
-                                            <h6 className="value text-muted">Male</h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Phone:</p>
-                                            <h6 className="value text-muted">+919234567890</h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Registration:</p>
-                                            <h6 className="value text-muted"> Yes </h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Accomodation:</p>
-                                            <h6 className="value text-muted"> No </h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Proshow1:</p>
-                                            <h6 className="value text-muted"> No </h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Proshow2:</p>
-                                            <h6 className="value text-muted"> No </h6>
-                                        </div>
-                                        <div className="field-value col-lg-4 col-sm-6">
-                                            <p className="field font-weight-bold">Proshow3:</p>
-                                            <h6 className="value text-muted"> No </h6>
-                                        </div>
+                                        {renderFields()}
                                     </div>
                                     
                                 </div>
