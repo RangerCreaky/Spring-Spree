@@ -5,8 +5,9 @@ export const FaqContainer = styled.div`
     padding:0;
     padding:0;
     width:100%;
-    font-family: 'Inter', sans-serif;
-    font-weight:400;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 800;
+    font-size: larger;
 `
 
 export const SideBar = styled.div`
