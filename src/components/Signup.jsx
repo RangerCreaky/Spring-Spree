@@ -90,9 +90,7 @@ export default function Signup() {
                 className="form-select"
                 id="gender"
               >
-                <option selected value="">
-                  Select
-                </option>
+                <option value="">Select</option>
                 {GENDER.map((gen) => (
                   <option key={gen} value={gen}>
                     {gen}

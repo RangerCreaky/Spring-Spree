@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { QRCode } from "react-qrcode-logo";
 
 import Offer from "./Offer";
 import offerData from "./offerData";
 
 import Field from "./Field";
-import profileData from "./profileData";
+import { useAuth } from "../../hooks/auth";
+
+const fields = ["name", "email", "mobile", "gender", "college", "level"];
 
 const Profile = () => {
+  const { user } = useAuth();
+
   const renderOffers = () => {
     return offerData.map((offer, index) => {
       const { name, tag, price } = offer;
@@ -15,33 +20,50 @@ const Profile = () => {
       return <Offer key={index} name={name} tag={tag} price={price} />;
     });
   };
-
-  const renderFields = () => {
-    return profileData.map((data, index) => {
-      const { field, value } = data;
-      return <Field key={index} field={field} value={value} />;
-    });
-  };
+  const qrData = JSON.stringify({
+    _id: user?._id,
+    name: user?.name,
+    email: user?.email,
+  });
 
   return (
     <Container>
       <ProfileContainer>
         <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
-            <div className="col-md-10 mt-5 pt-5 ">
+            <div className="mt-5 pt-5">
               <div className="bg">
                 <div className="row z-depth-3 card-actual">
-                  <div className="col-sm-4 left-card rounded-left">
+                  <div className="col-md-4 left-card rounded-left">
                     <div className="card-block d-flex align-items-center justify-content-center">
                       {/* QR CODE */}
-                      <img src="../../images/tempQR.png" alt="" />
+                      {/* <img src="../../images/tempQR.png" alt="" /> */}
+                      <QRCode
+                        size={200}
+                        style={{ borderRadius: "2px" }}
+                        bgColor="#f1f1f1"
+                        value={qrData}
+                        logoImage="/images/springspree22_74.png"
+                        qrStyle="dots"
+                        logoOpacity={0.2}
+                        logoWidth={170}
+                        eyeRadius={[
+                          [10, 10, 0, 10],
+                          [10, 10, 10, 0],
+                          [10, 0, 10, 10],
+                        ]}
+                      />
                     </div>
                   </div>
-                  <div className="col-sm-8 rounded-right card-right">
+                  <div className="col-md-8 rounded-right card-right">
                     <h3 className="heading mt-3 text-center">Profile</h3>
                     <hr className="hr" />
 
-                    <div className="row field-wrapper">{renderFields()}</div>
+                    <div className="row field-wrapper">
+                      {fields.map((key) => (
+                        <Field key={key} field={key} value={user[key]} />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -19,11 +19,21 @@ const LandingPageContainer = () => {
           </h1>
           <p className="themename">Srishti</p>
           <p className="event-dates">April 8-10, 2022</p>
-          {user?.paidForEvent === 0 && (
-            <Link to="/register" className="btn btn-primary">
-              Register
-            </Link>
-          )}
+          <div className="action">
+            {!user ? (
+              <Link to="/signup" className="btn btn-primary">
+                Sigup
+              </Link>
+            ) : user.paidForEvent === 0 ? (
+              <Link to="/register" className="btn btn-primary">
+                Register
+              </Link>
+            ) : (
+              <Link to="/profile" className="btn btn-primary">
+                Profile
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </Container>
@@ -42,6 +52,10 @@ const Container = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  .action a {
+    color: white;
+  }
 
   > .logo {
     position: absolute;

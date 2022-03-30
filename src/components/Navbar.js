@@ -43,11 +43,32 @@ const Navbar = () => {
             <li>
               <StyledLink to="/contacts">Contact Us</StyledLink>
             </li>
+
             {user ? (
               <li>
-                <button onClick={logout} className="btn btn-primary">
-                  Logout
-                </button>
+                <div className="dropdown">
+                  <button
+                    className="btn dropdown-toggle"
+                    type="button"
+                    id="more-button"
+                    data-bs-toggle="dropdown"
+                  >
+                    {/* <img height={50} alt="" /> */}
+                    More
+                  </button>
+                  <ul className="dropdown-menu" aria-labelledby="more-button">
+                    <li>
+                      <Link className="dropdown-item" to="/profile">
+                        Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <button onClick={logout} className="dropdown-item">
+                        logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </li>
             ) : (
               <>
@@ -97,11 +118,16 @@ const Navbar = () => {
             <StyledLink to="/contacts">Contact Us</StyledLink>
           </li>
           {user ? (
-            <li>
-              <button onClick={logout} className="btn btn-primary">
-                Logout
-              </button>
-            </li>
+            <>
+              <li>
+                <StyledLink to="/profile">Profile</StyledLink>
+              </li>
+              <li>
+                <button onClick={logout} className="btn btn-primary">
+                  Logout
+                </button>
+              </li>
+            </>
           ) : (
             <>
               <li>
