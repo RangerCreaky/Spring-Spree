@@ -101,8 +101,12 @@ export function useEventPayment() {
   const paymentConfirm = useApi(paymentApi.paymentConfirm);
   const { user } = useAuth();
 
-  const makePayment = async ({ event }) => {
-    const order = await createOrder.request(event._id);
+  const makePayment = async ({ event, specialEvent = 0 }) => {
+    const event_id = specialEvent ? event.key : event._id;
+
+    const order = await createOrder.request(event_id, {
+      specialEvent,
+    });
     if (!order.ok) {
       alert("Something went wrong. Please try again later");
       return;
@@ -129,9 +133,10 @@ export function useEventPayment() {
       name: user.name,
       email: user.email,
       mobile: user.mobile,
-      event_id: event._id,
+      event_id,
       event: event.name,
       registration_fee: order.amount,
+      specialEvent,
     });
 
     if (!payment.ok) {

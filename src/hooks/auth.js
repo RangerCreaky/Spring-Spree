@@ -9,7 +9,7 @@ export function useAuth() {
   const updateUser = async () => {
     const { ok, data } = await authApi.userProfile();
     if (ok) {
-      storage.set("user", data);
+      await storage.set("user", data);
       setUser(data);
     }
   };
@@ -22,7 +22,7 @@ export function useAuth() {
 
   const logout = async () => {
     if (!window.confirm("Are you sure you want to logout?")) return;
-    storage.clear();
+    await storage.clear();
     setUser(null);
   };
 

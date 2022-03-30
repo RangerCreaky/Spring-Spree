@@ -28,9 +28,9 @@ const Navbar = () => {
             <BrandLink to="/">SpringSpree'22</BrandLink>
           </h3>
           <ul className="nav-links">
-            {/* <li>
+            <li>
               <StyledLink to="/events">Events</StyledLink>
-            </li> */}
+            </li>
             <li>
               <StyledLink to="/gallery">Gallery</StyledLink>
             </li>
@@ -79,11 +79,11 @@ const Navbar = () => {
           id="mobile-nav-links"
           onClick={toggleNavbar}
         >
-          {/* <li>
+          <li>
             <StyledLink to="/events" style={{ textDecoration: "none" }}>
               Events
             </StyledLink>
-          </li> */}
+          </li>
           <li>
             <StyledLink to="/gallery">Gallery</StyledLink>
           </li>

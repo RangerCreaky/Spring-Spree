@@ -8,17 +8,10 @@ import DayFilter from "./DayFilter";
 import Section from "./Section";
 import _ from "lodash";
 import { useAuth } from "../../hooks/auth";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ToastHolder from "../Toast/ToastHolder";
 import Toast from "../Toast";
 import { useEventPayment } from "../../hooks/payment";
-
-const entry_event = {
-  _id: "623c349874264a5c12781c51",
-  name: "Spring Spring 22 Entry",
-  description: "Entry fees for Spring Spree 2022",
-  poster: "https://backend.springspree22.in/static/ss22.jpeg",
-};
 
 const days_data = [
   ["All", null],
@@ -34,7 +27,7 @@ const days_data = [
 export default function Events() {
   const allEvents = useApi(eventApi.getAllEvents);
   const [filters, setFilters] = useState(days_data);
-  const { user, updateUser } = useAuth();
+  const { user } = useAuth();
   const eventPayment = useEventPayment();
 
   const changeFilter = (k) => () => {
@@ -43,13 +36,6 @@ export default function Events() {
         key === k ? { key, active: true } : { key, active: false }
       )
     );
-  };
-  const onClick = async () => {
-    const payment = await eventPayment.makePayment({ event: entry_event });
-    if (payment) {
-      updateUser();
-      alert("Payment successfull!");
-    }
   };
 
   useEffect(() => {
@@ -74,14 +60,15 @@ export default function Events() {
       {user && (
         <ToastHolder>
           <Toast
-            show={user.isAllowed !== 1}
+            show={user.paidForEvent === 0}
             content={
               <div>
-                Please pay your registration fees.
+                Please pay your registration fees first to attend any event.
                 <br />
-                <button className="btn btn-primary" onClick={onClick}>
+                <br />
+                <Link className="btn btn-primary" to="/register">
                   Pay
-                </button>
+                </Link>
               </div>
             }
           />

@@ -12,6 +12,7 @@ import { useAuth } from "../hooks/auth";
 
 const signupSchema = Yup.object().shape({
   name: Yup.string().required().max(255),
+  gender: Yup.string().required().max(255),
   email: Yup.string().email().required().max(255),
   mobile: Yup.string().required().max(15),
   password: Yup.string().required().min(8).max(32),
@@ -22,8 +23,11 @@ const signupSchema = Yup.object().shape({
   level: Yup.string().required().max(30),
 });
 
+const GENDER = ["Male", "Female", "Other"];
+
 const initialValues = {
   name: "",
+  gender: "",
   email: "",
   mobile: "",
   password: "",
@@ -48,7 +52,7 @@ export default function Signup() {
         navigate("/verifyMail", { replace: true, state });
       else navigate(state?.from || "/", { replace: true });
     } else {
-      window.alert("Use with this email or phone already exists.");
+      window.alert("User with email or phone already exists.");
     }
   };
 
@@ -74,6 +78,27 @@ export default function Signup() {
                 className="form-control"
                 id="name"
               />
+            </div>
+            <div className="col-md-6">
+              <label htmlFor="gender" className="form-label">
+                Gender
+              </label>
+              <Field
+                name="gender"
+                placeholder="Male"
+                as="select"
+                className="form-select"
+                id="gender"
+              >
+                <option selected value="">
+                  Select
+                </option>
+                {GENDER.map((gen) => (
+                  <option key={gen} value={gen}>
+                    {gen}
+                  </option>
+                ))}
+              </Field>
             </div>
             <div className="col-md-6">
               <label htmlFor="email" className="form-label">
@@ -113,6 +138,19 @@ export default function Signup() {
             </div>
 
             <div className="col-md-6">
+              <label htmlFor="level" className="form-label">
+                Level
+              </label>
+              <Field
+                name="level"
+                placeholder="B.Tech 4th year"
+                type="text"
+                className="form-control"
+                id="level"
+              />
+            </div>
+
+            <div className="col-md-6">
               <label htmlFor="password" className="form-label">
                 Password
               </label>
@@ -139,18 +177,6 @@ export default function Signup() {
               />
             </div>
 
-            <div className="col-md-6">
-              <label htmlFor="level" className="form-label">
-                Level
-              </label>
-              <Field
-                name="level"
-                placeholder="B.Tech 4th year"
-                type="text"
-                className="form-control"
-                id="level"
-              />
-            </div>
             <div className="col-12">
               <button type="submit" className="btn btn-primary">
                 Submit

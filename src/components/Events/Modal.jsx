@@ -55,20 +55,27 @@ export default function Modal({ event, onClose, visible = false }) {
       return navigate("/login", { replace: true, state: { from: "/events" } });
     }
 
-    if (registration_fee === 0) {
-      const res = await registerFree.request(event._id);
-      if (res.ok) {
-        window.alert("You have registered successfully for this event");
-      } else {
-        window.alert("Something went wrong!");
-      }
+    if (user.paidForEvent === 0) {
+      alert("Please pay entry fees first to continue to event");
       return;
     }
 
-    const payment = await eventPayment.makePayment({ event });
-    if (payment) {
-      alert("Payment successfull!");
+    if (!window.confirm("Are you sure you want to register to this event"))
+      return;
+
+    if (registration_fee === 0) {
+      const res = await registerFree.request(event._id);
+      if (!res.ok) {
+        window.alert("Something went wrong!");
+        return;
+      }
+    } else {
+      const payment = await eventPayment.makePayment({ event });
+      if (!payment) return;
     }
+
+    window.alert("You have registered successfully for this event");
+    navigate("/", { replace: true });
   };
 
   const registered = !!registered_users.find((u) => u._id === user?._id);
