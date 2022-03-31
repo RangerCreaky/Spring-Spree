@@ -22,7 +22,7 @@ const LandingPageContainer = () => {
           <div className="action">
             {!user ? (
               <Link to="/signup" className="btn btn-primary">
-                Sigup
+                Register
               </Link>
             ) : user.paidForEvent === 0 ? (
               <Link to="/register" className="btn btn-primary">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { QRCode } from "react-qrcode-logo";
 
@@ -7,27 +7,52 @@ import offerData from "./offerData";
 
 import Field from "./Field";
 import { useAuth } from "../../hooks/auth";
+import { Navigate } from "react-router-dom";
 
-const fields = ["name", "email", "mobile", "gender", "college", "level"];
+import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
+import { useEventPayment } from "../../hooks/payment";
+import Loader from "../Loader";
+
+const BoolIcon = ({ value }) => {
+  if (value) return <BsCheck2Circle color="green" />;
+  return <BsXCircle color="red" />;
+};
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
+  const [eventToPay, setEventToPay] = useState([]);
+  const eventPayment = useEventPayment();
+  const total = eventToPay.reduce((pre, cur) => pre + cur.registration_fee, 0);
 
-  const renderOffers = () => {
-    return offerData.map((offer, index) => {
-      const { name, tag, price } = offer;
-
-      return <Offer key={index} name={name} tag={tag} price={price} />;
-    });
-  };
   const qrData = JSON.stringify({
     _id: user?._id,
     name: user?.name,
     email: user?.email,
   });
 
+  const toggleToCart = (event) => (e) => {
+    if (e.target.checked) setEventToPay([...eventToPay, event]);
+    else setEventToPay(eventToPay.filter((x) => x.key !== event.key));
+  };
+
+  const checkout = async () => {
+    const event = {
+      key: eventToPay.map((e) => e.key).join(","),
+      registration_fee: total,
+      name: "Spring Spree 22 - Special events",
+    };
+    const res = await eventPayment.makePayment({ event, specialEvent: 1 });
+    if (res) {
+      await updateUser();
+      alert("Payment successfull");
+    }
+  };
+
+  if (!user) return <Navigate to="/" replace />;
+
   return (
     <Container>
+      <Loader loading={eventPayment.loading} />
       <ProfileContainer>
         <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
@@ -36,8 +61,6 @@ const Profile = () => {
                 <div className="row z-depth-3 card-actual">
                   <div className="col-md-4 left-card rounded-left">
                     <div className="card-block d-flex align-items-center justify-content-center">
-                      {/* QR CODE */}
-                      {/* <img src="../../images/tempQR.png" alt="" /> */}
                       <QRCode
                         size={200}
                         style={{ borderRadius: "2px" }}
@@ -60,9 +83,27 @@ const Profile = () => {
                     <hr className="hr" />
 
                     <div className="row field-wrapper">
-                      {fields.map((key) => (
-                        <Field key={key} field={key} value={user[key]} />
-                      ))}
+                      <Field label="name">{user?.name}</Field>
+                      <Field label="email">{user?.email}</Field>
+                      <Field label="mobile">{user?.mobile}</Field>
+                      <Field label="gender">{user?.gender}</Field>
+                      <Field label="college">{user?.college}</Field>
+                      <Field label="level">{user?.level}</Field>
+                      <Field label="paid for event">
+                        <BoolIcon value={user?.paidForEvent} />
+                      </Field>
+                      <Field label="Accomodation">
+                        <BoolIcon value={user?.paidForAccomodation} />
+                      </Field>
+                      <Field label="Proshow 1">
+                        <BoolIcon value={user?.paidForProshow1} />
+                      </Field>
+                      <Field label="Proshow 2">
+                        <BoolIcon value={user?.paidForProshow2} />
+                      </Field>
+                      <Field label="Proshow 3">
+                        <BoolIcon value={user?.paidForProshow3} />
+                      </Field>
                     </div>
                   </div>
                 </div>
@@ -75,20 +116,23 @@ const Profile = () => {
       <Billing>
         <h1> Other offers </h1>
         <hr className="hr" />
-
-        <p>
-          {" "}
-          Please check the boxes corresponding to the offers you want to pay for{" "}
-        </p>
         <div className="billing-wrapper">
-          {renderOffers()}
+          {offerData
+            .filter((e) => !user?.[e.slug])
+            .map(({ key, name, tag, registration_fee }) => (
+              <Offer
+                key={key}
+                name={name}
+                tag={tag}
+                price={registration_fee}
+                onChange={toggleToCart({ key, registration_fee })}
+              />
+            ))}
 
-          {/* Payment */}
           <div className="pay">
-            <h4> Amount to be paid: &#8377; 500 </h4>
-            <button className="btn btn-outline-dark mt-3">
-              {" "}
-              Complete Payment{" "}
+            <h4> Amount to be paid: &#8377;{total} </h4>
+            <button onClick={checkout} className="btn btn-outline-dark mt-3">
+              Complete Payment
             </button>
           </div>
         </div>
@@ -100,7 +144,7 @@ const Profile = () => {
 export default Profile;
 
 const Container = styled.div`
-  background: url("../../images/springspree22_69.png");
+  background: url("/images/springspree22_69.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

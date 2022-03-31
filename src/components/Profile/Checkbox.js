@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Checkbox = () => {
+const Checkbox = ({ onChange }) => {
   return (
     <Container className="chekcbox">
       <label className="label">
-        <input className="label__checkbox" type="checkbox" />
+        <input
+          className="label__checkbox"
+          type="checkbox"
+          onChange={onChange}
+        />
         <span className="label__text">
           <span className="label__check">
             <i className="fa fa-check icon"></i>

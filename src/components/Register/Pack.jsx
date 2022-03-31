@@ -1,18 +1,36 @@
+import React from "react";
 import styled from "styled-components";
 
-export const RegisterContainer = styled.div`
-  margin-top: 100px;
-  padding: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  color: #ffffff;
-`;
+export default function Pack({ name, amount, onClick }) {
+  const names = name?.split(",") || [];
 
-export const Pack = styled.div`
+  return (
+    <PackStyled>
+      <Type>
+        <ul>
+          {names.map((e, i) => {
+            if (i === names.length - 1) return <li key={e}>{e}</li>;
+
+            return (
+              <React.Fragment key={e}>
+                <li>{e}</li>
+                <li>+</li>
+              </React.Fragment>
+            );
+          })}
+        </ul>
+      </Type>
+      <ButtonContainer>
+        <span>{amount}/-</span>
+        <button className="btn btn-primary" onClick={onClick}>
+          Pay
+        </button>
+      </ButtonContainer>
+    </PackStyled>
+  );
+}
+
+const PackStyled = styled.div`
   max-width: 400px;
   width: 330px;
   min-width: 250px;
