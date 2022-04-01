@@ -46,6 +46,11 @@ const LandingPage = () => {
           <About />
         </div>
         <div>
+          <div className="small-text container">
+            <h4> Lorem Ipsum </h4>
+            <hr className="hr" />
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu quam faucibus sapien blandit egestas non nec leo. Nam mattis efficitur felis, ut lacinia mi. Fusce elementum placerat tortor, imperdiet ultrices ex malesuada vel. Fusce vel interdum metus. </p>
+          </div>
           <Footer />
           <div className="dummy" ref={footerRef}>
             {" "}
@@ -66,6 +71,18 @@ export default LandingPage;
 
 const HomePage = styled.section`
   height: 100vh;
+
+  .small-text{
+    text-align: center;
+
+    .hr{
+      width: 5%;
+      height: 2px;
+      background-color: var(--c);
+      opacity: 1;
+      margin: 6px auto 10px auto;
+    }
+  }
 
   > img {
     width: 50px;
