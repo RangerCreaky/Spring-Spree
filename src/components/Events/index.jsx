@@ -56,7 +56,7 @@ export default function Events() {
       )
       ?.map((e) => ({
         ...e,
-        registered: !!user.events.find((x) => x.event_id === e._id),
+        registered: !!user?.events?.find((x) => x.event_id === e._id),
       }))
       ?.sort((a, b) => a.registered - b.registered),
     (el) => el.category ?? "Other"
@@ -102,13 +102,19 @@ export default function Events() {
         </div>
         <div className="right col-12 col-lg-8">
           <div>
-            {categories.map((category) => (
-              <Section
-                key={category}
-                title={category}
-                events={parsedEvents[category]}
-              />
-            ))}
+            {categories.length ? (
+              categories.map((category) => (
+                <Section
+                  key={category}
+                  title={category}
+                  events={parsedEvents[category]}
+                />
+              ))
+            ) : (
+              <h3 className="text-center m-5">
+                Sorry no events available for <br /> selected day :(
+              </h3>
+            )}
           </div>
         </div>
       </Container>

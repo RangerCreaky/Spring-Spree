@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaMapMarkerAlt, FaFacebook, FaInstagram } from "react-icons/fa";
-import { Header, BackDrop, Body, Container, Footer, Main } from "./Modal.style";
+import { Header, BackDrop, Body, Container, Main } from "./Modal.style";
 import Image from "../Image";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -200,7 +200,6 @@ export default function Modal({ event, onClose, visible = false }) {
               </div>
             </div>
           </Main>
-          <Footer></Footer>
         </Body>
       </BackDrop>
     </Container>

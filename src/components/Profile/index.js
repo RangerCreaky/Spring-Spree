@@ -7,7 +7,7 @@ import offerData from "./offerData";
 
 import Field from "./Field";
 import { useAuth } from "../../hooks/auth";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
 import { useEventPayment } from "../../hooks/payment";
@@ -160,13 +160,22 @@ const Profile = () => {
       <Billing>
         <h1> Events registered </h1>
         <hr className="hr" />
-        <div className="billing-wrapper bg-dark">
-          <CardContainer
-            events={
-              user?.events?.map((e) => ({ ...e, registered: true })) || []
-            }
-          />
-        </div>
+        {!user?.events ? (
+          <div className="billing-wrapper bg-dark">
+            <CardContainer
+              events={
+                user?.events?.map((e) => ({ ...e, registered: true })) || []
+              }
+            />
+          </div>
+        ) : (
+          <div className="text-center">
+            <p>You have not registred for any events yet :)</p>
+            <Link className="btn btn-outline-info" to="/events">
+              Visit Events
+            </Link>
+          </div>
+        )}
       </Billing>
 
       <button onClick={logout} className="btn btn-outline-info logout">
@@ -177,8 +186,8 @@ const Profile = () => {
 };
 
 const BoolIcon = ({ value }) => {
-  if (value) return <BsCheck2Circle color="green" />;
-  return <BsXCircle color="red" />;
+  if (value) return <BsCheck2Circle color="var(--bs-success)" />;
+  return <BsXCircle color="var(--bs-danger)" />;
 };
 
 export default Profile;
