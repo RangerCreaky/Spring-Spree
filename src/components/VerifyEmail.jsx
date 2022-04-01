@@ -73,7 +73,7 @@ export default function VerifyEmail() {
             {!resendMail.data && (
               <div className="center">
                 <p>
-                  Not recived an OTP yet?
+                  Not received an OTP yet?
                   <button
                     type="button"
                     className="btn btn-link"

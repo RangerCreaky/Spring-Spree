@@ -12,12 +12,13 @@ import { Link, Navigate } from "react-router-dom";
 import ToastHolder from "../Toast/ToastHolder";
 import Toast from "../Toast";
 import { useEventPayment } from "../../hooks/payment";
+import dayjs from "dayjs";
 
 const days_data = [
   ["All", null],
-  ["Day 1", "8"],
-  ["Day 2", "9"],
-  ["Day 3", "10"],
+  ["Day 1", 8],
+  ["Day 2", 9],
+  ["Day 3", 10],
 ].map((el, i) => ({
   key: el[0],
   date: el[1],
@@ -26,26 +27,38 @@ const days_data = [
 
 export default function Events() {
   const allEvents = useApi(eventApi.getAllEvents);
-  const [filters, setFilters] = useState(days_data);
-  const { user } = useAuth();
+  const [filter, setFilter] = useState(days_data);
+  const { user, updateUser } = useAuth();
   const eventPayment = useEventPayment();
+  const currentFilter = filter.find((e) => e.active);
 
   const changeFilter = (k) => () => {
-    setFilters(
-      filters.map(({ key }) =>
-        key === k ? { key, active: true } : { key, active: false }
+    setFilter(
+      filter.map((e) =>
+        e.key === k ? { ...e, active: true } : { ...e, active: false }
       )
     );
   };
 
   useEffect(() => {
+    updateUser();
     allEvents.request();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const parsedEvents = _.groupBy(
-    allEvents.data,
+    allEvents.data
+      ?.filter(
+        (e) =>
+          !currentFilter.date ||
+          dayjs(e.start_date).date() === currentFilter.date
+      )
+      ?.map((e) => ({
+        ...e,
+        registered: !!user.events.find((x) => x.event_id === e._id),
+      }))
+      ?.sort((a, b) => a.registered - b.registered),
     (el) => el.category ?? "Other"
   );
   const categories = Object.keys(parsedEvents);
@@ -78,7 +91,7 @@ export default function Events() {
         <div className="left col-12 col-lg-4">
           <img src="/assets/images/logo.webp" alt="logo" />
           <h1>Events</h1>
-          <DayFilter filters={filters} onChange={changeFilter} />
+          <DayFilter filters={filter} onChange={changeFilter} />
           <ul className="events">
             {categories.map((category) => (
               <li key={category}>

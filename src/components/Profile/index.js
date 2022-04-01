@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { QRCode } from "react-qrcode-logo";
 
@@ -13,16 +13,14 @@ import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
 import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
 
-const BoolIcon = ({ value }) => {
-  if (value) return <BsCheck2Circle color="green" />;
-  return <BsXCircle color="red" />;
-};
+const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
 
 const Profile = () => {
-  const { user, updateUser } = useAuth();
+  const { user, logout, updateUser } = useAuth();
   const [eventToPay, setEventToPay] = useState([]);
   const eventPayment = useEventPayment();
   const total = eventToPay.reduce((pre, cur) => pre + cur.registration_fee, 0);
+  const userOffer = offerData.filter((e) => !user?.[e.slug]);
 
   const qrData = JSON.stringify({
     _id: user?._id,
@@ -36,17 +34,32 @@ const Profile = () => {
   };
 
   const checkout = async () => {
+    if (eventToPay.length === 0) {
+      alert("please select some items above");
+      return;
+    }
+
     const event = {
-      key: eventToPay.map((e) => e.key).join(","),
+      key: eventToPay
+        .map((e) => e.key)
+        .sort((a, b) => eventOrder.indexOf(a) - eventOrder.indexOf(b))
+        .join(","),
       registration_fee: total,
       name: "Spring Spree 22 - Special events",
     };
     const res = await eventPayment.makePayment({ event, specialEvent: 1 });
     if (res) {
-      await updateUser();
       alert("Payment successfull");
+      await updateUser();
     }
+    setEventToPay([]);
   };
+
+  useEffect(() => {
+    updateUser();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!user) return <Navigate to="/" replace />;
 
@@ -117,17 +130,15 @@ const Profile = () => {
         <h1> Other offers </h1>
         <hr className="hr" />
         <div className="billing-wrapper">
-          {offerData
-            .filter((e) => !user?.[e.slug])
-            .map(({ key, name, tag, registration_fee }) => (
-              <Offer
-                key={key}
-                name={name}
-                tag={tag}
-                price={registration_fee}
-                onChange={toggleToCart({ key, registration_fee })}
-              />
-            ))}
+          {userOffer.map(({ key, name, tag, registration_fee }) => (
+            <Offer
+              key={key}
+              name={name}
+              tag={tag}
+              price={registration_fee}
+              onChange={toggleToCart({ key, registration_fee })}
+            />
+          ))}
 
           <div className="pay">
             <h4> Amount to be paid: &#8377;{total} </h4>
@@ -138,10 +149,16 @@ const Profile = () => {
         </div>
       </Billing>
 
-
-      <button className="btn btn-outline-info logout"> Logout </button>
+      <button onClick={logout} className="btn btn-outline-info logout">
+        Logout
+      </button>
     </Container>
   );
+};
+
+const BoolIcon = ({ value }) => {
+  if (value) return <BsCheck2Circle color="green" />;
+  return <BsXCircle color="red" />;
 };
 
 export default Profile;
@@ -152,7 +169,7 @@ const Container = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 
-  .logout{
+  .logout {
     display: block;
     margin: auto;
     margin-bottom: 20px;

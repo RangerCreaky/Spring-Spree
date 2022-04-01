@@ -43,7 +43,7 @@ export default function Modal({ event, onClose, visible = false }) {
     judging_criteria,
     start_date,
     end_date,
-    registered_users = [],
+    registered,
   } = event;
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -78,7 +78,6 @@ export default function Modal({ event, onClose, visible = false }) {
     navigate("/", { replace: true });
   };
 
-  const registered = !!registered_users.find((u) => u._id === user?._id);
   const loading = eventPayment.loading || registerFree.loading;
 
   if (!visible) return null;
