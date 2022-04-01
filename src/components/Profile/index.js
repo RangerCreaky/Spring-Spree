@@ -22,12 +22,6 @@ const Profile = () => {
   const total = eventToPay.reduce((pre, cur) => pre + cur.registration_fee, 0);
   const userOffer = offerData.filter((e) => !user?.[e.slug]);
 
-  const qrData = JSON.stringify({
-    _id: user?._id,
-    name: user?.name,
-    email: user?.email,
-  });
-
   const toggleToCart = (event) => (e) => {
     if (e.target.checked) setEventToPay([...eventToPay, event]);
     else setEventToPay(eventToPay.filter((x) => x.key !== event.key));
@@ -74,21 +68,27 @@ const Profile = () => {
                 <div className="row z-depth-3 card-actual">
                   <div className="col-md-4 left-card rounded-left">
                     <div className="card-block d-flex align-items-center justify-content-center">
-                      <QRCode
-                        size={200}
-                        style={{ borderRadius: "2px" }}
-                        bgColor="#f1f1f1"
-                        value={qrData}
-                        logoImage="/images/springspree22_74.png"
-                        qrStyle="dots"
-                        logoOpacity={0.2}
-                        logoWidth={170}
-                        eyeRadius={[
-                          [10, 10, 0, 10],
-                          [10, 10, 10, 0],
-                          [10, 0, 10, 10],
-                        ]}
-                      />
+                      {user?.email?.split("@")?.[1] === "student.nitw.ac.in" ? (
+                        <p className="text-center">
+                          No QR code required for NITW students :)
+                        </p>
+                      ) : (
+                        <QRCode
+                          size={200}
+                          style={{ borderRadius: "2px" }}
+                          bgColor="#f1f1f1"
+                          value={user._id}
+                          logoImage="/images/springspree22_74.png"
+                          qrStyle="dots"
+                          logoOpacity={0.2}
+                          logoWidth={170}
+                          eyeRadius={[
+                            [10, 10, 0, 10],
+                            [10, 10, 10, 0],
+                            [10, 0, 10, 10],
+                          ]}
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="col-md-8 rounded-right card-right">
@@ -129,24 +129,30 @@ const Profile = () => {
       <Billing>
         <h1> Other offers </h1>
         <hr className="hr" />
-        <div className="billing-wrapper">
-          {userOffer.map(({ key, name, tag, registration_fee }) => (
-            <Offer
-              key={key}
-              name={name}
-              tag={tag}
-              price={registration_fee}
-              onChange={toggleToCart({ key, registration_fee })}
-            />
-          ))}
+        {userOffer?.length ? (
+          <div className="billing-wrapper">
+            {userOffer.map(({ key, name, tag, registration_fee }) => (
+              <Offer
+                key={key}
+                name={name}
+                tag={tag}
+                price={registration_fee}
+                onChange={toggleToCart({ key, registration_fee })}
+              />
+            ))}
 
-          <div className="pay">
-            <h4> Amount to be paid: &#8377;{total} </h4>
-            <button onClick={checkout} className="btn btn-outline-dark mt-3">
-              Complete Payment
-            </button>
+            <div className="pay">
+              <h4> Amount to be paid: &#8377;{total} </h4>
+              <button onClick={checkout} className="btn btn-outline-dark mt-3">
+                Complete Payment
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <p className="text-center">
+            Sorry! No offer available for you now :(
+          </p>
+        )}
       </Billing>
 
       <button onClick={logout} className="btn btn-outline-info logout">
