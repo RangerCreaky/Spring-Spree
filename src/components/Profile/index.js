@@ -13,6 +13,7 @@ import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
 import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
 import CardContainer from "../Events/CardContainer";
+import { FcDownload } from "react-icons/fc";
 
 const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
 
@@ -26,6 +27,16 @@ const Profile = () => {
   const toggleToCart = (event) => (e) => {
     if (e.target.checked) setEventToPay([...eventToPay, event]);
     else setEventToPay(eventToPay.filter((x) => x.key !== event.key));
+  };
+
+  const downloadQr = async () => {
+    const qr = document.getElementById("user-qr-code");
+    if (qr) {
+      const a = document.createElement("a");
+      a.href = qr.toDataURL();
+      a.download = `spring-spree-qr.png`;
+      a.click();
+    }
   };
 
   const checkout = async () => {
@@ -69,27 +80,33 @@ const Profile = () => {
               <div className="bg">
                 <div className="row z-depth-3 card-actual">
                   <div className="col-md-4 left-card rounded-left">
-                    <div className="card-block d-flex align-items-center justify-content-center">
+                    <div className="card-block d-flex flex-column align-items-center justify-content-center">
                       {user?.email?.split("@")?.[1] === "student.nitw.ac.in" ? (
                         <p className="text-center text-dark">
                           No QR code required for NITW students :)
                         </p>
                       ) : (
-                        <QRCode
-                          size={200}
-                          style={{ borderRadius: "2px" }}
-                          bgColor="#f1f1f1"
-                          value={user._id}
-                          logoImage="/images/springspree22_74.png"
-                          qrStyle="dots"
-                          logoOpacity={0.2}
-                          logoWidth={170}
-                          eyeRadius={[
-                            [10, 10, 0, 10],
-                            [10, 10, 10, 0],
-                            [10, 0, 10, 10],
-                          ]}
-                        />
+                        <>
+                          <QRCode
+                            id="user-qr-code"
+                            size={200}
+                            style={{ borderRadius: "2px" }}
+                            bgColor="#f1f1f1"
+                            value={user._id}
+                            logoImage="/images/springspree22_74.png"
+                            qrStyle="dots"
+                            logoOpacity={0.2}
+                            logoWidth={170}
+                            eyeRadius={[
+                              [10, 10, 0, 10],
+                              [10, 10, 10, 0],
+                              [10, 0, 10, 10],
+                            ]}
+                          />
+                          <button className="btn" onClick={downloadQr}>
+                            <FcDownload size={20} />
+                          </button>
+                        </>
                       )}
                     </div>
                   </div>
