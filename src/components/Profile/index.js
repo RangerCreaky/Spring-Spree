@@ -137,6 +137,9 @@ const Profile = () => {
           </div>
         </div>
       </Billing>
+
+
+      <button className="btn btn-outline-info logout"> Logout </button>
     </Container>
   );
 };
@@ -148,6 +151,12 @@ const Container = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  .logout{
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+  }
 
   .hr {
     width: 10%;
