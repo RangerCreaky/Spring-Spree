@@ -12,6 +12,7 @@ import { Navigate } from "react-router-dom";
 import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
 import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
+import CardContainer from "../Events/CardContainer";
 
 const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
 
@@ -56,6 +57,7 @@ const Profile = () => {
   }, []);
 
   if (!user) return <Navigate to="/" replace />;
+  if (user.isVerified !== 0) return <Navigate to="/verifyMail" replace />;
 
   return (
     <Container>
@@ -155,6 +157,18 @@ const Profile = () => {
         )}
       </Billing>
 
+      <Billing>
+        <h1> Events registered </h1>
+        <hr className="hr" />
+        <div className="billing-wrapper bg-dark">
+          <CardContainer
+            events={
+              user?.events?.map((e) => ({ ...e, registered: true })) || []
+            }
+          />
+        </div>
+      </Billing>
+
       <button onClick={logout} className="btn btn-outline-info logout">
         Logout
       </button>
@@ -192,6 +206,7 @@ const Container = styled.div`
 `;
 
 const Billing = styled.div`
+  margin-top: 3rem;
   margin-bottom: 25px;
 
   .pay {
@@ -201,7 +216,6 @@ const Billing = styled.div`
 
   > h1 {
     text-align: center;
-    margin-top: 100px;
   }
 
   > p {
