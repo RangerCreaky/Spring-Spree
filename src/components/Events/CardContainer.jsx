@@ -5,7 +5,7 @@ export default function CardContainer({ events = [] }) {
   return (
     <Container>
       {events.map((event) => (
-        <Card key={event._id} event={event} />
+        <Card key={event._id || event.event_id} event={event} />
       ))}
     </Container>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { QRCode } from "react-qrcode-logo";
 
@@ -12,23 +12,16 @@ import { Navigate } from "react-router-dom";
 import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
 import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
+import CardContainer from "../Events/CardContainer";
 
-const BoolIcon = ({ value }) => {
-  if (value) return <BsCheck2Circle color="green" />;
-  return <BsXCircle color="red" />;
-};
+const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
 
 const Profile = () => {
-  const { user, updateUser } = useAuth();
+  const { user, logout, updateUser } = useAuth();
   const [eventToPay, setEventToPay] = useState([]);
   const eventPayment = useEventPayment();
   const total = eventToPay.reduce((pre, cur) => pre + cur.registration_fee, 0);
-
-  const qrData = JSON.stringify({
-    _id: user?._id,
-    name: user?.name,
-    email: user?.email,
-  });
+  const userOffer = offerData.filter((e) => !user?.[e.slug]);
 
   const toggleToCart = (event) => (e) => {
     if (e.target.checked) setEventToPay([...eventToPay, event]);
@@ -36,19 +29,35 @@ const Profile = () => {
   };
 
   const checkout = async () => {
+    if (eventToPay.length === 0) {
+      alert("please select some items above");
+      return;
+    }
+
     const event = {
-      key: eventToPay.map((e) => e.key).join(","),
+      key: eventToPay
+        .map((e) => e.key)
+        .sort((a, b) => eventOrder.indexOf(a) - eventOrder.indexOf(b))
+        .join(","),
       registration_fee: total,
       name: "Spring Spree 22 - Special events",
     };
     const res = await eventPayment.makePayment({ event, specialEvent: 1 });
     if (res) {
-      await updateUser();
       alert("Payment successfull");
+      await updateUser();
     }
+    setEventToPay([]);
   };
 
+  useEffect(() => {
+    updateUser();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   if (!user) return <Navigate to="/" replace />;
+  if (user.isVerified !== 0) return <Navigate to="/verifyMail" replace />;
 
   return (
     <Container>
@@ -61,21 +70,27 @@ const Profile = () => {
                 <div className="row z-depth-3 card-actual">
                   <div className="col-md-4 left-card rounded-left">
                     <div className="card-block d-flex align-items-center justify-content-center">
-                      <QRCode
-                        size={200}
-                        style={{ borderRadius: "2px" }}
-                        bgColor="#f1f1f1"
-                        value={qrData}
-                        logoImage="/images/springspree22_74.png"
-                        qrStyle="dots"
-                        logoOpacity={0.2}
-                        logoWidth={170}
-                        eyeRadius={[
-                          [10, 10, 0, 10],
-                          [10, 10, 10, 0],
-                          [10, 0, 10, 10],
-                        ]}
-                      />
+                      {user?.email?.split("@")?.[1] === "student.nitw.ac.in" ? (
+                        <p className="text-center">
+                          No QR code required for NITW students :)
+                        </p>
+                      ) : (
+                        <QRCode
+                          size={200}
+                          style={{ borderRadius: "2px" }}
+                          bgColor="#f1f1f1"
+                          value={user._id}
+                          logoImage="/images/springspree22_74.png"
+                          qrStyle="dots"
+                          logoOpacity={0.2}
+                          logoWidth={170}
+                          eyeRadius={[
+                            [10, 10, 0, 10],
+                            [10, 10, 10, 0],
+                            [10, 0, 10, 10],
+                          ]}
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="col-md-8 rounded-right card-right">
@@ -116,10 +131,9 @@ const Profile = () => {
       <Billing>
         <h1> Other offers </h1>
         <hr className="hr" />
-        <div className="billing-wrapper">
-          {offerData
-            .filter((e) => !user?.[e.slug])
-            .map(({ key, name, tag, registration_fee }) => (
+        {userOffer?.length ? (
+          <div className="billing-wrapper">
+            {userOffer.map(({ key, name, tag, registration_fee }) => (
               <Offer
                 key={key}
                 name={name}
@@ -129,19 +143,42 @@ const Profile = () => {
               />
             ))}
 
-          <div className="pay">
-            <h4> Amount to be paid: &#8377;{total} </h4>
-            <button onClick={checkout} className="btn btn-outline-dark mt-3">
-              Complete Payment
-            </button>
+            <div className="pay">
+              <h4> Amount to be paid: &#8377;{total} </h4>
+              <button onClick={checkout} className="btn btn-outline-dark mt-3">
+                Complete Payment
+              </button>
+            </div>
           </div>
+        ) : (
+          <p className="text-center">
+            Sorry! No offer available for you now :(
+          </p>
+        )}
+      </Billing>
+
+      <Billing>
+        <h1> Events registered </h1>
+        <hr className="hr" />
+        <div className="billing-wrapper bg-dark">
+          <CardContainer
+            events={
+              user?.events?.map((e) => ({ ...e, registered: true })) || []
+            }
+          />
         </div>
       </Billing>
 
-
-      <button className="btn btn-outline-info logout"> Logout </button>
+      <button onClick={logout} className="btn btn-outline-info logout">
+        Logout
+      </button>
     </Container>
   );
+};
+
+const BoolIcon = ({ value }) => {
+  if (value) return <BsCheck2Circle color="green" />;
+  return <BsXCircle color="red" />;
 };
 
 export default Profile;
@@ -152,8 +189,8 @@ const Container = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 
-  .logout{
-    display: block  ;
+  .logout {
+    display: block;
     margin: auto;
     margin-bottom: 20px;
   }
@@ -169,6 +206,7 @@ const Container = styled.div`
 `;
 
 const Billing = styled.div`
+  margin-top: 3rem;
   margin-bottom: 25px;
 
   .pay {
@@ -178,7 +216,6 @@ const Billing = styled.div`
 
   > h1 {
     text-align: center;
-    margin-top: 100px;
   }
 
   > p {

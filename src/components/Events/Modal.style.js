@@ -12,6 +12,7 @@ export const Container = styled.div`
   z-index: 100000;
   height: 100%;
   width: 100vw;
+  color: white;
 `;
 
 export const BackDrop = styled.div`

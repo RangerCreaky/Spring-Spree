@@ -113,7 +113,7 @@ export function useEventPayment() {
     }
     const razorpay_request = await gateway.makePayment({
       payment_name: event.name,
-      description: event.description,
+      description: event.description?.substr(0, 255),
       image: event.poster,
       amount: order.data.amount,
       order_id: order.data.id,

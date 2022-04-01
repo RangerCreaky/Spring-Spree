@@ -12,6 +12,8 @@ export function useAuth() {
       await storage.set("user", data);
       setUser(data);
     }
+
+    return data;
   };
 
   const login = async ({ token, user }) => {
