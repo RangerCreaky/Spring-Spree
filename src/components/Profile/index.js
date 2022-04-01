@@ -153,7 +153,7 @@ const Container = styled.div`
   background-repeat: no-repeat;
 
   .logout{
-    display: block;
+    display: block  ;
     margin: auto;
     margin-bottom: 20px;
   }
