@@ -71,7 +71,7 @@ const Profile = () => {
                   <div className="col-md-4 left-card rounded-left">
                     <div className="card-block d-flex align-items-center justify-content-center">
                       {user?.email?.split("@")?.[1] === "student.nitw.ac.in" ? (
-                        <p className="text-center">
+                        <p className="text-center text-dark">
                           No QR code required for NITW students :)
                         </p>
                       ) : (

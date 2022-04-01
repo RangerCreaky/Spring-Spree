@@ -3,7 +3,8 @@ import paymentApi from "../api/payment";
 import { useApi } from "./api";
 import { useAuth } from "./auth";
 
-const razorpay_key = "rzp_test_fH6e426IsoGX0S";
+const razorpay_key =
+  "rzp_test_fH6e426IsoGX0S" || process.env.REACT_APP_BASE_URL;
 
 const loadScript = (src) =>
   new Promise((resolve) => {
