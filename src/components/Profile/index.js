@@ -160,7 +160,7 @@ const Profile = () => {
       <Billing>
         <h1> Events registered </h1>
         <hr className="hr" />
-        {!user?.events ? (
+        {user?.events?.length ? (
           <div className="billing-wrapper bg-dark">
             <CardContainer
               events={
