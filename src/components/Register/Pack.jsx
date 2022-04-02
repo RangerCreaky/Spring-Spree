@@ -28,18 +28,18 @@ export default function Pack({ id, name, amount, onClick, validatePromo }) {
             <Formik onSubmit={validatePromo} initialValues={{ promo: "" }}>
               <Form className="row align-items-center">
                 <div className="col-8">
-                  <div className="input-group">
+                  <div className="input">
                     <Field
                       required
                       type="text"
-                      className="form-control"
+                      className="form-control promo-field"
                       placeholder="PROMO"
                       name="promo"
                     />
                   </div>
                 </div>
                 <div className="col-4">
-                  <button type="submit" className="btn btn-secondary">
+                  <button type="submit" className="btn btn-primary promo-button">
                     Apply
                   </button>
                 </div>
@@ -57,38 +57,49 @@ export default function Pack({ id, name, amount, onClick, validatePromo }) {
 }
 
 const PackStyled = styled.div`
-  max-width: 400px;
-  width: 330px;
-  min-width: 250px;
-  min-height: 250px;
-  padding: 20px;
-  background: rgba(255, 2255, 255, 0.9);
-  background-image: url("/images/springspree22_74.png");
-  background-size: cover;
-  background-position: center;
-  backdrop-filter: blur(5px);
-  border-radius: 15px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
-  margin: 20px;
+  max-width:350px;
+  width:330px;
+  min-width:250px;
+  min-height:250px;
+  padding:20px;
+  background:rgba(0,0,0,0.5);
+  background-size:cover;
+  background-position:50% 100%;
+  backdrop-filter:blur(5px);
+  border-radius:15px;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.25);
+  margin:20px;
+  flex:1 1 50%;
 `;
 
 export const Type = styled.div`
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(3px);
-  padding: 20px;
-  height: 150px;
-  border-radius: 15px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  /* background:#FFA500; */
+  background-image:url('../../../images/offer-bg.png');
+  background-size:cover;
+  background-position:center;
+  /* background:rgba(0,0,0,0.5); */
+  backdrop-filter:blur(3px);
+  padding:20px;
+  height:150px;
+  border-radius:15px;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.25);
+  font-family: 'Montserrat', sans-serif;
+  font-weight:900;
   > ul {
-    height: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
   }
   > ul > li {
-    margin: 1px auto;
+    /* text-shadow:2px 2px 0 blue,-2px -2px 0 blue, 2px -2px 0 blue, -2px 2px 0 blue; */
+    text-shadow:2px 2px 2px blue;
+    margin:0 !important;
   }
 `;
 
@@ -109,7 +120,26 @@ export const ButtonContainer = styled.div`
   }
 
   > button {
-    background: rgba(255, 165, 0, 1);
+    padding:10px 15px;
+    text-align:center;
+    /* background: rgba(255,165,0,1); */
+    border-radius:10px;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.25);
+    flex:1;
+    background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    background-position:200% auto;
     color: white;
+    font-weight:900;
+  }
+
+  .promo-button{
+    background: #385972;  /* fallback for old browsers */
+    border:none;
+    color:#ffffff;
+    font-weight:600;
+  }
+  .promo-field{
+    border-radius:10px;
+    border:2px solid #ffa500;
   }
 `;
