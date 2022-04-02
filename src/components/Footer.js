@@ -7,114 +7,114 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-      <FooterContainer>
-        <MainContent>
-          <LeftBox>
-            <div className="content">
-              <img
-                src="/images/springspree22_78.png"
-                alt="springspree22_78"
-                className="footer-logo"
-              />
-            </div>
-          </LeftBox>
+    <FooterContainer>
+      <MainContent>
+        <LeftBox>
+          <div className="content">
+            <img
+              src="/images/springspree22_78.png"
+              alt="springspree22_78"
+              className="footer-logo"
+            />
+          </div>
+        </LeftBox>
 
-          <CenterBox>
-            <h2>Links</h2>
-            <div className="content-with-underline">
-              <div>
+        <CenterBox>
+          <h2>Links</h2>
+          <div className="content-with-underline">
+            <div>
+              <span className="text">
+                <Link to="/sponsors">Sponsors</Link>
+              </span>
+            </div>
+            <div>
+              <span className="text">
+                <Link to="/contacts">About</Link>
+              </span>
+            </div>
+            <div>
+              <span className="url text">
+                <a href="https://www.youtube.com/watch?v=RaSRQDaoARY">
+                  Trailer
+                </a>
+              </span>
+            </div>
+          </div>
+        </CenterBox>
+
+        <RightBox>
+          <h2>Let's Connect</h2>
+          <div className="content-with-underline">
+            <div className="content">
+              <div className="place">
+                <span className="fas fa-map-marker-alt"></span>
                 <span className="text">
-                  <Link to="/sponsors">Sponsors</Link>
+                  {" "}
+                  <a
+                    href="https://nitw.ac.in"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    National Institute of Technology Campus, Telangana 506004
+                  </a>
                 </span>
               </div>
-              <div>
+              <div className="phone">
+                <span className="fas fa-phone-alt"></span>
                 <span className="text">
-                  <Link to="/contacts">About</Link>
+                  <a href="tel:9515877819">9515877819</a>
                 </span>
               </div>
-              <div>
-                <span className="url text">
-                  <a href="https://www.youtube.com/watch?v=RaSRQDaoARY">
-                    Trailer
+              <div className="page">
+                <span className="fas fa-home"></span>
+                <span className="text">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.nitw.ac.in"
+                  >
+                    https://www.nitw.ac.in
                   </a>
                 </span>
               </div>
             </div>
-          </CenterBox>
-
-          <RightBox>
-            <h2>Let's Connect</h2>
-            <div className="content-with-underline">
-              <div className="content">
-                <div className="place">
-                  <span className="fas fa-map-marker-alt"></span>
-                  <span className="text">
-                    {" "}
-                    <a
-                      href="https://nitw.ac.in"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      National Institute of Technology Campus, Telangana 506004
-                    </a>
-                  </span>
-                </div>
-                <div className="phone">
-                  <span className="fas fa-phone-alt"></span>
-                  <span className="text">
-                    <a href="tel:0870 245 9191">0870 245 9191</a>
-                  </span>
-                </div>
-                <div className="page">
-                  <span className="fas fa-home"></span>
-                  <span className="text">
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      href="https://www.nitw.ac.in"
-                    >
-                      https://www.nitw.ac.in
-                    </a>
-                  </span>
-                </div>
-              </div>
-              <div className="social">
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.facebook.com/nitw.springspree"
-                >
-                  <span className="fab fa-facebook-f"></span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.instagram.com/springspree_nitw/"
-                >
-                  <span className="fab fa-instagram"></span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.youtube.com/watch?v=RaSRQDaoARY"
-                >
-                  <span className="fab fa-youtube"></span>
-                </a>
-              </div>
+            <div className="social">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.facebook.com/nitw.springspree"
+              >
+                <span className="fab fa-facebook-f"></span>
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.instagram.com/springspree_nitw/"
+              >
+                <span className="fab fa-instagram"></span>
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.youtube.com/watch?v=RaSRQDaoARY"
+              >
+                <span className="fab fa-youtube"></span>
+              </a>
             </div>
-          </RightBox>
-        </MainContent>
+          </div>
+        </RightBox>
+      </MainContent>
 
-        <Bottom>
-          <center>
-            <span className="credit">
-              Created By Springspree'22 WebDev Team |{" "}
-            </span>
-            <span className="far fa-copyright"></span>
-            <span> 2022 All rights reserved.</span>
-          </center>
-        </Bottom>
-      </FooterContainer>
+      <Bottom>
+        <center>
+          <span className="credit">
+            Created By Springspree'22 WebDev Team |{" "}
+          </span>
+          <span className="far fa-copyright"></span>
+          <span> 2022 All rights reserved.</span>
+        </center>
+      </Bottom>
+    </FooterContainer>
   );
 };
 

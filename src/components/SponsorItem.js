@@ -18,7 +18,7 @@ const SponsorItem = ({ name, src, alt, title }) => {
           <div className="container-fluid">
             <h4>
               {" "}
-              <strong> {name} </strong>{" "}
+              <a class='title-sponsor' target='_blank' rel="noreferrer" href="https://www.saaslabs.co/"> <strong> {name} </strong> </a>{" "}
             </h4>
             <p>
               {" "}
@@ -43,6 +43,15 @@ const SponsorItemContainer = styled.div`
   font-family: "Source Sans Pro", sans-serif;
   /* font-weight: 800; */
   /* font-size: larger; */
+
+  .title-sponsor{
+    color : black;
+    text-decoration: none;
+
+    &:hover{
+      color : var(--c);
+    }
+  }
 
   @media (max-width: 600px) {
     /* transform: scale(1.3rem); */

@@ -47,16 +47,19 @@ const LandingPage = () => {
           <About />
         </div>
         <div>
-          <div className="small-text container">
+          { /* FIXME : uncomment ths later */}
+          {/* <div className="small-text container">
+
             <h4>Instructions</h4>
             <hr className="hr" />
+
             <p>
               To reigster for spree events, visit{" "}
               <Link to="/events">events</Link> page. And to update/view your
               package details, please visit <Link to="/profile">profile</Link>{" "}
               page
             </p>
-          </div>
+          </div> */}
           <Footer />
           <div className="dummy" ref={footerRef}>
             {" "}
@@ -65,9 +68,8 @@ const LandingPage = () => {
 
         <img
           onClick={handleScroll}
-          src={`../../images/${
-            isVisible ? "springspree22_73.svg" : "springspree22_72.svg"
-          }`}
+          src={`../../images/${isVisible ? "springspree22_73.svg" : "springspree22_72.svg"
+            }`}
           alt={`${isVisible ? "springspree22_73" : "springspree22_734"}`}
         />
       </HomePage>
