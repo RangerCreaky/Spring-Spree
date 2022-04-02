@@ -66,6 +66,15 @@ import ethnic_4 from "./images/ethnic/4.webp";
 import ethnic_5 from "./images/ethnic/5.webp";
 import ethnic_6 from "./images/ethnic/6.webp";
 
+// Pre-spree
+import preSpree_1 from './images/pre-spree/7.webp';
+import preSpree_2 from './images/pre-spree/8.webp';
+import preSpree_3 from './images/pre-spree/9.webp';
+import preSpree_4 from './images/pre-spree/10.webp';
+import preSpree_5 from './images/pre-spree/11.webp';
+import preSpree_6 from './images/pre-spree/12.webp';
+import preSpree_7 from './images/pre-spree/13.webp';
+
 let adventures = [
   { image: springspree22_1, name: "springspree22_1" },
   { image: springspree22_2, name: "springspree22_2" },
@@ -142,6 +151,16 @@ const ethnics = [
   { image: ethnic_6, name: "ethnic_6" },
 ];
 
+const preSpree = [
+  { image: preSpree_1, name: "preSpree_1" },
+  { image: preSpree_2, name: "preSpree_2" },
+  { image: preSpree_3, name: "preSpree_3" },
+  { image: preSpree_4, name: "preSpree_4" },
+  { image: preSpree_5, name: "preSpree_5" },
+  { image: preSpree_6, name: "preSpree_6" },
+  { image: preSpree_7, name: "preSpree_7" }
+]
+
 const imageArr = [
   {
     name: "Pro-Shows",
@@ -175,6 +194,10 @@ const imageArr = [
     name: "Ethnic Night",
     arr: ethnics,
   },
+  {
+    name: "Pre-Spree",
+    arr: preSpree
+  }
 ];
 
 export default imageArr;

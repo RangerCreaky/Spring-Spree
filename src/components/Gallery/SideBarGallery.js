@@ -29,6 +29,9 @@ const SideBarGallery = () => {
         <li>
           <a href="#7"> Ethnic Night </a>
         </li>
+        <li>
+          <a href="#8"> Pre Spree </a>
+        </li>
       </ul>
     </SidebarContainer>
   );

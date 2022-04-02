@@ -7,14 +7,13 @@ import MainContent from './MainContent.js';
 import Footer from "../Footer";
 
 
-const LayoutGallery = ()=>{
-  return(
+const LayoutGallery = () => {
+  return (
     <GalleryContainer>
       <SideBarGallery />
       <GalleryInnerContainer>
         <MainContent />
       </GalleryInnerContainer>
-      <Footer />
     </GalleryContainer>
   )
 }
@@ -28,7 +27,8 @@ const GalleryContainer = styled.div`
 const GalleryInnerContainer = styled.div`
   /* margin-top : 100px; */
   display : flex;
+  margin-bottom: 50px;
   
 `;
 
-  
+

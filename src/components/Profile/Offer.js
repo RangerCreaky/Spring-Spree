@@ -8,7 +8,7 @@ const Offer = ({ name, tag, price, onChange }) => {
       <Checkbox onChange={onChange} />
       <div className="text">
         <h3 className="offer-name"> {name} </h3>
-        <p className="small-text"> {tag} </p>
+        {tag}
         <h6>
           {" "}
           <strong> Price : &#8377; {price} </strong>{" "}
