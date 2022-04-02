@@ -5,10 +5,12 @@ import About from "./About";
 import Shristi from "./Shristi";
 import Footer from "./Footer";
 import LandingPageContainer from "./LandingPageContainer";
+import Video from "./Video";
 
 import useScrollSnap from "react-use-scroll-snap";
 
 import useOnScreen from "../hooks/screen";
+
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
@@ -46,6 +48,7 @@ const LandingPage = () => {
         <div>
           <About />
         </div>
+        <Video />
         <div>
           { /* FIXME : uncomment ths later */}
           {/* <div className="small-text container">
