@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SponsorItem = ({ name, src, alt, title }) => {
+const SponsorItem = ({ name, src, alt, title, link }) => {
   return (
     <>
       <SponsorItemContainer
@@ -18,7 +18,7 @@ const SponsorItem = ({ name, src, alt, title }) => {
           <div className="container-fluid">
             <h4>
               {" "}
-              <a class='title-sponsor' target='_blank' rel="noreferrer" href="https://www.saaslabs.co/"> <strong> {name} </strong> </a>{" "}
+              {link ? <a class='title-sponsor' target='_blank' rel="noreferrer" href={`${link}`}> <strong> {name} </strong> </a> : <strong> {name} </strong>}
             </h4>
             <p>
               {" "}

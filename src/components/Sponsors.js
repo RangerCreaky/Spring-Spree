@@ -17,11 +17,11 @@ const Sponsors = () => {
     // value is used just to center the sponsor card
     // remove this then current sponsors have more values.
     return sponsorsData.map((data, index) => {
-      const { name, src, imgName, title } = data;
+      const { name, src, imgName, title, link } = data;
       return (
         // <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
         <div className={`col-lg-4 col-md-6 col-sm-6 c m-auto`} key={index}>
-          <SponsorItem alt={imgName} name={name} src={src} title={title} />
+          <SponsorItem alt={imgName} name={name} src={src} title={title} link={link} />
         </div>
       );
     });
