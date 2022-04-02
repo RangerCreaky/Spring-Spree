@@ -7,13 +7,15 @@ export function useAuth() {
   const { user, setUser } = useContext(AuthContext);
 
   const updateUser = async () => {
-    const { ok, data } = await authApi.userProfile();
-    if (ok) {
-      await storage.set("user", data);
-      setUser(data);
-    }
+    if (await storage.get("token")) {
+      const { ok, data } = await authApi.userProfile();
+      if (ok) {
+        await storage.set("user", data);
+        setUser(data);
+      }
 
-    return data;
+      return data;
+    }
   };
 
   const login = async ({ token, user }) => {

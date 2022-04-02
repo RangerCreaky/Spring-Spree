@@ -58,6 +58,14 @@ import springspree22_44 from "./images/spotlights/springspree22_44.jpg";
 import springspree22_45 from "./images/spotlights/springspree22_45.jpg";
 import springspree22_46 from "./images/spotlights/springspree22_46.jpg";
 
+// Ethnic
+import ethnic_1 from "./images/ethnic/1.webp";
+import ethnic_2 from "./images/ethnic/2.webp";
+import ethnic_3 from "./images/ethnic/3.webp";
+import ethnic_4 from "./images/ethnic/4.webp";
+import ethnic_5 from "./images/ethnic/5.webp";
+import ethnic_6 from "./images/ethnic/6.webp";
+
 let adventures = [
   { image: springspree22_1, name: "springspree22_1" },
   { image: springspree22_2, name: "springspree22_2" },
@@ -125,6 +133,15 @@ let spotlights = [
   { image: springspree22_46, name: "springspree22_46" },
 ];
 
+const ethnics = [
+  { image: ethnic_1, name: "ethnic_1" },
+  { image: ethnic_2, name: "ethnic_2" },
+  { image: ethnic_3, name: "ethnic_3" },
+  { image: ethnic_4, name: "ethnic_4" },
+  { image: ethnic_5, name: "ethnic_5" },
+  { image: ethnic_6, name: "ethnic_6" },
+];
+
 const imageArr = [
   {
     name: "Pro-Shows",
@@ -153,6 +170,10 @@ const imageArr = [
   {
     name: "Adventures",
     arr: adventures,
+  },
+  {
+    name: "Ethnic Night",
+    arr: ethnics,
   },
 ];
 

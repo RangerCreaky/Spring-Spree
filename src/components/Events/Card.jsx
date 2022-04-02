@@ -74,6 +74,11 @@ const Container = styled.div`
     .sub-title {
       font-size: 1rem;
       font-weight: 700;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-align: justify;
     }
 
     .tagline {

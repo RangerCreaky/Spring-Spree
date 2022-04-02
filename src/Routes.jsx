@@ -17,10 +17,11 @@ import Register from "./components/Register";
 import Profile from "./components/Profile";
 
 const AppRoutes = () => {
-  const { restore } = useAuth();
+  const { restore, updateUser } = useAuth();
 
   useEffect(() => {
     restore();
+    updateUser();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

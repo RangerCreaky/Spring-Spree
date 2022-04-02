@@ -1,7 +1,9 @@
+import { Form, Formik } from "formik";
 import React from "react";
 import styled from "styled-components";
+import Field from "../form/Field";
 
-export default function Pack({ name, amount, onClick }) {
+export default function Pack({ id, name, amount, onClick, validatePromo }) {
   const names = name?.split(",") || [];
 
   return (
@@ -21,6 +23,30 @@ export default function Pack({ name, amount, onClick }) {
         </ul>
       </Type>
       <ButtonContainer>
+        {id === "entry" && (
+          <div className="border-top border-secondary py-3">
+            <Formik onSubmit={validatePromo} initialValues={{ promo: "" }}>
+              <Form className="row align-items-center">
+                <div className="col-8">
+                  <div className="input-group">
+                    <Field
+                      required
+                      type="text"
+                      className="form-control"
+                      placeholder="PROMO"
+                      name="promo"
+                    />
+                  </div>
+                </div>
+                <div className="col-4">
+                  <button type="submit" className="btn btn-secondary">
+                    Apply
+                  </button>
+                </div>
+              </Form>
+            </Formik>
+          </div>
+        )}
         <span>{amount}/-</span>
         <button className="btn btn-primary" onClick={onClick}>
           Pay
