@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// FIXME : uncomment this later
+// import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useAuth } from "../hooks/auth";
+// FIXME : uncomment this later
+// import { useAuth } from "../hooks/auth";
 
 const LandingPageContainer = () => {
-  const { user } = useAuth();
+  // FIXME : uncomment this later
+  // const { user } = useAuth();
   return (
     <Container>
       <img
@@ -19,6 +22,7 @@ const LandingPageContainer = () => {
           </h1>
           <p className="themename">Srishti</p>
           <p className="event-dates">April 8-10, 2022</p>
+          { /* FIXME : uncomment me later */}
           {/* <div className="action">
             {!user ? (
               <Link to="/signup" className="btn btn-primary">
