@@ -19,7 +19,7 @@ const LandingPageContainer = () => {
           </h1>
           <p className="themename">Srishti</p>
           <p className="event-dates">April 8-10, 2022</p>
-          <div className="action">
+          {/* <div className="action">
             {!user ? (
               <Link to="/signup" className="btn btn-primary">
                 Register
@@ -33,7 +33,7 @@ const LandingPageContainer = () => {
                 Profile
               </Link>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </Container>
