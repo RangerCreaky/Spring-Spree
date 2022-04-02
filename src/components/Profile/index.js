@@ -79,38 +79,32 @@ const Profile = () => {
             <div className="mt-5 pt-5">
               <div className="bg">
                 <div className="row z-depth-3 card-actual">
-                  <div className="col-md-4 left-card rounded-left">
-                    <div className="card-block d-flex flex-column align-items-center justify-content-center">
-                      {user?.email?.split("@")?.[1] === "student.nitw.ac.in" ? (
-                        <p className="text-center text-dark">
-                          No QR code required for NITW students :)
-                        </p>
-                      ) : (
-                        <>
-                          <QRCode
-                            id="user-qr-code"
-                            size={200}
-                            style={{ borderRadius: "2px" }}
-                            bgColor="#f1f1f1"
-                            value={user._id}
-                            logoImage="/images/springspree22_74.png"
-                            qrStyle="dots"
-                            logoOpacity={0.2}
-                            logoWidth={170}
-                            eyeRadius={[
-                              [10, 10, 0, 10],
-                              [10, 10, 10, 0],
-                              [10, 0, 10, 10],
-                            ]}
-                          />
-                          <button className="btn" onClick={downloadQr}>
-                            <FcDownload size={20} />
-                          </button>
-                        </>
-                      )}
+                  {user?.email?.split("@")?.[1] !== "student.nitw.ac.in" && (
+                    <div className="col-md-3 left-card rounded-left">
+                      <div className="card-block d-flex flex-column align-items-center justify-content-center">
+                        <QRCode
+                          id="user-qr-code"
+                          size={200}
+                          style={{ borderRadius: "2px" }}
+                          bgColor="#f1f1f1"
+                          value={user._id}
+                          logoImage="/images/springspree22_74.png"
+                          qrStyle="dots"
+                          logoOpacity={0.2}
+                          logoWidth={170}
+                          eyeRadius={[
+                            [10, 10, 0, 10],
+                            [10, 10, 10, 0],
+                            [10, 0, 10, 10],
+                          ]}
+                        />
+                        <button className="btn" onClick={downloadQr}>
+                          <FcDownload size={20} />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-md-8 rounded-right card-right">
+                  )}
+                  <div className="col-md-9 rounded-right card-right ps-3">
                     <h3 className="heading mt-3 text-center">Profile</h3>
                     <hr className="hr" />
 

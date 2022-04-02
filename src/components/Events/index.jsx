@@ -125,6 +125,10 @@ export default function Events() {
 const Container = styled.div`
   height: 100vh;
   padding: 90px 20px 0;
+  background: url(../../images/springspree22_77.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   .left {
     display: flex;

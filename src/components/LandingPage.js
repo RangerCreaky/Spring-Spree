@@ -9,6 +9,7 @@ import LandingPageContainer from "./LandingPageContainer";
 import useScrollSnap from "react-use-scroll-snap";
 
 import useOnScreen from "../hooks/screen";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   // for snapping the page
@@ -47,9 +48,14 @@ const LandingPage = () => {
         </div>
         <div>
           <div className="small-text container">
-            <h4> Lorem Ipsum </h4>
+            <h4>Instructions</h4>
             <hr className="hr" />
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu quam faucibus sapien blandit egestas non nec leo. Nam mattis efficitur felis, ut lacinia mi. Fusce elementum placerat tortor, imperdiet ultrices ex malesuada vel. Fusce vel interdum metus. </p>
+            <p>
+              To reigster for spree events, visit{" "}
+              <Link to="/events">events</Link> page. And to update/view your
+              package details, please visit <Link to="/profile">profile</Link>{" "}
+              page
+            </p>
           </div>
           <Footer />
           <div className="dummy" ref={footerRef}>
@@ -59,7 +65,9 @@ const LandingPage = () => {
 
         <img
           onClick={handleScroll}
-          src={`../../images/${isVisible ? "springspree22_73.svg" : "springspree22_72.svg"}`}
+          src={`../../images/${
+            isVisible ? "springspree22_73.svg" : "springspree22_72.svg"
+          }`}
           alt={`${isVisible ? "springspree22_73" : "springspree22_734"}`}
         />
       </HomePage>
@@ -72,10 +80,10 @@ export default LandingPage;
 const HomePage = styled.section`
   height: 100vh;
 
-  .small-text{
+  .small-text {
     text-align: center;
 
-    .hr{
+    .hr {
       width: 5%;
       height: 2px;
       background-color: var(--c);

@@ -145,12 +145,7 @@ export const Main = styled.div`
     }
 
     button {
-      border: none;
       outline: none;
-      margin-top: 2rem;
-      padding: 10px 20px;
-      border-radius: 2px;
-      background-color: #ff5722;
       color: white;
 
       &:hover {

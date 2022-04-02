@@ -193,9 +193,16 @@ export default function Modal({ event, onClose, visible = false }) {
                   </ul>
                 </div>
                 {registered ? (
-                  <button disabled>Already registered</button>
+                  <button className="btn btn-primary mt-3" disabled>
+                    Already registered
+                  </button>
                 ) : (
-                  <button onClick={handleRegister}>Register</button>
+                  <button
+                    className="btn btn-primary mt-3"
+                    onClick={handleRegister}
+                  >
+                    Register
+                  </button>
                 )}
               </div>
             </div>
