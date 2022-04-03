@@ -72,6 +72,7 @@ export default function Signup() {
                 Full Name
               </label>
               <Field
+                autoFocus
                 name="name"
                 placeholder="Elon Musk"
                 type="text"
