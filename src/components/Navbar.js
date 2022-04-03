@@ -57,11 +57,12 @@ const Navbar = () => {
                     More
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="more-button">
-                    <li>
+                    {/* FIXME : uncomment it later */}
+                    {/* <li>
                       <Link className="dropdown-item" to="/profile">
                         Profile
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <button onClick={logout} className="dropdown-item">
                         logout
