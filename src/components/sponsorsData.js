@@ -206,7 +206,7 @@ const currSponsorsData = [
     src: springspree22_82,
     imgName: "springspree22_82",
     link: "http://www.safexpress.com",
-    title: "supply chain partener"
+    title: "Supply chain partner"
   },
 ];
 
