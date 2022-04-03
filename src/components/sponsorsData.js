@@ -34,7 +34,7 @@ import saas_labs from "../sponsors/title/saas-labs.jpg";
 
 const titleSponsors = [
   {
-    name: "Saas Labs",
+    name: "SaaS Labs",
     src: saas_labs,
     imgName: "saas-labs",
     link: "https://www.saaslabs.co/"
@@ -206,7 +206,7 @@ const currSponsorsData = [
     src: springspree22_82,
     imgName: "springspree22_82",
     link: "http://www.safexpress.com",
-    title: "supply chain partener"
+    title: "Supply chain partner"
   },
 ];
 
