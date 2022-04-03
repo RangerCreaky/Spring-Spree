@@ -11,7 +11,7 @@ import useScrollSnap from "react-use-scroll-snap";
 
 import useOnScreen from "../hooks/screen";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   // for snapping the page
@@ -50,7 +50,7 @@ const LandingPage = () => {
         </div>
         <Video />
         <div>
-          { /* FIXME : uncomment ths later */}
+          {/* FIXME : uncomment ths later */}
           {/* <div className="small-text container">
 
             <h4>Instructions</h4>
@@ -71,8 +71,9 @@ const LandingPage = () => {
 
         <img
           onClick={handleScroll}
-          src={`../../images/${isVisible ? "springspree22_73.svg" : "springspree22_72.svg"
-            }`}
+          src={`../../images/${
+            isVisible ? "springspree22_73.svg" : "springspree22_72.svg"
+          }`}
           alt={`${isVisible ? "springspree22_73" : "springspree22_734"}`}
         />
       </HomePage>

@@ -70,7 +70,10 @@ export default function Modal({ event, onClose, visible = false }) {
         return;
       }
     } else {
-      const payment = await eventPayment.makePayment({ event });
+      const payment = await eventPayment.makePayment({
+        event,
+        specialEvent: !!event.specialEvent,
+      });
       if (!payment) return;
     }
 
@@ -137,30 +140,40 @@ export default function Modal({ event, onClose, visible = false }) {
               )}
               <hr />
               <div className="content">
-                <div>
-                  <h2>
-                    Rounds: <span>{rounds}</span>
-                  </h2>
-                </div>
-                <div>
-                  <h2>
-                    Prize Money: <span>{prize_money}</span>
-                  </h2>
-                </div>
-                <div>
-                  <h2>
-                    No. of prize(s): <span>{no_of_prizes}</span>
-                  </h2>
-                </div>
-                <div>
-                  <h2>Judgin Criteria</h2>
-                  <p>{judging_criteria || "No data"}</p>
-                </div>
+                {rounds && (
+                  <div>
+                    <h2>
+                      Rounds: <span>{rounds}</span>
+                    </h2>
+                  </div>
+                )}
+                {prize_money && (
+                  <div>
+                    <h2>
+                      Prize Money: <span>{prize_money}</span>
+                    </h2>
+                  </div>
+                )}
+                {no_of_prizes && (
+                  <div>
+                    <h2>
+                      No. of prize(s): <span>{no_of_prizes}</span>
+                    </h2>
+                  </div>
+                )}
+                {judging_criteria && (
+                  <div>
+                    <h2>Judgin Criteria</h2>
+                    <p>{judging_criteria}</p>
+                  </div>
+                )}
 
-                <div className="description">
-                  <h2>Description</h2>
-                  <p>{description || "No data"}</p>
-                </div>
+                {description && (
+                  <div className="description">
+                    <h2>Description</h2>
+                    <p>{description}</p>
+                  </div>
+                )}
 
                 {rules && (
                   <div className="rules">
@@ -173,25 +186,25 @@ export default function Modal({ event, onClose, visible = false }) {
                   </div>
                 )}
 
-                <div className="event-managers">
-                  <h2>Event Managers</h2>
-                  <ul>
-                    {event_manager
-                      ? event_manager.split("\n").map((manager) => {
-                          const [name, mobile] = manager.split(",");
-                          return (
-                            <Fragment key={manager}>
-                              <div>{name}</div>
-                              <div>
-                                Contact No.:
-                                <a href={`tel:${mobile}`}>{mobile}</a>
-                              </div>
-                            </Fragment>
-                          );
-                        })
-                      : "No data"}
-                  </ul>
-                </div>
+                {event_manager && (
+                  <div className="event-managers">
+                    <h2>Event Managers</h2>
+                    <ul>
+                      {event_manager.split("\n").map((manager) => {
+                        const [name, mobile] = manager.split(",");
+                        return (
+                          <Fragment key={manager}>
+                            <div>{name}</div>
+                            <div>
+                              Contact No.:
+                              <a href={`tel:${mobile}`}>{mobile}</a>
+                            </div>
+                          </Fragment>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
                 {registered ? (
                   <button className="btn btn-primary mt-3" disabled>
                     Already registered

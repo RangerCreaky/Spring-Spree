@@ -57,11 +57,11 @@ const Navbar = () => {
                     More
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="more-button">
-                    {/* <li>
+                    <li>
                       <Link className="dropdown-item" to="/profile">
                         Profile
                       </Link>
-                    </li> */}
+                    </li>
                     <li>
                       <button onClick={logout} className="dropdown-item">
                         logout
@@ -161,8 +161,8 @@ const NavbarContainer = styled.div`
   background-color: #2b0538;
   backdrop-filter: blur(5px);
 
-  .nav-links{
-    margin-bottom : 0;
+  .nav-links {
+    margin-bottom: 0;
   }
 
   > .open {

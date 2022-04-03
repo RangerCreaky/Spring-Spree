@@ -14,6 +14,7 @@ import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
 import CardContainer from "../Events/CardContainer";
 import { FcDownload } from "react-icons/fc";
+import { AiOutlineCopy } from "react-icons/ai";
 
 const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
 
@@ -59,6 +60,16 @@ const Profile = () => {
       await updateUser();
     }
     setEventToPay([]);
+  };
+
+  const copyReferral = () => {
+    if ("clipboard" in navigator) {
+      navigator.clipboard.writeText(user._id).then((r) => {
+        alert("Referral code copied");
+      });
+    } else {
+      alert("You browser does not soppurt copying");
+    }
   };
 
   useEffect(() => {
@@ -115,6 +126,24 @@ const Profile = () => {
                       <Field label="gender">{user?.gender}</Field>
                       <Field label="college">{user?.college}</Field>
                       <Field label="level">{user?.level}</Field>
+                      <Field label="Referral Count">
+                        {user?.referralCount}
+                      </Field>
+                      <Field
+                        label={
+                          <>
+                            Referral Code{" "}
+                            <button
+                              className="btn btn-link"
+                              onClick={copyReferral}
+                            >
+                              <AiOutlineCopy />
+                            </button>
+                          </>
+                        }
+                      >
+                        {user?._id}
+                      </Field>
                       <Field label="paid for event">
                         <BoolIcon value={user?.paidForEvent} />
                       </Field>
@@ -182,13 +211,13 @@ const Profile = () => {
         ) : (
           <div className="text-center">
             <p>You have not registred for any events yet :)</p>
-            <Link className="btn btn-outline-info" to="/events">
-              Visit Events
-            </Link>
           </div>
         )}
       </Billing>
 
+      <Link className="btn btn-outline-info" to="/events">
+        Visit Events
+      </Link>
       <button onClick={logout} className="btn btn-outline-info logout">
         Logout
       </button>
