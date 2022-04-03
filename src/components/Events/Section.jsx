@@ -1,18 +1,24 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import CardContainer from "./CardContainer";
 
 export default function Section({ events = [], title }) {
   return (
-    <Container id={title}>
+    <Container
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      layout
+      id={title}
+    >
       <h1 className="event-title">{title}</h1>
-      {/* TODO: handle if no events are present */}
       <CardContainer events={events} />
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   margin-top: 2rem;
 
   .event-title {

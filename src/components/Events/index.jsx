@@ -3,6 +3,7 @@ import styled from "styled-components";
 import eventApi from "../../api/events";
 import { useApi } from "../../hooks/api";
 import Loader from "../Loader";
+import { motion, AnimatePresence } from "framer-motion";
 
 import DayFilter from "./DayFilter";
 import Section from "./Section";
@@ -24,6 +25,8 @@ const days_data = [
   date: el[1],
   active: i === 0,
 }));
+
+const catOrder = ["Pro Shows"];
 
 export default function Events() {
   const allEvents = useApi(eventApi.getAllEvents);
@@ -58,8 +61,11 @@ export default function Events() {
         ...e,
         registered: !!user?.events?.find((x) => x.event_id === e._id),
       }))
+      ?.sort((a, b) => dayjs(a.start_date).diff(dayjs(b.start_date)))
       ?.sort((a, b) => a.registered - b.registered)
-      ?.sort((a, b) => dayjs(a.start_date).diff(dayjs(b.start_date))),
+      ?.sort(
+        (a, b) => catOrder.indexOf(b.category) - catOrder.indexOf(a.category)
+      ),
     (el) => el.category ?? "Other"
   );
   const categories = Object.keys(parsedEvents);
@@ -102,21 +108,23 @@ export default function Events() {
           </ul>
         </div>
         <div className="right col-12 col-lg-8">
-          <div>
-            {categories.length ? (
-              categories.map((category) => (
-                <Section
-                  key={category}
-                  title={category}
-                  events={parsedEvents[category]}
-                />
-              ))
-            ) : (
-              <h3 className="text-center m-5">
-                Sorry no events available for <br /> selected day :(
-              </h3>
-            )}
-          </div>
+          <motion.div layout>
+            <AnimatePresence>
+              {categories.length ? (
+                categories.map((category) => (
+                  <Section
+                    key={category}
+                    title={category}
+                    events={parsedEvents[category]}
+                  />
+                ))
+              ) : (
+                <h3 className="text-center m-5">
+                  Sorry no events available for <br /> selected day :(
+                </h3>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </Container>
     </>
