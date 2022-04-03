@@ -216,11 +216,11 @@ const Profile = () => {
       </Billing>
 
       <div className="text-center">
-        <Link className="btn btn-outline-info mb-1" to="/events">
+        <Link className="btn btn-outline-primary mb-1" to="/events">
           Visit Events
         </Link>
         <br />
-        <button onClick={logout} className="btn btn-outline-info logout">
+        <button onClick={logout} className="btn btn-outline-primary logout mt-5">
           Logout
         </button>
       </div>

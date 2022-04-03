@@ -37,7 +37,7 @@ const Shristi = () => {
             </StyledLink>
           </div>
         </Text>
-        <img src="../../images/springspree22_75.webp" alt="springspree22_75" />
+        <img src="../../images/springspree22_75.png" alt="springspree22_75" />
       </Container>
     </>
   );
@@ -68,6 +68,8 @@ const Container = styled.div`
 
   > img {
     margin-top: 70px;
+    width: 40%;
+    height: auto;
     @media (max-width: 1200px) {
       width: 400px;
       height: 400px;

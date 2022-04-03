@@ -2,14 +2,17 @@ import React from "react";
 // FIXME : uncomment this later
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
+import SponsoredBy from "./SponsoredBy";
 // FIXME : uncomment this later
 // import { useAuth } from "../hooks/auth";
+
 
 const LandingPageContainer = () => {
   // FIXME : uncomment this later
   // const { user } = useAuth();
   return (
     <Container>
+      <SponsoredBy />
       <img
         src="../../images/springspree22_74.webp"
         alt="springspree22_74"
@@ -57,6 +60,11 @@ const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 
+  .small-logo{
+    width : 38px;
+    height : auto;
+  }
+
   .action a {
     color: white;
   }
@@ -64,7 +72,7 @@ const Container = styled.div`
   > .logo {
     position: absolute;
     z-index: 100;
-    top: 35%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: min(50vw, 250px) !important;
@@ -87,6 +95,7 @@ const Container = styled.div`
       z-index: 110;
 
       > h1 {
+        /* margin-top: 70px; */
         font-family: "Steinfeld";
         white-space: nowrap;
         font-weight: 900;
