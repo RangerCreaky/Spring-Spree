@@ -28,6 +28,7 @@ import springspree22_79 from "../sponsors/curr/springspree22_79.jpg";
 import springspree22_80 from "../sponsors/curr/springspree22_80.jpg";
 import springspree22_81 from "../sponsors/curr/springspree22_81.jpg";
 import springspree22_82 from "../sponsors/curr/springspree22_82.jpg";
+import springspree22_83 from "../sponsors/curr/springspree22_83.jpg";
 
 // title sponsors
 import saas_labs from "../sponsors/title/saas-labs.jpg";
@@ -208,6 +209,13 @@ const currSponsorsData = [
     link: "http://www.safexpress.com",
     title: "Supply chain partner"
   },
+  {
+    name: "IMFS",
+    src: springspree22_83,
+    imgName: "springspree22_83",
+    title: "Merchandise Partner",
+    link: "https://www.imfs.co.in"
+  }
 ];
 
 export { PrevSponsorsData, currSponsorsData, titleSponsors };
