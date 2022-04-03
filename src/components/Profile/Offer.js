@@ -27,7 +27,7 @@ const OfferContainer = styled.div`
   margin-left: 20px;
 
   .text {
-    background-color: #ccc;
+    background-color: #eee;
     padding: 20px;
   }
 
@@ -43,4 +43,10 @@ const OfferContainer = styled.div`
     background-color: var(--c);
     opacity: 1;
   }
+
+  em{
+    color : var(--c);
+  }
+
+
 `;

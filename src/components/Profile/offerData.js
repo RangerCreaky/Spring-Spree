@@ -29,7 +29,11 @@ const offerData = [
   },
   {
     name: "Pro-show 3",
-    tag: <p> Saving the best for the last, here we have <strong>  Darshan Raval </strong>, the singer who has given us many melodious hits for many movies and one of the leading singers in Indian cinema. <br /> <strong> Don't miss this opportunity! Idi "aarambhame le"! </strong> </p>,
+    tag: <p> The nostalgic <em>'Yaara teri yaari'</em>, the soulful <em>'Kabhii tumhhe'</em>, the romantic <em> 'Ek ladki ko dekha toh aisa laga' </em> and many more songs that leave us vibing. <br />
+
+      SpringSpree'22 brings to you the voice behind these hits, Darshan Raval, here at NIT Warangal on 10th of April. <br />
+
+      This Spree, get ready to shake your <em> 'Kamariya' </em> and dance to the mesmerizing beats of <em> 'Chogada' </em>. </p>,
     registration_fee: 650,
     key: "ps3",
     slug: "paidForProshow3",

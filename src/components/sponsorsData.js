@@ -30,7 +30,7 @@ import springspree22_81 from "../sponsors/curr/springspree22_81.jpg";
 import springspree22_82 from "../sponsors/curr/springspree22_82.jpg";
 
 // title sponsors
-import saas_labs from "../sponsors/title/saas-labs.png";
+import saas_labs from "../sponsors/title/saas-labs.jpg";
 
 const titleSponsors = [
   {

@@ -249,7 +249,7 @@ const Billing = styled.div`
     padding: 1.3rem;
     background-color: white;
     color: black;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 `;
 

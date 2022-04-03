@@ -7,7 +7,7 @@ const Video = () => {
 
             <InnerContainer>
                 <h4> Witness the live performance of <strong> DARSHAN RAVAL </strong> on 10th of April</h4>
-                <video width="600" height="400" controls poster='../../images/poster.jpg'>
+                <video controls poster='../../images/poster.jpeg'>
                     <source src="../../assets/videos/NIT.mp4" type="video/mp4" />
                 </video>
             </InnerContainer>
@@ -22,7 +22,7 @@ const Container = styled.div`
     height: 100vh;
 
     h4{
-        margin-bottom: 50px;
+        margin-top: 50px;
 
         strong{
             color: var(--c);
@@ -39,12 +39,14 @@ const InnerContainer = styled.div`
     margin-top: 80px;
     height: 100%;
     display: flex;
-    flex-direction : column;
+    flex-direction : column-reverse;
     justify-content: center;
     align-items: center;
 
     video{
         padding: 1rem;
         border: 2px double var(--c);
+        width: 750px;
+        height : 440px;
     }
 `;

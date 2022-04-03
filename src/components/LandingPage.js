@@ -62,8 +62,8 @@ const LandingPage = () => {
               package details, please visit <Link to="/profile">profile</Link>{" "}
               page
             </p>
-          </div> */}
-          <Footer />
+          </div>
+          <Footer /> */}
           <div className="dummy" ref={footerRef}>
             {" "}
           </div>
