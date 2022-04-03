@@ -26,7 +26,7 @@ const Register = () => {
     const payment = await eventPayment.makePayment({
       event,
       specialEvent: 1,
-      promo: "nitw",
+      promo: event.promo,
     });
     if (payment) {
       await updateUser();
