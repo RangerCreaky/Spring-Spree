@@ -3,18 +3,21 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 
 
-const Part=({arr , name , ide})=>{ 
+const Part = ({ arr, name, ide }) => {
     let c = 'all';
-    if(name === "Allure") c = "";
+    if (name === "Allure") c = "";
 
-    const renderImages = ()=>{
+    const renderImages = () => {
         return (
-            arr.map((img , index)=>{
-                const {image , name} = img;
-                return(
+            arr.map((img, index) => {
+                const { image, name } = img;
+                if (name === 'ethnic_7') {
+                    c = "eth-potrait";
+                }
+                return (
                     <div key={index}>
                         <img className={`image ${c} index${index}`}
-                         src={image} alt={name}/>
+                            src={image} alt={name} />
                     </div>
                 )
             })
@@ -22,12 +25,12 @@ const Part=({arr , name , ide})=>{
     }
 
     return (
-            <ModuleWrapper id={ide} className="world"> 
-                <h1> {name} </h1>
-                <StyledCarousel className={`hello ${name}`}>
-                    {renderImages()}
-                </StyledCarousel>
-            </ModuleWrapper>
+        <ModuleWrapper id={ide} className="world">
+            <h1> {name} </h1>
+            <StyledCarousel className={`hello ${name}`}>
+                {renderImages()}
+            </StyledCarousel>
+        </ModuleWrapper>
     )
 };
 
@@ -87,6 +90,11 @@ const ModuleWrapper = styled.div`
     .all{
         width: 80%;
         height: auto;
+    }
+
+    .eth-potrait{
+        width : 40% !important;
+        height : auto;
     }
 
     @media (max-width : 700px){

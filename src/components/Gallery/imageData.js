@@ -65,6 +65,7 @@ import ethnic_3 from "./images/ethnic/3.webp";
 import ethnic_4 from "./images/ethnic/4.webp";
 import ethnic_5 from "./images/ethnic/5.webp";
 import ethnic_6 from "./images/ethnic/6.webp";
+import ethnic_7 from "./images/ethnic/7.jpg";
 
 // Pre-spree
 import preSpree_1 from './images/pre-spree/7.webp';
@@ -149,6 +150,7 @@ const ethnics = [
   { image: ethnic_3, name: "ethnic_3" },
   { image: ethnic_4, name: "ethnic_4" },
   { image: ethnic_5, name: "ethnic_5" },
+  { image: ethnic_7, name: "ethnic_7" },
 ];
 
 const preSpree = [

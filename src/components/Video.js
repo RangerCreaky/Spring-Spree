@@ -7,7 +7,7 @@ const Video = () => {
 
             <InnerContainer>
                 <h4 className='container'> Witness the live performance of <strong> DARSHAN RAVAL </strong> on 10th of April</h4>
-                <video controls poster='../../images/poster.jpeg' >
+                <video autoPlay muted controls poster='../../images/poster.jpeg'>
                     <source src="../../assets/videos/NIT.mp4" type="video/mp4" />
                 </video>
             </InnerContainer>
