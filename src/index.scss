@@ -7,15 +7,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap");
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
 $body-bg: rgb(1, 1, 1);
-$dark: rgb(2,2,2);
+$dark: rgb(2, 2, 2);
 $body-color: #f8f8f8;
 $primary: #ff730e;
 

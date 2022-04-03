@@ -37,7 +37,7 @@ const titleSponsors = [
     name: "SaaS Labs",
     src: saas_labs,
     imgName: "saas-labs",
-    link: "https://www.saaslabs.co/"
+    link: "https://www.saaslabs.co/",
   },
 ];
 
@@ -46,133 +46,111 @@ const PrevSponsorsData = [
     name: "Airtel",
     src: springspree22_47,
     imgName: "springspree22_47",
-
   },
   {
     name: "AndhraBank",
     src: springspree22_48,
     imgName: "springspree22_48",
-
   },
   {
     name: "Birla",
     src: springspree22_49,
     imgName: "springspree22_49",
-
   },
   {
     name: "Coke",
     src: springspree22_50,
     imgName: "springspree22_50",
-
   },
   {
     name: "EA",
     src: springspree22_51,
     imgName: "springspree22_51",
-
   },
   {
     name: "HCL",
     src: springspree22_52,
     imgName: "springspree22_52",
-
   },
   {
     name: "Hero",
     src: springspree22_53,
     imgName: "springspree22_53",
-
   },
   {
     name: "Himalaya",
     src: springspree22_54,
     imgName: "springspree22_54",
-
   },
   {
     name: "Hyundai",
     src: springspree22_55,
     imgName: "springspree22_55",
-
   },
   {
     name: "Kingfisher",
     src: springspree22_56,
     imgName: "springspree22_56",
-
   },
   {
     name: "Nestle",
     src: springspree22_57,
     imgName: "springspree22_57",
-
   },
   {
     name: "OLA",
     src: springspree22_58,
     imgName: "springspree22_58",
-
   },
   {
     name: "Pepsi",
     src: springspree22_59,
     imgName: "springspree22_59",
-
   },
   {
     name: "Puma",
     src: springspree22_60,
     imgName: "springspree22_60",
-
   },
   {
     name: "RedBull",
     src: springspree22_61,
     imgName: "springspree22_61",
-
   },
   {
     name: "SBI",
     src: springspree22_62,
     imgName: "springspree22_62",
-
   },
   {
     name: "Toyota",
     src: springspree22_63,
     imgName: "springspree22_63",
-
   },
   {
     name: "TVS",
     src: springspree22_64,
     imgName: "springspree22_64",
-
   },
   {
     name: "VizagSteel",
     src: springspree22_65,
     imgName: "springspree22_65",
-
   },
   {
     name: "Vodafone",
     src: springspree22_66,
     imgName: "springspree22_66",
-
   },
   {
     name: "Wipro",
     src: springspree22_67,
     imgName: "springspree22_67",
-
   },
   {
     name: "Zebronics",
     src: springspree22_68,
     imgName: "springspree22_68",
-
   },
 ];
 
@@ -182,31 +160,28 @@ const currSponsorsData = [
     src: springspree22_78,
     imgName: "springspree22_78",
     title: "Alumni partner",
-
   },
   {
     name: "NITW Alumni Association \n Warangal Chapter",
     src: springspree22_80,
     imgName: "springspree22_80",
-
   },
   {
     name: "Sri Raksha Constructions",
     src: springspree22_79,
-    imgName: "springspree22_79"
+    imgName: "springspree22_79",
   },
   {
     name: "Foodsutra Art of Spices Pvt Ltd ",
     src: springspree22_81,
     imgName: "springspree22_81",
-
   },
   {
     name: "Safexpress",
     src: springspree22_82,
     imgName: "springspree22_82",
     link: "http://www.safexpress.com",
-    title: "Supply chain partner"
+    title: "Supply chain partner",
   },
 ];
 

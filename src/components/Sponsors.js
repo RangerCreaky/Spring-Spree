@@ -21,7 +21,13 @@ const Sponsors = () => {
       return (
         // <div className='col-lg-4 col-md-6 col-sm-6 c' key={index}>
         <div className={`col-lg-4 col-md-6 col-sm-6 c m-auto`} key={index}>
-          <SponsorItem alt={imgName} name={name} src={src} title={title} link={link} />
+          <SponsorItem
+            alt={imgName}
+            name={name}
+            src={src}
+            title={title}
+            link={link}
+          />
         </div>
       );
     });
