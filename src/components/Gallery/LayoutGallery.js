@@ -1,10 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-
-import SideBarGallery from './SideBarGallery.js';
-import MainContent from './MainContent.js';
-
+import SideBarGallery from "./SideBarGallery.js";
+import MainContent from "./MainContent.js";
 
 const LayoutGallery = () => {
   return (
@@ -14,20 +12,15 @@ const LayoutGallery = () => {
         <MainContent />
       </GalleryInnerContainer>
     </GalleryContainer>
-  )
-}
+  );
+};
 
 export default LayoutGallery;
 
-const GalleryContainer = styled.div`
-
-`;
+const GalleryContainer = styled.div``;
 
 const GalleryInnerContainer = styled.div`
   /* margin-top : 100px; */
-  display : flex;
+  display: flex;
   margin-bottom: 50px;
-  
 `;
-
-

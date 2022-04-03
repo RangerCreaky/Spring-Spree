@@ -1,4 +1,5 @@
 ## Gallery
+
 Adventures : springpree22_1 - springspree22_6
 
 allure : springspree_7 - springspree_13
@@ -14,12 +15,15 @@ social : springspree_33 - springspree_40
 spotlights : springspree22_41 - springspree22_46
 
 ## Previous sponsors
+
 previous sponsors : springspree22_47 - springspree22_68
 
 ## Current Sponsors
+
 current sponsors : springgspree22_78 - ongoing
 
 ## Static images
+
 background : springspree22_69
 explore dark bg : springspree22_70
 landing page desktop : springspree22_71
@@ -36,9 +40,3 @@ test bgs : springspree22_80
 test bgs : springspree22_81
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-223579388-1"></script>
-
-
-
-
-
-

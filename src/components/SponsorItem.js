@@ -18,7 +18,19 @@ const SponsorItem = ({ name, src, alt, title, link }) => {
           <div className="container-fluid">
             <h4>
               {" "}
-              {link ? <a class='title-sponsor' target='_blank' rel="noreferrer" href={`${link}`}> <strong> {name} </strong> </a> : <strong> {name} </strong>}
+              {link ? (
+                <a
+                  class="title-sponsor"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={`${link}`}
+                >
+                  {" "}
+                  <strong> {name} </strong>{" "}
+                </a>
+              ) : (
+                <strong> {name} </strong>
+              )}
             </h4>
             <p>
               {" "}
@@ -44,12 +56,12 @@ const SponsorItemContainer = styled.div`
   /* font-weight: 800; */
   /* font-size: larger; */
 
-  .title-sponsor{
-    color : black;
+  .title-sponsor {
+    color: black;
     text-decoration: none;
 
-    &:hover{
-      color : var(--c);
+    &:hover {
+      color: var(--c);
     }
   }
 

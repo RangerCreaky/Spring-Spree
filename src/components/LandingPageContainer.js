@@ -11,7 +11,7 @@ const LandingPageContainer = () => {
   return (
     <Container>
       <img
-        src="../../images/springspree22_74.png"
+        src="../../images/springspree22_74.webp"
         alt="springspree22_74"
         className="logo"
       />
@@ -22,7 +22,7 @@ const LandingPageContainer = () => {
           </h1>
           <p className="themename">Srishti</p>
           <p className="event-dates">April 8-10, 2022</p>
-          { /* FIXME : uncomment me later */}
+          {/* FIXME : uncomment me later */}
           {/* <div className="action">
             {!user ? (
               <Link to="/signup" className="btn btn-primary">
@@ -52,7 +52,7 @@ const Container = styled.div`
   position: relative;
   overflow: hidden;
 
-  background: url("../../images/springspree22_71.png");
+  background: url("../../images/springspree22_71.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

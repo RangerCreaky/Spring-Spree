@@ -44,9 +44,7 @@ const OfferContainer = styled.div`
     opacity: 1;
   }
 
-  em{
-    color : var(--c);
+  em {
+    color: var(--c);
   }
-
-
 `;

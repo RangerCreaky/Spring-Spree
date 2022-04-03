@@ -54,6 +54,7 @@ export default function Login() {
                 Email
               </label>
               <Field
+                autoFocus
                 name="email"
                 placeholder="akash@gmail.com"
                 type="email"
