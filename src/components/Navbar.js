@@ -28,9 +28,9 @@ const Navbar = () => {
             <BrandLink to="/">SpringSpree'22</BrandLink>
           </h3>
           <ul className="nav-links">
-            {/* <li>
+            <li>
               <StyledLink to="/events">Events</StyledLink>
-            </li> */}
+            </li>
             <li>
               <StyledLink to="/gallery">Gallery</StyledLink>
             </li>
@@ -53,16 +53,14 @@ const Navbar = () => {
                     id="more-button"
                     data-bs-toggle="dropdown"
                   >
-                    {/* <img height={50} alt="" /> */}
                     More
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="more-button">
-                    {/* FIXME : uncomment it later */}
-                    {/* <li>
+                    <li>
                       <Link className="dropdown-item" to="/profile">
                         Profile
                       </Link>
-                    </li> */}
+                    </li>
                     <li>
                       <button onClick={logout} className="dropdown-item">
                         logout

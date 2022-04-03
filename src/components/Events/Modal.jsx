@@ -164,7 +164,7 @@ export default function Modal({ event, onClose, visible = false }) {
                 )}
                 {judging_criteria && (
                   <div>
-                    <h2>Judgin Criteria</h2>
+                    <h2>Judging Criteria</h2>
                     <p>{judging_criteria}</p>
                   </div>
                 )}
