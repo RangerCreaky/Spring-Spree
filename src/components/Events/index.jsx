@@ -58,7 +58,8 @@ export default function Events() {
         ...e,
         registered: !!user?.events?.find((x) => x.event_id === e._id),
       }))
-      ?.sort((a, b) => a.registered - b.registered),
+      ?.sort((a, b) => a.registered - b.registered)
+      ?.sort((a, b) => dayjs(a.start_date).diff(dayjs(b.start_date))),
     (el) => el.category ?? "Other"
   );
   const categories = Object.keys(parsedEvents);

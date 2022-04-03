@@ -41,7 +41,8 @@ const Register = () => {
     async (values, { resetForm }) => {
       const res = await validate.request(values);
       if (res.ok) {
-        const discount = (event.registration_fee * res.data?.value) / 100;
+        const precent = res.data?.value || 0;
+        const discount = (event.registration_fee * precent) / 100;
         const newEvent = {
           ...event,
           registration_fee: event.registration_fee - discount,
@@ -50,11 +51,15 @@ const Register = () => {
         specialEvent.setData(
           data.map((d) => (d.key === event.key ? newEvent : d))
         );
-        alert(`Promo code applied! you got ${res.data?.value}% discount.`);
+        if (precent) {
+          alert(`Promo code applied! you got ${precent}% discount.`);
+        } else {
+          alert("Referral code applied");
+        }
         return;
       }
 
-      alert("Invalid promocode!");
+      alert(res.data?.message || "Invalid promocode!");
       resetForm();
     };
 
@@ -100,5 +105,5 @@ const RegisterContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment:fixed;
+  background-attachment: fixed;
 `;

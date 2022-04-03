@@ -12,7 +12,7 @@ const Footer = () => {
         <LeftBox>
           <div className="content">
             <img
-              src="/images/springspree22_78.png"
+              src="/images/springspree22_78.webp"
               alt="springspree22_78"
               className="footer-logo"
             />
@@ -50,11 +50,7 @@ const Footer = () => {
                 <span className="fas fa-map-marker-alt"></span>
                 <span className="text">
                   {" "}
-                  <a
-                    href="https://nitw.ac.in"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a href="https://nitw.ac.in" target="_blank" rel="noreferrer">
                     National Institute of Technology Campus, Telangana 506004
                   </a>
                 </span>
@@ -127,7 +123,7 @@ const FooterContainer = styled.footer`
   position: relative;
   color: #d9d9d9;
   box-sizing: border-box;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: bolder;
   font-size: larger;
   display: flex;

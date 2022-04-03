@@ -37,7 +37,7 @@ const Shristi = () => {
             </StyledLink>
           </div>
         </Text>
-        <img src="../../images/springspree22_75.png" alt="springspree22_75" />
+        <img src="../../images/springspree22_75.webp" alt="springspree22_75" />
       </Container>
     </>
   );
@@ -56,7 +56,7 @@ const Container = styled.div`
   overflow: hidden;
   /* change this later */
   z-index: 1000;
-  background: url("../../images/springspree22_77.jpeg");
+  background: url("../../images/springspree22_77.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -91,7 +91,7 @@ const Text = styled.div`
   color: white;
   width: 45%;
   font-size: 1.2rem;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
   font-size: larger;
   /* font-family: 'Steinfeld'; */

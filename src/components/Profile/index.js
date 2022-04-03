@@ -215,12 +215,15 @@ const Profile = () => {
         )}
       </Billing>
 
-      <Link className="btn btn-outline-info" to="/events">
-        Visit Events
-      </Link>
-      <button onClick={logout} className="btn btn-outline-info logout">
-        Logout
-      </button>
+      <div className="text-center">
+        <Link className="btn btn-outline-info mb-1" to="/events">
+          Visit Events
+        </Link>
+        <br />
+        <button onClick={logout} className="btn btn-outline-info logout">
+          Logout
+        </button>
+      </div>
     </Container>
   );
 };
@@ -239,8 +242,6 @@ const Container = styled.div`
   background-repeat: no-repeat;
 
   .logout {
-    display: block;
-    margin: auto;
     margin-bottom: 20px;
   }
 

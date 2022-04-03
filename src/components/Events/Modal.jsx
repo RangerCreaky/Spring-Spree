@@ -72,7 +72,7 @@ export default function Modal({ event, onClose, visible = false }) {
     } else {
       const payment = await eventPayment.makePayment({
         event,
-        specialEvent: !!event.specialEvent,
+        specialEvent: event.specialEvent,
       });
       if (!payment) return;
     }
@@ -101,16 +101,17 @@ export default function Modal({ event, onClose, visible = false }) {
 
                 <div className="d-md-flex justify-content-between align-items-center time-venue">
                   <div className="time">
-                    <div>
-                      Start:{" "}
-                      {start_date &&
-                        dayjs(start_date).format("ddd, MMM D, YYYY h:mm A")}
-                    </div>
-                    <div>
-                      End:{" "}
-                      {end_date &&
-                        dayjs(end_date).format("ddd, MMM D, YYYY h:mm A")}
-                    </div>
+                    {start_date && (
+                      <div>
+                        Start:{" "}
+                        {dayjs(start_date).format("ddd, MMM D, YYYY h:mm A")}
+                      </div>
+                    )}
+                    {end_date && (
+                      <div>
+                        End: {dayjs(end_date).format("ddd, MMM D, YYYY h:mm A")}
+                      </div>
+                    )}
                   </div>
                   <div className="venue">
                     <FaMapMarkerAlt /> {venue}
