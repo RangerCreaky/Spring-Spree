@@ -143,12 +143,12 @@ let spotlights = [
 ];
 
 const ethnics = [
+  { image: ethnic_6, name: "ethnic_6" },
   { image: ethnic_1, name: "ethnic_1" },
   { image: ethnic_2, name: "ethnic_2" },
   { image: ethnic_3, name: "ethnic_3" },
   { image: ethnic_4, name: "ethnic_4" },
   { image: ethnic_5, name: "ethnic_5" },
-  { image: ethnic_6, name: "ethnic_6" },
 ];
 
 const preSpree = [
