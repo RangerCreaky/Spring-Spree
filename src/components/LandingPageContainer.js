@@ -1,15 +1,15 @@
 import React from "react";
 // FIXME : uncomment this later
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SponsoredBy from "./SponsoredBy";
 // FIXME : uncomment this later
-// import { useAuth } from "../hooks/auth";
+import { useAuth } from "../hooks/auth";
 
 
 const LandingPageContainer = () => {
   // FIXME : uncomment this later
-  // const { user } = useAuth();
+  const { user } = useAuth();
   return (
     <Container>
       <SponsoredBy />
@@ -26,7 +26,7 @@ const LandingPageContainer = () => {
           <p className="themename">Srishti</p>
           <p className="event-dates">April 8-10, 2022</p>
           {/* FIXME : uncomment me later */}
-          {/* <div className="action">
+          <div className="action">
             {!user ? (
               <Link to="/signup" className="btn btn-primary">
                 Register
@@ -40,7 +40,7 @@ const LandingPageContainer = () => {
                 Profile
               </Link>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
     </Container>
@@ -72,7 +72,7 @@ const Container = styled.div`
   > .logo {
     position: absolute;
     z-index: 100;
-    top: 42%;
+    top: 37%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: min(50vw, 250px) !important;

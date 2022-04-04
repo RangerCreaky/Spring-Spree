@@ -10,7 +10,7 @@ const SponsoredBy = () => {
           <span className="name"> NIT WARANGAL </span>
         </div>
 
-        <p> &emsp; and &emsp; </p>
+        <p className='and'> &emsp; and &emsp; </p>
 
         <div className='Saas'>
           <img src='../../images/sponsor-logo.png' className='small-logo saas' alt="sponsor" />
@@ -26,7 +26,7 @@ const SponsoredBy = () => {
 export default SponsoredBy;
 
 const Container = styled.div`
-  margin-top: 100px;
+  margin-top: 80px;
 
   display: flex;
   flex-direction: column;
@@ -39,8 +39,12 @@ const Container = styled.div`
   /* font-family: 'Inter', sans-serif; */
 /* font-family: 'Montserrat', sans-serif; */
   font-family: cursive;
-  /* font-weight: 600; */
 
+  .and{
+    font-size : 0.9rem;
+    letter-spacing:2px ;
+    margin-top: 5px;
+  }
   @media (max-width : 430px){
     letter-spacing: normal;
   }
@@ -57,7 +61,7 @@ const Container = styled.div`
 
     .name{
       font-size: 1.3rem;
-      font-weight: 900;
+      font-weight : 900;
     }
 
     .NIT , .Saas{
@@ -75,5 +79,8 @@ const Container = styled.div`
   }
   .presents{
     margin-bottom: 0;
+    font-size : 0.9rem;
+    letter-spacing:2px ;
+    margin-top: 5px;
   }
 `;

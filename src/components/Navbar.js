@@ -56,6 +56,7 @@ const Navbar = () => {
                     More
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="more-button">
+
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         Profile
