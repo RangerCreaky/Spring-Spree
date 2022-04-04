@@ -3,7 +3,14 @@ import React from "react";
 import styled from "styled-components";
 import Field from "../form/Field";
 
-export default function Pack({ id, name, amount, onClick, validatePromo }) {
+export default function Pack({
+  id,
+  name,
+  amount,
+  offlinePrice,
+  onClick,
+  validatePromo,
+}) {
   const names = name?.split(",") || [];
 
   return (
@@ -39,10 +46,7 @@ export default function Pack({ id, name, amount, onClick, validatePromo }) {
                   </div>
                 </div>
                 <div className="col-4">
-                  <button
-                    type="submit"
-                    className="btn btn-primary promo-button"
-                  >
+                  <button type="submit" className="btn btn-primary">
                     Apply
                   </button>
                 </div>
@@ -50,7 +54,11 @@ export default function Pack({ id, name, amount, onClick, validatePromo }) {
             </Formik>
           </div>
         )}
-        <span>{amount}/-</span>
+        <div className="price">
+          <span> {offlinePrice} </span>
+          {amount}/-
+        </div>
+        {/* <span>/-</span> */}
         <button className="btn btn-primary" onClick={onClick}>
           Pay
         </button>
@@ -111,7 +119,7 @@ export const ButtonContainer = styled.div`
   flex-flow: row wrap;
   justify-content: space-between;
   margin-top: 20px;
-  > span {
+  > .price {
     pointer-events: none;
     border: 2px solid #ffa500;
     padding: 8px 15px;
@@ -120,9 +128,14 @@ export const ButtonContainer = styled.div`
     margin-right: 10px;
     flex: 1;
     text-align: center;
+
+    span {
+      text-decoration: line-through;
+      color: gray;
+    }
   }
 
-  > button {
+  button {
     padding: 10px 15px;
     text-align: center;
     /* background: rgba(255,165,0,1); */
@@ -138,13 +151,6 @@ export const ButtonContainer = styled.div`
     background-position: 200% auto;
     color: white;
     font-weight: 900;
-  }
-
-  .promo-button {
-    background: #385972; /* fallback for old browsers */
-    border: none;
-    color: #ffffff;
-    font-weight: 600;
   }
   .promo-field {
     border-radius: 10px;
