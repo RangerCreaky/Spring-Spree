@@ -1,14 +1,20 @@
 const offerData = [
   {
     name: "Registration",
-    tag: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla magna ut ipsum sodales congue.`,
+    tag: (
+      <p> Grab your ticket for spring spree 22. Register here </p>
+    ),
     registration_fee: 300,
     key: "entry",
     slug: "paidForEvent",
   },
   {
     name: "Accomodation",
-    tag: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla magna ut ipsum sodales congue.",
+    tag: (
+      <p>
+        Book your stay for three days at NITW campus. Food will be provided for three days
+      </p>
+    ),
     registration_fee: 900,
     key: "accomodation",
     slug: "paidForAccomodation",
@@ -51,7 +57,7 @@ const offerData = [
         <em>'Kabhii tumhhe'</em>, the romantic{" "}
         <em> 'Ek ladki ko dekha toh aisa laga' </em> and many more songs that
         leave us vibing. <br />
-        SpringSpree'22 brings to you the voice behind these hits, Darshan Raval,
+        SpringSpree'22 brings to you the voice behind these hits, <strong>  Darshan Raval </strong>,
         here at NIT Warangal on 10th of April. <br />
         This Spree, get ready to shake your <em> 'Kamariya' </em> and dance to
         the mesmerizing beats of <em> 'Chogada' </em>.{" "}

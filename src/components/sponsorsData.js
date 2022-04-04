@@ -29,6 +29,7 @@ import springspree22_80 from "../sponsors/curr/springspree22_80.jpg";
 import springspree22_81 from "../sponsors/curr/springspree22_81.jpg";
 import springspree22_82 from "../sponsors/curr/springspree22_82.jpg";
 import springspree22_83 from "../sponsors/curr/springspree22_83.jpg";
+import springspree22_84 from "../sponsors/curr/springspree22_84.png";
 
 // title sponsors
 import saas_labs from "../sponsors/title/saas-labs.jpg";
@@ -163,9 +164,10 @@ const currSponsorsData = [
     title: "Alumni partner",
   },
   {
-    name: "NITW Alumni Association \n Warangal Chapter",
+    name: "NITW Alumni Association",
     src: springspree22_80,
     imgName: "springspree22_80",
+    title: "Warangal Chapter"
   },
   {
     name: "Sri Raksha Constructions",
@@ -190,6 +192,12 @@ const currSponsorsData = [
     imgName: "springspree22_83",
     title: "Merchandise Partner",
     link: "https://www.imfs.co.in"
+  },
+  {
+    name: "YogiFi",
+    title: "StartUp and New Ventures",
+    src: springspree22_84,
+    imgName: "springspree22_84"
   }
 ];
 
