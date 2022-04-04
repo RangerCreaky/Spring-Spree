@@ -31,6 +31,7 @@ import springspree22_82 from "../sponsors/curr/springspree22_82.jpg";
 import springspree22_83 from "../sponsors/curr/springspree22_83.jpg";
 import springspree22_84 from "../sponsors/curr/springspree22_84.png";
 import springspree22_85 from "../sponsors/curr/springspree22_85.jpg";
+import springspree22_86 from "../sponsors/curr/springspree22_86.jpg";
 
 // title sponsors
 import saas_labs from "../sponsors/title/saas-labs.jpg";
@@ -198,8 +199,13 @@ const currSponsorsData = [
     name: "Red FM",
     src: springspree22_85,
     imgName: "springspree22_85",
-    link: "http://www.safexpress.com",
+    link: "https://www.redfmindia.in/",
     title: "Radio Partner",
+  },
+  {
+    name: "Select Motors",
+    src: springspree22_86,
+    imgName: "springspree22_86",
   },
   {
     name: "NITW Alumni Association",
