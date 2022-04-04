@@ -56,7 +56,7 @@ const Navbar = () => {
                     More
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="more-button">
-                    {/* FIXME : uncomment it later */}
+
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         Profile

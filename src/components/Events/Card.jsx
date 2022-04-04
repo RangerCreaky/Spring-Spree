@@ -72,6 +72,7 @@ const Container = styled.div`
     }
 
     .sub-title {
+      min-height: 3.6rem;
       font-size: 1rem;
       font-weight: 700;
       display: -webkit-box;
