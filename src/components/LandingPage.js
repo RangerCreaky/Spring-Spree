@@ -61,6 +61,7 @@ const LandingPage = () => {
               package details, please visit <Link to="/profile">profile</Link>{" "}
               page
             </p>
+            <p>If you pre-register  using promo code,you can book accomodation, food and proshows either in <Link to="/profile">profile</Link> page or offline at NITW campus. </p>
           </div>
           <Footer />
           <div className="dummy" ref={footerRef}>

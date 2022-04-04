@@ -29,6 +29,7 @@ const OfferContainer = styled.div`
   .text {
     background-color: #eee;
     padding: 20px;
+    width : 100%;
   }
 
   .offer-name {
