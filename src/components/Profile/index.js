@@ -91,7 +91,7 @@ const Profile = () => {
             <div className="mt-5 pt-5">
               <div className="bg">
                 <div className="row z-depth-3 card-actual">
-                  {isStudent(user?.email) && (
+                  {!isStudent(user?.email) && (
                     <div className="col-md-3 left-card rounded-left">
                       <div className="card-block d-flex flex-column align-items-center justify-content-center">
                         <QRCode
@@ -225,7 +225,10 @@ const Profile = () => {
           Visit Events
         </Link>
         <br />
-        <button onClick={logout} className="btn btn-outline-primary logout mt-5">
+        <button
+          onClick={logout}
+          className="btn btn-outline-primary logout mt-5"
+        >
           Logout
         </button>
       </div>
