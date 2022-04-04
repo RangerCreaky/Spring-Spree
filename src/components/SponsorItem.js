@@ -78,7 +78,7 @@ const SponsorItemContainer = styled.div`
 
     > img {
       width: 293px;
-      height: 159px;
+      height: 100%;
       transition: 2s;
 
       &:hover {

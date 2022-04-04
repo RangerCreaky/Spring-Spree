@@ -62,7 +62,7 @@ import springspree22_46 from "./images/spotlights/springspree22_46.jpg";
 import ethnic_1 from "./images/ethnic/1.webp";
 import ethnic_2 from "./images/ethnic/2.webp";
 import ethnic_3 from "./images/ethnic/3.webp";
-import ethnic_4 from "./images/ethnic/4.webp";
+import ethnic_4 from "./images/ethnic/4.png";
 import ethnic_5 from "./images/ethnic/5.webp";
 import ethnic_6 from "./images/ethnic/6.webp";
 import ethnic_7 from "./images/ethnic/7.jpg";

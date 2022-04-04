@@ -30,6 +30,7 @@ import springspree22_81 from "../sponsors/curr/springspree22_81.jpg";
 import springspree22_82 from "../sponsors/curr/springspree22_82.jpg";
 import springspree22_83 from "../sponsors/curr/springspree22_83.jpg";
 import springspree22_84 from "../sponsors/curr/springspree22_84.png";
+import springspree22_85 from "../sponsors/curr/springspree22_85.jpg";
 
 // title sponsors
 import saas_labs from "../sponsors/title/saas-labs.jpg";
@@ -164,29 +165,6 @@ const currSponsorsData = [
     title: "Alumni partner",
   },
   {
-    name: "NITW Alumni Association",
-    src: springspree22_80,
-    imgName: "springspree22_80",
-    title: "Warangal Chapter"
-  },
-  {
-    name: "Sri Raksha Constructions",
-    src: springspree22_79,
-    imgName: "springspree22_79",
-  },
-  {
-    name: "Foodsutra Art of Spices Pvt Ltd ",
-    src: springspree22_81,
-    imgName: "springspree22_81",
-  },
-  {
-    name: "Safexpress",
-    src: springspree22_82,
-    imgName: "springspree22_82",
-    link: "http://www.safexpress.com",
-    title: "Supply chain partner",
-  },
-  {
     name: "IMFS",
     src: springspree22_83,
     imgName: "springspree22_83",
@@ -198,7 +176,37 @@ const currSponsorsData = [
     title: "StartUp and New Ventures",
     src: springspree22_84,
     imgName: "springspree22_84"
-  }
+  },
+  {
+    name: "Foodsutra Art of Spices Pvt Ltd ",
+    src: springspree22_81,
+    imgName: "springspree22_81",
+  },
+  {
+    name: "Sri Raksha Constructions",
+    src: springspree22_79,
+    imgName: "springspree22_79",
+  },
+  {
+    name: "Safexpress",
+    src: springspree22_82,
+    imgName: "springspree22_82",
+    link: "http://www.safexpress.com",
+    title: "Supply Chain Partner",
+  },
+  {
+    name: "Red FM",
+    src: springspree22_85,
+    imgName: "springspree22_85",
+    link: "http://www.safexpress.com",
+    title: "Radio Partner",
+  },
+  {
+    name: "NITW Alumni Association",
+    src: springspree22_80,
+    imgName: "springspree22_80",
+    title: "Warangal Chapter"
+  },
 ];
 
 export { PrevSponsorsData, currSponsorsData, titleSponsors };
