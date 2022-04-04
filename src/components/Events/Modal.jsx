@@ -88,9 +88,9 @@ export default function Modal({ event, onClose, visible = false }) {
   const loading = eventPayment.loading || registerFree.loading;
   const proShowPaid =
     category === "Pro Shows" &&
-    ((key === "ps1" && user.paidForProshow1) ||
-      (key === "ps2" && user.paidForProshow2) ||
-      (key === "ps3" && user.paidForProshow3));
+    ((key === "ps1" && user?.paidForProshow1) ||
+      (key === "ps2" && user?.paidForProshow2) ||
+      (key === "ps3" && user?.paidForProshow3));
 
   if (!visible) return null;
   return (
@@ -215,7 +215,7 @@ export default function Modal({ event, onClose, visible = false }) {
                     </ul>
                   </div>
                 )}
-                {isStudent(user.email) ? (
+                {isStudent(user?.email) ? (
                   <button className="btn btn-primary mt-3" disabled>
                     Not required
                   </button>
