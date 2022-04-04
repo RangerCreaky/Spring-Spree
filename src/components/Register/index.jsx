@@ -80,6 +80,7 @@ const Register = () => {
             validatePromo={validatePromo(event)}
             name={event.name}
             amount={event.registration_fee}
+            offlinePrice={event.offline_price}
             onClick={handleClick(event)}
             key={event._id}
           />

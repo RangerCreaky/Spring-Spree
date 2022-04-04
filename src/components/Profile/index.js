@@ -15,6 +15,7 @@ import Loader from "../Loader";
 import CardContainer from "../Events/CardContainer";
 import { FcDownload } from "react-icons/fc";
 import { AiOutlineCopy } from "react-icons/ai";
+import { isStudent } from "../../utils";
 
 const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
 
@@ -90,7 +91,7 @@ const Profile = () => {
             <div className="mt-5 pt-5">
               <div className="bg">
                 <div className="row z-depth-3 card-actual">
-                  {user?.email?.split("@")?.[1] !== "student.nitw.ac.in" && (
+                  {isStudent(user?.email) && (
                     <div className="col-md-3 left-card rounded-left">
                       <div className="card-block d-flex flex-column align-items-center justify-content-center">
                         <QRCode
@@ -126,24 +127,28 @@ const Profile = () => {
                       <Field label="gender">{user?.gender}</Field>
                       <Field label="college">{user?.college}</Field>
                       <Field label="level">{user?.level}</Field>
-                      <Field label="Referral Count">
-                        {user?.referralCount}
-                      </Field>
-                      <Field
-                        label={
-                          <>
-                            Referral Code{" "}
-                            <button
-                              className="btn btn-link"
-                              onClick={copyReferral}
-                            >
-                              <AiOutlineCopy />
-                            </button>
-                          </>
-                        }
-                      >
-                        {user?._id}
-                      </Field>
+                      {user?.paidForEvent === 1 && (
+                        <>
+                          <Field label="Referral Count">
+                            {user?.referralCount}
+                          </Field>
+                          <Field
+                            label={
+                              <>
+                                Referral Code{" "}
+                                <button
+                                  className="btn btn-link"
+                                  onClick={copyReferral}
+                                >
+                                  <AiOutlineCopy />
+                                </button>
+                              </>
+                            }
+                          >
+                            {user?._id}
+                          </Field>
+                        </>
+                      )}
                       <Field label="paid for event">
                         <BoolIcon value={user?.paidForEvent} />
                       </Field>

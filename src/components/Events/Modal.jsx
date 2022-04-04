@@ -11,6 +11,7 @@ import Loader from "../Loader";
 import dayjs from "dayjs";
 import { useApi } from "../../hooks/api";
 import eventApi from "../../api/events";
+import { isStudent } from "../../utils";
 // import dayjs from "dayjs";
 
 const SocialIcon = ({ type, ...args }) => {
@@ -44,7 +45,10 @@ export default function Modal({ event, onClose, visible = false }) {
     start_date,
     end_date,
     registered,
+    category,
+    key,
   } = event;
+  // console.log(category, key);
   const { user } = useAuth();
   const navigate = useNavigate();
   const eventPayment = useEventPayment();
@@ -82,6 +86,11 @@ export default function Modal({ event, onClose, visible = false }) {
   };
 
   const loading = eventPayment.loading || registerFree.loading;
+  const proShowPaid =
+    category === "Pro Shows" &&
+    ((key === "ps1" && user.paidForProshow1) ||
+      (key === "ps2" && user.paidForProshow2) ||
+      (key === "ps3" && user.paidForProshow3));
 
   if (!visible) return null;
   return (
@@ -206,7 +215,15 @@ export default function Modal({ event, onClose, visible = false }) {
                     </ul>
                   </div>
                 )}
-                {registered ? (
+                {isStudent(user.email) ? (
+                  <button className="btn btn-primary mt-3" disabled>
+                    Not required
+                  </button>
+                ) : registered ? (
+                  <button className="btn btn-primary mt-3" disabled>
+                    Already registered
+                  </button>
+                ) : proShowPaid ? (
                   <button className="btn btn-primary mt-3" disabled>
                     Already registered
                   </button>
