@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 
+import { Autolinker } from "autolinker";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaMapMarkerAlt, FaFacebook, FaInstagram } from "react-icons/fa";
 import { Header, BackDrop, Body, Container, Main } from "./Modal.style";
@@ -181,7 +182,11 @@ export default function Modal({ event, onClose, visible = false }) {
                 {description && (
                   <div className="description">
                     <h2>Description</h2>
-                    <p>{description}</p>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: Autolinker.link(description),
+                      }}
+                    />
                   </div>
                 )}
 
