@@ -3,12 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SponsoredBy from "./SponsoredBy";
-// FIXME : uncomment this later
 import { useAuth } from "../hooks/auth";
 
 
 const LandingPageContainer = () => {
-  // FIXME : uncomment this later
+
   const { user } = useAuth();
   return (
     <Container>
@@ -25,7 +24,7 @@ const LandingPageContainer = () => {
           </h1>
           <p className="themename">Srishti</p>
           <p className="event-dates">April 8-10, 2022</p>
-          {/* FIXME : uncomment me later */}
+
           <div className="action">
             {!user ? (
               <Link to="/signup" className="btn btn-primary">
@@ -72,10 +71,10 @@ const Container = styled.div`
   > .logo {
     position: absolute;
     z-index: 100;
-    top: 37%;
+    top: 34%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: min(50vw, 250px) !important;
+    width: min(50vw, 230px) !important;
   }
 
   > .bg {

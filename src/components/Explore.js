@@ -54,6 +54,8 @@ const ExploreContainer = styled.div`
   }
 
   > img {
+    width : 40%;
+    height : auto;
     @media (max-width: 1200px) {
       width: 500px;
       height: 500px;

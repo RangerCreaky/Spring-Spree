@@ -9,7 +9,7 @@ const offerData = [
     slug: "paidForEvent",
   },
   {
-    name: "Accomodation",
+    name: "Accomodation & Food",
     tag: (
       <p>
         Book your stay for three days at NITW campus. Food will be provided for three days

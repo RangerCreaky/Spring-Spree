@@ -69,7 +69,7 @@ export default function VerifyEmail() {
                 Submit
               </button>
             </div>
-
+            <p className="small-text text-center"> If you didnt revieve the OTP please check the Spam folder  </p>
             {!resendMail.data && (
               <div className="center">
                 <p>

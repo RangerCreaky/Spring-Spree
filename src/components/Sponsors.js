@@ -7,7 +7,7 @@ import FooterContainer from "./FooterContainer";
 // import sponsor images
 
 import {
-  PrevSponsorsData,
+  // PrevSponsorsData,
   currSponsorsData,
   titleSponsors,
 } from "./sponsorsData";
@@ -44,9 +44,9 @@ const Sponsors = () => {
 
         {renderSponsors(currSponsorsData, 6)}
 
-        <h2> Previous Sponsors </h2>
+        {/* <h2> Previous Sponsors </h2> */}
 
-        {renderSponsors(PrevSponsorsData, 4)}
+        {/* {renderSponsors(PrevSponsorsData, 4)} */}
       </SponsorContainer>
 
       <FooterContainer />

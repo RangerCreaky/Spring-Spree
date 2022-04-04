@@ -79,7 +79,7 @@ const Container = styled.div`
   }
   .presents{
     margin-bottom: 0;
-    font-size : 0.9rem;
+    font-size : 0.7rem;
     letter-spacing:2px ;
     margin-top: 5px;
   }
