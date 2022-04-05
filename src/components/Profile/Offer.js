@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import Checkbox from "./Checkbox";
-const Offer = ({ name, tag, price, onChange }) => {
+const Offer = ({ id, name, tag, price }) => {
   return (
     <OfferContainer className="offer">
-      <Checkbox onChange={onChange} />
+      <Checkbox id={id} />
       <div className="text">
         <h3 className="offer-name"> {name} </h3>
         {tag}
         <h6>
-          {" "}
           <strong> Price : &#8377; {price} </strong>{" "}
         </h6>
       </div>
@@ -29,7 +28,7 @@ const OfferContainer = styled.div`
   .text {
     background-color: #eee;
     padding: 20px;
-    width : 100%;
+    width: 100%;
   }
 
   .offer-name {

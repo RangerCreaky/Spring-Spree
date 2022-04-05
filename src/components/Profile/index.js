@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { QRCode } from "react-qrcode-logo";
 
@@ -16,20 +16,19 @@ import CardContainer from "../Events/CardContainer";
 import { FcDownload } from "react-icons/fc";
 import { AiOutlineCopy } from "react-icons/ai";
 import { isStudent } from "../../utils";
+import { Form, Formik, useFormikContext } from "formik";
 
 const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
+const getTotal = (keys) =>
+  keys.reduce(
+    (pre, cur) => pre + offerData.find((e) => e.key === cur)?.registration_fee,
+    0
+  );
 
 const Profile = () => {
   const { user, logout, updateUser } = useAuth();
-  const [eventToPay, setEventToPay] = useState([]);
   const eventPayment = useEventPayment();
-  const total = eventToPay.reduce((pre, cur) => pre + cur.registration_fee, 0);
   const userOffer = offerData.filter((e) => !user?.[e.slug]);
-
-  const toggleToCart = (event) => (e) => {
-    if (e.target.checked) setEventToPay([...eventToPay, event]);
-    else setEventToPay(eventToPay.filter((x) => x.key !== event.key));
-  };
 
   const downloadQr = async () => {
     const qr = document.getElementById("user-qr-code");
@@ -41,26 +40,27 @@ const Profile = () => {
     }
   };
 
-  const checkout = async () => {
-    if (eventToPay.length === 0) {
-      alert("please select some items above");
+  const checkout = async (values, { resetForm }) => {
+    const eventsSelected = values.checked;
+    if (eventsSelected.length === 0) {
+      alert("please select at least one item");
       return;
     }
-
     const event = {
-      key: eventToPay
-        .map((e) => e.key)
+      key: eventsSelected
         .sort((a, b) => eventOrder.indexOf(a) - eventOrder.indexOf(b))
         .join(","),
-      registration_fee: total,
+      registration_fee: getTotal(eventsSelected),
       name: "Spring Spree 22 - Special events",
     };
+
     const res = await eventPayment.makePayment({ event, specialEvent: 1 });
     if (res) {
       alert("Payment successfull");
       await updateUser();
     }
-    setEventToPay([]);
+
+    resetForm({ checked: [] });
   };
 
   const copyReferral = () => {
@@ -91,7 +91,7 @@ const Profile = () => {
             <div className="mt-5 pt-5">
               <div className="bg">
                 <div className="row z-depth-3 card-actual">
-                  {!isStudent(user?.email) && (
+                  {!isStudent(user?.email) && user?.paidForEvent && (
                     <div className="col-md-3 left-card rounded-left">
                       <div className="card-block d-flex flex-column align-items-center justify-content-center">
                         <QRCode
@@ -149,7 +149,7 @@ const Profile = () => {
                           </Field>
                         </>
                       )}
-                      <Field label="paid for event">
+                      <Field label="paid for Registration">
                         <BoolIcon value={user?.paidForEvent} />
                       </Field>
                       <Field label="Accomodation">
@@ -178,22 +178,29 @@ const Profile = () => {
         <hr className="hr" />
         {userOffer?.length ? (
           <div className="billing-wrapper">
-            {userOffer.map(({ key, name, tag, registration_fee }) => (
-              <Offer
-                key={key}
-                name={name}
-                tag={tag}
-                price={registration_fee}
-                onChange={toggleToCart({ key, registration_fee })}
-              />
-            ))}
+            <Formik
+              initialValues={{ checked: user?.paidForEvent ? [] : ["entry"] }}
+              onSubmit={checkout}
+            >
+              <Form>
+                {userOffer.map(({ key, name, tag, registration_fee }) => (
+                  <Offer
+                    id={key}
+                    key={key}
+                    name={name}
+                    tag={tag}
+                    price={registration_fee}
+                  />
+                ))}
 
-            <div className="pay">
-              <h4> Amount to be paid: &#8377;{total} </h4>
-              <button onClick={checkout} className="btn btn-outline-dark mt-3">
-                Complete Payment
-              </button>
-            </div>
+                <div className="pay">
+                  <TotalSum />
+                  <button type="submit" className="btn btn-outline-dark mt-3">
+                    Complete Payment
+                  </button>
+                </div>
+              </Form>
+            </Formik>
           </div>
         ) : (
           <p className="text-center">
@@ -239,6 +246,12 @@ const Profile = () => {
 const BoolIcon = ({ value }) => {
   if (value) return <BsCheck2Circle color="var(--bs-success)" />;
   return <BsXCircle color="var(--bs-danger)" />;
+};
+
+const TotalSum = () => {
+  const { values } = useFormikContext();
+  const total = getTotal(values.checked);
+  return <h4> Amount to be paid: &#8377;{total} </h4>;
 };
 
 export default Profile;

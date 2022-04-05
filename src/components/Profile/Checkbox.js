@@ -1,14 +1,17 @@
+import { Field } from "formik";
 import React from "react";
 import styled from "styled-components";
 
-const Checkbox = ({ onChange }) => {
+const Checkbox = ({ onChange, id }) => {
   return (
     <Container className="chekcbox">
       <label className="label">
-        <input
+        <Field
           className="label__checkbox"
           type="checkbox"
-          onChange={onChange}
+          name="checked"
+          value={id}
+          disabled={id === "entry"}
         />
         <span className="label__text">
           <span className="label__check">

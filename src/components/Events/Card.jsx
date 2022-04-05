@@ -68,12 +68,13 @@ const Container = styled.div`
     text-align: center;
 
     .title {
+      font-size: 1.8rem;
       font-weight: 700;
     }
 
     .sub-title {
       min-height: 3.6rem;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
       display: -webkit-box;
       -webkit-line-clamp: 3;
