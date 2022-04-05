@@ -38,6 +38,9 @@ const Navbar = () => {
               <StyledLink to="/sponsors">Sponsors</StyledLink>
             </li>
             <li>
+              <StyledLink to="/team">Team</StyledLink>
+            </li>
+            <li>
               <StyledLink to="/faq">FAQs</StyledLink>
             </li>
             <li>
@@ -56,7 +59,6 @@ const Navbar = () => {
                     More
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="more-button">
-
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         Profile
@@ -110,6 +112,9 @@ const Navbar = () => {
           </li>
           <li>
             <StyledLink to="/sponsors">Sponsors</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/sponsors">Team</StyledLink>
           </li>
           <li>
             <StyledLink to="/faq">FAQs</StyledLink>

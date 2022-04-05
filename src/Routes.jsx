@@ -15,6 +15,7 @@ import PasswordResetRequest from "./components/PasswordResetRequest";
 import PasswordReset from "./components/PasswordReset";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
+import Team from "./components/Team";
 
 const AppRoutes = () => {
   const { restore, updateUser } = useAuth();
@@ -41,6 +42,7 @@ const AppRoutes = () => {
       <Route path="/profile" exact element={<Profile />} />
       <Route path="/verifyMail" exact element={<VerifyEmail />} />
       <Route path="/register" exact element={<Register />} />
+      <Route path="/team" exact element={<Team />} />
       <Route
         path="/passwordResetRequest"
         exact

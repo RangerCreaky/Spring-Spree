@@ -79,6 +79,7 @@ const SponsorItemContainer = styled.div`
     > img {
       width: 293px;
       height: 159px;
+      object-fit: contain;
       transition: 2s;
 
       &:hover {

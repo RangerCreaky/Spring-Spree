@@ -17,6 +17,7 @@ $body-bg: rgb(1, 1, 1);
 $dark: rgb(2, 2, 2);
 $body-color: #f8f8f8;
 $primary: #ff730e;
+$font-family-sans-serif: "Poppins";
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/scss/variables";
@@ -43,6 +44,7 @@ $primary: #ff730e;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  // font-family: "Poppins";
 }
 
 :root {
