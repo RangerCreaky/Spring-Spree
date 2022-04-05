@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import { useApi } from "../hooks/api";
 import Footer from "./Footer";
 import { useAuth } from "../hooks/auth";
+import { useTitle } from "../hooks/document";
 
 const initialValues = {
   verificationCode: "",
@@ -18,6 +19,7 @@ const schema = Yup.object().shape({
 });
 
 export default function VerifyEmail() {
+  useTitle("Email verify - SpringSpree'22");
   const verifyEmail = useApi(authApi.verifyMail);
   const resendMail = useApi(authApi.resendVerifyMail);
   const navigate = useNavigate();
@@ -69,7 +71,10 @@ export default function VerifyEmail() {
                 Submit
               </button>
             </div>
-            <p className="small-text text-center"> If you didnt revieve the OTP please check the Spam folder  </p>
+            <p className="small-text text-center">
+              {" "}
+              If you didnt revieve the OTP please check the Spam folder{" "}
+            </p>
             {!resendMail.data && (
               <div className="center">
                 <p>

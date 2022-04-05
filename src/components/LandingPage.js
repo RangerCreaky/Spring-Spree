@@ -12,8 +12,10 @@ import useScrollSnap from "react-use-scroll-snap";
 import useOnScreen from "../hooks/screen";
 
 import { Link } from "react-router-dom";
+import { useTitle } from "../hooks/document";
 
 const LandingPage = () => {
+  useTitle("SpringSpree'22");
   // for snapping the page
   const scrollRef = useRef(null);
   useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });

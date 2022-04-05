@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 import SideBarGallery from "./SideBarGallery.js";
 import MainContent from "./MainContent.js";
+import { useTitle } from "../../hooks/document.js";
 
 const LayoutGallery = () => {
+  useTitle("Gallery - SpringSpree'22");
   return (
     <GalleryContainer>
       <SideBarGallery />

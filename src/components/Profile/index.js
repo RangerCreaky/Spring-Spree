@@ -17,6 +17,7 @@ import { FcDownload } from "react-icons/fc";
 import { AiOutlineCopy } from "react-icons/ai";
 import { isStudent } from "../../utils";
 import { Form, Formik, useFormikContext } from "formik";
+import { useTitle } from "../../hooks/document";
 
 const eventOrder = ["entry", "accomodation", "ps1", "ps2", "ps3"];
 const getTotal = (keys) =>
@@ -26,6 +27,7 @@ const getTotal = (keys) =>
   );
 
 const Profile = () => {
+  useTitle("Profile - SpringSpree'22");
   const { user, logout, updateUser } = useAuth();
   const eventPayment = useEventPayment();
   const userOffer = offerData.filter((e) => !user?.[e.slug]);

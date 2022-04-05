@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "prettier --write ."
+    "lint": "prettier --write .",
+    "publish": "scp -r ./build/* root@64.227.182.174:/var/www/springspree22.in/html"
   },
   "eslintConfig": {
     "extends": [

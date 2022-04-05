@@ -8,8 +8,10 @@ import { useEventPayment } from "../../hooks/payment";
 import Loader from "../Loader";
 import Pack from "./Pack";
 import commanApi from "../../api/comman";
+import { useTitle } from "../../hooks/document";
 
 const Register = () => {
+  useTitle("Checkout - SpringSpree'22");
   const specialEvent = useApi(eventApi.specialEvents);
   const eventPayment = useEventPayment();
   const navigate = useNavigate();
