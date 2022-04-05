@@ -17,7 +17,7 @@
 // import springspree22_62 from "../sponsors/prev/springspree22_62.png";
 // import springspree22_63 from "../sponsors/prev/springspree22_63.png";
 // import springspree22_64 from "../sponsors/prev/springspree22_64.png";
-// import springspree22_65 from "../sponsors/prev/springspree22_65.png";
+import springspree22_65 from "../sponsors/prev/springspree22_65.png";
 // import springspree22_66 from "../sponsors/prev/springspree22_66.png";
 // import springspree22_67 from "../sponsors/prev/springspree22_67.png";
 // import springspree22_68 from "../sponsors/prev/springspree22_68.png";
@@ -180,6 +180,11 @@ const currSponsorsData = [
     title: "StartUp and New Ventures",
     src: springspree22_84,
     imgName: "springspree22_84"
+  },
+  {
+    name: "Vizag Steel",
+    src: springspree22_65,
+    imgName: "springspree22_65",
   },
   {
     name: "PATSAV Academy",

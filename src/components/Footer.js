@@ -58,7 +58,7 @@ const Footer = () => {
               <div className="phone">
                 <span className="fas fa-phone-alt"></span>
                 <span className="text">
-                  <a href="tel:9515877819">9515877819</a>
+                  <a href="tel:+919515877819">+919767853304</a>
                 </span>
               </div>
               <div className="page">
