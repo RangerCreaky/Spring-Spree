@@ -59,7 +59,7 @@ import springspree22_45 from "./images/spotlights/springspree22_45.jpg";
 import springspree22_46 from "./images/spotlights/springspree22_46.jpg";
 
 // Ethnic
-import ethnic_1 from "./images/ethnic/1.webp";
+// import ethnic_1 from "./images/ethnic/1.webp";
 import ethnic_2 from "./images/ethnic/2.webp";
 import ethnic_3 from "./images/ethnic/3.webp";
 import ethnic_4 from "./images/ethnic/4.png";
@@ -145,7 +145,7 @@ let spotlights = [
 
 const ethnics = [
   { image: ethnic_6, name: "ethnic_6" },
-  { image: ethnic_1, name: "ethnic_1" },
+  // { image: ethnic_1, name: "ethnic_1" },
   { image: ethnic_2, name: "ethnic_2" },
   { image: ethnic_3, name: "ethnic_3" },
   { image: ethnic_4, name: "ethnic_4" },
