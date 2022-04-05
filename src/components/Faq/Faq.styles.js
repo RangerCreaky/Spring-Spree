@@ -7,6 +7,8 @@ export const FaqContainer = styled.div`
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
+  /* font-weight: 100; */
+    /* font-family: "Poppins"; */
   font-size: larger;
 `;
 

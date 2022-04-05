@@ -73,7 +73,7 @@ export default function Team() {
               <ImageHolder
                 title="Navaneeth Penumarthi"
                 subtitle="Frontend developer"
-                src="/images/team/navneet.jpeg"
+                src="/images/team/navaneeth.jpeg"
               />
             </div>
             <div className="col-md-4">

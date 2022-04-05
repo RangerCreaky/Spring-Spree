@@ -76,8 +76,9 @@ const AboutInnerContainer = styled.div`
 
 const AboutContent = styled.div`
   color: white;
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 800;
+  /* font-family: "Source Sans Pro", sans-serif; */
+    font-family: "Poppins";
+  /* font-weight: 800; */
   font-size: larger;
   max-width: 50ch;
   position: relative;
