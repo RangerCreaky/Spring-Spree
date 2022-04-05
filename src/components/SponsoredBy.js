@@ -35,11 +35,13 @@ const Container = styled.div`
 
   margin-bottom: 0;
   font-size: 1.2rem;
-  /* font-family: "Source Sans Pro", sans-serif; */
   /* font-family: 'Inter', sans-serif; */
 /* font-family: 'Montserrat', sans-serif; */
   font-family: cursive;
 
+  @media (max-width : 500px){
+    font-family: "Source Sans Pro", sans-serif;
+  }
   .and{
     font-size : 0.9rem;
     letter-spacing:2px ;

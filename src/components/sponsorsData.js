@@ -31,7 +31,10 @@ import springspree22_82 from "../sponsors/curr/springspree22_82.jpg";
 import springspree22_83 from "../sponsors/curr/springspree22_83.jpg";
 import springspree22_84 from "../sponsors/curr/springspree22_84.png";
 import springspree22_85 from "../sponsors/curr/springspree22_85.jpg";
-import springspree22_86 from "../sponsors/curr/springspree22_86.jpg";
+import springspree22_86 from "../sponsors/curr/springspree22_86.png";
+import springspree22_87 from "../sponsors/curr/springspree22_87.jpg";
+import springspree22_88 from "../sponsors/curr/springspree22_88.jpg";
+import springspree22_89 from "../sponsors/curr/springspree22_89.jpg";
 
 // title sponsors
 import saas_labs from "../sponsors/title/saas-labs.jpg";
@@ -179,6 +182,11 @@ const currSponsorsData = [
     imgName: "springspree22_84"
   },
   {
+    name: "PATSAV Academy",
+    src: springspree22_89,
+    imgName: "springspree22_89",
+  },
+  {
     name: "Foodsutra Art of Spices Pvt Ltd ",
     src: springspree22_81,
     imgName: "springspree22_81",
@@ -212,6 +220,16 @@ const currSponsorsData = [
     name: "Select Motors",
     src: springspree22_86,
     imgName: "springspree22_86",
+  },
+  {
+    name: "ASP Media House",
+    src: springspree22_87,
+    imgName: "springspree22_87",
+  },
+  {
+    name: "Chai Adda",
+    src: springspree22_88,
+    imgName: "springspree22_88",
   },
 ];
 
