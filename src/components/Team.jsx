@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Footer from "./Footer";
 
 export default function Team() {
   return (
@@ -8,18 +9,25 @@ export default function Team() {
         <h1 className="title">TEAM</h1>
         <section className="dean-container">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-4">
               <ImageHolder
-                title="Dr A.VENU VINOD"
+                title="Prof. A.VENU VINOD"
                 subtitle="Faculty Advisor - Springspree"
                 src="/images/team/venu-vinod.jpeg"
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-4">
               <ImageHolder
-                title="Dr. RAVI KUMAR PULI"
+                title="Prof. RAVI KUMAR PULI"
                 subtitle="Dean student welfare"
                 src="/images/team/ravi-kumar.jpg"
+              />
+            </div>
+            <div className="col-md-4">
+              <ImageHolder
+                title="Dr. S. Shankar"
+                subtitle="Deputy Faculty Advisor - Springspree"
+                src="/images/team/shankar.jpg"
               />
             </div>
           </div>
@@ -64,9 +72,9 @@ export default function Team() {
             </div>
             <div className="col-md-4">
               <ImageHolder
-                title="Rachit Bathla"
-                subtitle="App developer"
-                src="/images/team/rachit.jpeg"
+                title="Sarang Nagpal"
+                subtitle="Backend developer"
+                src="/images/team/sarang.jpeg"
               />
             </div>
             <div className="col-md-4">
@@ -78,9 +86,9 @@ export default function Team() {
             </div>
             <div className="col-md-4">
               <ImageHolder
-                title="Sarang Nagpal"
-                subtitle="Backend developer"
-                src="/images/team/sarang.jpeg"
+                title="Rachit Bathla"
+                subtitle="App developer"
+                src="/images/team/rachit.jpeg"
               />
             </div>
             <div className="col-md-4">
@@ -93,6 +101,7 @@ export default function Team() {
           </div>
         </section>
       </div>
+      <Footer />
     </Wrapper>
   );
 }
