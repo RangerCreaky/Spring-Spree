@@ -208,7 +208,7 @@ const LeftBox = styled.div`
       margin: auto;
 
       @media (max-width: 600px) {
-        width: 200px;
+        width: 100px;
         height: auto;
       }
     }
