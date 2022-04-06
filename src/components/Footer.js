@@ -39,6 +39,21 @@ const Footer = () => {
                 </a>
               </span>
             </div>
+            <div>
+              <span className="url text">
+                <Link to="/terms/terms-and-conditions"> Terms & Conditions </Link>
+              </span>
+            </div>
+            <div>
+              <span className="url text">
+                <Link to="/terms/privacy-policy"> Privacy policy </Link>
+              </span>
+            </div>
+            <div>
+              <span className="url text">
+                <Link to="/terms/refund-and-cancellation"> Refund and cancellation </Link>
+              </span>
+            </div>
           </div>
         </CenterBox>
 

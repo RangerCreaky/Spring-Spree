@@ -17,7 +17,7 @@
 // import springspree22_62 from "../sponsors/prev/springspree22_62.png";
 // import springspree22_63 from "../sponsors/prev/springspree22_63.png";
 // import springspree22_64 from "../sponsors/prev/springspree22_64.png";
-import springspree22_65 from "../sponsors/prev/springspree22_65.png";
+// import springspree22_65 from "../sponsors/prev/springspree22_65.png";
 // import springspree22_66 from "../sponsors/prev/springspree22_66.png";
 // import springspree22_67 from "../sponsors/prev/springspree22_67.png";
 // import springspree22_68 from "../sponsors/prev/springspree22_68.png";
@@ -36,13 +36,15 @@ import springspree22_87 from "../sponsors/curr/springspree22_87.jpg";
 import springspree22_88 from "../sponsors/curr/springspree22_88.jpg";
 import springspree22_89 from "../sponsors/curr/springspree22_89.jpg";
 import springspree22_90 from "../sponsors/curr/springspree22_90.jpeg";
+import springspree22_91 from "../sponsors/curr/springspree22_91.jpeg";
+import springspree22_92 from "../sponsors/curr/springspree22_92.avif";
 
 // title sponsors
 import saas_labs from "../sponsors/title/saas-labs.jpg";
 
 const titleSponsors = [
   {
-    name: "SaaS Labs",
+    name: "SaaS Labs", // 8 l
     src: saas_labs,
     imgName: "saas-labs",
     link: "https://www.saaslabs.co/",
@@ -164,79 +166,91 @@ const titleSponsors = [
 
 const currSponsorsData = [
   {
-    name: "NITW Alumni Association",
+    name: "NITW Alumni Association", // 1 lakh
     src: springspree22_78,
     imgName: "springspree22_78",
     title: "Alumni partner",
   },
   {
-    name: "IMFS",
+    name: "IMFS", // 60k
     src: springspree22_83,
     imgName: "springspree22_83",
     title: "Merchandise Partner",
     link: "https://www.imfs.co.in"
   },
   {
-    name: "YogiFi",
+    name: "YogiFi",// 50k
     title: "StartUp and New Ventures",
     src: springspree22_84,
     imgName: "springspree22_84"
   },
   {
-    name: "Vizag Steel",
-    src: springspree22_90,
-    imgName: "springspree22_90",
-  },
-  {
-    name: "PATSAV Academy",
+    name: "PATSAV Academy", // 0
     src: springspree22_89,
     imgName: "springspree22_89",
+    title: "Events Sponsor"
   },
   {
-    name: "Foodsutra Art of Spices Pvt Ltd ",
+    name: "Foodsutra Art of Spices Pvt Ltd ",//50k
     src: springspree22_81,
     imgName: "springspree22_81",
   },
   {
-    name: "ASP Media House",
+    name: "Vizag Steel", // 30k
+    src: springspree22_90,
+    imgName: "springspree22_90",
+  },
+  {
+    name: "ASP Media House", // 25 k 
     src: springspree22_87,
     imgName: "springspree22_87",
   },
   {
-    name: "Chai Adda",
+    name: "Chai Adda", // 25 k 
     src: springspree22_88,
     imgName: "springspree22_88",
   },
+  // malabar - 15k
   {
-    name: "Sri Raksha Constructions",
+    name: "Malabar Gold and Diamonds",
+    src: springspree22_91,
+    imgName: "springspree2_91"
+  },
+  {
+    name: "Sri Raksha Constructions", // 15k
     src: springspree22_79,
     imgName: "springspree22_79",
   },
   {
-    name: "Safexpress",
+    name: "NITW Alumni Association", // 15
+    src: springspree22_80,
+    imgName: "springspree22_80",
+    title: "Warangal Chapter"
+  },
+  {
+    name: "Select Motors", // 15
+    src: springspree22_86,
+    imgName: "springspree22_86",
+  },
+  {
+    name: "Safexpress", // 10k
     src: springspree22_82,
     imgName: "springspree22_82",
     link: "http://www.safexpress.com",
     title: "Supply Chain Partner",
   },
   {
-    name: "Red FM",
+    name: "Red FM", // 0
     src: springspree22_85,
     imgName: "springspree22_85",
     link: "https://www.redfmindia.in/",
     title: "Radio Partner",
   },
   {
-    name: "NITW Alumni Association",
-    src: springspree22_80,
-    imgName: "springspree22_80",
-    title: "Warangal Chapter"
-  },
-  {
-    name: "Select Motors",
-    src: springspree22_86,
-    imgName: "springspree22_86",
-  },
+    name: "Wonderla",
+    src: springspree22_92,
+    imgName: "springspree22_92",
+  }
 ];
 
 export { currSponsorsData, titleSponsors };

@@ -16,6 +16,7 @@ import PasswordReset from "./components/PasswordReset";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
 import Team from "./components/Team";
+import TandC from "./components/TandC"
 
 const AppRoutes = () => {
   const { restore, updateUser } = useAuth();
@@ -42,6 +43,7 @@ const AppRoutes = () => {
       <Route path="/verifyMail" exact element={<VerifyEmail />} />
       <Route path="/register" exact element={<Register />} />
       <Route path="/team" exact element={<Team />} />
+      <Route path="/terms/:id" exact element={<TandC />} />
       <Route
         path="/passwordResetRequest"
         exact
