@@ -25,6 +25,12 @@ const Register = () => {
   }, []);
 
   const handleClick = (event) => async () => {
+    if (!user) {
+      alert("Please login to pay registration fees.");
+      navigate("/login", { replace: true, state: { from: "/register" } });
+      return;
+    }
+
     const payment = await eventPayment.makePayment({
       event,
       specialEvent: 1,
@@ -71,6 +77,8 @@ const Register = () => {
 
   if (user && user.isVerified !== 0)
     return <Navigate to="/verifyMail" replace />;
+
+  if (user.paidForEvent) return <Navigate to="/profile" replace />;
 
   return (
     <RegisterContainer>

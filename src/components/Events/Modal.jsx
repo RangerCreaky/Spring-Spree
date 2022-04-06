@@ -60,8 +60,15 @@ export default function Modal({ event, onClose, visible = false }) {
       return navigate("/login", { replace: true, state: { from: "/events" } });
     }
 
+    if (user.isVerified !== 0) {
+      alert("Please verify your email first!");
+      navigate("/verifyMail", { replace: true, state: { from: "/events" } });
+      return;
+    }
+
     if (user.paidForEvent === 0) {
       alert("Please pay entry fees first to continue to event");
+      navigate("/register", { replace: true, state: { from: "/events" } });
       return;
     }
 
@@ -220,7 +227,7 @@ export default function Modal({ event, onClose, visible = false }) {
                     </ul>
                   </div>
                 )}
-                {isStudent(user?.email) ? (
+                {isStudent(user?.email) && category === "Pro Shows" ? (
                   <button className="btn btn-primary mt-3" disabled>
                     Not required
                   </button>

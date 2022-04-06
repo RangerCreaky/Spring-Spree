@@ -5,9 +5,7 @@ import styled from "styled-components";
 import SponsoredBy from "./SponsoredBy";
 import { useAuth } from "../hooks/auth";
 
-
 const LandingPageContainer = () => {
-
   const { user } = useAuth();
   return (
     <Container>
@@ -26,11 +24,7 @@ const LandingPageContainer = () => {
           <p className="event-dates">April 8-10, 2022</p>
 
           <div className="action">
-            {!user ? (
-              <Link to="/signup" className="btn btn-primary">
-                Register
-              </Link>
-            ) : user.paidForEvent === 0 ? (
+            {!user || user.paidForEvent === 0 ? (
               <Link to="/register" className="btn btn-primary">
                 Register
               </Link>
@@ -59,9 +53,9 @@ const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 
-  .small-logo{
-    width : 38px;
-    height : auto;
+  .small-logo {
+    width: 38px;
+    height: auto;
   }
 
   .action a {
