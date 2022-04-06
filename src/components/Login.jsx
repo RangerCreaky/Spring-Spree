@@ -9,6 +9,7 @@ import { useApi } from "../hooks/api";
 import { useAuth } from "../hooks/auth";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import { useTitle } from "../hooks/document";
 
 const initialValues = {
   email: "",
@@ -21,6 +22,7 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function Login() {
+  useTitle("Login - SpringSpree'22");
   const { request, loading } = useApi(authApi.login);
   const auth = useAuth();
   const navigate = useNavigate();

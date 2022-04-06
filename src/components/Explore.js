@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { useTitle } from "../hooks/document";
 
 const Explore = () => {
+  useTitle("Explore - SpringSpree'22");
   return (
     <ExploreContainer>
       <Text>
@@ -54,8 +56,8 @@ const ExploreContainer = styled.div`
   }
 
   > img {
-    width : 40%;
-    height : auto;
+    width: 40%;
+    height: auto;
     @media (max-width: 1200px) {
       width: 500px;
       height: 500px;

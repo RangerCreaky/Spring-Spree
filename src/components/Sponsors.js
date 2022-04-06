@@ -11,8 +11,10 @@ import {
   currSponsorsData,
   titleSponsors,
 } from "./sponsorsData";
+import { useTitle } from "../hooks/document";
 
 const Sponsors = () => {
+  useTitle("Sponsors - SpringSpree'22");
   const renderSponsors = (sponsorsData, num) => {
     // value is used just to center the sponsor card
     // remove this then current sponsors have more values.

@@ -114,7 +114,7 @@ const Navbar = () => {
             <StyledLink to="/sponsors">Sponsors</StyledLink>
           </li>
           <li>
-            <StyledLink to="/sponsors">Team</StyledLink>
+            <StyledLink to="/team">Team</StyledLink>
           </li>
           <li>
             <StyledLink to="/faq">FAQs</StyledLink>

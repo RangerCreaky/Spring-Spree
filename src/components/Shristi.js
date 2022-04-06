@@ -37,7 +37,7 @@ const Shristi = () => {
             </StyledLink>
           </div>
         </Text>
-        <img src="../../images/springspree22_75.png" alt="springspree22_75" />
+        <img src="../../images/springspree22_75.webp" alt="springspree22_75" />
       </Container>
     </>
   );

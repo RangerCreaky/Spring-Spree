@@ -7,6 +7,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Loader from "./Loader";
 import { useApi } from "../hooks/api";
 import Footer from "./Footer";
+import { useTitle } from "../hooks/document";
 
 const initialValues = {
   password1: "",
@@ -21,6 +22,7 @@ const schema = Yup.object().shape({
 });
 
 export default function PasswordReset() {
+  useTitle("Password reset - SpringSpree'22");
   const { request, loading } = useApi(authApi.passwordReset);
   const navigate = useNavigate();
   const params = useParams();

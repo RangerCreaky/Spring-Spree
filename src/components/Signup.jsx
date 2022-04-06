@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { useAuth } from "../hooks/auth";
+import { useTitle } from "../hooks/document";
 
 const signupSchema = Yup.object().shape({
   name: Yup.string().required().max(255),
@@ -37,6 +38,7 @@ const initialValues = {
 };
 
 export default function Signup() {
+  useTitle("Register - SpringSpree'22");
   const { request, loading } = useApi(authApi.signup);
   const resendMail = useApi(authApi.resendVerifyMail);
   const navigate = useNavigate();

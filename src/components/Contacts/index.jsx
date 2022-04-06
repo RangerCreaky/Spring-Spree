@@ -5,6 +5,7 @@ import Loader from "../Loader";
 import { useApi } from "../../hooks/api";
 import commanApi from "../../api/comman";
 import { useNavigate } from "react-router-dom";
+import { useTitle } from "../../hooks/document";
 
 const DEPARTMENTS = {
   "Content and blogging": "content_blogging",
@@ -29,6 +30,7 @@ const initialValues = {
 };
 
 export default function Contacts() {
+  useTitle("Contact us - SpringSpree'22");
   const { loading, request } = useApi(commanApi.contacts);
   const navigate = useNavigate();
 

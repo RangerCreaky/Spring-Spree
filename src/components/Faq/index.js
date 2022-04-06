@@ -1,7 +1,9 @@
 import React from "react";
+import { useTitle } from "../../hooks/document";
 import { FaqContainer, QueryContainer, Query, SideBar } from "./Faq.styles";
 
 const Faq = () => {
+  useTitle("FAQ - SpringSpree'22");
   return (
     <FaqContainer>
       <SideBar>

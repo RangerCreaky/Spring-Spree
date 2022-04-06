@@ -14,6 +14,7 @@ import ToastHolder from "../Toast/ToastHolder";
 import Toast from "../Toast";
 import { useEventPayment } from "../../hooks/payment";
 import dayjs from "dayjs";
+import { useTitle } from "../../hooks/document";
 
 const days_data = [
   ["All", null],
@@ -29,6 +30,7 @@ const days_data = [
 const catOrder = ["Pro Shows"];
 
 export default function Events() {
+  useTitle("Event - SpringSpree'22");
   const allEvents = useApi(eventApi.getAllEvents);
   const [filter, setFilter] = useState(days_data);
   const { user, updateUser } = useAuth();

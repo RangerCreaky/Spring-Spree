@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useTitle } from "../hooks/document";
 import Footer from "./Footer";
 
 export default function Team() {
+  useTitle("Team - SpringSpree'22");
   return (
     <Wrapper className="container">
       <div className="content">
