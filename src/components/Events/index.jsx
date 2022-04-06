@@ -27,7 +27,7 @@ const days_data = [
   active: i === 0,
 }));
 
-const catOrder = ["Pro Shows"];
+const catOrder = ["Pro Shows", "Special"];
 
 export default function Events() {
   useTitle("Event - SpringSpree'22");
