@@ -54,6 +54,7 @@ export default function Events() {
 
   const parsedEvents = _.groupBy(
     allEvents.data
+      ?.filter((e) => e.hide !== 1)
       ?.filter(
         (e) =>
           !currentFilter.date ||
@@ -115,6 +116,7 @@ export default function Events() {
               {categories.length ? (
                 categories.map((category) => (
                   <Section
+                    refresh={updateUser}
                     key={category}
                     title={category}
                     events={parsedEvents[category]}

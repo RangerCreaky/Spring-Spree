@@ -4,8 +4,13 @@ import styled from "styled-components";
 import Image from "../Image";
 import Modal from "./Modal";
 
-export default function Card({ event }) {
+export default function Card({ event, refresh }) {
   const [visible, setVisible] = useState(false);
+
+  const handleClose = ({ doRefresh }) => {
+    if (doRefresh) refresh?.();
+    setVisible(false);
+  };
 
   const {
     name,
@@ -15,11 +20,7 @@ export default function Card({ event }) {
   } = event;
   return (
     <div>
-      <Modal
-        visible={visible}
-        event={event}
-        onClose={() => setVisible(false)}
-      />
+      <Modal visible={visible} event={event} onClose={handleClose} />
       <Container>
         <div>
           <Image src={poster} alt="poster" />

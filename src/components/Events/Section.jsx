@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import CardContainer from "./CardContainer";
 
-export default function Section({ events = [], title }) {
+export default function Section({ events = [], title, refresh }) {
   return (
     <Container
       animate={{ opacity: 1 }}
@@ -13,7 +13,7 @@ export default function Section({ events = [], title }) {
       id={title}
     >
       <h1 className="event-title">{title}</h1>
-      <CardContainer events={events} />
+      <CardContainer events={events} refresh={refresh} />
     </Container>
   );
 }

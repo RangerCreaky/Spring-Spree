@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import Card from "./Card";
 
-export default function CardContainer({ events = [] }) {
+export default function CardContainer({ events = [], refresh }) {
   return (
     <Container>
       {events.map((event) => (
-        <Card key={event._id || event.event_id} event={event} />
+        <Card
+          key={event._id || event.event_id}
+          event={event}
+          refresh={refresh}
+        />
       ))}
     </Container>
   );
