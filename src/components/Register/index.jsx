@@ -75,10 +75,10 @@ const Register = () => {
   const loading =
     specialEvent.loading || eventPayment.loading || validate.loading;
 
-  if (user && user.isVerified !== 0)
+  if (user && user?.isVerified !== 0)
     return <Navigate to="/verifyMail" replace />;
 
-  if (user.paidForEvent) return <Navigate to="/profile" replace />;
+  if (user?.paidForEvent) return <Navigate to="/profile" replace />;
 
   return (
     <RegisterContainer>

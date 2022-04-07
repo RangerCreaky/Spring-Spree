@@ -90,7 +90,8 @@ export default function Modal({ event, onClose, visible = false }) {
     }
 
     window.alert("You have registered successfully for this event");
-    navigate("/", { replace: true });
+    onClose({ doRefresh: true });
+    // navigate("/", { replace: true });
   };
 
   const loading = eventPayment.loading || registerFree.loading;
@@ -186,7 +187,7 @@ export default function Modal({ event, onClose, visible = false }) {
                   </div>
                 )}
 
-                {description && (
+                {description?.trim() && (
                   <div className="description">
                     <h2>Description</h2>
                     <p
