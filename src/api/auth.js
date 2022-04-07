@@ -1,5 +1,6 @@
 import client from "./client";
 
+export const addUser = (data) => client.post("/addUser", data);
 export const login = (data) => client.post("/signin", data);
 export const signup = (data) => client.post("/signup", data);
 export const userProfile = () => client.get("/user/profile");
@@ -11,6 +12,7 @@ export const passwordReset = (id, data) =>
   client.post(`/resetPassword/${id}`, data);
 
 const authApi = {
+  addUser,
   login,
   signup,
   userProfile,

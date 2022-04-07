@@ -59,6 +59,13 @@ const Navbar = () => {
                     More
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="more-button">
+                    {user.isAdmin && (
+                      <li>
+                        <Link className="dropdown-item" to="/admin">
+                          Admin
+                        </Link>
+                      </li>
+                    )}
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         Profile
@@ -124,6 +131,11 @@ const Navbar = () => {
           </li>
           {user ? (
             <>
+              {user.isAdmin && (
+                <li>
+                  <StyledLink to="/admin">Admin</StyledLink>
+                </li>
+              )}
               <li>
                 <StyledLink to="/profile">Profile</StyledLink>
               </li>
