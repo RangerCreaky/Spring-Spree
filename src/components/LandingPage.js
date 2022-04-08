@@ -55,15 +55,16 @@ const LandingPage = () => {
           <div className="small-text container">
             <h4>Instructions</h4>
             <hr className="hr" />
-
-            <p>
-              Online registration is closed. Go to SAC for onspot registration
-            </p>
             <p>
               To register for spree events, visit{" "}
               <Link to="/events">events</Link> page. And to update/view your
               package details, please visit <Link to="/profile">profile</Link>{" "}
               page
+            </p>
+            <p>
+              If you pre-register using promo code,you can book accomodation,
+              food and proshows either in <Link to="/profile">profile</Link>{" "}
+              page or offline at NITW campus.{" "}
             </p>
           </div>
           <Footer />
