@@ -83,17 +83,20 @@ export default function Login() {
             </div>
 
             <div className="center">
-              <p>
+              {/* <p>
                 Need an account?{" "}
                 <Link to="/signup" state={state} replace>
                   Sign Up
                 </Link>
-              </p>
+              </p> */}
               <p>
                 Forget your password?{" "}
                 <Link to="/passwordResetRequest" replace>
                   password reset
                 </Link>
+              </p>
+              <p>
+                Online registration is closed. Go to SAC for onspot registration
               </p>
             </div>
           </Form>

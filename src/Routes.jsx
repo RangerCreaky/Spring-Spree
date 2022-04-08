@@ -19,6 +19,7 @@ import Team from "./components/Team";
 import TandC from "./components/TandC";
 import AddUser from "./components/admin/AddUser";
 import UpdateUser from "./components/admin/UpdateUser";
+import Close from "./components/Close";
 
 const AppRoutes = () => {
   const { restore, updateUser } = useAuth();
@@ -41,6 +42,7 @@ const AppRoutes = () => {
       <Route path="/faq" exact element={<FAQ />} />
       <Route path="/profile" exact element={<Profile />} />
       <Route path="/login" exact element={<Login />} />
+      <Route path="/close" exact element={<Close />} />
       <Route path="/admin" exact element={<AddUser />} />
       <Route path="/admin/update" exact element={<UpdateUser />} />
       <Route path="/signup" exact element={<Signup />} />
