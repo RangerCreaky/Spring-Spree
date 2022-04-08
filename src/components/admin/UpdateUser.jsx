@@ -2,12 +2,13 @@ import { Form, Formik } from "formik";
 import React from "react";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
-import authApi from "../api/auth";
-import { useApi } from "../hooks/api";
-import { useAuth } from "../hooks/auth";
-import Field from "./form/Field";
-import Loader from "./Loader";
+import authApi from "../../api/auth";
+import { useApi } from "../../hooks/api";
+import { useAuth } from "../../hooks/auth";
+import Field from "../form/Field";
+import Loader from "../Loader";
 import * as Yup from "yup";
+import Checkbox from "../form/Checkbox";
 
 const signupSchema = Yup.object().shape({
   name: Yup.string().required().max(255),
@@ -39,10 +40,7 @@ export default function UpdateUser() {
     if (!window.confirm("Have you rechecked all the details?")) return;
     const res = await updateUser.request(value._id, value);
     if (res.ok) {
-      alert(
-        "User registered successfully with following details:\n\n" +
-          JSON.stringify(res.data)
-      );
+      alert("User updated successfully");
       searchUser.setData(null);
     } else {
       window.alert("User with email or phone already exists.");
@@ -81,10 +79,38 @@ export default function UpdateUser() {
       {searchUser.data && (
         <Formik
           validationSchema={signupSchema}
-          initialValues={searchUser.data}
+          initialValues={{
+            amountPaid: 100,
+            college: "Nit warangal",
+            createdAt: "2022-04-08T07:07:21.782Z",
+            email: "test@gmail.com",
+            mobile: "8349352254",
+            name: "test",
+            paidForAccomodation: 1,
+            paidForProshow1: 0,
+            paidForProshow2: 0,
+            paidForProshow3: 0,
+            paymentMode: "Cash",
+            transactionId: "N/A",
+            updatedAt: "2022-04-08T07:07:21.782Z",
+            __v: 0,
+            _id: "624fdf292e669fcf9c113f30",
+          }}
           onSubmit={handleSubmit}
         >
           <Form className="row g-3">
+            <div className="col-md-12">
+              <label htmlFor="user-id" className="form-label">
+                Springspree ID
+              </label>
+              <Field
+                disabled
+                name="_id"
+                type="text"
+                className="form-control"
+                id="user-id"
+              />
+            </div>
             <div className="col-md-6">
               <label htmlFor="name" className="form-label">
                 Full Name
@@ -140,7 +166,7 @@ export default function UpdateUser() {
                 <label htmlFor="accomodation" className="form-check-label">
                   Accomodation
                 </label>
-                <Field
+                <Checkbox
                   name="paidForAccomodation"
                   type="checkbox"
                   className="form-check-input"
@@ -153,7 +179,7 @@ export default function UpdateUser() {
                 <label htmlFor="proshow-1" className="form-check-label">
                   Proshow 1
                 </label>
-                <Field
+                <Checkbox
                   name="paidForProshow1"
                   type="checkbox"
                   className="form-check-input"
@@ -166,7 +192,7 @@ export default function UpdateUser() {
                 <label htmlFor="proshow-2" className="form-check-label">
                   Proshow 2
                 </label>
-                <Field
+                <Checkbox
                   name="paidForProshow2"
                   type="checkbox"
                   className="form-check-input"
@@ -179,7 +205,7 @@ export default function UpdateUser() {
                 <label htmlFor="proshow-3" className="form-check-label">
                   Proshow 3
                 </label>
-                <Field
+                <Checkbox
                   name="paidForProshow3"
                   type="checkbox"
                   className="form-check-input"
@@ -234,6 +260,9 @@ export default function UpdateUser() {
             <div className="col-12">
               <button type="submit" className="btn btn-primary">
                 Submit
+              </button>
+              <button type="reset" className="btn btn-outline-primary ms-2">
+                Reset
               </button>
             </div>
           </Form>
