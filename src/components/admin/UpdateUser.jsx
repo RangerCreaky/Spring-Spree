@@ -37,6 +37,7 @@ export default function UpdateUser() {
   };
 
   const handleSubmit = async (value) => {
+    console.log(value);
     if (!window.confirm("Have you rechecked all the details?")) return;
     const res = await updateUser.request(value._id, value);
     if (res.ok) {
@@ -79,23 +80,7 @@ export default function UpdateUser() {
       {searchUser.data && (
         <Formik
           validationSchema={signupSchema}
-          initialValues={{
-            amountPaid: 100,
-            college: "Nit warangal",
-            createdAt: "2022-04-08T07:07:21.782Z",
-            email: "test@gmail.com",
-            mobile: "8349352254",
-            name: "test",
-            paidForAccomodation: 1,
-            paidForProshow1: 0,
-            paidForProshow2: 0,
-            paidForProshow3: 0,
-            paymentMode: "Cash",
-            transactionId: "N/A",
-            updatedAt: "2022-04-08T07:07:21.782Z",
-            __v: 0,
-            _id: "624fdf292e669fcf9c113f30",
-          }}
+          initialValues={searchUser.data}
           onSubmit={handleSubmit}
         >
           <Form className="row g-3">
