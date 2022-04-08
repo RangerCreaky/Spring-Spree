@@ -38,13 +38,14 @@ import springspree22_89 from "../sponsors/curr/springspree22_89.jpg";
 import springspree22_90 from "../sponsors/curr/springspree22_90.jpeg";
 import springspree22_91 from "../sponsors/curr/springspree22_91.jpeg";
 import springspree22_92 from "../sponsors/curr/springspree22_92.avif";
+import springspree22_93 from "../sponsors/curr/springspree22_93.jpeg";
 
 // title sponsors
 import saas_labs from "../sponsors/title/saas-labs.jpg";
 
 const titleSponsors = [
   {
-    name: "SaaS Labs", // 8 l
+    name: "SaaS Labs",
     src: saas_labs,
     imgName: "saas-labs",
     link: "https://www.saaslabs.co/",
@@ -166,81 +167,87 @@ const titleSponsors = [
 
 const currSponsorsData = [
   {
-    name: "NITW Alumni Association", // 1 lakh
+    name: "NITW Alumni Association",
     src: springspree22_78,
     imgName: "springspree22_78",
     title: "Alumni partner",
   },
   {
-    name: "IMFS", // 60k
+    name: "IMFS",
     src: springspree22_83,
     imgName: "springspree22_83",
     title: "Merchandise Partner",
     link: "https://www.imfs.co.in"
   },
   {
-    name: "YogiFi",// 50k
-    title: "StartUp and New Ventures",
+    name: "YogiFi",
+    title: "Wellness Partner",
     src: springspree22_84,
     imgName: "springspree22_84"
   },
   {
-    name: "PATSAV Academy", // 0
+    name: "PATSAV Academy",
     src: springspree22_89,
     imgName: "springspree22_89",
     title: "Events Sponsor"
   },
   {
-    name: "Foodsutra Art of Spices Pvt Ltd ",//50k
+    name: "Foodsutra Art of Spices Pvt Ltd ",
     src: springspree22_81,
     imgName: "springspree22_81",
   },
   {
-    name: "Vizag Steel", // 30k
+    name: "Vizag Steel",
     src: springspree22_90,
     imgName: "springspree22_90",
+    title: "Industrial Partner",
   },
   {
-    name: "ASP Media House", // 25 k 
+    name: "Maruti Suzuki Arena",
+    src: springspree22_93,
+    imgName: "springspree22_93"
+  },
+  {
+    name: "ASP Media House",
     src: springspree22_87,
     imgName: "springspree22_87",
   },
   {
-    name: "Chai Adda", // 25 k 
+    name: "Chai Adda",
     src: springspree22_88,
     imgName: "springspree22_88",
   },
-  // malabar - 15k
+
   {
     name: "Malabar Gold and Diamonds",
     src: springspree22_91,
     imgName: "springspree2_91"
   },
   {
-    name: "Sri Raksha Constructions", // 15k
+    name: "Sri Raksha Constructions",
     src: springspree22_79,
     imgName: "springspree22_79",
   },
   {
-    name: "NITW Alumni Association", // 15
+    name: "NITW Alumni Association",
     src: springspree22_80,
     imgName: "springspree22_80",
     title: "Warangal Chapter"
   },
   {
-    name: "Select Motors", // 15
+    name: "Select Motors",
     src: springspree22_86,
     imgName: "springspree22_86",
   },
   {
-    name: "Safexpress", // 10k
+    name: "Safexpress",
     src: springspree22_82,
     imgName: "springspree22_82",
     link: "http://www.safexpress.com",
     title: "Supply Chain Partner",
   },
   {
-    name: "Red FM", // 0
+    name: "Red FM",
     src: springspree22_85,
     imgName: "springspree22_85",
     link: "https://www.redfmindia.in/",
