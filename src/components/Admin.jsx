@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import authApi from "../api/auth";
 import { useApi } from "../hooks/api";
@@ -63,7 +63,14 @@ export default function Admin() {
   return (
     <Container className="container">
       <Loader loading={loading} />
-      <h1 className="title">Add User</h1>
+      <div className="d-flex justify-content-between">
+        <h1 className="title">Add User</h1>
+        <div>
+          <Link to="/admin/update" className="btn btn-outline-info">
+            Update User
+          </Link>
+        </div>
+      </div>
       <Formik
         validationSchema={signupSchema}
         initialValues={initialValues}
