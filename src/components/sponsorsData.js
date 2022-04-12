@@ -37,7 +37,7 @@ import springspree22_88 from "../sponsors/curr/springspree22_88.jpg";
 import springspree22_89 from "../sponsors/curr/springspree22_89.jpg";
 import springspree22_90 from "../sponsors/curr/springspree22_90.jpeg";
 import springspree22_91 from "../sponsors/curr/springspree22_91.jpeg";
-import springspree22_92 from "../sponsors/curr/springspree22_92.avif";
+// import springspree22_92 from "../sponsors/curr/springspree22_92.avif";
 import springspree22_93 from "../sponsors/curr/springspree22_93.jpeg";
 
 // title sponsors
@@ -253,11 +253,11 @@ const currSponsorsData = [
     link: "https://www.redfmindia.in/",
     title: "Radio Partner",
   },
-  {
-    name: "Wonderla",
-    src: springspree22_92,
-    imgName: "springspree22_92",
-  }
+  // {
+  //   name: "Wonderla",
+  //   src: springspree22_92,
+  //   imgName: "springspree22_92",
+  // }
 ];
 
 export { currSponsorsData, titleSponsors };
